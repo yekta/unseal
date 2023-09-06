@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} w-full flex flex-col`}>
         <TitleBar />
-        <main className="mt-12">{children}</main>
+        <main className="w-full mt-12">{children}</main>
       </body>
     </html>
   );

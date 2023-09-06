@@ -18,7 +18,6 @@
 body {
   background-color: rgb(var(--c-bg));
   color: rgb(var(--c-on-bg));
-  overflow: hidden;
 }
 
 @tailwind utilities;

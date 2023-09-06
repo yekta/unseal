@@ -7,6 +7,9 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    transitionDuration: {
+      DEFAULT: "200ms",
+    },
     extend: {
       colors: {
         "c-bg": "rgb(var(--c-bg)/<alpha-value>)",
@@ -20,6 +23,9 @@ const config: Config = {
         "c-macos-red": "rgb(var(--c-macos-red)/<alpha-value>)",
         "c-macos-orange": "rgb(var(--c-macos-orange)/<alpha-value>)",
         "c-macos-green": "rgb(var(--c-macos-green)/<alpha-value>)",
+      },
+      opacity: {
+        85: "0.85",
       },
     },
   },

@@ -1,0 +1,3 @@
+interface TIconProps {
+  className?: string;
+}
