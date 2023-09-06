@@ -2,8 +2,8 @@
 @tailwind components;
 
 :root {
-  --c-bg: 14 14 14;
-  --c-bg-highlight: 30 30 30; 
+  --c-bg: 20 20 20;
+  --c-bg-highlight: 32 32 32; 
   --c-on-bg: 210 210 220;
   --c-icon-red: 229 126 126;
   --c-icon-lime: 171 214 129;
@@ -13,11 +13,6 @@
   --c-macos-red: 255 105 97;
   --c-macos-orange: 255 179 64;
   --c-macos-green: 48 209 88;
-}
-
-body {
-  background-color: rgb(var(--c-bg));
-  color: rgb(var(--c-on-bg));
 }
 
 @tailwind utilities;

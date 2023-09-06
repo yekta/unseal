@@ -28,7 +28,7 @@ export function EmailLine({
           className={`flex flex-col flex-1 md:flex-row md:items-center md:justify-between px-4 py-3.5 transition
           group-hover:bg-c-bg-highlight ${
             !isRead
-              ? "bg-gradient-to-r from-c-bg-highlight/85 to-c-bg-highlight/0 md:to-[15rem]"
+              ? "bg-gradient-to-r from-c-bg-highlight to-c-bg-highlight/0 md:to-[15rem]"
               : ""
           }
           overflow-hidden md:rounded-xl z-0`}

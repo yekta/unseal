@@ -18,9 +18,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} w-full flex flex-col`}>
+      <body
+        className={`${inter.className} w-full bg-c-bg text-c-on-bg 
+        flex flex-col justify-start h-screen overflow-hidden z-0 relative`}
+      >
         <TitleBar />
-        <main className="w-full mt-12">{children}</main>
+        <main className="w-full flex-1 flex flex-col overflow-auto">
+          {children}
+        </main>
       </body>
     </html>
   );
