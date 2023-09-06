@@ -1,20 +1,28 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        "c-bg": "rgb(var(--c-bg)/<alpha-value>)",
+        "c-bg-highlight": "rgb(var(--c-bg-highlight)/<alpha-value>)",
+        "c-on-bg": "rgb(var(--c-on-bg)/<alpha-value>)",
+        "c-icon-red": "rgb(var(--c-icon-red)/<alpha-value>)",
+        "c-icon-lime": "rgb(var(--c-icon-lime)/<alpha-value>)",
+        "c-icon-lightblue": "rgb(var(--c-icon-lightblue)/<alpha-value>)",
+        "c-icon-yellow": "rgb(var(--c-icon-yellow)/<alpha-value>)",
+        "c-notification-blue": "rgb(var(--c-notification-blue)/<alpha-value>)",
+        "c-macos-red": "rgb(var(--c-macos-red)/<alpha-value>)",
+        "c-macos-orange": "rgb(var(--c-macos-orange)/<alpha-value>)",
+        "c-macos-green": "rgb(var(--c-macos-green)/<alpha-value>)",
       },
     },
   },
   plugins: [],
-}
-export default config
+};
+export default config;

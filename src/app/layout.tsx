@@ -1,6 +1,8 @@
+import TitleBar from "@components/TitleBar";
 import "@css/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { useRef } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} w-full flex flex-col`}>
+        <TitleBar />
+        <main className="mt-12">{children}</main>
+      </body>
     </html>
   );
 }
