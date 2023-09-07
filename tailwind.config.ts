@@ -13,6 +13,7 @@ const config: Config = {
     extend: {
       colors: {
         "c-bg": "rgb(var(--c-bg)/<alpha-value>)",
+        "c-bg-secondary": "rgb(var(--c-bg-secondary)/<alpha-value>)",
         "c-bg-highlight": "rgb(var(--c-bg-highlight)/<alpha-value>)",
         "c-on-bg": "rgb(var(--c-on-bg)/<alpha-value>)",
         "c-icon-red": "rgb(var(--c-icon-red)/<alpha-value>)",

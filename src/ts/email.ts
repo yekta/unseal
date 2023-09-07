@@ -2,6 +2,7 @@ import type { TEmailLineProps } from "@components/EmailLine/EmailLine";
 
 export const emails: TEmailLineProps[] = [
   {
+    id: "1",
     sender: "GitHub",
     title:
       "[GitHub] A third-party OAuth application has been added to your account",
@@ -12,6 +13,7 @@ export const emails: TEmailLineProps[] = [
     isRead: false,
   },
   {
+    id: "2",
     sender: "Workplace",
     title: "Your meeting with the marketing team is scheduled for tomorrow.",
     body: "Hi there! Just a quick reminder about your meeting tomorrow at 3pm with the marketing team.",
@@ -21,6 +23,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "3",
     sender: "DevOps",
     title: "Build #2345 failed!",
     body: "Hello, unfortunately, the recent build #2345 has failed. Please check the logs for more details.",
@@ -30,6 +33,7 @@ export const emails: TEmailLineProps[] = [
     isRead: false,
   },
   {
+    id: "4",
     sender: "Real Estate",
     title: "New property listing in your area!",
     body: "Good news! A new property that matches your preferences has been listed in your area. Check it out now!",
@@ -39,6 +43,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "5",
     sender: "University",
     title: "Enrollment confirmation for next semester",
     body: "We're pleased to inform you that you've been enrolled for the next semester. Check your course list online.",
@@ -48,6 +53,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "6",
     sender: "HR",
     title: "Updated benefits package",
     body: "We've made some updates to the benefits package. Please review the new documentation attached.",
@@ -57,6 +63,7 @@ export const emails: TEmailLineProps[] = [
     isRead: false,
   },
   {
+    id: "7",
     sender: "Tech Team",
     title: "Server maintenance downtime",
     body: "Scheduled server maintenance will occur tonight from 2-3am. Expect some downtime.",
@@ -66,6 +73,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "8",
     sender: "Property Manager",
     title: "Scheduled power outage",
     body: "A scheduled power outage will take place tomorrow from 9am-11am for routine maintenance.",
@@ -75,6 +83,7 @@ export const emails: TEmailLineProps[] = [
     isRead: false,
   },
   {
+    id: "9",
     sender: "University",
     title: "Enrollment confirmation for next semester",
     body: "We're pleased to inform you that you've been enrolled for the next semester. Check your course list online.",
@@ -84,6 +93,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "10",
     sender: "HR Department",
     title: "Updated benefits package",
     body: "We've made some updates to the benefits package. Please review the new documentation attached.",
@@ -93,6 +103,7 @@ export const emails: TEmailLineProps[] = [
     isRead: false,
   },
   {
+    id: "11",
     sender: "Tech Team",
     title: "Server maintenance downtime",
     body: "Scheduled server maintenance will occur tonight from 2-3am. Expect some downtime.",
@@ -102,6 +113,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "12",
     sender: "Property Manager",
     title: "Scheduled power outage",
     body: "A scheduled power outage will take place tomorrow from 9am-11am for routine maintenance.",
@@ -111,6 +123,7 @@ export const emails: TEmailLineProps[] = [
     isRead: false,
   },
   {
+    id: "13",
     sender: "Educational Forum",
     title: "Upcoming seminar on modern teaching methods",
     body: "Join our seminar next week to learn about the most effective teaching methods.",
@@ -120,6 +133,7 @@ export const emails: TEmailLineProps[] = [
     isRead: false,
   },
   {
+    id: "14",
     sender: "Team Leads",
     title: "Weekly sync-up rescheduled",
     body: "Our weekly sync-up has been moved to Thursday. Please update your calendars.",
@@ -129,6 +143,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "15",
     sender: "Web Admin",
     title: "Website update successful",
     body: "The latest updates to our website have been successfully deployed without issues.",
@@ -138,6 +153,7 @@ export const emails: TEmailLineProps[] = [
     isRead: false,
   },
   {
+    id: "16",
     sender: "City Council",
     title: "New zoning laws",
     body: "New zoning laws have been passed in your area. Check the attached document for details.",
@@ -147,6 +163,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "17",
     sender: "Online Course",
     title: "Certification exam next week",
     body: "A reminder that your certification exam is scheduled for next week.",
@@ -156,6 +173,7 @@ export const emails: TEmailLineProps[] = [
     isRead: false,
   },
   {
+    id: "18",
     sender: "HR",
     title: "Office health guidelines",
     body: "Please review the updated office health and safety guidelines attached.",
@@ -165,6 +183,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "19",
     sender: "SysAdmin",
     title: "New software updates",
     body: "Please ensure your systems are updated with the latest software patches.",
@@ -174,6 +193,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "20",
     sender: "Real Estate Agency",
     title: "Viewing appointment confirmation",
     body: "Your viewing appointment for the apartment on Elm Street has been confirmed for Saturday.",
@@ -183,6 +203,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "21",
     sender: "Alumni Association",
     title: "Annual alumni meet",
     body: "You're invited to the annual alumni meet next month. RSVP by next week.",
@@ -192,6 +213,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "22",
     sender: "Company Retreat",
     title: "Details for the upcoming company retreat",
     body: "Find attached the itinerary and details for the upcoming company retreat.",
@@ -201,6 +223,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "23",
     sender: "Hosting Provider",
     title: "Scheduled server upgrades",
     body: "We will be performing server upgrades on Sunday from 1am-4am.",
@@ -210,6 +233,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "24",
     sender: "Construction Update",
     title: "Updated timeline for roadwork",
     body: "The roadwork on Maple Ave will now be completed by the end of next month.",
@@ -219,6 +243,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "25",
     sender: "HR Department",
     title: "Updated benefits package",
     body: "We've made some updates to the benefits package. Please review the new documentation attached.",
@@ -228,6 +253,7 @@ export const emails: TEmailLineProps[] = [
     isRead: false,
   },
   {
+    id: "26",
     sender: "Tech Team",
     title: "Server maintenance downtime",
     body: "Scheduled server maintenance will occur tonight from 2-3am. Expect some downtime.",
@@ -237,6 +263,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "27",
     sender: "Property Manager",
     title: "Scheduled power outage",
     body: "A scheduled power outage will take place tomorrow from 9am-11am for routine maintenance.",
@@ -246,6 +273,7 @@ export const emails: TEmailLineProps[] = [
     isRead: false,
   },
   {
+    id: "28",
     sender: "Educational Forum",
     title: "Upcoming seminar on modern teaching methods",
     body: "Join our seminar next week to learn about the most effective teaching methods.",
@@ -255,6 +283,7 @@ export const emails: TEmailLineProps[] = [
     isRead: false,
   },
   {
+    id: "29",
     sender: "Team Leads",
     title: "Weekly sync-up rescheduled",
     body: "Our weekly sync-up has been moved to Thursday. Please update your calendars.",
@@ -264,6 +293,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "30",
     sender: "Web Admin",
     title: "Website update successful",
     body: "The latest updates to our website have been successfully deployed without issues.",
@@ -273,6 +303,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "31",
     sender: "City Council",
     title: "New zoning laws",
     body: "New zoning laws have been passed in your area. Check the attached document for details.",
@@ -282,6 +313,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "32",
     sender: "Online Course",
     title: "Certification exam next week",
     body: "A reminder that your certification exam is scheduled for next week.",
@@ -291,6 +323,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "33",
     sender: "HR",
     title: "Office health guidelines",
     body: "Please review the updated office health and safety guidelines attached.",
@@ -300,6 +333,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "34",
     sender: "SysAdmin",
     title: "New software updates",
     body: "Please ensure your systems are updated with the latest software patches.",
@@ -309,6 +343,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "35",
     sender: "Real Estate Agency",
     title: "Viewing appointment confirmation",
     body: "Your viewing appointment for the apartment on Elm Street has been confirmed for Saturday.",
@@ -318,6 +353,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "36",
     sender: "Alumni Association",
     title: "Annual alumni meet",
     body: "You're invited to the annual alumni meet next month. RSVP by next week.",
@@ -327,6 +363,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "37",
     sender: "Company Retreat",
     title: "Details for the upcoming company retreat",
     body: "Find attached the itinerary and details for the upcoming company retreat.",
@@ -336,6 +373,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "38",
     sender: "Hosting Provider",
     title: "Scheduled server upgrades",
     body: "We will be performing server upgrades on Sunday from 1am-4am.",
@@ -345,6 +383,7 @@ export const emails: TEmailLineProps[] = [
     isRead: true,
   },
   {
+    id: "39",
     sender: "Construction Update",
     title: "Updated timeline for roadwork",
     body: "The roadwork on Maple Ave will now be completed by the end of next month.",

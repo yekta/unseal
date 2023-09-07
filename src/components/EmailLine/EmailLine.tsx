@@ -1,6 +1,8 @@
+import Link from "next/link";
 import EmailIcon, { EmailIconProps } from "./EmailIcon";
 
 export interface TEmailLineProps {
+  id: string;
   sender: string;
   title: string;
   body: string;
@@ -9,7 +11,9 @@ export interface TEmailLineProps {
   iconType: EmailIconProps["type"];
   iconColor: EmailIconProps["color"];
 }
+
 export function EmailLine({
+  id,
   sender,
   title,
   body,
@@ -19,7 +23,10 @@ export function EmailLine({
   iconColor,
 }: TEmailLineProps) {
   return (
-    <div className="w-full flex flex-row justify-center items-center group cursor-default select-none">
+    <Link
+      href={`/inbox/${id}`}
+      className="w-full flex flex-row justify-center items-center group cursor-default select-none"
+    >
       <div className="w-full flex flex-row items-center md:py-px">
         <div className="hidden md:block px-2">
           <NotificationDot isRead={isRead} />
@@ -65,7 +72,7 @@ export function EmailLine({
           <NotificationDot isRead={true} />
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
