@@ -47,7 +47,7 @@ export function EmailLine({
               className="md:hidden"
             />
             <EmailIcon type={iconType} color={iconColor}></EmailIcon>
-            <p className=" font-bold whitespace-nowrap overflow-hidden overflow-ellipsis">
+            <p className=" font-semibold whitespace-nowrap overflow-hidden overflow-ellipsis">
               {sender}
             </p>
           </div>
