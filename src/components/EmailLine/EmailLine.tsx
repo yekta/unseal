@@ -47,24 +47,27 @@ export function EmailLine({
               className="md:hidden"
             />
             <EmailIcon type={iconType} color={iconColor}></EmailIcon>
-            <p className=" font-semibold whitespace-nowrap overflow-hidden overflow-ellipsis">
+            <p className="flex-1 font-semibold whitespace-nowrap overflow-hidden overflow-ellipsis text-sm">
               {sender}
+            </p>
+            <p className="md:hidden w-16 text-right text-c-on-bg/60 text-sm">
+              {date}
             </p>
           </div>
           {/* Desktop */}
-          <p className="hidden md:block whitespace-nowrap flex-1 overflow-hidden overflow-ellipsis text-c-on-bg/60">
+          <p className="hidden md:block whitespace-nowrap flex-1 overflow-hidden overflow-ellipsis text-c-on-bg/60 text-sm">
             <span className="text-c-on-bg">{title}</span>
             <span className="text-c-on-bg/30"> | </span>
             <span className="text-c-on-bg/60">{body}</span>
           </p>
-          <p className="hidden md:block w-24 text-right text-c-on-bg/60">
+          <p className="hidden md:block w-18 text-right text-c-on-bg/60 text-sm">
             {date}
           </p>
           {/* Mobile */}
-          <p className="md:hidden w-full whitespace-nowrap overflow-hidden overflow-ellipsis text-c-on-bg mt-0.5">
+          <p className="md:hidden w-full whitespace-nowrap overflow-hidden overflow-ellipsis text-c-on-bg mt-1 text-sm">
             {title}
           </p>
-          <p className="md:hidden w-full whitespace-nowrap overflow-hidden overflow-ellipsis text-c-on-bg/60 mt-0.5">
+          <p className="md:hidden w-full whitespace-nowrap overflow-hidden overflow-ellipsis text-c-on-bg/60 mt-1 text-sm">
             {body}
           </p>
         </div>

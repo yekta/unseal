@@ -34,7 +34,7 @@ export default function EmailList() {
   const allEmails = data ? data.pages.flatMap((d) => d.emails) : [];
   const parentRef = useRef<HTMLDivElement>(null);
 
-  const estimatedSize = 30;
+  const estimatedSize = 40;
   const overscan = 20;
   const rowVirtualizer = useVirtualizer({
     count: allEmails.length + 1,

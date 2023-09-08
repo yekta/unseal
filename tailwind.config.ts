@@ -28,6 +28,9 @@ const config: Config = {
       opacity: {
         85: "0.85",
       },
+      spacing: {
+        18: "4.5rem",
+      },
     },
   },
   plugins: [],
