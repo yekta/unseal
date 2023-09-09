@@ -9,6 +9,11 @@ const config: Config = {
   theme: {
     transitionDuration: {
       DEFAULT: "200ms",
+      100: "100ms",
+      200: "200ms",
+      300: "300ms",
+      400: "400ms",
+      500: "500ms",
     },
     extend: {
       colors: {
@@ -26,6 +31,7 @@ const config: Config = {
         "c-macos-green": "rgb(var(--c-macos-green)/<alpha-value>)",
       },
       opacity: {
+        15: "0.15",
         85: "0.85",
       },
       spacing: {

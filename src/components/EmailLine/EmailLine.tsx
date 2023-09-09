@@ -33,10 +33,8 @@ export function EmailLine({
         </div>
         <div
           className={`flex flex-col flex-1 md:flex-row md:items-center md:justify-between px-4 py-3.5 transition
-          group-hover:bg-c-bg-highlight ${
-            !isRead
-              ? "bg-gradient-to-r from-c-bg-highlight to-c-bg-highlight/0 md:to-[15rem]"
-              : ""
+          group-hover:bg-c-bg-highlight duration-100 ${
+            !isRead ? "bg-c-bg-secondary" : ""
           }
           overflow-hidden md:rounded-xl z-0`}
         >
@@ -47,27 +45,27 @@ export function EmailLine({
               className="md:hidden"
             />
             <EmailIcon type={iconType} color={iconColor}></EmailIcon>
-            <p className="flex-1 font-semibold whitespace-nowrap overflow-hidden overflow-ellipsis text-sm">
+            <p className="flex-1 font-semibold whitespace-nowrap overflow-hidden overflow-ellipsis text-base">
               {sender}
             </p>
-            <p className="md:hidden w-16 text-right text-c-on-bg/60 text-sm">
+            <p className="md:hidden w-16 text-right text-c-on-bg/60 text-base">
               {date}
             </p>
           </div>
           {/* Desktop */}
-          <p className="hidden md:block whitespace-nowrap flex-1 overflow-hidden overflow-ellipsis text-c-on-bg/60 text-sm">
+          <p className="hidden md:block whitespace-nowrap flex-1 overflow-hidden overflow-ellipsis text-c-on-bg/60 text-base">
             <span className="text-c-on-bg">{title}</span>
             <span className="text-c-on-bg/30"> | </span>
             <span className="text-c-on-bg/60">{body}</span>
           </p>
-          <p className="hidden md:block w-18 text-right text-c-on-bg/60 text-sm">
+          <p className="hidden md:block w-18 text-right text-c-on-bg/60 text-base">
             {date}
           </p>
           {/* Mobile */}
-          <p className="md:hidden w-full whitespace-nowrap overflow-hidden overflow-ellipsis text-c-on-bg mt-1 text-sm">
+          <p className="md:hidden w-full whitespace-nowrap overflow-hidden overflow-ellipsis text-c-on-bg mt-1 text-base">
             {title}
           </p>
-          <p className="md:hidden w-full whitespace-nowrap overflow-hidden overflow-ellipsis text-c-on-bg/60 mt-1 text-sm">
+          <p className="md:hidden w-full whitespace-nowrap overflow-hidden overflow-ellipsis text-c-on-bg/60 mt-1 text-base">
             {body}
           </p>
         </div>
