@@ -27,13 +27,10 @@ export function EmailLine({
       href={`/inbox/${id}`}
       className="w-full flex flex-row justify-center items-center group cursor-default select-none"
     >
-      <div className="w-full flex flex-row items-center md:py-px">
-        <div className="hidden md:block px-2">
-          <NotificationDot isRead={isRead} />
-        </div>
+      <div className="w-full flex flex-row items-center md:py-px md:px-4">
         <div
           className={`flex flex-col flex-1 md:flex-row md:items-center md:justify-between px-4 py-3.5 transition
-          group-hover:bg-c-bg-highlight duration-100 ${
+          group-hover:bg-c-bg-highlight duration-100 relative ${
             !isRead ? "bg-c-bg-secondary" : ""
           }
           overflow-hidden md:rounded-xl z-0`}
@@ -42,7 +39,7 @@ export function EmailLine({
             <NotificationDot
               isRead={isRead}
               hideWhenRead
-              className="md:hidden"
+              className="md:absolute md:left-1.75 md:top-1.75"
             />
             <EmailIcon type={iconType} color={iconColor}></EmailIcon>
             <p className="flex-1 font-semibold whitespace-nowrap overflow-hidden overflow-ellipsis text-base">
@@ -68,9 +65,6 @@ export function EmailLine({
           <p className="md:hidden w-full whitespace-nowrap overflow-hidden overflow-ellipsis text-c-on-bg/60 mt-1 text-base">
             {body}
           </p>
-        </div>
-        <div className="hidden md:block px-2">
-          <NotificationDot isRead={true} />
         </div>
       </div>
     </Link>

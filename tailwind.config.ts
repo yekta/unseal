@@ -35,6 +35,7 @@ const config: Config = {
         85: "0.85",
       },
       spacing: {
+        1.75: "0.4375rem",
         18: "4.5rem",
       },
     },
