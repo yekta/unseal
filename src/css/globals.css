@@ -4,6 +4,7 @@
 :root {
   --c-bg: 16 16 22;
   --c-bg-secondary: 24 24 30;
+  --c-bg-tertiary: 32 32 38;
   --c-bg-highlight: 32 32 38; 
   --c-on-bg: 240 240 250;
   --c-icon-red: 229 126 126;

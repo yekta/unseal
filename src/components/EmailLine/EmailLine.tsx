@@ -29,18 +29,14 @@ export function EmailLine({
     >
       <div className="w-full flex flex-row items-center md:py-px md:px-4">
         <div
-          className={`flex flex-col flex-1 md:flex-row md:items-center md:justify-between px-4 py-3.5 transition
-          group-hover:bg-c-bg-highlight duration-100 relative ${
+          className={`flex flex-col flex-1 md:flex-row md:items-center md:justify-between px-4 py-3.5
+          group-hover:bg-c-notification-blue/10 relative ${
             !isRead ? "bg-c-bg-secondary" : ""
           }
           overflow-hidden md:rounded-xl z-0`}
         >
           <div className="w-full md:w-60 flex items-center gap-2">
-            <NotificationDot
-              isRead={isRead}
-              hideWhenRead
-              className="md:absolute md:left-1.75 md:top-1.75"
-            />
+            <NotificationDot isRead={isRead} hideWhenRead />
             <EmailIcon type={iconType} color={iconColor}></EmailIcon>
             <p className="flex-1 font-semibold whitespace-nowrap overflow-hidden overflow-ellipsis text-base">
               {sender}
@@ -81,7 +77,8 @@ const NotificationDot = ({
   hideWhenRead?: boolean;
 }) => (
   <div
-    className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
+    className={`w-1.5 h-1.5 md:w-3px md:h-4 md:absolute md:left-0 md:top-1/2 transform md:-translate-y-1/2 
+    rounded-full md:rounded-l-none flex-shrink-0 ${
       isRead ? "bg-c-notification-blue/0" : "bg-c-notification-blue"
     } ${className ?? ""} ${hideWhenRead && isRead ? "hidden" : ""}`}
   />

@@ -9,6 +9,7 @@ const config: Config = {
   theme: {
     transitionDuration: {
       DEFAULT: "200ms",
+      0: "0ms",
       100: "100ms",
       200: "200ms",
       300: "300ms",
@@ -35,6 +36,10 @@ const config: Config = {
         85: "0.85",
       },
       spacing: {
+        "2px": "2px",
+        "3px": "3px",
+        "4px": "4px",
+        1.25: "0.3125rem",
         1.75: "0.4375rem",
         18: "4.5rem",
       },

@@ -11,16 +11,16 @@ export default function Page({ params }: { params: { id: string } }) {
   useHotkeys("esc", () => router.push("/"));
   useHotkeys(["arrowLeft", "arrowUp"], () => {
     if (!email) return;
-    const indexOf = emails.indexOf(email);
-    if (indexOf <= 0) return;
-    const nextId = emails[emails.indexOf(email) - 1].id;
+    const index = emails.indexOf(email);
+    if (index <= 0) return;
+    const nextId = emails[index - 1].id;
     router.push(`/inbox/${nextId}`);
   });
   useHotkeys(["arrowRight", "arrowDown"], () => {
     if (!email) return;
-    const indexOf = emails.indexOf(email);
-    if (indexOf >= emails.length - 1) return;
-    const nextId = emails[emails.indexOf(email) + 1].id;
+    const index = emails.indexOf(email);
+    if (index >= emails.length - 1) return;
+    const nextId = emails[index + 1].id;
     router.push(`/inbox/${nextId}`);
   });
 
@@ -31,7 +31,7 @@ export default function Page({ params }: { params: { id: string } }) {
         className="flex-1 min-w-[4rem] min-h-full cursor-default"
       />
       <div className="w-full max-w-6xl flex md:px-4 flex-col relative pt-6 pb-24">
-        <div className="w-full bg-c-bg-secondary flex flex-col py-6 px-10 rounded-3xl">
+        <div className="w-full bg-c-bg-secondary flex flex-col py-6 px-10 rounded-xl">
           <h1 className="w-full font-bold text-3xl">{email?.title}</h1>
           <p className="mt-2">{email?.body}</p>
         </div>
