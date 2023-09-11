@@ -1,5 +1,6 @@
 import Link from "next/link";
 import EmailIcon, { EmailIconProps } from "./EmailIcon";
+import { getRelativeDate } from "@ts/helpers/getRelativeDate";
 
 export interface TEmailLineProps {
   id: string;
@@ -43,7 +44,7 @@ export function EmailLine({
               {sender}
             </p>
             <p className="md:hidden w-16 text-right text-c-on-bg/60 text-base">
-              {date}
+              {getRelativeDate(date)}
             </p>
           </div>
           {/* Desktop */}
@@ -53,7 +54,7 @@ export function EmailLine({
             <span className="text-c-on-bg/60">{body}</span>
           </p>
           <p className="hidden md:block w-18 text-right text-c-on-bg/60 text-base">
-            {date}
+            {getRelativeDate(date)}
           </p>
           {/* Mobile */}
           <p className="md:hidden w-full whitespace-nowrap overflow-hidden overflow-ellipsis text-c-on-bg mt-1 text-base">
