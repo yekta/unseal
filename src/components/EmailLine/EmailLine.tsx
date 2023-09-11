@@ -25,7 +25,8 @@ export function EmailLine({
   return (
     <Link
       href={`/inbox/${id}`}
-      className="w-full flex flex-row justify-center items-center group cursor-default select-none"
+      className="w-full flex flex-row justify-center items-center group 
+      cursor-default select-none"
     >
       <div className="w-full flex flex-row items-center md:py-px md:px-4">
         <div
