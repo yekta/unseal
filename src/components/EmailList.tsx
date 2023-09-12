@@ -3,24 +3,9 @@
 import { EmailLine, TEmailLineProps } from "@components/EmailLine/EmailLine";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { emails } from "@ts/email";
 import { getGroupLabelByDate } from "@ts/helpers/getGroupLabelByDate";
+import { getEmails } from "@ts/queries/getEmails";
 import { useEffect, useRef } from "react";
-
-const limit = 20;
-const maxOffset = 3;
-async function fetchEmails(offset: number = 0): Promise<{
-  emails: TEmailLineProps[];
-  nextOffset: number | undefined;
-}> {
-  const _emails = [...emails.slice(offset * limit, (offset + 1) * limit)];
-  await new Promise((r) => setTimeout(r, 500));
-  const nextOffset = offset >= maxOffset ? undefined : offset + 1;
-  return {
-    emails: _emails,
-    nextOffset,
-  };
-}
 
 export default function EmailList() {
   const {
@@ -29,7 +14,7 @@ export default function EmailList() {
     fetchNextPage,
     hasNextPage,
     isInitialLoading,
-  } = useInfiniteQuery(["emails"], (ctx) => fetchEmails(ctx.pageParam), {
+  } = useInfiniteQuery(["emails"], (ctx) => getEmails(ctx.pageParam), {
     getNextPageParam: (_lastGroup) => _lastGroup.nextOffset,
   });
 
