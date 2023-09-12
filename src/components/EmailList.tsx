@@ -4,16 +4,18 @@ import { EmailLine, TEmailLineProps } from "@components/EmailLine/EmailLine";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { emails } from "@ts/email";
+import { getGroupLabelByDate } from "@ts/helpers/getGroupLabelByDate";
 import { useEffect, useRef } from "react";
 
-async function fetchEmails(offset: number = 1): Promise<{
+const limit = 20;
+const maxOffset = 3;
+async function fetchEmails(offset: number = 0): Promise<{
   emails: TEmailLineProps[];
   nextOffset: number | undefined;
 }> {
-  const maxOffset = 10;
-  const _emails = [...emails];
+  const _emails = [...emails.slice(offset * limit, (offset + 1) * limit)];
   await new Promise((r) => setTimeout(r, 500));
-  const nextOffset = offset > maxOffset ? undefined : offset + 1;
+  const nextOffset = offset >= maxOffset ? undefined : offset + 1;
   return {
     emails: _emails,
     nextOffset,
@@ -32,12 +34,24 @@ export default function EmailList() {
   });
 
   const allEmails = data ? data.pages.flatMap((d) => d.emails) : [];
+  let lastDateLabel: string | undefined = undefined;
+  let rows: (TEmailLineProps | string)[] = [];
+  for (let i = 0; i < allEmails.length; i++) {
+    const email = allEmails[i];
+    const dateLabel = getGroupLabelByDate(new Date(email.date));
+    if (lastDateLabel === undefined || dateLabel !== lastDateLabel) {
+      lastDateLabel = getGroupLabelByDate(new Date(email.date));
+      rows.push(lastDateLabel);
+    } else {
+      rows.push(email);
+    }
+  }
   const parentRef = useRef<HTMLDivElement>(null);
 
   const estimatedSize = 40;
   const overscan = 20;
   const rowVirtualizer = useVirtualizer({
-    count: allEmails.length + 1,
+    count: rows.length + 1,
     getScrollElement: () => parentRef.current,
     estimateSize: () => estimatedSize,
     overscan,
@@ -51,7 +65,7 @@ export default function EmailList() {
     }
 
     if (
-      lastItem.index >= allEmails.length - 1 &&
+      lastItem.index >= rows.length - 1 &&
       hasNextPage &&
       !isFetchingNextPage
     ) {
@@ -60,7 +74,7 @@ export default function EmailList() {
   }, [
     hasNextPage,
     fetchNextPage,
-    allEmails.length,
+    rows.length,
     isFetchingNextPage,
     rowVirtualizer.getVirtualItems(),
   ]);
@@ -83,8 +97,8 @@ export default function EmailList() {
         className="w-full max-w-6xl flex flex-col md:px-2"
       >
         {rowVirtualizer.getVirtualItems().map((virtualRow) => {
-          const isLoaderRow = virtualRow.index > allEmails.length - 1;
-          const email = allEmails[virtualRow.index];
+          const isLoaderRow = virtualRow.index > rows.length - 1;
+          const emailOrLabel = rows[virtualRow.index];
 
           return (
             <div
@@ -109,9 +123,13 @@ export default function EmailList() {
                     You've reached the end!
                   </div>
                 )
+              ) : typeof emailOrLabel === "string" ? (
+                <div className="px-4 md:px-8 text-c-on-bg/50 pt-8 pb-3">
+                  {emailOrLabel}
+                </div>
               ) : (
                 <div className="w-full">
-                  <EmailLine {...email} />
+                  <EmailLine {...emailOrLabel} />
                 </div>
               )}
             </div>
