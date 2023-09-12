@@ -42,6 +42,8 @@ export default function EmailList() {
     overscan,
   });
 
+  console.log(rowVirtualizer.scrollOffset);
+
   useEffect(() => {
     const [lastItem] = [...rowVirtualizer.getVirtualItems()].reverse();
 
