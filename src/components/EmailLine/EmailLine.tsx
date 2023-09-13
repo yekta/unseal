@@ -50,7 +50,7 @@ export function EmailLine({
           {/* Desktop */}
           <p className="hidden md:block whitespace-nowrap flex-1 overflow-hidden overflow-ellipsis text-c-on-bg/60 text-base">
             <span className="text-c-on-bg">{title}</span>
-            <span className="text-c-on-bg/30"> | </span>
+            <span className="text-c-on-bg/30 px-0.25ch"> | </span>
             <span className="text-c-on-bg/60">{body}</span>
           </p>
           <p className="hidden md:block w-18 text-right text-c-on-bg/60 text-base">

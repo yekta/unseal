@@ -27,9 +27,8 @@ export default function EmailList() {
     if (lastDateLabel === undefined || dateLabel !== lastDateLabel) {
       lastDateLabel = getGroupLabelByDate(new Date(email.date));
       rows.push(lastDateLabel);
-    } else {
-      rows.push(email);
     }
+    rows.push(email);
   }
   const parentRef = useRef<HTMLDivElement>(null);
 
@@ -41,8 +40,6 @@ export default function EmailList() {
     estimateSize: () => estimatedSize,
     overscan,
   });
-
-  console.log(rowVirtualizer.scrollOffset);
 
   useEffect(() => {
     const [lastItem] = [...rowVirtualizer.getVirtualItems()].reverse();

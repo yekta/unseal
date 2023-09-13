@@ -40,6 +40,8 @@ const config: Config = {
         85: "0.85",
       },
       spacing: {
+        "0.25ch": "0.25ch",
+        "0.5ch": "0.5ch",
         "2px": "2px",
         "3px": "3px",
         "4px": "4px",

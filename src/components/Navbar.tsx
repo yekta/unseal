@@ -4,8 +4,13 @@ import React, { useEffect, useState } from "react";
 import { WebviewWindow } from "@tauri-apps/api/window";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { InboxIcon, EnvelopeIcon, StarIcon } from "@heroicons/react/24/outline";
+import {
+  InboxIcon as InboxIconSolid,
+  EnvelopeIcon as EnvelopeIconSolid,
+  StarIcon as StarIconSolid,
+} from "@heroicons/react/24/solid";
 
 export default function Navbar() {
   const [appWindow, setAppWindow] = useState<WebviewWindow | undefined>(
@@ -15,7 +20,13 @@ export default function Navbar() {
   interface TNavbarItem {
     label: string;
     pathname: string;
-    Icon: React.ForwardRefExoticComponent<
+    IconActive: React.ForwardRefExoticComponent<
+      Omit<React.SVGProps<SVGSVGElement>, "ref"> & {
+        title?: string | undefined;
+        titleId?: string | undefined;
+      } & React.RefAttributes<SVGSVGElement>
+    >;
+    IconPassive: React.ForwardRefExoticComponent<
       Omit<React.SVGProps<SVGSVGElement>, "ref"> & {
         title?: string | undefined;
         titleId?: string | undefined;
@@ -27,22 +38,31 @@ export default function Navbar() {
     {
       label: "All Inboxes",
       pathname: "/",
-      Icon: InboxIcon,
+      IconPassive: InboxIcon,
+      IconActive: InboxIconSolid,
     },
     {
       label: "Unread",
       pathname: "/unread",
-      Icon: EnvelopeIcon,
+      IconPassive: EnvelopeIcon,
+      IconActive: EnvelopeIconSolid,
     },
     {
       label: "Favorites",
       pathname: "/favorites",
-      Icon: StarIcon,
+      IconPassive: StarIcon,
+      IconActive: StarIconSolid,
     },
   ];
 
   const pathname = usePathname();
-  const [hoveredPath, setHoveredPath] = useState<string | undefined>(undefined);
+  const [lastHoveredPath, setLastHoveredPath] = useState<string | undefined>(
+    undefined
+  );
+
+  useEffect(() => {
+    setLastHoveredPath(pathname);
+  }, [pathname]);
 
   async function setupAppWindow() {
     const appWindow = (await import("@tauri-apps/api/window")).appWindow;
@@ -52,10 +72,6 @@ export default function Navbar() {
   useEffect(() => {
     setupAppWindow();
   }, []);
-
-  useEffect(() => {
-    setHoveredPath(pathname);
-  }, [pathname]);
 
   const windowButtonClasses = "w-[13px] h-[13px] rounded-full";
   const windowButtonContainerClasses =
@@ -86,15 +102,15 @@ export default function Navbar() {
       >
         <div className="flex items-center justify-center overflow-hidden relative z-0 rounded-xl">
           <div className="absolute left-0 top-0 w-full h-full p-1.5 pointer-events-none">
-            {hoveredPath === undefined ||
-              (!navbarItems.some((i) => i.pathname === hoveredPath) && (
+            {lastHoveredPath === undefined ||
+              (!navbarItems.some((i) => i.pathname === lastHoveredPath) && (
                 <motion.div
                   style={{
                     width: "100%",
                     opacity: 0,
                   }}
                   className="h-full bg-c-bg-highlight rounded-lg -z-10"
-                  layoutId="navbar"
+                  layoutId="navbar-highlight"
                   aria-hidden="true"
                   transition={{
                     duration: 0.3,
@@ -105,22 +121,23 @@ export default function Navbar() {
           </div>
           {navbarItems.map((item: TNavbarItem) => {
             const isActive = pathname === item.pathname;
-            const Icon = item.Icon;
+            const IconPassive = item.IconPassive;
+            const IconActive = item.IconActive;
             return (
               <Link
-                onMouseOver={() => setHoveredPath(item.pathname)}
-                onMouseLeave={() => setHoveredPath(pathname)}
+                onMouseOver={() => setLastHoveredPath(item.pathname)}
+                onMouseLeave={() => setLastHoveredPath(pathname)}
                 href={item.pathname}
                 className="p-1.5 group cursor-default"
               >
                 <div className="relative">
-                  {item.pathname === hoveredPath && (
+                  {item.pathname === lastHoveredPath && (
                     <motion.div
                       style={{
                         width: "100%",
                       }}
                       className="absolute bottom-0 left-0 h-full bg-c-bg-highlight rounded-lg -z-10 pointer-events-none"
-                      layoutId="navbar"
+                      layoutId="navbar-highlight"
                       aria-hidden="true"
                       transition={{
                         duration: 0.15,
@@ -129,11 +146,35 @@ export default function Navbar() {
                     />
                   )}
                   <div className="px-4 flex items-center justify-center gap-2">
-                    <Icon
-                      className={`w-5 h-5 transition -ml-0.25 ${
-                        isActive ? "text-c-on-bg" : "text-c-on-bg/60"
-                      }`}
-                    />
+                    <div className="w-5 h-5 relative">
+                      <AnimatePresence>
+                        {(() => {
+                          const props = {
+                            initial: { opacity: 0 },
+                            animate: { opacity: 1 },
+                            exit: { opacity: 0 },
+                            transition: {
+                              duration: 0.1,
+                              ease: "circOut",
+                            },
+                          };
+                          const sharedClasses = `w-full h-full absolute left-0 top-0 transition -ml-0.25`;
+                          return isActive ? (
+                            <motion.div key="icon-active" {...props}>
+                              <IconActive
+                                className={`${sharedClasses} text-c-on-bg`}
+                              />
+                            </motion.div>
+                          ) : (
+                            <motion.div key="icon-passive" {...props}>
+                              <IconPassive
+                                className={`${sharedClasses} text-c-on-bg/60`}
+                              />
+                            </motion.div>
+                          );
+                        })()}
+                      </AnimatePresence>
+                    </div>
                     <p
                       className={`py-2 font-medium transition duration-150 ${
                         isActive ? "text-c-on-bg" : "text-c-on-bg/60"
