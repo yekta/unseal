@@ -17,20 +17,19 @@ export default function ComposeButtonWithModal() {
       </Dialog.Trigger>
       <Dialog.Portal>
         <div className="fixed left-0 top-0 w-full h-full flex flex-col items-center overflow-hidden">
-          <Dialog.Overlay className="absolute left-0 top-0 w-full h-full bg-c-barrier/25 z-[100]" />
-          <Dialog.Content
-            className="z-[101] absolute left-0 top-0 w-full h-full 
-            overflow-hidden flex flex-row justify-center"
+          <Dialog.Overlay
+            className="absolute left-0 top-0 w-full h-full bg-c-barrier/25 
+            z-[100] overflow-auto flex flex-row justify-center py-24"
           >
-            <div className="w-full h-full flex justify-center overflow-auto py-24">
-              <div
+            <div className="md:px-4 max-w-6xl w-full my-auto flex flex-col items-center">
+              <Dialog.Content
                 className="my-auto flex flex-col items-center bg-c-bg-secondary 
-                rounded-xl w-full max-w-6xl h-[calc((100vh-12rem)*0.9)] min-h-[30rem]"
+                rounded-xl w-full h-[calc((100vh-12rem)*0.9)] min-h-[25rem]"
               >
                 <Compose />
-              </div>
+              </Dialog.Content>
             </div>
-          </Dialog.Content>
+          </Dialog.Overlay>
         </div>
       </Dialog.Portal>
     </Dialog.Root>
