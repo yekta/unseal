@@ -119,12 +119,13 @@ export default function Navbar() {
                 />
               ))}
           </div>
-          {navbarItems.map((item: TNavbarItem) => {
+          {navbarItems.map((item, index) => {
             const isActive = pathname === item.pathname;
             const IconPassive = item.IconPassive;
             const IconActive = item.IconActive;
             return (
               <Link
+                key={`nav-link-${index}`}
                 onMouseOver={() => setLastHoveredPath(item.pathname)}
                 onMouseLeave={() => setLastHoveredPath(pathname)}
                 href={item.pathname}
