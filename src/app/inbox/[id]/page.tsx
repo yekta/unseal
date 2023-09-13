@@ -1,16 +1,30 @@
+"use client";
+
 import InboxHotkeyProvider from "@app/inbox/[id]/InboxHotkeyProvider";
-import { emails } from "@ts/email";
+import { TEmailLineProps } from "@components/EmailLine/EmailLine";
+import { emails, favoritedEmails, unreadEmails } from "@ts/email";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 export default function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const email = emails.find((email) => email.id === id);
+  const searchParams = useSearchParams();
+  const from = searchParams.get("from") || "/";
+  let selectedEmails: TEmailLineProps[];
+  if (from === "/unread") {
+    selectedEmails = unreadEmails;
+  } else if (from === "/favorites") {
+    selectedEmails = favoritedEmails;
+  } else {
+    selectedEmails = emails;
+  }
   return (
     email && (
-      <InboxHotkeyProvider email={email}>
+      <InboxHotkeyProvider emails={selectedEmails} email={email} from={from}>
         <div className="w-full flex-1 flex flex-row items-start justify-center">
           <Link
-            href="/"
+            href={from}
             className="flex-1 min-w-[4rem] min-h-full cursor-default"
           />
           <div className="w-full max-w-6xl flex md:px-4 flex-col relative pt-12 pb-24">
@@ -20,7 +34,7 @@ export default function Page({ params }: { params: { id: string } }) {
             </div>
           </div>
           <Link
-            href="/"
+            href={from}
             className="flex-1 min-w-[4rem] min-h-full cursor-default"
           />
         </div>

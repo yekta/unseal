@@ -6,7 +6,8 @@
   --c-bg-secondary: 24 24 30;
   --c-bg-tertiary: 32 32 38;
   --c-bg-highlight: 32 32 38; 
-  --c-barrier: 0 0 0;
+  --c-barrier: 16 16 22;
+  --c-shadow: 0 0 6;
   --c-on-bg: 240 240 250;
   --c-icon-red: 229 126 126;
   --c-icon-lime: 171 214 129;
@@ -16,6 +17,8 @@
   --c-macos-red: 255 105 97;
   --c-macos-orange: 255 179 64;
   --c-macos-green: 48 209 88;
+  --o-shadow-strong: 0.2;
+  --o-shadow-strongest: 0.3;
 }
 
 body {

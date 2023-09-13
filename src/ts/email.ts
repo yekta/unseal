@@ -11,6 +11,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "red",
     iconType: "school",
     isRead: false,
+    isFavorited: false,
   },
   {
     id: "2",
@@ -21,6 +22,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lime",
     iconType: "work",
     isRead: true,
+    isFavorited: true,
   },
   {
     id: "3",
@@ -31,6 +33,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lightblue",
     iconType: "terminal",
     isRead: false,
+    isFavorited: true,
   },
   {
     id: "4",
@@ -41,6 +44,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "yellow",
     iconType: "building",
     isRead: true,
+    isFavorited: true,
   },
   {
     id: "5",
@@ -51,6 +55,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "red",
     iconType: "school",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "6",
@@ -61,6 +66,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lime",
     iconType: "work",
     isRead: false,
+    isFavorited: true,
   },
   {
     id: "7",
@@ -71,6 +77,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lightblue",
     iconType: "terminal",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "8",
@@ -81,6 +88,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "yellow",
     iconType: "building",
     isRead: false,
+    isFavorited: true,
   },
   {
     id: "9",
@@ -91,6 +99,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "red",
     iconType: "school",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "10",
@@ -101,6 +110,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lime",
     iconType: "work",
     isRead: false,
+    isFavorited: true,
   },
   {
     id: "11",
@@ -111,6 +121,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lightblue",
     iconType: "terminal",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "12",
@@ -121,6 +132,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "yellow",
     iconType: "building",
     isRead: false,
+    isFavorited: false,
   },
   {
     id: "13",
@@ -131,6 +143,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "red",
     iconType: "school",
     isRead: false,
+    isFavorited: false,
   },
   {
     id: "14",
@@ -141,6 +154,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lime",
     iconType: "work",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "15",
@@ -151,6 +165,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lightblue",
     iconType: "terminal",
     isRead: false,
+    isFavorited: false,
   },
   {
     id: "16",
@@ -161,6 +176,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "yellow",
     iconType: "building",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "17",
@@ -171,6 +187,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "red",
     iconType: "school",
     isRead: false,
+    isFavorited: false,
   },
   {
     id: "18",
@@ -181,6 +198,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lime",
     iconType: "work",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "19",
@@ -191,6 +209,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lightblue",
     iconType: "terminal",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "20",
@@ -201,6 +220,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "yellow",
     iconType: "building",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "21",
@@ -211,6 +231,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "red",
     iconType: "school",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "22",
@@ -221,6 +242,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lime",
     iconType: "work",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "23",
@@ -231,6 +253,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lightblue",
     iconType: "terminal",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "24",
@@ -241,6 +264,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "yellow",
     iconType: "building",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "25",
@@ -251,6 +275,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lime",
     iconType: "work",
     isRead: false,
+    isFavorited: false,
   },
   {
     id: "26",
@@ -261,6 +286,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lightblue",
     iconType: "terminal",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "27",
@@ -271,6 +297,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "yellow",
     iconType: "building",
     isRead: false,
+    isFavorited: false,
   },
   {
     id: "28",
@@ -281,6 +308,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "red",
     iconType: "school",
     isRead: false,
+    isFavorited: false,
   },
   {
     id: "29",
@@ -291,6 +319,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lime",
     iconType: "work",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "30",
@@ -301,6 +330,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lightblue",
     iconType: "terminal",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "31",
@@ -311,6 +341,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "yellow",
     iconType: "building",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "32",
@@ -321,6 +352,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "red",
     iconType: "school",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "33",
@@ -331,6 +363,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lime",
     iconType: "work",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "34",
@@ -341,6 +374,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lightblue",
     iconType: "terminal",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "35",
@@ -351,6 +385,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "yellow",
     iconType: "building",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "36",
@@ -361,6 +396,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "red",
     iconType: "school",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "37",
@@ -371,6 +407,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lime",
     iconType: "work",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "38",
@@ -381,6 +418,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lightblue",
     iconType: "terminal",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "39",
@@ -391,6 +429,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "yellow",
     iconType: "building",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "40",
@@ -401,6 +440,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "yellow",
     iconType: "building",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "41",
@@ -411,6 +451,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "yellow",
     iconType: "building",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "42",
@@ -421,6 +462,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "yellow",
     iconType: "building",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "43",
@@ -431,6 +473,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "yellow",
     iconType: "building",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "44",
@@ -441,6 +484,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "yellow",
     iconType: "building",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "45",
@@ -451,6 +495,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "yellow",
     iconType: "building",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "46",
@@ -461,6 +506,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "yellow",
     iconType: "building",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "47",
@@ -471,6 +517,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "yellow",
     iconType: "building",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "48",
@@ -481,6 +528,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "yellow",
     iconType: "building",
     isRead: false,
+    isFavorited: false,
   },
   {
     id: "49",
@@ -491,6 +539,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "yellow",
     iconType: "building",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "50",
@@ -501,6 +550,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "yellow",
     iconType: "building",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "51",
@@ -511,6 +561,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lightblue",
     iconType: "terminal",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "52",
@@ -521,6 +572,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lightblue",
     iconType: "terminal",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "53",
@@ -531,6 +583,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lightblue",
     iconType: "terminal",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "54",
@@ -541,6 +594,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lightblue",
     iconType: "terminal",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "55",
@@ -551,6 +605,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lightblue",
     iconType: "terminal",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "56",
@@ -561,6 +616,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lightblue",
     iconType: "terminal",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "57",
@@ -571,6 +627,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lightblue",
     iconType: "terminal",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "58",
@@ -581,6 +638,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lightblue",
     iconType: "terminal",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "59",
@@ -591,6 +649,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lightblue",
     iconType: "terminal",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "60",
@@ -601,6 +660,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lightblue",
     iconType: "terminal",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "61",
@@ -611,6 +671,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lime",
     iconType: "work",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "62",
@@ -621,6 +682,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lime",
     iconType: "work",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "63",
@@ -631,6 +693,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lime",
     iconType: "work",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "64",
@@ -641,6 +704,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lime",
     iconType: "work",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "65",
@@ -651,6 +715,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lime",
     iconType: "work",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "66",
@@ -661,6 +726,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lime",
     iconType: "work",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "67",
@@ -671,6 +737,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lime",
     iconType: "work",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "68",
@@ -681,6 +748,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lime",
     iconType: "work",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "69",
@@ -691,6 +759,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lime",
     iconType: "work",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "70",
@@ -701,6 +770,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "lime",
     iconType: "work",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "71",
@@ -711,6 +781,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "red",
     iconType: "school",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "72",
@@ -721,6 +792,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "red",
     iconType: "school",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "73",
@@ -731,6 +803,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "red",
     iconType: "school",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "74",
@@ -741,6 +814,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "red",
     iconType: "school",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "75",
@@ -751,6 +825,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "red",
     iconType: "school",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "76",
@@ -761,6 +836,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "red",
     iconType: "school",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "77",
@@ -771,6 +847,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "red",
     iconType: "school",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "78",
@@ -781,6 +858,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "red",
     iconType: "school",
     isRead: true,
+    isFavorited: false,
   },
   {
     id: "79",
@@ -791,6 +869,7 @@ export const emails: TEmailLineProps[] = [
     iconColor: "red",
     iconType: "school",
     isRead: true,
+    isFavorited: true,
   },
   {
     id: "80",
@@ -801,5 +880,9 @@ export const emails: TEmailLineProps[] = [
     iconColor: "red",
     iconType: "school",
     isRead: true,
+    isFavorited: true,
   },
 ];
+
+export const unreadEmails = emails.filter((email) => !email.isRead);
+export const favoritedEmails = emails.filter((email) => email.isFavorited);

@@ -27,6 +27,7 @@ const config: Config = {
         "c-bg-highlight": "rgb(var(--c-bg-highlight)/<alpha-value>)",
         "c-on-bg": "rgb(var(--c-on-bg)/<alpha-value>)",
         "c-barrier": "rgb(var(--c-barrier)/<alpha-value>)",
+        "c-shadow": "rgb(var(--c-shadow)/<alpha-value>)",
         "c-icon-red": "rgb(var(--c-icon-red)/<alpha-value>)",
         "c-icon-lime": "rgb(var(--c-icon-lime)/<alpha-value>)",
         "c-icon-lightblue": "rgb(var(--c-icon-lightblue)/<alpha-value>)",

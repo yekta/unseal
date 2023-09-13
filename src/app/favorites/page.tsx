@@ -1,9 +1,5 @@
-import React from "react";
+import EmailList from "@components/EmailList";
 
 export default function Page() {
-  return (
-    <div className="w-full flex items-center justify-center px-5 py-12">
-      <p>Favorites</p>
-    </div>
-  );
+  return <EmailList filter={"favorites"} />;
 }

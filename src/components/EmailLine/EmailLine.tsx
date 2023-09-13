@@ -1,6 +1,7 @@
 import Link from "next/link";
 import EmailIcon, { EmailIconProps } from "./EmailIcon";
 import { getRelativeDate } from "@ts/helpers/getRelativeDate";
+import { usePathname } from "next/navigation";
 
 export interface TEmailLineProps {
   id: string;
@@ -9,6 +10,7 @@ export interface TEmailLineProps {
   body: string;
   date: string;
   isRead: boolean;
+  isFavorited: boolean;
   iconType: EmailIconProps["type"];
   iconColor: EmailIconProps["color"];
 }
@@ -23,9 +25,10 @@ export function EmailLine({
   iconType,
   iconColor,
 }: TEmailLineProps) {
+  const pathname = usePathname();
   return (
     <Link
-      href={`/inbox/${id}`}
+      href={`/inbox/${id}?from=${encodeURIComponent(pathname)}`}
       className="w-full flex flex-row justify-center items-center group 
       cursor-default select-none"
     >

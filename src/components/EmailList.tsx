@@ -4,19 +4,23 @@ import { EmailLine, TEmailLineProps } from "@components/EmailLine/EmailLine";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { getGroupLabelByDate } from "@ts/helpers/getGroupLabelByDate";
-import { getEmails } from "@ts/queries/getEmails";
+import { TEmailFilter, getEmails } from "@ts/queries/getEmails";
 import { useEffect, useRef } from "react";
 
-export default function EmailList() {
+export default function EmailList({ filter }: { filter: TEmailFilter }) {
   const {
     data,
     isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
     isInitialLoading,
-  } = useInfiniteQuery(["emails"], (ctx) => getEmails(ctx.pageParam), {
-    getNextPageParam: (_lastGroup) => _lastGroup.nextOffset,
-  });
+  } = useInfiniteQuery(
+    ["emails", filter],
+    (ctx) => getEmails(ctx.pageParam, filter),
+    {
+      getNextPageParam: (_lastGroup) => _lastGroup.nextOffset,
+    }
+  );
 
   const allEmails = data ? data.pages.flatMap((d) => d.emails) : [];
   let lastDateLabel: string | undefined = undefined;
