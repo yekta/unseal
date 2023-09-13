@@ -79,8 +79,8 @@ const NotificationDot = ({
   hideWhenRead?: boolean;
 }) => (
   <div
-    className={`w-1.5 h-1.5 md:w-3px md:h-4 md:absolute md:left-0 md:top-1/2 transform md:-translate-y-1/2 
-    rounded-full md:rounded-l-none flex-shrink-0 ${
+    className={`w-1.5 h-1.5 md:w-3px md:h-4.5 md:absolute md:left-0 md:top-1/2 transform md:-translate-y-1/2 
+    rounded-full flex-shrink-0 ${
       isRead ? "bg-c-notification-blue/0" : "bg-c-notification-blue"
     } ${className ?? ""} ${hideWhenRead && isRead ? "hidden" : ""}`}
   />
