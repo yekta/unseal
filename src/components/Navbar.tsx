@@ -5,8 +5,9 @@ import { WebviewWindow } from "@tauri-apps/api/window";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import { InboxIcon, EnvelopeIcon, StarIcon } from "@heroicons/react/24/outline";
 
-export default function TitleBar() {
+export default function Navbar() {
   const [appWindow, setAppWindow] = useState<WebviewWindow | undefined>(
     undefined
   );
@@ -14,16 +15,29 @@ export default function TitleBar() {
   interface TNavbarItem {
     label: string;
     pathname: string;
+    Icon: React.ForwardRefExoticComponent<
+      Omit<React.SVGProps<SVGSVGElement>, "ref"> & {
+        title?: string | undefined;
+        titleId?: string | undefined;
+      } & React.RefAttributes<SVGSVGElement>
+    >;
   }
 
-  const navbarItems = [
+  const navbarItems: TNavbarItem[] = [
     {
       label: "All Inboxes",
       pathname: "/",
+      Icon: InboxIcon,
     },
     {
       label: "Unread",
       pathname: "/unread",
+      Icon: EnvelopeIcon,
+    },
+    {
+      label: "Favorites",
+      pathname: "/favorites",
+      Icon: StarIcon,
     },
   ];
 
@@ -91,6 +105,7 @@ export default function TitleBar() {
           </div>
           {navbarItems.map((item: TNavbarItem) => {
             const isActive = pathname === item.pathname;
+            const Icon = item.Icon;
             return (
               <Link
                 onMouseOver={() => setHoveredPath(item.pathname)}
@@ -113,13 +128,20 @@ export default function TitleBar() {
                       }}
                     />
                   )}
-                  <p
-                    className={`px-4 py-2 font-medium transition duration-150 ${
-                      isActive ? "text-c-on-bg" : "text-c-on-bg/60"
-                    }`}
-                  >
-                    {item.label}
-                  </p>
+                  <div className="px-4 flex items-center justify-center gap-2">
+                    <Icon
+                      className={`w-5 h-5 transition -ml-0.25 ${
+                        isActive ? "text-c-on-bg" : "text-c-on-bg/60"
+                      }`}
+                    />
+                    <p
+                      className={`py-2 font-medium transition duration-150 ${
+                        isActive ? "text-c-on-bg" : "text-c-on-bg/60"
+                      }`}
+                    >
+                      {item.label}
+                    </p>
+                  </div>
                 </div>
               </Link>
             );
