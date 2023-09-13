@@ -21,7 +21,7 @@ export default function RootLayout({
           flex flex-col justify-start h-screen overflow-hidden z-0 relative`}
         >
           <Navbar />
-          <main className="w-full flex-1 flex flex-col overflow-auto">
+          <main className="w-full flex-1 flex flex-col overflow-auto z-0">
             {children}
           </main>
         </body>

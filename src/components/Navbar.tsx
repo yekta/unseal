@@ -11,6 +11,7 @@ import {
   EnvelopeIcon as EnvelopeIconSolid,
   StarIcon as StarIconSolid,
 } from "@heroicons/react/24/solid";
+import ComposeButtonWithModal from "@components/Compose/ComposeButtonWithModal";
 
 export default function Navbar() {
   const [appWindow, setAppWindow] = useState<WebviewWindow | undefined>(
@@ -80,7 +81,7 @@ export default function Navbar() {
   return (
     <nav
       data-tauri-drag-region
-      className="w-full flex items-center justify-between bg-c-bg z-[9999] border-b-2 border-c-bg-secondary overflow-hidden relative"
+      className="w-full flex items-center justify-between bg-c-bg z-[100] border-b-2 border-c-bg-secondary overflow-hidden relative"
     >
       <div data-tauri-drag-region className={windowButtonContainerClasses}>
         <button
@@ -190,10 +191,8 @@ export default function Navbar() {
           })}
         </div>
       </div>
-      <div data-tauri-drag-region className={windowButtonContainerClasses}>
-        <div className={windowButtonClasses}></div>
-        <div className={windowButtonClasses}></div>
-        <div className={windowButtonClasses}></div>
+      <div className="px-1.5">
+        <ComposeButtonWithModal />
       </div>
     </nav>
   );

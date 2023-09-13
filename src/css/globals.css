@@ -6,6 +6,7 @@
   --c-bg-secondary: 24 24 30;
   --c-bg-tertiary: 32 32 38;
   --c-bg-highlight: 32 32 38; 
+  --c-barrier: 0 0 0;
   --c-on-bg: 240 240 250;
   --c-icon-red: 229 126 126;
   --c-icon-lime: 171 214 129;
@@ -19,6 +20,14 @@
 
 body {
   font-family: DM Sans, sans-serif
+}
+
+.tiptap p.is-editor-empty:first-child::before {
+  color: rgb(var(--c-on-bg)/0.5);
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
 }
 
 @tailwind utilities;
