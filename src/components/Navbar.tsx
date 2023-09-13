@@ -83,19 +83,27 @@ export default function Navbar() {
       data-tauri-drag-region
       className="w-full flex items-center justify-between bg-c-bg z-[100] border-b-2 border-c-bg-secondary overflow-hidden relative"
     >
-      <div data-tauri-drag-region className={windowButtonContainerClasses}>
-        <button
-          className={`${windowButtonClasses} bg-c-macos-red`}
-          onClick={() => appWindow?.close()}
-        ></button>
-        <button
-          className={`${windowButtonClasses} bg-c-macos-orange`}
-          onClick={() => appWindow?.minimize()}
-        ></button>
-        <button
-          className={`${windowButtonClasses} bg-c-macos-green`}
-          onClick={() => appWindow?.maximize()}
-        ></button>
+      <div
+        data-tauri-drag-region
+        className="flex items-center justify-start w-64"
+      >
+        <div className={windowButtonContainerClasses}>
+          <button
+            className={`${windowButtonClasses} bg-c-macos-red`}
+            onClick={() => appWindow?.close()}
+          ></button>
+          <button
+            className={`${windowButtonClasses} bg-c-macos-orange`}
+            onClick={() => appWindow?.minimize()}
+          ></button>
+          <button
+            className={`${windowButtonClasses} bg-c-macos-green`}
+            onClick={() => appWindow?.maximize()}
+          ></button>
+        </div>
+        <div className="px-1.5">
+          <ComposeButtonWithModal />
+        </div>
       </div>
       <div
         data-tauri-drag-region
@@ -191,9 +199,10 @@ export default function Navbar() {
           })}
         </div>
       </div>
-      <div className="px-1.5">
-        <ComposeButtonWithModal />
-      </div>
+      <div
+        data-tauri-drag-region
+        className="w-64 flex items-center justify-end"
+      ></div>
     </nav>
   );
 }
