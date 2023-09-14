@@ -59,8 +59,4 @@ body {
   margin-top: 1.5rem;
 }
 
-.tiptap b {
-  font-weight: 700;
-}
-
 @tailwind utilities;

@@ -6,13 +6,12 @@ import Heading from "@tiptap/extension-heading";
 import Bold from "@tiptap/extension-bold";
 import Italic from "@tiptap/extension-italic";
 import History from "@tiptap/extension-history";
-import { useEditor, EditorContent, BubbleMenu } from "@tiptap/react";
+import { useEditor, EditorContent } from "@tiptap/react";
 import TextareaAutosize from "react-textarea-autosize";
 import Placeholder from "@tiptap/extension-placeholder";
-import IconBold from "@components/icons/IconBold";
-import IconItalic from "@components/icons/IconItalic";
-import IconH1 from "@components/icons/IconH1";
-import IconH2 from "@components/icons/IconH2";
+import BubbleMenu from "@tiptap/extension-bubble-menu";
+
+import BubbleMenuCompose from "@components/Compose/parts/BubbleMenuCompose";
 
 // define your extension array
 const extensions = [
@@ -23,34 +22,9 @@ const extensions = [
   Bold,
   Italic,
   History,
+  BubbleMenu,
   Placeholder.configure({ placeholder: "Enter your message here..." }),
 ];
-
-function BubbleMenuButton({
-  onClick,
-  isActive,
-  Icon,
-}: {
-  onClick: () => void;
-  isActive: boolean;
-  Icon: React.ComponentType<any>;
-}) {
-  return (
-    <div
-      onClick={onClick}
-      className={`w-10 h-10 rounded-lg flex items-center justify-center 
-      cursor-default p-0.75 group`}
-    >
-      <div className={`p-1.5 group-hover:bg-c-on-bg/10 rounded-md`}>
-        <Icon
-          className={`w-full h-full ${
-            isActive ? "text-c-primary" : "text-c-on-bg"
-          }`}
-        />
-      </div>
-    </div>
-  );
-}
 
 export default function Compose() {
   const editor = useEditor({
@@ -79,40 +53,11 @@ export default function Compose() {
           ></TextareaAutosize>
           <div className="mt-4 w-full flex-1 flex flex-col">
             <EditorContent
-              autoCorrect="off"
               editor={editor}
               className="flex flex-col h-full min-h-full"
             />
           </div>
-          <BubbleMenu
-            className="bg-c-bg-quaternary rounded-lg flex"
-            editor={editor}
-          >
-            <BubbleMenuButton
-              Icon={IconBold}
-              onClick={() => editor.chain().focus().toggleBold().run()}
-              isActive={editor.isActive("bold")}
-            />
-            <BubbleMenuButton
-              Icon={IconItalic}
-              onClick={() => editor.chain().focus().toggleItalic().run()}
-              isActive={editor.isActive("italic")}
-            />
-            <BubbleMenuButton
-              Icon={IconH1}
-              onClick={() =>
-                editor.chain().focus().toggleHeading({ level: 1 }).run()
-              }
-              isActive={editor.isActive("heading", { level: 1 })}
-            />
-            <BubbleMenuButton
-              Icon={IconH2}
-              onClick={() =>
-                editor.chain().focus().toggleHeading({ level: 2 }).run()
-              }
-              isActive={editor.isActive("heading", { level: 2 })}
-            />
-          </BubbleMenu>
+          <BubbleMenuCompose editor={editor} />
         </div>
       </div>
     )
