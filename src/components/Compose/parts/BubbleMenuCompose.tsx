@@ -6,11 +6,23 @@ import { LinkIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { BubbleMenu, Editor } from "@tiptap/react";
 import React, { useRef, useState } from "react";
 import "@css/tippy.css";
+import { useOnClickOutside } from "usehooks-ts";
 
 export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
   const [bubbleMenuType, setBubbleMenuType] = useState<"main" | "link">("main");
   const [linkInputValue, setLinkInputValue] = useState("");
   const linkInputRef = useRef<HTMLInputElement>(null);
+  const bubbleMenuContainerRef = useRef<HTMLDivElement>(null);
+
+  const bubbleMenuClickOutside = () => {
+    if (bubbleMenuType === "link") {
+      if (linkInputRef.current?.value !== "") {
+        editor.chain().focus().toggleLink({ href: linkInputValue }).run();
+      }
+      setBubbleMenuType("main");
+    }
+  };
+  useOnClickOutside(bubbleMenuContainerRef, bubbleMenuClickOutside);
   return (
     <BubbleMenu
       editor={editor}
@@ -21,10 +33,14 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
         animation: "tooltip-animation",
         arrow: `<svg class='text-c-bg-quaternary' width="20" height="8" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.87.66 20 8H0L8.13.66a3 3 0 0 1 3.74 0Z" fill="currentColor"/></svg>`,
       }}
-      className="bg-c-bg-quaternary shadow-lg shadow-c-shadow/[var(--o-shadow-stronger)] rounded-lg flex items-center"
+      className="bg-c-bg-quaternary shadow-lg shadow-c-shadow/[var(--o-shadow-stronger)] 
+      flex flex-col rounded-lg overflow-hidden"
     >
-      {bubbleMenuType === "main" && (
-        <>
+      <div
+        ref={bubbleMenuContainerRef}
+        className="flex flex-col justify-center"
+      >
+        <div className="flex items-center">
           <BubbleMenuButton
             Icon={IconBold}
             onClick={() => editor.chain().focus().toggleBold().run()}
@@ -62,38 +78,74 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
             }
             isActive={editor.isActive("heading", { level: 2 })}
           />
-        </>
-      )}
-      {bubbleMenuType === "link" && (
-        <>
-          <form
-            onSubmit={() => {
-              editor.chain().focus().toggleLink({ href: linkInputValue }).run();
-              setBubbleMenuType("main");
-            }}
-          >
-            <input
-              ref={linkInputRef}
-              placeholder="Paste or type a link..."
-              autoCorrect="off"
-              autoComplete="off"
-              value={linkInputValue}
-              onChange={(e) => setLinkInputValue(e.target.value)}
-              className="pl-3 pr-11 py-2.5 placeholder:text-c-on-bg/40 bg-transparent w-64 max-w-full"
-            />
-            <button
-              className="w-10 h-full transition hover:bg-c-primary/10 group absolute right-0 top-0 p-2
-              rounded-r-lg"
-              type="button"
-              onClick={() => {
+        </div>
+        {editor.getAttributes("link").href && (
+          <div className="w-full flex items-center justify-center">
+            <a
+              href={editor.getAttributes("link").href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full max-w-[14.55rem] cursor-default -mt-0.75 text-sm p-0.75 group overflow-hidden"
+            >
+              <p
+                className="w-full text-center rounded-md px-2.5 py-1.5 underline whitespace-nowrap overflow-hidden overflow-ellipsis 
+                transition group-hover:bg-c-primary/10 group-hover:text-c-primary text-c-on-bg/75"
+              >
+                {editor.getAttributes("link").href}
+              </p>
+            </a>
+          </div>
+        )}
+        {bubbleMenuType === "link" && (
+          <>
+            <form
+              className="absolute left-0 top-0 w-full h-full bg-c-bg-quaternary rounded-lg"
+              onSubmit={() => {
+                if (linkInputValue === "") {
+                  editor.chain().focus().unsetLink().run();
+                  setBubbleMenuType("main");
+                  return;
+                }
+                editor
+                  .chain()
+                  .focus()
+                  .toggleLink({ href: linkInputValue })
+                  .run();
                 setBubbleMenuType("main");
               }}
             >
-              <XMarkIcon className="w-full h-full text-c-on-bg/50 group-hover:text-c-primary" />
-            </button>
-          </form>
-        </>
-      )}
+              <input
+                ref={linkInputRef}
+                placeholder="Paste or type a link..."
+                autoCorrect="off"
+                autoComplete="off"
+                value={linkInputValue}
+                onChange={(e) => {
+                  setLinkInputValue(e.target.value);
+                }}
+                className="pl-3 pr-11 w-full h-full placeholder:text-c-on-bg/40 bg-transparent overflow-ellipsis"
+              />
+              <button
+                className="w-10 h-full transition hover:bg-c-primary/10 group absolute right-0 top-0 p-2
+              rounded-r-lg"
+                type="button"
+                onClick={() => {
+                  if (linkInputRef.current?.value !== "") {
+                    editor
+                      .chain()
+                      .focus()
+                      .toggleLink({ href: linkInputValue })
+                      .run();
+                  }
+                  setBubbleMenuType("main");
+                }}
+              >
+                <XMarkIcon className="w-full h-full text-c-on-bg/50 group-hover:text-c-primary" />
+              </button>
+            </form>
+          </>
+        )}
+      </div>
     </BubbleMenu>
   );
 }
