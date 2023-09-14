@@ -81,11 +81,11 @@ export default function Navbar() {
   return (
     <nav
       data-tauri-drag-region
-      className="w-full flex items-center justify-between bg-c-bg z-[100] border-b-2 border-c-bg-secondary overflow-hidden relative"
+      className="w-full flex items-stretch justify-start lg:justify-between bg-c-bg z-[100] border-b-2 border-c-bg-secondary overflow-hidden relative"
     >
       <div
         data-tauri-drag-region
-        className="flex items-center justify-start w-64"
+        className="flex items-center justify-start lg:w-64"
       >
         <div className={windowButtonContainerClasses}>
           <button
@@ -101,15 +101,12 @@ export default function Navbar() {
             onClick={() => appWindow?.maximize()}
           ></button>
         </div>
-        <div className="px-1.5">
+        <div className="p-1.5">
           <ComposeButtonWithModal />
         </div>
       </div>
-      <div
-        data-tauri-drag-region
-        className="flex-1 flex items-center justify-center"
-      >
-        <div className="flex items-center justify-center overflow-hidden relative z-0 rounded-xl">
+      <div data-tauri-drag-region className="lg:flex-1 flex justify-center">
+        <div className="flex justify-center overflow-hidden relative z-0 rounded-xl">
           <div className="absolute left-0 top-0 w-full h-full p-1.5 pointer-events-none">
             {lastHoveredPath === undefined ||
               (!navbarItems.some((i) => i.pathname === lastHoveredPath) && (
@@ -138,9 +135,9 @@ export default function Navbar() {
                 onMouseOver={() => setLastHoveredPath(item.pathname)}
                 onMouseLeave={() => setLastHoveredPath(pathname)}
                 href={item.pathname}
-                className="p-1.5 group cursor-default"
+                className="p-1.5 self-stretch group cursor-default flex flex-row"
               >
-                <div className="relative">
+                <div className="relative flex items-center justify-center">
                   {item.pathname === lastHoveredPath && (
                     <motion.div
                       style={{
@@ -155,7 +152,7 @@ export default function Navbar() {
                       }}
                     />
                   )}
-                  <div className="px-4 flex items-center justify-center gap-2">
+                  <div className="px-4 py-2 flex items-center justify-center gap-2">
                     <div className="w-5 h-5 relative">
                       <AnimatePresence>
                         {(() => {
@@ -168,17 +165,17 @@ export default function Navbar() {
                               ease: "circOut",
                             },
                           };
-                          const sharedClasses = `w-full h-full absolute left-0 top-0 transition -ml-0.25`;
+                          const sharedIconClasses = `w-full h-full absolute left-0 top-0 transition -ml-0.25`;
                           return isActive ? (
                             <motion.div key="icon-active" {...props}>
                               <IconActive
-                                className={`${sharedClasses} text-c-on-bg`}
+                                className={`${sharedIconClasses} text-c-on-bg`}
                               />
                             </motion.div>
                           ) : (
                             <motion.div key="icon-passive" {...props}>
                               <IconPassive
-                                className={`${sharedClasses} text-c-on-bg/60`}
+                                className={`${sharedIconClasses} text-c-on-bg/60`}
                               />
                             </motion.div>
                           );
@@ -186,7 +183,7 @@ export default function Navbar() {
                       </AnimatePresence>
                     </div>
                     <p
-                      className={`py-2 font-medium transition duration-150 ${
+                      className={`hidden lg:block font-medium transition duration-150 ${
                         isActive ? "text-c-on-bg" : "text-c-on-bg/60"
                       }`}
                     >
@@ -201,7 +198,7 @@ export default function Navbar() {
       </div>
       <div
         data-tauri-drag-region
-        className="w-64 flex items-center justify-end"
+        className="hidden lg:flex w-64 items-center justify-end"
       ></div>
     </nav>
   );

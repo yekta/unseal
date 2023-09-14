@@ -10,6 +10,7 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import TextareaAutosize from "react-textarea-autosize";
 import Placeholder from "@tiptap/extension-placeholder";
 import BubbleMenu from "@tiptap/extension-bubble-menu";
+import Link from "@tiptap/extension-link";
 
 import BubbleMenuCompose from "@components/Compose/parts/BubbleMenuCompose";
 
@@ -23,6 +24,7 @@ const extensions = [
   Italic,
   History,
   BubbleMenu,
+  Link,
   Placeholder.configure({ placeholder: "Enter your message here..." }),
 ];
 
