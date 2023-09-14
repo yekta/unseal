@@ -38,7 +38,7 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
     >
       <div
         ref={bubbleMenuContainerRef}
-        className="flex flex-col justify-center"
+        className="flex flex-col justify-center items-center"
       >
         <div className="flex items-center">
           <BubbleMenuButton
@@ -80,21 +80,19 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
           />
         </div>
         {editor.getAttributes("link").href && (
-          <div className="w-full flex items-center justify-center">
-            <a
-              href={editor.getAttributes("link").href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full max-w-[14.55rem] cursor-default -mt-0.75 text-sm p-0.75 group overflow-hidden"
-            >
-              <p
-                className="w-full text-center rounded-md px-2.5 py-1.5 underline whitespace-nowrap overflow-hidden overflow-ellipsis 
+          <a
+            href={editor.getAttributes("link").href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full max-w-[14.55rem] cursor-default -mt-0.75 text-sm p-0.75 group overflow-hidden"
+          >
+            <p
+              className="w-full text-center rounded-md px-2.5 py-1.5 underline whitespace-nowrap overflow-hidden overflow-ellipsis 
                 transition group-hover:bg-c-primary/10 group-hover:text-c-primary text-c-on-bg/75"
-              >
-                {editor.getAttributes("link").href}
-              </p>
-            </a>
-          </div>
+            >
+              {editor.getAttributes("link").href}
+            </p>
+          </a>
         )}
         {bubbleMenuType === "link" && (
           <>
