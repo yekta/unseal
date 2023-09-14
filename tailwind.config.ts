@@ -8,7 +8,7 @@ const config: Config = {
   ],
   theme: {
     transitionDuration: {
-      DEFAULT: "200ms",
+      DEFAULT: "150ms",
       0: "0ms",
       100: "100ms",
       150: "150ms",
@@ -24,8 +24,11 @@ const config: Config = {
       colors: {
         "c-bg": "rgb(var(--c-bg)/<alpha-value>)",
         "c-bg-secondary": "rgb(var(--c-bg-secondary)/<alpha-value>)",
+        "c-bg-tertiary": "rgb(var(--c-bg-tertiary)/<alpha-value>)",
+        "c-bg-quaternary": "rgb(var(--c-bg-quaternary)/<alpha-value>)",
         "c-bg-highlight": "rgb(var(--c-bg-highlight)/<alpha-value>)",
         "c-on-bg": "rgb(var(--c-on-bg)/<alpha-value>)",
+        "c-primary": "rgb(var(--c-primary)/<alpha-value>)",
         "c-barrier": "rgb(var(--c-barrier)/<alpha-value>)",
         "c-shadow": "rgb(var(--c-shadow)/<alpha-value>)",
         "c-icon-red": "rgb(var(--c-icon-red)/<alpha-value>)",
@@ -47,6 +50,7 @@ const config: Config = {
         "2px": "2px",
         "3px": "3px",
         "4px": "4px",
+        0.75: "0.1875rem",
         1.25: "0.3125rem",
         1.75: "0.4375rem",
         4.5: "1.125rem",

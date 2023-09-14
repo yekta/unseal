@@ -68,7 +68,7 @@ export default function EmailList({ filter }: { filter: TEmailFilter }) {
   ]);
 
   return isInitialLoading ? (
-    <div className="w-full flex items-center justify-center px-4 py-8 text-c-on-bg/60">
+    <div className="w-full flex items-center justify-center px-4 py-12 text-c-on-bg/60">
       Loading emails...
     </div>
   ) : (

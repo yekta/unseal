@@ -5,7 +5,9 @@
   --c-bg: 16 16 22;
   --c-bg-secondary: 24 24 30;
   --c-bg-tertiary: 32 32 38;
+  --c-bg-quaternary: 40 40 46;
   --c-bg-highlight: 32 32 38; 
+  --c-primary: 144 181 255;
   --c-barrier: 16 16 22;
   --c-shadow: 0 0 6;
   --c-on-bg: 240 240 250;
@@ -31,6 +33,34 @@ body {
   float: left;
   height: 0;
   pointer-events: none;
+}
+
+.tiptap p {
+  margin-top: 1.5rem
+}
+
+.tiptap p:first-child, .tiptap h1:first-child, .tiptap h2:first-child {
+  margin-top: 0
+}
+
+.tiptap h1 + p, .tiptap h2 + p {
+  margin-top: 0.5rem
+}
+
+.tiptap h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-top: 2rem;
+}
+
+.tiptap h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+}
+
+.tiptap b {
+  font-weight: 700;
 }
 
 @tailwind utilities;
