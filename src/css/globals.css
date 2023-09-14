@@ -60,4 +60,14 @@ body {
   margin-top: 1.5rem;
 }
 
+
+div[data-tippy-root][data-animation='rotate'][data-state='visible'][data-placement="top"] {
+  opacity: 0;
+  transform: rotate(45deg);
+}
+div[data-tippy-root][data-animation='rotate'][data-state='visible'][data-placement="top"] {
+  opacity: 0;
+  transform: rotate(45deg);
+}
+
 @tailwind utilities;
