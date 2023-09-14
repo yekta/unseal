@@ -1,4 +1,4 @@
-import Navbar from "@components/Navbar";
+import Navbar from "@components/navigation/Navbar";
 import ReactQueryProvider from "@components/providers/ReactQueryProvider";
 import "@css/globals.css";
 import type { Metadata } from "next";

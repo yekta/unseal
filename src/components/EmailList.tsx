@@ -101,21 +101,22 @@ export default function EmailList({ filter }: { filter: TEmailFilter }) {
                 transform: `translateY(${virtualRow.start}px)`,
               }}
             >
-              {isLoaderRow ? (
-                hasNextPage ? (
-                  <div className="w-full flex items-center justify-center px-4 py-8 text-c-on-bg/60">
-                    Loading more...
-                  </div>
-                ) : (
-                  <div className="w-full flex items-center justify-center px-4 py-8 text-c-on-bg/60">
-                    You've reached the end!
-                  </div>
-                )
-              ) : typeof emailOrLabel === "string" ? (
+              {isLoaderRow && hasNextPage && (
+                <div className="w-full flex items-center justify-center px-4 py-8 text-c-on-bg/60">
+                  Loading more...
+                </div>
+              )}
+              {isLoaderRow && !hasNextPage && (
+                <div className="w-full flex items-center justify-center px-4 py-8 text-c-on-bg/60">
+                  You've reached the end!
+                </div>
+              )}
+              {!isLoaderRow && typeof emailOrLabel === "string" && (
                 <div className="px-4 md:px-8 text-c-on-bg/50 pt-8 pb-3">
                   {emailOrLabel}
                 </div>
-              ) : (
+              )}
+              {!isLoaderRow && typeof emailOrLabel !== "string" && (
                 <div className="w-full">
                   <EmailLine {...emailOrLabel} />
                 </div>

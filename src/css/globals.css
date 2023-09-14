@@ -48,6 +48,10 @@ body {
   margin-top: 0.5rem
 }
 
+.tiptap a {
+  text-decoration: underline;
+}
+
 .tiptap h1 {
   font-size: 1.8rem;
   font-weight: 700;
@@ -68,6 +72,10 @@ div[data-tippy-root][data-animation='rotate'][data-state='visible'][data-placeme
 div[data-tippy-root][data-animation='rotate'][data-state='visible'][data-placement="top"] {
   opacity: 0;
   transform: rotate(45deg);
+}
+
+input:focus {
+  outline: none;
 }
 
 @tailwind utilities;
