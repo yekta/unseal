@@ -5,10 +5,16 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { TEmail } from "@ts/email";
 import { getGroupLabelByDate } from "@ts/helpers/getGroupLabelByDate";
-import { TEmailFilter, getEmails } from "@ts/queries/getEmails";
+import { TEmailView, getEmails } from "@ts/queries/getEmails";
 import { useEffect, useRef } from "react";
 
-export default function EmailList({ filter }: { filter: TEmailFilter }) {
+export default function EmailList({
+  accountId,
+  view,
+}: {
+  accountId?: string;
+  view: TEmailView;
+}) {
   const {
     data,
     isFetchingNextPage,
@@ -16,8 +22,8 @@ export default function EmailList({ filter }: { filter: TEmailFilter }) {
     hasNextPage,
     isInitialLoading,
   } = useInfiniteQuery(
-    ["emails", filter],
-    (ctx) => getEmails(ctx.pageParam, filter),
+    ["emails", accountId, view],
+    (ctx) => getEmails({ offset: ctx.pageParam, accountId, view }),
     {
       getNextPageParam: (_lastGroup) => _lastGroup.nextOffset,
     }

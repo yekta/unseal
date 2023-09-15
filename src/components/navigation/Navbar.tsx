@@ -44,13 +44,13 @@ export default function Navbar() {
     },
     {
       label: "Unread",
-      pathname: "/unread",
+      pathname: "/view/unread",
       IconPassive: EnvelopeIcon,
       IconActive: EnvelopeIconSolid,
     },
     {
       label: "Favorites",
-      pathname: "/favorites",
+      pathname: "/view/favorites",
       IconPassive: StarIcon,
       IconActive: StarIconSolid,
     },

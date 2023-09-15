@@ -1,6 +1,6 @@
 "use client";
 
-import { TEmailLineProps } from "@components/EmailLine/EmailLine";
+import { TEmail } from "@ts/email";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useHotkeys } from "react-hotkeys-hook";
@@ -12,8 +12,8 @@ export default function HotkeyProvider({
   from,
 }: {
   children: React.ReactNode;
-  emails: TEmailLineProps[];
-  email: TEmailLineProps;
+  emails: TEmail[];
+  email: TEmail;
   from: string;
 }) {
   const router = useRouter();
