@@ -1,6 +1,9 @@
+"use client";
+
 import EmailIcon from "@components/EmailLine/EmailIcon";
 import { TAccountIconColor, TAccountIconType, accounts } from "@ts/email";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 function LinkLine({
@@ -8,23 +11,36 @@ function LinkLine({
   iconType,
   iconColor,
   href,
+  isActive,
 }: {
   text: string;
   iconType: TAccountIconType;
   iconColor: TAccountIconColor;
   href: string;
+  isActive: boolean;
 }) {
   return (
     <Link
-      className="w-full group/link p-1 overflow-hidden flex flex-row cursor-default"
+      className="w-full group/link px-1 py-0.5 overflow-hidden flex flex-row cursor-default"
       href={href}
     >
       <div
-        className="w-full flex flex-row items-center px-3 py-2.5 rounded-lg 
-        transition group-hover/link:bg-c-bg-highlight gap-2"
+        className={`w-full flex flex-row items-center px-3 py-2.5 rounded-lg 
+          group-hover/link:bg-c-primary/[var(--o-primary-highlight)] gap-2 ${
+            isActive ? "bg-c-bg-highlight" : ""
+          }`}
       >
-        <EmailIcon sizeClasses="w-5 h-5" type={iconType} color={iconColor} />
-        <p className="flex-1 font-medium min-w-0 overflow-hidden overflow-ellipsis text-sm">
+        <EmailIcon
+          isActive={isActive}
+          sizeClasses="w-5 h-5"
+          type={iconType}
+          color={iconColor}
+        />
+        <p
+          className={`flex-1 font-medium min-w-0 overflow-hidden overflow-ellipsis transition ${
+            isActive ? "text-c-on-bg" : "text-c-on-bg/60"
+          }`}
+        >
           {text}
         </p>
       </div>
@@ -33,6 +49,8 @@ function LinkLine({
 }
 
 export default function Sidebar() {
+  const pathname = usePathname();
+
   return (
     <div className="h-full flex flex-col group w-2 absolute left-0 top-0 z-10">
       <div
@@ -46,6 +64,7 @@ export default function Sidebar() {
             text="All Inboxes"
             iconType="inbox"
             iconColor="on-bg"
+            isActive={pathname === "/"}
           />
           <div className="w-full px-3 py-1">
             <div className="w-full h-2px rounded-full bg-c-bg-secondary"></div>
@@ -56,6 +75,7 @@ export default function Sidebar() {
               text={account.email}
               iconType={account.iconType}
               iconColor={account.iconColor}
+              isActive={pathname === `/account/${account.id}`}
             />
           ))}
         </div>

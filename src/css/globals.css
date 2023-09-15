@@ -24,6 +24,7 @@
   --o-shadow-strong: 0.15;
   --o-shadow-stronger: 0.25;
   --o-shadow-strongest: 0.35;
+  --o-primary-highlight: 0.125;
 }
 
 body {

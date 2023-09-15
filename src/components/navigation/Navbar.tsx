@@ -60,6 +60,7 @@ export default function Navbar() {
   const [lastHoveredPath, setLastHoveredPath] = useState<string | undefined>(
     undefined
   );
+  const [navbarItemAreaHovered, setNavbarItemAreaHovered] = useState(false);
 
   useEffect(() => {
     setLastHoveredPath(pathname);
@@ -106,7 +107,11 @@ export default function Navbar() {
         </div>
       </div>
       <div data-tauri-drag-region className="lg:flex-1 flex justify-center">
-        <div className="flex justify-center overflow-hidden relative z-0 rounded-xl">
+        <div
+          onMouseOver={() => setNavbarItemAreaHovered(true)}
+          onMouseLeave={() => setNavbarItemAreaHovered(false)}
+          className="flex justify-center overflow-hidden relative z-0 rounded-xl"
+        >
           <div className="absolute left-0 top-0 w-full h-full p-1.5 pointer-events-none">
             {lastHoveredPath === undefined ||
               (!navbarItems.some((i) => i.pathname === lastHoveredPath) && (
@@ -135,7 +140,7 @@ export default function Navbar() {
                 onMouseOver={() => setLastHoveredPath(item.pathname)}
                 onMouseLeave={() => setLastHoveredPath(pathname)}
                 href={item.pathname}
-                className="p-1.5 self-stretch group cursor-default flex flex-row"
+                className="px-0.75 py-1.5 self-stretch group cursor-default flex flex-row"
               >
                 <div className="relative flex items-center justify-center">
                   {item.pathname === lastHoveredPath && (
@@ -143,44 +148,38 @@ export default function Navbar() {
                       style={{
                         width: "100%",
                       }}
-                      className="absolute bottom-0 left-0 h-full bg-c-bg-highlight rounded-lg -z-10 pointer-events-none"
+                      className={`absolute bottom-0 left-0 h-full rounded-lg -z-10 pointer-events-none ${
+                        navbarItemAreaHovered
+                          ? "bg-c-primary/[var(--o-primary-highlight)]"
+                          : "bg-c-bg-highlight"
+                      }`}
                       layoutId="navbar-highlight"
                       aria-hidden="true"
                       transition={{
                         duration: 0.15,
                         ease: "circOut",
                       }}
-                    />
+                    ></motion.div>
                   )}
                   <div className="px-4 py-2 flex items-center justify-center gap-2">
                     <div className="w-5 h-5 relative">
-                      <AnimatePresence>
-                        {(() => {
-                          const props = {
-                            initial: { opacity: 0 },
-                            animate: { opacity: 1 },
-                            exit: { opacity: 0 },
-                            transition: {
-                              duration: 0.1,
-                              ease: "circOut",
-                            },
-                          };
-                          const sharedIconClasses = `w-full h-full absolute left-0 top-0 transition -ml-0.25`;
-                          return isActive ? (
-                            <motion.div key="icon-active" {...props}>
-                              <IconActive
-                                className={`${sharedIconClasses} text-c-on-bg`}
-                              />
-                            </motion.div>
-                          ) : (
-                            <motion.div key="icon-passive" {...props}>
-                              <IconPassive
-                                className={`${sharedIconClasses} text-c-on-bg/60`}
-                              />
-                            </motion.div>
-                          );
-                        })()}
-                      </AnimatePresence>
+                      {(() => {
+                        const sharedIconClasses = `w-full h-full absolute left-0 top-0 transition -ml-0.25`;
+                        return (
+                          <>
+                            <IconActive
+                              className={`${sharedIconClasses} text-c-on-bg ${
+                                isActive ? "opacity-100" : "opacity-0"
+                              }`}
+                            />
+                            <IconPassive
+                              className={`${sharedIconClasses} text-c-on-bg/60 ${
+                                isActive ? "opacity-0" : "opacity-100"
+                              }`}
+                            />
+                          </>
+                        );
+                      })()}
                     </div>
                     <p
                       className={`hidden lg:block font-medium transition duration-150 ${

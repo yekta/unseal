@@ -23,7 +23,7 @@ export function EmailLine({
       <div className="w-full flex flex-row items-center md:py-px md:px-4">
         <div
           className={`flex flex-col flex-1 md:flex-row md:items-center md:justify-between px-4 py-3.5
-          group-hover:bg-c-bg-highlight relative ${
+          group-hover:bg-c-primary/[var(--o-primary-highlight)] relative ${
             !isRead ? "bg-c-bg-secondary" : ""
           }
           overflow-hidden md:rounded-xl z-0`}

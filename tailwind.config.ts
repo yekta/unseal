@@ -16,6 +16,7 @@ const config: Config = {
       300: "300ms",
       400: "400ms",
       500: "500ms",
+      1000: "1000ms",
     },
     transitionTimingFunction: {
       DEFAULT: "cubic-bezier(0, 0.55, 0.45, 1)",
