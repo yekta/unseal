@@ -1,22 +1,28 @@
 "use client";
 
-import InboxHotkeyProvider from "@app/inbox/[id]/InboxHotkeyProvider";
+import { TAccountInboxProps } from "@app/account/types";
+import InboxHotkeyProvider from "@components/InboxHotkeyProvider";
 import { TEmail, emails, favoritedEmails, unreadEmails } from "@ts/email";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
-export default function Page({ params }: { params: { id: string } }) {
-  const { id } = params;
-  const email = emails.find((email) => email.id === id);
+export default function Page({ params }: TAccountInboxProps) {
+  const { emailId, accountId } = params;
+  const email = emails.find((email) => email.id === emailId);
   const searchParams = useSearchParams();
   const from = searchParams.get("from") || "/";
   let selectedEmails: TEmail[];
-  if (from === "/unread") {
+  if (from.endsWith("/unread")) {
     selectedEmails = unreadEmails;
-  } else if (from === "/favorites") {
+  } else if (from.endsWith("/favorites")) {
     selectedEmails = favoritedEmails;
   } else {
     selectedEmails = emails;
+  }
+  if (accountId) {
+    selectedEmails = selectedEmails.filter(
+      (email) => email.account.id === accountId
+    );
   }
   return (
     email && (

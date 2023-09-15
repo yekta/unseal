@@ -71,6 +71,7 @@ export default function Sidebar() {
           </div>
           {accounts.map((account) => (
             <LinkLine
+              key={account.id}
               href={`/account/${account.id}`}
               text={account.email}
               iconType={account.iconType}

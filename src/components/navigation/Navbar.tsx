@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { WebviewWindow } from "@tauri-apps/api/window";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { InboxIcon, EnvelopeIcon, StarIcon } from "@heroicons/react/24/outline";
 import {
   InboxIcon as InboxIconSolid,
@@ -12,6 +12,8 @@ import {
   StarIcon as StarIconSolid,
 } from "@heroicons/react/24/solid";
 import ComposeButtonWithModal from "@components/Compose/ComposeButtonWithModal";
+import { getPathnameWithAccount } from "@ts/helpers/getPathnameWithAccount";
+import { getAccountIdFromPathname } from "@ts/helpers/getAccountIdFromPathname";
 
 export default function Navbar() {
   const [appWindow, setAppWindow] = useState<WebviewWindow | undefined>(
@@ -35,28 +37,30 @@ export default function Navbar() {
     >;
   }
 
+  const pathname = usePathname();
+
+  const accountId = getAccountIdFromPathname(pathname);
   const navbarItems: TNavbarItem[] = [
     {
-      label: "All Inboxes",
-      pathname: "/",
+      label: accountId ? "Inbox" : "All Inboxes",
+      pathname: getPathnameWithAccount("/", accountId),
       IconPassive: InboxIcon,
       IconActive: InboxIconSolid,
     },
     {
       label: "Unread",
-      pathname: "/view/unread",
+      pathname: getPathnameWithAccount("/view/unread", accountId),
       IconPassive: EnvelopeIcon,
       IconActive: EnvelopeIconSolid,
     },
     {
       label: "Favorites",
-      pathname: "/view/favorites",
+      pathname: getPathnameWithAccount("/view/favorites", accountId),
       IconPassive: StarIcon,
       IconActive: StarIconSolid,
     },
   ];
 
-  const pathname = usePathname();
   const [lastHoveredPath, setLastHoveredPath] = useState<string | undefined>(
     undefined
   );
