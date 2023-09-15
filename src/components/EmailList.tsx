@@ -1,8 +1,9 @@
 "use client";
 
-import { EmailLine, TEmailLineProps } from "@components/EmailLine/EmailLine";
+import { EmailLine } from "@components/EmailLine/EmailLine";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useVirtualizer } from "@tanstack/react-virtual";
+import { TEmail } from "@ts/email";
 import { getGroupLabelByDate } from "@ts/helpers/getGroupLabelByDate";
 import { TEmailFilter, getEmails } from "@ts/queries/getEmails";
 import { useEffect, useRef } from "react";
@@ -24,7 +25,7 @@ export default function EmailList({ filter }: { filter: TEmailFilter }) {
 
   const allEmails = data ? data.pages.flatMap((d) => d.emails) : [];
   let lastDateLabel: string | undefined = undefined;
-  let rows: (TEmailLineProps | string)[] = [];
+  let rows: (TEmail | string)[] = [];
   for (let i = 0; i < allEmails.length; i++) {
     const email = allEmails[i];
     const dateLabel = getGroupLabelByDate(new Date(email.date));
@@ -74,7 +75,7 @@ export default function EmailList({ filter }: { filter: TEmailFilter }) {
   ) : (
     <div
       ref={parentRef}
-      className="w-full flex-1 flex justify-center pt-6 pb-24 overflow-auto"
+      className="w-full flex-1 flex justify-center pb-24 overflow-auto"
     >
       <div
         style={{
