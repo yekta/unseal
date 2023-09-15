@@ -1,4 +1,5 @@
 import Navbar from "@components/navigation/Navbar";
+import Sidebar from "@components/navigation/Sidebar";
 import ReactQueryProvider from "@components/providers/ReactQueryProvider";
 import "@css/globals.css";
 import type { Metadata } from "next";
@@ -21,9 +22,12 @@ export default function RootLayout({
           flex flex-col justify-start h-screen overflow-hidden z-0 relative`}
         >
           <Navbar />
-          <main className="w-full flex-1 flex flex-col overflow-auto z-0">
-            {children}
-          </main>
+          <div className="w-full flex-1 flex flex-col overflow-hidden relative">
+            <Sidebar />
+            <main className="w-full flex-1 flex flex-col overflow-auto z-0 relative">
+              {children}
+            </main>
+          </div>
         </body>
       </html>
     </ReactQueryProvider>

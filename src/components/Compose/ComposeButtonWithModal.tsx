@@ -1,5 +1,5 @@
 import Compose from "@components/Compose/Compose";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { PencilIcon } from "@heroicons/react/24/outline";
 
@@ -16,15 +16,15 @@ export default function ComposeButtonWithModal() {
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <div className="fixed left-0 top-0 w-full h-full flex flex-col items-center overflow-hidden">
+        <div className="z-[100] fixed left-0 top-0 w-full h-full flex flex-col items-center overflow-hidden">
           <Dialog.Overlay
             className="absolute left-0 top-0 w-full h-full bg-c-barrier/80 
-            z-[100] overflow-auto flex flex-row justify-center py-24"
+            overflow-auto flex flex-row justify-center py-18"
           >
             <div className="md:px-4 max-w-6xl w-full my-auto flex flex-col items-center">
               <Dialog.Content
                 className="flex flex-col items-center bg-c-bg-secondary
-                rounded-xl shadow-xl shadow-c-shadow/[var(--o-shadow-strongest)] w-full h-[calc((100vh-12rem)*0.95)] min-h-[25rem]"
+                rounded-xl shadow-xl shadow-c-shadow/[var(--o-shadow-strongest)] w-full h-[calc((100vh-9rem)*0.95)] min-h-[25rem]"
               >
                 <Compose />
               </Dialog.Content>
