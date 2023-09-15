@@ -1,19 +1,8 @@
 import Link from "next/link";
-import EmailIcon, { EmailIconProps } from "./EmailIcon";
+import EmailIcon from "./EmailIcon";
 import { getRelativeDate } from "@ts/helpers/getRelativeDate";
 import { usePathname } from "next/navigation";
-
-export interface TEmailLineProps {
-  id: string;
-  sender: string;
-  title: string;
-  body: string;
-  date: string;
-  isRead: boolean;
-  isFavorited: boolean;
-  iconType: EmailIconProps["type"];
-  iconColor: EmailIconProps["color"];
-}
+import { TEmail } from "@ts/email";
 
 export function EmailLine({
   id,
@@ -22,9 +11,8 @@ export function EmailLine({
   body,
   date,
   isRead,
-  iconType,
-  iconColor,
-}: TEmailLineProps) {
+  account,
+}: TEmail) {
   const pathname = usePathname();
   return (
     <Link
@@ -40,9 +28,12 @@ export function EmailLine({
           }
           overflow-hidden md:rounded-xl z-0`}
         >
-          <div className="w-full md:w-60 flex items-center gap-2">
+          <div className="w-full md:w-60 flex items-center gap-2.5">
             <NotificationDot isRead={isRead} hideWhenRead />
-            <EmailIcon type={iconType} color={iconColor}></EmailIcon>
+            <EmailIcon
+              type={account.iconType}
+              color={account.iconColor}
+            ></EmailIcon>
             <p className="flex-1 font-semibold whitespace-nowrap overflow-hidden overflow-ellipsis text-base">
               {sender}
             </p>

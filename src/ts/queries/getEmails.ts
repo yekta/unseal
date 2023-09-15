@@ -1,5 +1,4 @@
-import { TEmailLineProps } from "@components/EmailLine/EmailLine";
-import { emails, favoritedEmails, unreadEmails } from "@ts/email";
+import { TEmail, emails, favoritedEmails, unreadEmails } from "@ts/email";
 
 const limit = 20;
 const maxOffset = 3;
@@ -10,10 +9,10 @@ export async function getEmails(
   offset: number = 0,
   filter: "all" | "unread" | "favorites"
 ): Promise<{
-  emails: TEmailLineProps[];
+  emails: TEmail[];
   nextOffset: number | undefined;
 }> {
-  let selectedEmails: TEmailLineProps[];
+  let selectedEmails: TEmail[];
   if (filter === "unread") {
     selectedEmails = unreadEmails;
   } else if (filter === "favorites") {

@@ -12,9 +12,11 @@
   --c-shadow: 0 0 6;
   --c-on-bg: 240 240 250;
   --c-icon-red: 229 126 126;
-  --c-icon-lime: 171 214 129;
-  --c-icon-lightblue: 134 181 250;
-  --c-icon-yellow: 235 217 126;
+  --c-icon-lime: 196 232 138;
+  --c-icon-blue: 134 181 250;
+  --c-icon-yellow: 217 201 123;
+  --c-icon-purple: 188 131 244;
+  --c-icon-green: 100 197 117;
   --c-notification-blue: 105 145 250;
   --c-macos-red: 255 105 97;
   --c-macos-orange: 255 179 64;

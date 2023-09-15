@@ -3,31 +3,56 @@ import {
   AcademicCapIcon,
   BriefcaseIcon,
   BuildingLibraryIcon,
+  RocketLaunchIcon,
+  TrophyIcon,
+  InboxIcon,
 } from "@heroicons/react/24/outline";
+import { TAccountIconColor, TAccountIconType } from "@ts/email";
 
-export interface EmailIconProps {
-  type: "school" | "work" | "terminal" | "building";
-  color: "red" | "lime" | "lightblue" | "yellow";
-}
-
-const EmailIcon = ({ type, color }: EmailIconProps) => {
+const EmailIcon = ({
+  type,
+  color,
+  sizeClasses = "w-5 h-5",
+}: {
+  type: TAccountIconType;
+  color: TAccountIconColor;
+  sizeClasses?: string;
+}) => {
   const classes =
     color === "lime"
       ? "text-c-icon-lime"
-      : color === "lightblue"
-      ? "text-c-icon-lightblue"
+      : color === "blue"
+      ? "text-c-icon-blue"
       : color === "yellow"
       ? "text-c-icon-yellow"
-      : "text-c-icon-red";
+      : color === "green"
+      ? "text-c-icon-green"
+      : color === "red"
+      ? "text-c-icon-red"
+      : color === "purple"
+      ? "text-c-icon-purple"
+      : color === "on-bg"
+      ? "text-c-on-bg"
+      : "text-c-on-bg";
 
   return type === "school" ? (
-    <AcademicCapIcon className={`${classes} w-6 h-6 flex-shrink-0`} />
+    <AcademicCapIcon className={`${classes} ${sizeClasses} flex-shrink-0`} />
   ) : type === "terminal" ? (
-    <CommandLineIcon className={`${classes} w-6 h-6 flex-shrink-0`} />
+    <CommandLineIcon className={`${classes} ${sizeClasses} flex-shrink-0`} />
   ) : type === "building" ? (
-    <BuildingLibraryIcon className={`${classes} w-6 h-6 flex-shrink-0`} />
+    <BuildingLibraryIcon
+      className={`${classes} ${sizeClasses} flex-shrink-0`}
+    />
+  ) : type === "work" ? (
+    <BriefcaseIcon className={`${classes} ${sizeClasses} flex-shrink-0`} />
+  ) : type === "rocket" ? (
+    <RocketLaunchIcon className={`${classes} ${sizeClasses} flex-shrink-0`} />
+  ) : type === "trophy" ? (
+    <TrophyIcon className={`${classes} ${sizeClasses} flex-shrink-0`} />
+  ) : type === "inbox" ? (
+    <InboxIcon className={`${classes} ${sizeClasses} flex-shrink-0`} />
   ) : (
-    <BriefcaseIcon className={`${classes} w-6 h-6 flex-shrink-0`} />
+    <InboxIcon className={`${classes} ${sizeClasses} flex-shrink-0`} />
   );
 };
 
