@@ -140,7 +140,7 @@ export default function Navbar() {
                 onMouseOver={() => setLastHoveredPath(item.pathname)}
                 onMouseLeave={() => setLastHoveredPath(pathname)}
                 href={item.pathname}
-                className="px-0.75 py-1.5 self-stretch group cursor-default flex flex-row"
+                className="px-px py-1.5 self-stretch group cursor-default flex flex-row"
               >
                 <div className="relative flex items-center justify-center">
                   {item.pathname === lastHoveredPath && (

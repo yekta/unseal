@@ -21,7 +21,7 @@ function LinkLine({
 }) {
   return (
     <Link
-      className="w-full group/link px-1 py-0.5 overflow-hidden flex flex-row cursor-default"
+      className="w-full group/link px-1.5 py-px overflow-hidden flex flex-row cursor-default"
       href={href}
     >
       <div
@@ -54,7 +54,7 @@ export default function Sidebar() {
   return (
     <div className="h-full flex flex-col group w-2 absolute left-0 top-0 z-10">
       <div
-        className="h-full pt-1 pb-24 transition -translate-x-full group-hover:translate-x-0
+        className="h-full pt-2 pb-24 transition -translate-x-full group-hover:translate-x-0
         w-64 overflow-auto border-r-2 bg-c-bg border-c-bg-secondary flex flex-col absolute 
         left-0 top-0 shadow-xl shadow-c-shadow/[var(--o-shadow-strongest)]"
       >
@@ -66,7 +66,7 @@ export default function Sidebar() {
             iconColor="on-bg"
             isActive={pathname === "/"}
           />
-          <div className="w-full px-3 py-1">
+          <div className="w-full px-3 py-2">
             <div className="w-full h-2px rounded-full bg-c-bg-secondary"></div>
           </div>
           {accounts.map((account) => (
