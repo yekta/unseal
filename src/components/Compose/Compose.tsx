@@ -24,7 +24,7 @@ const extensions = [
   Italic,
   History,
   BubbleMenu,
-  Link.configure({ openOnClick: false }),
+  Link.extend({ inclusive: false }).configure({ openOnClick: false }),
   Placeholder.configure({ placeholder: "Enter your message here..." }),
 ];
 

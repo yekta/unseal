@@ -24,7 +24,7 @@ export default function ComposeButtonWithModal() {
             <div className="md:px-4 max-w-6xl w-full my-auto flex flex-col items-center">
               <Dialog.Content
                 className="flex flex-col items-center bg-c-bg-secondary
-                rounded-xl shadow-xl shadow-c-shadow/[var(--o-shadow-strongest)] w-full h-[calc((100vh-12rem)*0.9)] min-h-[25rem]"
+                rounded-xl shadow-xl shadow-c-shadow/[var(--o-shadow-strongest)] w-full h-[calc((100vh-12rem)*0.95)] min-h-[25rem]"
               >
                 <Compose />
               </Dialog.Content>

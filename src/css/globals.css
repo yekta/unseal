@@ -74,7 +74,16 @@ div[data-tippy-root][data-animation='rotate'][data-state='visible'][data-placeme
   transform: rotate(45deg);
 }
 
-input:focus {
+input:focus,
+input:focus-visible,
+textarea:focus,
+textarea:focus-visible,
+button:focus,
+button:focus-visible,
+div:focus,
+div:focus-visible,
+a:focus,
+a:focus-visible {
   outline: none;
 }
 

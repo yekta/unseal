@@ -2,11 +2,16 @@ import IconBold from "@components/icons/IconBold";
 import IconH1 from "@components/icons/IconH1";
 import IconH2 from "@components/icons/IconH2";
 import IconItalic from "@components/icons/IconItalic";
-import { LinkIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  LinkIcon,
+  XMarkIcon,
+  ArrowTopRightOnSquareIcon,
+} from "@heroicons/react/24/outline";
 import { BubbleMenu, Editor } from "@tiptap/react";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "@css/tippy.css";
 import { useOnClickOutside } from "usehooks-ts";
+import { addProtocolToUrl } from "@ts/helpers/addProtocolToUrl";
 
 export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
   const [bubbleMenuType, setBubbleMenuType] = useState<"main" | "link">("main");
@@ -14,15 +19,29 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
   const linkInputRef = useRef<HTMLInputElement>(null);
   const bubbleMenuContainerRef = useRef<HTMLDivElement>(null);
 
+  const activateLinkAndClose = () => {
+    editor
+      .chain()
+      .focus()
+      .toggleLink({ href: addProtocolToUrl(linkInputValue) })
+      .run();
+    editor.commands.focus(editor.state.selection.to);
+  };
+
   const bubbleMenuClickOutside = () => {
     if (bubbleMenuType === "link") {
-      if (linkInputRef.current?.value !== "") {
-        editor.chain().focus().toggleLink({ href: linkInputValue }).run();
-      }
+      if (linkInputRef.current?.value !== "") activateLinkAndClose();
       setBubbleMenuType("main");
     }
   };
   useOnClickOutside(bubbleMenuContainerRef, bubbleMenuClickOutside);
+
+  useEffect(() => {
+    if (bubbleMenuType === "link") {
+      linkInputRef.current?.focus();
+    }
+  }, [bubbleMenuType]);
+
   return (
     <BubbleMenu
       editor={editor}
@@ -86,12 +105,18 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
             rel="noopener noreferrer"
             className="w-full max-w-[14.55rem] cursor-default -mt-0.75 text-sm p-0.75 group overflow-hidden"
           >
-            <p
-              className="w-full text-center rounded-md px-2.5 py-1.5 underline whitespace-nowrap overflow-hidden overflow-ellipsis 
-                transition group-hover:bg-c-primary/10 group-hover:text-c-primary text-c-on-bg/75"
+            <div
+              className="rounded-md px-2.5 py-1.5 flex items-center transition justify-center 
+              gap-1 group-hover:bg-c-primary/10"
             >
-              {editor.getAttributes("link").href}
-            </p>
+              <ArrowTopRightOnSquareIcon className="w-4 h-4 text-c-on-bg/75 transition group-hover:text-c-primary flex-shrink-0" />
+              <p
+                className="flex-shrink min-w-0 text-center whitespace-nowrap overflow-hidden overflow-ellipsis 
+                transition group-hover:text-c-primary text-c-on-bg/75"
+              >
+                {editor.getAttributes("link").href}
+              </p>
+            </div>
           </a>
         )}
         {bubbleMenuType === "link" && (
@@ -104,11 +129,7 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
                   setBubbleMenuType("main");
                   return;
                 }
-                editor
-                  .chain()
-                  .focus()
-                  .toggleLink({ href: linkInputValue })
-                  .run();
+                activateLinkAndClose();
                 setBubbleMenuType("main");
               }}
             >
