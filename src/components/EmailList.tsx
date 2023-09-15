@@ -1,12 +1,25 @@
 "use client";
 
 import { EmailLine } from "@components/EmailLine/EmailLine";
+import { EmailLinePlaceholder } from "@components/EmailLine/EmailLinePlaceholder";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { TEmail } from "@ts/email";
 import { getGroupLabelByDate } from "@ts/helpers/getGroupLabelByDate";
 import { TEmailView, getEmails } from "@ts/queries/getEmails";
 import { useEffect, useRef } from "react";
+
+const placeholderEmails: TEmailPlaceholder[] = Array.from({
+  length: 10,
+}).map((i) => ({
+  isPlaceholder: true,
+}));
+const placeholders: (TEmailPlaceholder | string)[] = [
+  "Loading",
+  ...placeholderEmails,
+  "Loading",
+  ...placeholderEmails,
+];
 
 export default function EmailList({
   accountId,
@@ -43,7 +56,7 @@ export default function EmailList({
   }
   const parentRef = useRef<HTMLDivElement>(null);
 
-  const estimatedSize = 40;
+  const estimatedSize = 54;
   const overscan = 20;
   const rowVirtualizer = useVirtualizer({
     count: rows.length + 1,
@@ -74,64 +87,87 @@ export default function EmailList({
     rowVirtualizer.getVirtualItems(),
   ]);
 
-  return isInitialLoading ? (
-    <div className="w-full flex items-center justify-center px-4 py-12 text-c-on-bg/60">
-      Loading emails...
-    </div>
-  ) : (
+  return (
     <div
       ref={parentRef}
       className="w-full flex-1 flex justify-center pb-24 overflow-auto"
     >
-      <div
-        style={{
-          height: `${rowVirtualizer.getTotalSize()}px`,
-          width: "100%",
-          position: "relative",
-        }}
-        className="w-full max-w-6xl flex flex-col md:px-2"
-      >
-        {rowVirtualizer.getVirtualItems().map((virtualRow) => {
-          const isLoaderRow = virtualRow.index > rows.length - 1;
-          const emailOrLabel = rows[virtualRow.index];
-
-          return (
-            <div
-              ref={rowVirtualizer.measureElement}
-              key={virtualRow.index}
-              data-index={virtualRow.index}
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                transform: `translateY(${virtualRow.start}px)`,
-              }}
-            >
-              {isLoaderRow && hasNextPage && (
-                <div className="w-full flex items-center justify-center px-4 py-8 text-c-on-bg/60">
-                  Loading more...
-                </div>
-              )}
-              {isLoaderRow && !hasNextPage && (
-                <div className="w-full flex items-center justify-center px-4 py-8 text-c-on-bg/60">
-                  You've reached the end!
-                </div>
-              )}
-              {!isLoaderRow && typeof emailOrLabel === "string" && (
-                <div className="px-4 md:px-8 text-c-on-bg/50 pt-8 pb-3">
-                  {emailOrLabel}
-                </div>
-              )}
-              {!isLoaderRow && typeof emailOrLabel !== "string" && (
-                <div className="w-full">
-                  <EmailLine {...emailOrLabel} />
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
+      {isInitialLoading ? (
+        <div className="w-full max-w-6xl flex flex-col md:px-4 animate-pulse-placeholder">
+          {placeholders.map((p, i) =>
+            typeof p === "string" ? (
+              <div className="w-full flex justify-start px-4 pt-8 pb-3">
+                <p className="text-transparent bg-c-on-bg/15 rounded-full">
+                  {p}
+                </p>
+              </div>
+            ) : (
+              <EmailLinePlaceholder key={i} />
+            )
+          )}
+        </div>
+      ) : (
+        <div
+          style={{
+            height: `${rowVirtualizer.getTotalSize()}px`,
+            width: "100%",
+            position: "relative",
+          }}
+          className="w-full max-w-6xl flex flex-col md:px-4"
+        >
+          {rowVirtualizer.getVirtualItems().map((virtualRow) => {
+            const isLoaderRow = virtualRow.index > rows.length - 1;
+            const emailOrLabel = rows[virtualRow.index];
+            return (
+              <div
+                ref={rowVirtualizer.measureElement}
+                key={virtualRow.index}
+                data-index={virtualRow.index}
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  transform: `translateY(${virtualRow.start}px)`,
+                }}
+              >
+                {(() => {
+                  if (isLoaderRow && !hasNextPage) {
+                    return (
+                      <div className="w-full flex items-center justify-center px-4 py-8 text-c-on-bg/60">
+                        You've reached the end!
+                      </div>
+                    );
+                  }
+                  if (isLoaderRow) {
+                    return (
+                      <div className="w-full flex items-center justify-center px-4 py-8 text-c-on-bg/60">
+                        Loading more...
+                      </div>
+                    );
+                  }
+                  if (typeof emailOrLabel === "string") {
+                    return (
+                      <div className="w-full px-4 md:px-8 text-c-on-bg/50 pt-8 pb-3">
+                        {emailOrLabel}
+                      </div>
+                    );
+                  }
+                  return (
+                    <div className="w-full md:px-4">
+                      <EmailLine {...emailOrLabel} />
+                    </div>
+                  );
+                })()}
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
+}
+
+interface TEmailPlaceholder {
+  isPlaceholder: true;
 }

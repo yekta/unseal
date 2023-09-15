@@ -27,7 +27,7 @@ export function EmailLine({
       className="w-full flex flex-row justify-center items-center group 
       cursor-default select-none"
     >
-      <div className="w-full flex flex-row items-center md:py-px md:px-4">
+      <div className="w-full flex flex-row items-center md:py-px">
         <div
           className={`flex flex-col flex-1 md:flex-row md:items-center md:justify-between px-4 py-3.5
           group-hover:bg-c-primary/[var(--o-primary-highlight)] relative ${
@@ -36,7 +36,7 @@ export function EmailLine({
           overflow-hidden md:rounded-xl z-0`}
         >
           <div className="w-full md:w-60 flex items-center gap-2.5">
-            <NotificationDot isRead={isRead} hideWhenRead />
+            <NotificationDot isRead={isRead} />
             <EmailIcon
               type={account.iconType}
               color={account.iconColor}
@@ -72,17 +72,15 @@ export function EmailLine({
 
 const NotificationDot = ({
   isRead,
-  hideWhenRead = false,
   className,
 }: {
   isRead: boolean;
   className?: string;
-  hideWhenRead?: boolean;
 }) => (
   <div
     className={`w-1.5 h-1.5 md:w-3px md:h-4.5 md:absolute md:left-0 md:top-1/2 transform md:-translate-y-1/2 
     rounded-full flex-shrink-0 ${
-      isRead ? "bg-c-notification-blue/0" : "bg-c-notification-blue"
-    } ${className ?? ""} ${hideWhenRead && isRead ? "hidden" : ""}`}
+      isRead ? "bg-c-notification-blue/0 hidden" : "bg-c-notification-blue"
+    } ${className ?? ""}`}
   />
 );

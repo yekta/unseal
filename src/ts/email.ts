@@ -5,7 +5,8 @@ export type TAccountIconColor =
   | "yellow"
   | "green"
   | "purple"
-  | "on-bg";
+  | "on-bg"
+  | "placeholder";
 
 export type TAccountIconType =
   | "school"
@@ -14,7 +15,8 @@ export type TAccountIconType =
   | "building"
   | "trophy"
   | "rocket"
-  | "inbox";
+  | "inbox"
+  | "placeholder";
 
 export interface TAccount {
   id: string;

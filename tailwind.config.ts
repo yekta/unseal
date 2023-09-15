@@ -59,6 +59,19 @@ const config: Config = {
         4.5: "1.125rem",
         18: "4.5rem",
       },
+      animation: {
+        "pulse-placeholder": "pulse-placeholder 1s ease-in-out infinite",
+      },
+      keyframes: {
+        "pulse-placeholder": {
+          "0%, 100%": {
+            opacity: "0.35",
+          },
+          "50%": {
+            opacity: "0.7",
+          },
+        },
+      },
     },
   },
   plugins: [],
