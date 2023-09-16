@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { WebviewWindow } from "@tauri-apps/api/window";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -14,6 +14,8 @@ import {
 import ComposeButtonWithModal from "@components/Compose/ComposeButtonWithModal";
 import { getPathnameWithAccount } from "@ts/helpers/getPathnameWithAccount";
 import { getAccountIdFromPathname } from "@ts/helpers/getAccountIdFromPathname";
+import { TIconColor, TIconType, accounts } from "@ts/email";
+import EmailIcon from "@components/EmailLine/EmailIcon";
 
 export default function Navbar() {
   const [appWindow, setAppWindow] = useState<WebviewWindow | undefined>(
@@ -23,18 +25,8 @@ export default function Navbar() {
   interface TNavbarItem {
     label: string;
     pathname: string;
-    IconActive: React.ForwardRefExoticComponent<
-      Omit<React.SVGProps<SVGSVGElement>, "ref"> & {
-        title?: string | undefined;
-        titleId?: string | undefined;
-      } & React.RefAttributes<SVGSVGElement>
-    >;
-    IconPassive: React.ForwardRefExoticComponent<
-      Omit<React.SVGProps<SVGSVGElement>, "ref"> & {
-        title?: string | undefined;
-        titleId?: string | undefined;
-      } & React.RefAttributes<SVGSVGElement>
-    >;
+    iconType: TIconType;
+    iconColor: TIconColor;
   }
 
   const pathname = usePathname();
@@ -44,20 +36,20 @@ export default function Navbar() {
     {
       label: accountId ? "Inbox" : "All Inboxes",
       pathname: getPathnameWithAccount("/", accountId),
-      IconPassive: InboxIcon,
-      IconActive: InboxIconSolid,
+      iconType: "inbox",
+      iconColor: "on-bg",
     },
     {
       label: "Unread",
       pathname: getPathnameWithAccount("/view/unread", accountId),
-      IconPassive: EnvelopeIcon,
-      IconActive: EnvelopeIconSolid,
+      iconType: "unread",
+      iconColor: "on-bg",
     },
     {
       label: "Favorites",
       pathname: getPathnameWithAccount("/view/favorites", accountId),
-      IconPassive: StarIcon,
-      IconActive: StarIconSolid,
+      iconType: "favorites",
+      iconColor: "on-bg",
     },
   ];
 
@@ -136,8 +128,6 @@ export default function Navbar() {
           </div>
           {navbarItems.map((item, index) => {
             const isActive = pathname === item.pathname;
-            const IconPassive = item.IconPassive;
-            const IconActive = item.IconActive;
             return (
               <Link
                 key={`nav-link-${index}`}
@@ -154,7 +144,7 @@ export default function Navbar() {
                       }}
                       className={`absolute bottom-0 left-0 h-full rounded-lg -z-10 pointer-events-none ${
                         navbarItemAreaHovered
-                          ? "bg-c-primary/[var(--o-primary-highlight)]"
+                          ? "bg-c-bg-highlight-secondary"
                           : "bg-c-bg-highlight"
                       }`}
                       layoutId="navbar-highlight"
@@ -166,25 +156,12 @@ export default function Navbar() {
                     ></motion.div>
                   )}
                   <div className="px-4 py-2 flex items-center justify-center gap-2">
-                    <div className="w-5 h-5 relative">
-                      {(() => {
-                        const sharedIconClasses = `w-full h-full absolute left-0 top-0 transition -ml-0.25`;
-                        return (
-                          <>
-                            <IconActive
-                              className={`${sharedIconClasses} text-c-on-bg ${
-                                isActive ? "opacity-100" : "opacity-0"
-                              }`}
-                            />
-                            <IconPassive
-                              className={`${sharedIconClasses} text-c-on-bg/60 ${
-                                isActive ? "opacity-0" : "opacity-100"
-                              }`}
-                            />
-                          </>
-                        );
-                      })()}
-                    </div>
+                    <EmailIcon
+                      type={item.iconType}
+                      color={item.iconColor}
+                      isActive={isActive}
+                      fadeOnPassive
+                    />
                     <p
                       className={`hidden lg:block font-medium transition duration-150 ${
                         isActive ? "text-c-on-bg" : "text-c-on-bg/60"

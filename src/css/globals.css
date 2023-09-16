@@ -4,9 +4,10 @@
 :root {
   --c-bg: 16 16 22;
   --c-bg-secondary: 24 24 30;
-  --c-bg-tertiary: 32 32 38;
-  --c-bg-quaternary: 40 40 46;
-  --c-bg-highlight: 32 32 38; 
+  --c-bg-tertiary: 32 32 42;
+  --c-bg-quaternary: 40 40 50;
+  --c-bg-highlight: 32 32 42; 
+  --c-bg-highlight-secondary: 40 40 50;
   --c-primary: 144 181 255;
   --c-barrier: 16 16 22;
   --c-shadow: 0 0 6;

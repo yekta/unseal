@@ -34,7 +34,7 @@ export function EmailLinePlaceholder() {
             <span className="bg-c-on-bg/30 rounded-full text-transparent">
               {title}
             </span>
-            <span className="bg-transparent rounded-full text-transparent px-0.25ch">
+            <span className="bg-transparent rounded-full text-transparent px-0.3ch">
               {" "}
             </span>
             <span className="bg-c-on-bg/20 rounded-full text-transparent flex-1 overflow-hidden">

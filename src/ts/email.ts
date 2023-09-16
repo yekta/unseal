@@ -1,4 +1,4 @@
-export type TAccountIconColor =
+export type TIconColor =
   | "red"
   | "lime"
   | "blue"
@@ -8,7 +8,7 @@ export type TAccountIconColor =
   | "on-bg"
   | "placeholder";
 
-export type TAccountIconType =
+export type TIconType =
   | "school"
   | "work"
   | "terminal"
@@ -16,13 +16,15 @@ export type TAccountIconType =
   | "trophy"
   | "rocket"
   | "inbox"
-  | "placeholder";
+  | "placeholder"
+  | "unread"
+  | "favorites";
 
 export interface TAccount {
   id: string;
   email: string;
-  iconColor: TAccountIconColor;
-  iconType: TAccountIconType;
+  iconColor: TIconColor;
+  iconType: TIconType;
 }
 
 export interface TEmail {

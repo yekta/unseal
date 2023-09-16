@@ -1,7 +1,7 @@
 "use client";
 
 import EmailIcon from "@components/EmailLine/EmailIcon";
-import { TAccountIconColor, TAccountIconType, accounts } from "@ts/email";
+import { TIconColor, TIconType, accounts } from "@ts/email";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -14,8 +14,8 @@ function LinkLine({
   isActive,
 }: {
   text: string;
-  iconType: TAccountIconType;
-  iconColor: TAccountIconColor;
+  iconType: TIconType;
+  iconColor: TIconColor;
   href: string;
   isActive: boolean;
 }) {
@@ -26,7 +26,7 @@ function LinkLine({
     >
       <div
         className={`w-full flex flex-row items-center px-3 py-2.5 rounded-lg 
-          group-hover/link:bg-c-primary/[var(--o-primary-highlight)] gap-2 ${
+          group-hover/link:bg-c-bg-highlight-secondary gap-2 ${
             isActive ? "bg-c-bg-highlight" : ""
           }`}
       >

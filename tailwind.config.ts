@@ -28,6 +28,8 @@ const config: Config = {
         "c-bg-tertiary": "rgb(var(--c-bg-tertiary)/<alpha-value>)",
         "c-bg-quaternary": "rgb(var(--c-bg-quaternary)/<alpha-value>)",
         "c-bg-highlight": "rgb(var(--c-bg-highlight)/<alpha-value>)",
+        "c-bg-highlight-secondary":
+          "rgb(var(--c-bg-highlight-secondary)/<alpha-value>)",
         "c-on-bg": "rgb(var(--c-on-bg)/<alpha-value>)",
         "c-primary": "rgb(var(--c-primary)/<alpha-value>)",
         "c-barrier": "rgb(var(--c-barrier)/<alpha-value>)",
@@ -49,6 +51,8 @@ const config: Config = {
       },
       spacing: {
         "0.25ch": "0.25ch",
+        "0.3ch": "0.3ch",
+        "0.4ch": "0.4ch",
         "0.5ch": "0.5ch",
         "2px": "2px",
         "3px": "3px",
