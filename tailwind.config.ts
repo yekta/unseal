@@ -38,7 +38,7 @@ const config: Config = {
         "c-icon-yellow": "rgb(var(--c-icon-yellow)/<alpha-value>)",
         "c-icon-purple": "rgb(var(--c-icon-purple)/<alpha-value>)",
         "c-icon-green": "rgb(var(--c-icon-green)/<alpha-value>)",
-        "c-notification-blue": "rgb(var(--c-notification-blue)/<alpha-value>)",
+        "c-notification": "rgb(var(--c-notification)/<alpha-value>)",
         "c-macos-red": "rgb(var(--c-macos-red)/<alpha-value>)",
         "c-macos-orange": "rgb(var(--c-macos-orange)/<alpha-value>)",
         "c-macos-green": "rgb(var(--c-macos-green)/<alpha-value>)",

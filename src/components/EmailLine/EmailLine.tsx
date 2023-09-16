@@ -31,7 +31,7 @@ export function EmailLine({
         <div
           className={`flex flex-col flex-1 md:flex-row md:items-center md:justify-between px-4 py-3.5
           group-hover:bg-c-primary/[var(--o-primary-highlight)] relative ${
-            !isRead ? "bg-c-bg-secondary" : ""
+            !isRead ? "bg-c-bg-secondary md:bg-c-bg" : ""
           }
           overflow-hidden md:rounded-xl z-0`}
         >
@@ -41,24 +41,48 @@ export function EmailLine({
               type={account.iconType}
               color={account.iconColor}
             ></EmailIcon>
-            <p className="flex-1 font-semibold whitespace-nowrap overflow-hidden overflow-ellipsis text-base">
+            <p
+              className={`flex-1 whitespace-nowrap overflow-hidden overflow-ellipsis text-base
+              ${isRead ? "font-medium text-c-on-bg/75" : "font-semibold"}`}
+            >
               {sender}
             </p>
-            <p className="md:hidden w-16 text-right text-c-on-bg/60 text-base">
+            <p
+              className={`md:hidden w-16 text-right text-base ${
+                isRead
+                  ? "text-c-on-bg/60 font-normal"
+                  : "text-c-on-bg font-semibold"
+              }`}
+            >
               {getRelativeDate(date)}
             </p>
           </div>
           {/* Desktop */}
           <p className="hidden md:block whitespace-nowrap flex-1 overflow-hidden overflow-ellipsis text-c-on-bg/60 text-base">
-            <span className="text-c-on-bg">{title}</span>
+            <span
+              className={`text-c-on-bg ${
+                isRead ? "font-medium text-c-on-bg/75" : "font-semibold"
+              }`}
+            >
+              {title}
+            </span>
             <span className="text-c-on-bg/30 px-0.25ch"> | </span>
             <span className="text-c-on-bg/60">{body}</span>
           </p>
-          <p className="hidden md:block w-18 text-right text-c-on-bg/60 text-base">
+          <p
+            className={`hidden md:block w-18 text-right text-base ${
+              isRead
+                ? "text-c-on-bg/60 font-normal"
+                : "text-c-on-bg font-semibold"
+            }`}
+          >
             {getRelativeDate(date)}
           </p>
           {/* Mobile */}
-          <p className="md:hidden w-full whitespace-nowrap overflow-hidden overflow-ellipsis text-c-on-bg mt-1 text-base">
+          <p
+            className={`md:hidden w-full whitespace-nowrap overflow-hidden overflow-ellipsis text-c-on-bg mt-1 text-base
+            ${isRead ? "font-medium text-c-on-bg/75" : "font-semibold"}`}
+          >
             {title}
           </p>
           <p className="md:hidden w-full whitespace-nowrap overflow-hidden overflow-ellipsis text-c-on-bg/60 mt-1 text-base">
@@ -78,9 +102,9 @@ const NotificationDot = ({
   className?: string;
 }) => (
   <div
-    className={`w-1.5 h-1.5 md:w-3px md:h-4.5 md:absolute md:left-0 md:top-1/2 transform md:-translate-y-1/2 
+    className={`w-1.75 h-1.75 md:w-1 md:h-4.5 md:absolute md:left-0 md:top-1/2 transform md:-translate-y-1/2 
     rounded-full flex-shrink-0 ${
-      isRead ? "bg-c-notification-blue/0 hidden" : "bg-c-notification-blue"
+      isRead ? "bg-c-notification/0 hidden" : "bg-c-notification"
     } ${className ?? ""}`}
   />
 );
