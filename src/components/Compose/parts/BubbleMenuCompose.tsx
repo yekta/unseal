@@ -98,7 +98,7 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
             isActive={editor.isActive("heading", { level: 2 })}
           />
         </div>
-        {editor.getAttributes("link").href && (
+        {editor.isActive("link") && editor.getAttributes("link").href && (
           <a
             href={editor.getAttributes("link").href}
             target="_blank"

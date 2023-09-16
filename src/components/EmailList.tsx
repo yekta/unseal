@@ -93,7 +93,7 @@ export default function EmailList({
       className="w-full flex-1 flex justify-center pb-24 overflow-auto"
     >
       {isInitialLoading ? (
-        <div className="w-full max-w-6xl flex flex-col md:px-4 animate-pulse-placeholder">
+        <div className="w-full max-w-6xl flex flex-col md:px-8 animate-pulse-placeholder">
           {placeholders.map((p, i) =>
             typeof p === "string" ? (
               <div className="w-full flex justify-start px-4 pt-8 pb-3">
@@ -113,7 +113,7 @@ export default function EmailList({
             width: "100%",
             position: "relative",
           }}
-          className="w-full max-w-6xl flex flex-col md:px-4"
+          className="w-full max-w-6xl flex flex-col"
         >
           {rowVirtualizer.getVirtualItems().map((virtualRow) => {
             const isLoaderRow = virtualRow.index > rows.length - 1;
@@ -130,6 +130,7 @@ export default function EmailList({
                   width: "100%",
                   transform: `translateY(${virtualRow.start}px)`,
                 }}
+                className="md:px-8"
               >
                 {(() => {
                   if (isLoaderRow && !hasNextPage) {
@@ -148,13 +149,13 @@ export default function EmailList({
                   }
                   if (typeof emailOrLabel === "string") {
                     return (
-                      <div className="w-full px-4 md:px-8 text-c-on-bg/50 pt-8 pb-3">
+                      <div className="w-full px-4 text-c-on-bg/50 pt-8 pb-3">
                         {emailOrLabel}
                       </div>
                     );
                   }
                   return (
-                    <div className="w-full md:px-4">
+                    <div className="w-full">
                       <EmailLine {...emailOrLabel} />
                     </div>
                   );

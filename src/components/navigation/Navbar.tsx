@@ -144,7 +144,7 @@ export default function Navbar() {
                       }}
                       className={`absolute bottom-0 left-0 h-full rounded-lg -z-10 pointer-events-none ${
                         navbarItemAreaHovered
-                          ? "bg-c-bg-highlight-secondary"
+                          ? "bg-c-bg-highlight-hover"
                           : "bg-c-bg-highlight"
                       }`}
                       layoutId="navbar-highlight"
