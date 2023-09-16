@@ -55,17 +55,17 @@ export default function EmailIcon({
 
   const fadedColorClasses =
     color === "lime"
-      ? "text-c-icon-lime/75"
+      ? "text-c-icon-lime/80"
       : color === "blue"
-      ? "text-c-icon-blue/75"
+      ? "text-c-icon-blue/80"
       : color === "yellow"
-      ? "text-c-icon-yellow/75"
+      ? "text-c-icon-yellow/80"
       : color === "green"
-      ? "text-c-icon-green/75"
+      ? "text-c-icon-green/80"
       : color === "red"
-      ? "text-c-icon-red/75"
+      ? "text-c-icon-red/80"
       : color === "purple"
-      ? "text-c-icon-purple/75"
+      ? "text-c-icon-purple/80"
       : color === "on-bg"
       ? "text-c-on-bg/60"
       : "text-c-on-bg/60";

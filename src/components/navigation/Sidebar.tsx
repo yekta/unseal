@@ -35,6 +35,7 @@ function LinkLine({
           sizeClasses="w-5 h-5"
           type={iconType}
           color={iconColor}
+          fadeOnPassive
         />
         <p
           className={`flex-1 font-medium min-w-0 overflow-hidden overflow-ellipsis transition ${
