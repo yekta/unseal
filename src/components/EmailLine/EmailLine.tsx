@@ -35,7 +35,7 @@ export function EmailLine({
           }
           overflow-hidden md:rounded-xl z-0`}
         >
-          <div className="w-full md:w-60 flex items-center gap-2.5">
+          <div className="w-full md:w-60 flex items-center gap-2 md:gap-2.5">
             <NotificationDot isRead={isRead} />
             <EmailIcon
               type={account.iconType}
