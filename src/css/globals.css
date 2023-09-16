@@ -3,22 +3,23 @@
 
 :root {
   --c-bg: 16 16 22;
-  --c-bg-secondary: 24 24 30;
-  --c-bg-tertiary: 32 32 42;
+  --c-bg-secondary: 24 24 32;
+  --c-bg-tertiary: 32 32 44;
   --c-bg-quaternary: 40 40 50;
-  --c-bg-highlight: 28 28 38; 
-  --c-bg-highlight-hover: 36 36 46;
+  --c-bg-highlight: 26 26 36; 
+  --c-bg-highlight-secondary: 34 34 46;
+  --c-bg-highlight-tertiary: 40 40 52;
   --c-bg-unread: 16 16 30;
   --c-primary: 144 181 255;
   --c-barrier: 16 16 22;
   --c-shadow: 0 0 6;
   --c-on-bg: 240 240 250;
-  --c-icon-red: 229 126 126;
-  --c-icon-lime: 196 232 138;
-  --c-icon-blue: 124 171 240;
-  --c-icon-yellow: 217 201 123;
-  --c-icon-purple: 188 131 244;
-  --c-icon-green: 90 187 107;
+  --c-icon-red: 249 146 146;
+  --c-icon-lime: 216 252 158;
+  --c-icon-blue: 144 191 255;
+  --c-icon-yellow: 237 221 143;
+  --c-icon-purple: 208 151 255;
+  --c-icon-green: 120 207 137;
   --c-notification: 105 145 250;
   --c-macos-red: 255 105 97;
   --c-macos-orange: 255 179 64;

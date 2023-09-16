@@ -130,7 +130,7 @@ export default function Navbar() {
             const isActive = pathname === item.pathname;
             return (
               <Link
-                key={`nav-link-${index}`}
+                key={`nav-link-${item.pathname}`}
                 onMouseOver={() => setLastHoveredPath(item.pathname)}
                 onMouseLeave={() => setLastHoveredPath(pathname)}
                 href={item.pathname}
@@ -141,12 +141,14 @@ export default function Navbar() {
                     <motion.div
                       style={{
                         width: "100%",
+                        borderRadius: 8,
                       }}
-                      className={`absolute bottom-0 left-0 h-full rounded-lg -z-10 pointer-events-none ${
+                      className={`absolute bottom-0 left-0 h-full -z-10 pointer-events-none ${
                         navbarItemAreaHovered
-                          ? "bg-c-bg-highlight-hover"
-                          : "bg-c-bg-highlight"
+                          ? "bg-c-bg-highlight-tertiary"
+                          : "bg-c-bg-highlight-secondary"
                       }`}
+                      initial={false}
                       layoutId="navbar-highlight"
                       aria-hidden="true"
                       transition={{

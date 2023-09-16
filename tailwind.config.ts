@@ -28,8 +28,10 @@ const config: Config = {
         "c-bg-tertiary": "rgb(var(--c-bg-tertiary)/<alpha-value>)",
         "c-bg-quaternary": "rgb(var(--c-bg-quaternary)/<alpha-value>)",
         "c-bg-highlight": "rgb(var(--c-bg-highlight)/<alpha-value>)",
-        "c-bg-highlight-hover":
-          "rgb(var(--c-bg-highlight-hover)/<alpha-value>)",
+        "c-bg-highlight-secondary":
+          "rgb(var(--c-bg-highlight-secondary)/<alpha-value>)",
+        "c-bg-highlight-tertiary":
+          "rgb(var(--c-bg-highlight-tertiary)/<alpha-value>)",
         "c-bg-unread": "rgb(var(--c-bg-unread)/<alpha-value>)",
         "c-on-bg": "rgb(var(--c-on-bg)/<alpha-value>)",
         "c-primary": "rgb(var(--c-primary)/<alpha-value>)",
