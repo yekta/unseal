@@ -10,11 +10,11 @@ export default function ComposeButtonWithModal() {
       <Dialog.Trigger asChild>
         <button
           className="text-c-primary flex items-center justify-center
-          font-semibold cursor-default group gap-2 py-1.5 px-0.75"
+          font-semibold cursor-default group py-1.5 px-0.75"
         >
           <div
             className="flex items-center justify-center px-3 py-2 group-hover:bg-c-primary/20
-            bg-c-primary/10 rounded-lg"
+            bg-c-primary/10 rounded-lg gap-2"
           >
             <PencilIcon className="w-5 h-5 -ml-0.25" />
             <p>Compose</p>
