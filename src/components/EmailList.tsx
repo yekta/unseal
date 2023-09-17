@@ -97,7 +97,7 @@ export default function EmailList({
           {placeholders.map((p, i) =>
             typeof p === "string" ? (
               <div key={i} className="w-full flex justify-start px-4 pt-8 pb-3">
-                <p className="text-transparent bg-c-on-bg/15 rounded-full">
+                <p className="text-transparent bg-c-on-bg/20 rounded-full">
                   {p}
                 </p>
               </div>
@@ -135,21 +135,21 @@ export default function EmailList({
                 {(() => {
                   if (isLoaderRow && !hasNextPage) {
                     return (
-                      <div className="w-full flex items-center justify-center px-4 py-8 text-c-on-bg/60">
+                      <div className="w-full flex items-center justify-center px-4 py-8 text-c-on-bg/50">
                         You've reached the end!
                       </div>
                     );
                   }
                   if (isLoaderRow) {
                     return (
-                      <div className="w-full flex items-center justify-center px-4 py-8 text-c-on-bg/60">
+                      <div className="w-full flex items-center justify-center px-4 py-8 text-c-on-bg/50">
                         Loading more...
                       </div>
                     );
                   }
                   if (typeof emailOrLabel === "string") {
                     return (
-                      <div className="w-full px-4 text-c-on-bg/60 pt-8 pb-3">
+                      <div className="w-full px-4 text-c-on-bg/50 pt-8 pb-3">
                         {emailOrLabel}
                       </div>
                     );
