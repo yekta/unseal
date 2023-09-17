@@ -2,7 +2,7 @@
 
 import EmailIcon from "@components/EmailLine/EmailIcon";
 import { TIconColor, TIconType, accounts } from "@ts/email";
-import { useClickOutside } from "@ts/hooks/useClickoutside";
+import { useClickOutside } from "@ts/hooks/useClickOutside";
 import { isSidebarOpenAtom } from "@ts/stores/navigation";
 import { useAtom } from "jotai";
 import Link from "next/link";
