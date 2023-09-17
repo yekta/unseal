@@ -96,7 +96,7 @@ export default function EmailList({
         <div className="w-full max-w-6xl flex flex-col md:px-8 animate-pulse-placeholder">
           {placeholders.map((p, i) =>
             typeof p === "string" ? (
-              <div className="w-full flex justify-start px-4 pt-8 pb-3">
+              <div key={i} className="w-full flex justify-start px-4 pt-8 pb-3">
                 <p className="text-transparent bg-c-on-bg/15 rounded-full">
                   {p}
                 </p>
