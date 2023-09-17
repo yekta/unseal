@@ -1,5 +1,5 @@
 import Compose from "@components/Compose/Compose";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { PencilIcon } from "@heroicons/react/24/outline";
 
@@ -9,11 +9,16 @@ export default function ComposeButtonWithModal() {
     <Dialog.Root onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
         <button
-          className="text-c-primary bg-c-primary/10 rounded-lg flex items-center justify-center
-          px-3 py-2 font-semibold cursor-default hover:bg-c-primary/20 gap-2"
+          className="text-c-primary flex items-center justify-center
+          font-semibold cursor-default group gap-2 py-1.5 px-0.75"
         >
-          <PencilIcon className="w-5 h-5 -ml-0.25" />
-          <p>Compose</p>
+          <div
+            className="flex items-center justify-center px-3 py-2 group-hover:bg-c-primary/20
+            bg-c-primary/10 rounded-lg"
+          >
+            <PencilIcon className="w-5 h-5 -ml-0.25" />
+            <p>Compose</p>
+          </div>
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>

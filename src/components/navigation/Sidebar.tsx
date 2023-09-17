@@ -2,19 +2,28 @@
 
 import EmailIcon from "@components/EmailLine/EmailIcon";
 import { TIconColor, TIconType, accounts } from "@ts/email";
+import { isSidebarOpenAtom } from "@ts/stores/navigation";
+import { useAtom } from "jotai";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const [isSidebarOpen, setIsSidebarOpen] = useAtom(isSidebarOpenAtom);
 
   return (
-    <div className="h-full flex flex-col group w-2 absolute left-0 top-0 z-10">
+    <div
+      onMouseEnter={() => setIsSidebarOpen(true)}
+      onMouseLeave={() => setIsSidebarOpen(false)}
+      className="h-full flex flex-col group w-2 absolute left-0 top-0 z-10"
+    >
       <div
-        className="h-full pt-1.5 pb-24 transition -translate-x-full group-hover:translate-x-0
+        className={`h-full pt-1.5 pb-24 transition ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        }
         w-64 overflow-auto border-r-2 bg-c-bg border-c-bg-secondary flex flex-col absolute 
-        left-0 top-0 shadow-xl shadow-c-shadow/[var(--o-shadow-strongest)]"
+        left-0 top-0 shadow-xl shadow-c-shadow/[var(--o-shadow-strongest)]`}
       >
         <div className="w-full flex flex-col">
           <LinkLine

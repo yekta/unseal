@@ -1,21 +1,18 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { WebviewWindow } from "@tauri-apps/api/window";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { InboxIcon, EnvelopeIcon, StarIcon } from "@heroicons/react/24/outline";
-import {
-  InboxIcon as InboxIconSolid,
-  EnvelopeIcon as EnvelopeIconSolid,
-  StarIcon as StarIconSolid,
-} from "@heroicons/react/24/solid";
 import ComposeButtonWithModal from "@components/Compose/ComposeButtonWithModal";
 import { getPathnameWithAccount } from "@ts/helpers/getPathnameWithAccount";
 import { getAccountIdFromPathname } from "@ts/helpers/getAccountIdFromPathname";
-import { TIconColor, TIconType, accounts } from "@ts/email";
+import { TIconColor, TIconType } from "@ts/email";
 import EmailIcon from "@components/EmailLine/EmailIcon";
+import { useAtom } from "jotai";
+import { isSidebarOpenAtom } from "@ts/stores/navigation";
+import { Bars4Icon } from "@heroicons/react/24/outline";
 
 export default function Navbar() {
   const [appWindow, setAppWindow] = useState<WebviewWindow | undefined>(
@@ -57,23 +54,24 @@ export default function Navbar() {
     undefined
   );
   const [navbarItemAreaHovered, setNavbarItemAreaHovered] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useAtom(isSidebarOpenAtom);
+
+  const windowButtonClasses = "w-[13px] h-[13px] rounded-full";
+  const windowButtonContainerClasses =
+    "flex items-center justify-start py-3 px-3 gap-[8px]";
 
   useEffect(() => {
     setLastHoveredPath(pathname);
   }, [pathname]);
 
-  async function setupAppWindow() {
-    const appWindow = (await import("@tauri-apps/api/window")).appWindow;
-    setAppWindow(appWindow);
-  }
-
   useEffect(() => {
     setupAppWindow();
   }, []);
 
-  const windowButtonClasses = "w-[13px] h-[13px] rounded-full";
-  const windowButtonContainerClasses =
-    "flex items-center justify-start py-3 px-3 gap-[8px]";
+  async function setupAppWindow() {
+    const appWindow = (await import("@tauri-apps/api/window")).appWindow;
+    setAppWindow(appWindow);
+  }
 
   return (
     <nav
@@ -82,7 +80,7 @@ export default function Navbar() {
     >
       <div
         data-tauri-drag-region
-        className="flex items-center justify-start lg:w-64"
+        className="flex items-stretch justify-start lg:w-64"
       >
         <div className={windowButtonContainerClasses}>
           <button
@@ -98,9 +96,19 @@ export default function Navbar() {
             onClick={() => appWindow?.maximize()}
           ></button>
         </div>
-        <div className="p-1.5">
-          <ComposeButtonWithModal />
-        </div>
+        <button
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className="py-1.5 px-0.75 flex cursor-default group"
+        >
+          <div className="p-1 flex items-center justify-center rounded-lg group-hover:bg-c-bg-highlight-tertiary ">
+            <Bars4Icon
+              className={`text-c-on-bg w-8 h-8 transform transition ${
+                isSidebarOpen ? "rotate-90" : ""
+              }`}
+            />
+          </div>
+        </button>
+        <ComposeButtonWithModal />
       </div>
       <div data-tauri-drag-region className="lg:flex-1 flex justify-center">
         <div
@@ -130,11 +138,11 @@ export default function Navbar() {
             const isActive = pathname === item.pathname;
             return (
               <Link
-                key={`nav-link-${item.pathname}`}
+                key={`nav-link-${index}`}
                 onMouseOver={() => setLastHoveredPath(item.pathname)}
                 onMouseLeave={() => setLastHoveredPath(pathname)}
                 href={item.pathname}
-                className="px-px py-1.5 self-stretch group cursor-default flex flex-row"
+                className="py-1.5 px-0.75 self-stretch group cursor-default flex flex-row"
               >
                 <div className="relative flex items-center justify-center">
                   {item.pathname === lastHoveredPath && (

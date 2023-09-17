@@ -107,7 +107,7 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
           >
             <div
               className="rounded-md px-2.5 py-1.5 flex items-center transition justify-center 
-              gap-1 group-hover:bg-c-primary/10"
+              gap-1 group-hover:bg-c-primary/[var(--o-primary-highlight)]"
             >
               <ArrowTopRightOnSquareIcon className="w-4 h-4 text-c-on-bg/75 transition group-hover:text-c-primary flex-shrink-0" />
               <p
@@ -187,7 +187,7 @@ function BubbleMenuButton({
       className={`w-11 h-11 rounded-lg flex items-center justify-center 
       cursor-default p-0.75 group`}
     >
-      <div className={`p-2 group-hover:bg-c-on-bg/10 rounded-md`}>
+      <div className={`p-2 group-hover:bg-c-bg-quinary rounded-md`}>
         <Icon
           className={`w-full h-full ${
             isActive ? "text-c-primary" : "text-c-on-bg"
