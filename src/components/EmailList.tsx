@@ -149,7 +149,7 @@ export default function EmailList({
                   }
                   if (typeof emailOrLabel === "string") {
                     return (
-                      <div className="w-full px-4 text-c-on-bg/50 pt-8 pb-3">
+                      <div className="w-full px-4 text-c-on-bg/60 pt-8 pb-3">
                         {emailOrLabel}
                       </div>
                     );

@@ -1,43 +1,4 @@
-export type TIconColor =
-  | "red"
-  | "lime"
-  | "blue"
-  | "yellow"
-  | "green"
-  | "purple"
-  | "on-bg"
-  | "placeholder";
-
-export type TIconType =
-  | "school"
-  | "work"
-  | "terminal"
-  | "building"
-  | "trophy"
-  | "rocket"
-  | "inbox"
-  | "placeholder"
-  | "unread"
-  | "favorites";
-
-export interface TAccount {
-  id: string;
-  email: string;
-  iconColor: TIconColor;
-  iconType: TIconType;
-}
-
-export interface TEmail {
-  id: string;
-  sender: string;
-  title: string;
-  body: string;
-  isRead: boolean;
-  isFavorited: boolean;
-  date: string;
-  account: TAccount;
-}
-
+const lastTimestamp = new Date().getTime();
 export const accounts: TAccount[] = [
   {
     id: "1",
@@ -48,7 +9,7 @@ export const accounts: TAccount[] = [
   {
     id: "2",
     email: "ngyekta@gmail.com",
-    iconColor: "blue",
+    iconColor: "yellow",
     iconType: "rocket",
   },
   {
@@ -867,7 +828,54 @@ export const emails: TEmail[] = [
     isRead: true,
     isFavorited: true,
   },
-];
+]
+  .map((e) => ({ ...e, date: new Date(lastTimestamp) }))
+  .map((e, i) => ({
+    ...e,
+    date: new Date(
+      lastTimestamp - i * 1000 * 60 * 60 * (i > 70 ? 24 : i > 40 ? 12 : 2)
+    ).toUTCString(),
+  }));
 
 export const unreadEmails = emails.filter((email) => !email.isRead);
 export const favoritedEmails = emails.filter((email) => email.isFavorited);
+
+export type TIconColor =
+  | "red"
+  | "lime"
+  | "blue"
+  | "yellow"
+  | "green"
+  | "purple"
+  | "on-bg"
+  | "placeholder";
+
+export type TIconType =
+  | "school"
+  | "work"
+  | "terminal"
+  | "building"
+  | "trophy"
+  | "rocket"
+  | "inbox"
+  | "placeholder"
+  | "unread"
+  | "favorites";
+
+export interface TAccount {
+  id: string;
+  email: string;
+  iconColor: TIconColor;
+  iconType: TIconType;
+}
+
+export interface TEmail {
+  id: string;
+  sender: string;
+  title: string;
+  body: string;
+  isRead: boolean;
+  isFavorited: boolean;
+  date: string;
+  account: TAccount;
+}
