@@ -23,18 +23,20 @@ import {
 } from "@heroicons/react/24/solid";
 import { TIconColor, TIconType } from "@ts/email";
 
+type TFadeOnPassive = "normal" | "light";
+
 export default function EmailIcon({
   type,
   color = "on-bg",
   sizeClasses = "w-5 h-5",
   isActive,
-  fadeOnPassive = false,
+  fadeOnPassive,
 }: {
   type?: TIconType;
   color?: TIconColor;
   sizeClasses?: string;
   isActive?: boolean;
-  fadeOnPassive?: boolean;
+  fadeOnPassive?: TFadeOnPassive;
 }) {
   const colorClasses =
     color === "lime"
@@ -70,6 +72,23 @@ export default function EmailIcon({
       ? "text-c-on-bg/60"
       : "text-c-on-bg/60";
 
+  const fadedLightColorClasses =
+    color === "lime"
+      ? "text-c-icon-lime/85"
+      : color === "blue"
+      ? "text-c-icon-blue/85"
+      : color === "yellow"
+      ? "text-c-icon-yellow/85"
+      : color === "green"
+      ? "text-c-icon-green/85"
+      : color === "red"
+      ? "text-c-icon-red/85"
+      : color === "purple"
+      ? "text-c-icon-purple/85"
+      : color === "on-bg"
+      ? "text-c-on-bg/75"
+      : "text-c-on-bg/75";
+
   return (
     <div className={`${sizeClasses} flex-shrink-0 relative`}>
       {type === "school" ? (
@@ -80,6 +99,7 @@ export default function EmailIcon({
           fadeOnPassive={fadeOnPassive}
           colorClasses={colorClasses}
           fadedColorClasses={fadedColorClasses}
+          fadedLightColorClasses={fadedLightColorClasses}
         />
       ) : type === "terminal" ? (
         <IconSet
@@ -89,6 +109,7 @@ export default function EmailIcon({
           fadeOnPassive={fadeOnPassive}
           colorClasses={colorClasses}
           fadedColorClasses={fadedColorClasses}
+          fadedLightColorClasses={fadedLightColorClasses}
         />
       ) : type === "building" ? (
         <IconSet
@@ -98,6 +119,7 @@ export default function EmailIcon({
           fadeOnPassive={fadeOnPassive}
           colorClasses={colorClasses}
           fadedColorClasses={fadedColorClasses}
+          fadedLightColorClasses={fadedLightColorClasses}
         />
       ) : type === "work" ? (
         <IconSet
@@ -107,6 +129,7 @@ export default function EmailIcon({
           fadeOnPassive={fadeOnPassive}
           colorClasses={colorClasses}
           fadedColorClasses={fadedColorClasses}
+          fadedLightColorClasses={fadedLightColorClasses}
         />
       ) : type === "rocket" ? (
         <IconSet
@@ -116,6 +139,7 @@ export default function EmailIcon({
           fadeOnPassive={fadeOnPassive}
           colorClasses={colorClasses}
           fadedColorClasses={fadedColorClasses}
+          fadedLightColorClasses={fadedLightColorClasses}
         />
       ) : type === "trophy" ? (
         <IconSet
@@ -125,6 +149,7 @@ export default function EmailIcon({
           fadeOnPassive={fadeOnPassive}
           colorClasses={colorClasses}
           fadedColorClasses={fadedColorClasses}
+          fadedLightColorClasses={fadedLightColorClasses}
         />
       ) : type === "inbox" ? (
         <IconSet
@@ -134,6 +159,7 @@ export default function EmailIcon({
           fadeOnPassive={fadeOnPassive}
           colorClasses={colorClasses}
           fadedColorClasses={fadedColorClasses}
+          fadedLightColorClasses={fadedLightColorClasses}
         />
       ) : type === "unread" ? (
         <IconSet
@@ -143,6 +169,7 @@ export default function EmailIcon({
           fadeOnPassive={fadeOnPassive}
           colorClasses={colorClasses}
           fadedColorClasses={fadedColorClasses}
+          fadedLightColorClasses={fadedLightColorClasses}
         />
       ) : type === "favorites" ? (
         <IconSet
@@ -152,6 +179,7 @@ export default function EmailIcon({
           fadeOnPassive={fadeOnPassive}
           colorClasses={colorClasses}
           fadedColorClasses={fadedColorClasses}
+          fadedLightColorClasses={fadedLightColorClasses}
         />
       ) : (
         <IconSet
@@ -161,6 +189,7 @@ export default function EmailIcon({
           fadeOnPassive={fadeOnPassive}
           colorClasses={colorClasses}
           fadedColorClasses={fadedColorClasses}
+          fadedLightColorClasses={fadedLightColorClasses}
         />
       )}
     </div>
@@ -174,13 +203,15 @@ function IconSet({
   fadeOnPassive,
   colorClasses,
   fadedColorClasses,
+  fadedLightColorClasses,
 }: {
   PassiveIcon: React.ComponentType<any>;
   ActiveIcon: React.ComponentType<any>;
   isActive?: boolean;
-  fadeOnPassive?: boolean;
+  fadeOnPassive?: TFadeOnPassive;
   colorClasses: string;
   fadedColorClasses: string;
+  fadedLightColorClasses: string;
 }) {
   const iconClasses = "w-full h-full absolute transition left-0 top-0";
   const shownIconClasses = "opacity-100";
@@ -190,7 +221,11 @@ function IconSet({
     <>
       <PassiveIcon
         className={`${iconClasses} ${
-          fadeOnPassive ? fadedColorClasses : colorClasses
+          fadeOnPassive === "light"
+            ? fadedLightColorClasses
+            : fadeOnPassive === "normal"
+            ? fadedColorClasses
+            : colorClasses
         } ${!isActive ? shownIconClasses : hiddenIconClasses}`}
       />
       <ActiveIcon

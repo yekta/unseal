@@ -2,28 +2,34 @@
 
 import EmailIcon from "@components/EmailLine/EmailIcon";
 import { TIconColor, TIconType, accounts } from "@ts/email";
+import { useClickOutside } from "@ts/hooks/useClickoutside";
 import { isSidebarOpenAtom } from "@ts/stores/navigation";
 import { useAtom } from "jotai";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
 
 export default function Sidebar() {
   const pathname = usePathname();
   const [isSidebarOpen, setIsSidebarOpen] = useAtom(isSidebarOpenAtom);
-
+  const ref = useClickOutside<HTMLDivElement>({
+    handler: () => setIsSidebarOpen(false),
+    exclude: ["#sidebar-toggle-button"],
+  });
   return (
     <div
+      ref={ref}
       onMouseEnter={() => setIsSidebarOpen(true)}
       onMouseLeave={() => setIsSidebarOpen(false)}
       className="h-full flex flex-col group w-2 absolute left-0 top-0 z-10"
     >
       <div
         className={`h-full pt-1.5 pb-24 transition ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+          isSidebarOpen
+            ? "translate-x-0 shadow-c-shadow/[var(--o-shadow-strongest)]"
+            : "-translate-x-full shadow-c-shadow/0"
         }
         w-64 overflow-auto border-r-2 bg-c-bg border-c-bg-secondary flex flex-col absolute 
-        left-0 top-0 shadow-xl shadow-c-shadow/[var(--o-shadow-strongest)]`}
+        left-0 top-0 shadow-xl`}
       >
         <div className="w-full flex flex-col">
           <LinkLine
@@ -81,9 +87,11 @@ function LinkLine({
           sizeClasses="w-5 h-5"
           type={iconType}
           color={iconColor}
+          fadeOnPassive="light"
         />
         <p
-          className={`flex-1 font-medium min-w-0 overflow-hidden overflow-ellipsis transition`}
+          className={`flex-1 font-medium min-w-0 overflow-hidden overflow-ellipsis transition
+          ${isActive ? "text-c-on-bg" : "text-c-on-bg/75"}`}
         >
           {text}
         </p>

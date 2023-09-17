@@ -97,6 +97,7 @@ export default function Navbar() {
           ></button>
         </div>
         <button
+          id="sidebar-toggle-button"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           className="py-1.5 px-0.75 flex cursor-default group"
         >
@@ -170,7 +171,7 @@ export default function Navbar() {
                       type={item.iconType}
                       color={item.iconColor}
                       isActive={isActive}
-                      fadeOnPassive
+                      fadeOnPassive="normal"
                     />
                     <p
                       className={`hidden lg:block font-medium transition duration-150 ${
