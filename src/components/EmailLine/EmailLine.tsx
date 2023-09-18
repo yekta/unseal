@@ -53,14 +53,14 @@ export function EmailLine({
             </p>
             <p
               className={`md:hidden w-16 text-right text-base ${
-                isRead ? "text-c-on-bg/50" : "text-c-on-bg"
+                isRead ? "text-c-on-bg/55" : "text-c-on-bg"
               }`}
             >
               {getRelativeDate(date)}
             </p>
           </div>
           {/* Desktop */}
-          <p className="hidden md:block whitespace-nowrap flex-1 overflow-hidden overflow-ellipsis text-c-on-bg/50 text-base">
+          <p className="hidden md:block whitespace-nowrap flex-1 overflow-hidden overflow-ellipsis text-c-on-bg/55 text-base">
             <span
               className={`${
                 isRead
@@ -70,16 +70,16 @@ export function EmailLine({
             >
               {title}
             </span>
-            <span className={`text-c-on-bg/30 px-0.3ch`}> | </span>
+            <span className={`text-c-on-bg/25 px-0.3ch`}> | </span>
             <span
-              className={`${isRead ? "text-c-on-bg/50" : "text-c-on-bg/75"}`}
+              className={`${isRead ? "text-c-on-bg/55" : "text-c-on-bg/75"}`}
             >
               {body}
             </span>
           </p>
           <p
             className={`hidden md:block w-18 text-right text-base ${
-              isRead ? "text-c-on-bg/50" : "text-c-on-bg"
+              isRead ? "text-c-on-bg/55" : "text-c-on-bg"
             }`}
           >
             {getRelativeDate(date)}
@@ -97,7 +97,7 @@ export function EmailLine({
           </p>
           <p
             className={`md:hidden w-full whitespace-nowrap overflow-hidden overflow-ellipsis mt-1 text-base
-            ${isRead ? "text-c-on-bg/50" : "text-c-on-bg/75"}`}
+            ${isRead ? "text-c-on-bg/55" : "text-c-on-bg/75"}`}
           >
             {body}
           </p>

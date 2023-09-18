@@ -69,8 +69,8 @@ export default function EmailIcon({
       : color === "purple"
       ? "text-c-icon-purple/80"
       : color === "on-bg"
-      ? "text-c-on-bg/60"
-      : "text-c-on-bg/60";
+      ? "text-c-on-bg/55"
+      : "text-c-on-bg/55";
 
   const fadedLightColorClasses =
     color === "lime"

@@ -833,7 +833,12 @@ export const emails: TEmail[] = [
   .map((e, i) => ({
     ...e,
     date: new Date(
-      lastTimestamp - i * 1000 * 60 * 60 * (i > 70 ? 24 : i > 40 ? 12 : 2)
+      lastTimestamp -
+        i *
+          1000 *
+          60 *
+          60 *
+          (i > 77 ? 96 : i > 75 ? 48 : i > 70 ? 24 : i > 40 ? 12 : 2)
     ).toUTCString(),
   }));
 

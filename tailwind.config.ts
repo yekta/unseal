@@ -51,6 +51,7 @@ const config: Config = {
       },
       opacity: {
         15: "0.15",
+        55: "0.55",
         85: "0.85",
       },
       spacing: {

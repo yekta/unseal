@@ -30,7 +30,7 @@ export function EmailLinePlaceholder() {
             </p>
           </div>
           {/* Desktop */}
-          <p className="hidden md:flex whitespace-nowrap flex-1 overflow-hidden text-c-on-bg/60 text-base">
+          <p className="hidden md:flex whitespace-nowrap flex-1 overflow-hidden text-c-on-bg/55 text-base">
             <span className="bg-c-on-bg/30 rounded-full text-transparent">
               {title}
             </span>

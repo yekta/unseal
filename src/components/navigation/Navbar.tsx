@@ -175,7 +175,7 @@ export default function Navbar() {
                     />
                     <p
                       className={`hidden lg:block font-medium transition duration-150 ${
-                        isActive ? "text-c-on-bg" : "text-c-on-bg/60"
+                        isActive ? "text-c-on-bg" : "text-c-on-bg/55"
                       }`}
                     >
                       {item.label}
