@@ -161,7 +161,7 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
                   setBubbleMenuType("main");
                 }}
               >
-                <XMarkIcon className="w-full h-full text-c-on-bg/55 group-hover:text-c-primary" />
+                <XMarkIcon className="w-full h-full text-c-on-bg/60 group-hover:text-c-primary" />
               </button>
             </form>
           </>

@@ -19,7 +19,7 @@ export function EmailLinePlaceholder() {
             <div className="w-5 h-5 rounded-full bg-c-on-bg/40"></div>
             <div className="flex-1 flex justify-start">
               <p
-                className="bg-c-on-bg/40 rounded-full text-transparent flex-shrink font-semibold whitespace-nowrap 
+                className="bg-c-on-bg/40 rounded-full text-transparent flex-shrink whitespace-nowrap 
                 overflow-hidden text-base"
               >
                 {sender}
@@ -30,7 +30,7 @@ export function EmailLinePlaceholder() {
             </p>
           </div>
           {/* Desktop */}
-          <p className="hidden md:flex whitespace-nowrap flex-1 overflow-hidden text-c-on-bg/55 text-base">
+          <p className="hidden md:flex whitespace-nowrap flex-1 overflow-hidden text-c-on-bg/60 text-base">
             <span className="bg-c-on-bg/30 rounded-full text-transparent">
               {title}
             </span>

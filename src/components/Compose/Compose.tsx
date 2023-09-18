@@ -43,7 +43,7 @@ export default function Compose() {
       <div className="w-full min-h-full flex flex-col items-center overflow-auto">
         <div className="w-full flex flex-col flex-1 max-w-3xl px-3 md:px-6 py-10">
           <div className="w-full flex items-center gap-2">
-            <p className="text-c-on-bg/55">To</p>
+            <p className="text-c-on-bg/60">To</p>
             <div className="flex-1">
               <input className="w-full bg-transparent outline-none" />
             </div>

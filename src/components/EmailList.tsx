@@ -135,21 +135,21 @@ export default function EmailList({
                 {(() => {
                   if (isLoaderRow && !hasNextPage) {
                     return (
-                      <div className="w-full flex items-center justify-center px-4 py-8 text-c-on-bg/55">
+                      <div className="w-full flex items-center justify-center px-4 py-8 text-c-on-bg/60">
                         You've reached the end!
                       </div>
                     );
                   }
                   if (isLoaderRow) {
                     return (
-                      <div className="w-full flex items-center justify-center px-4 py-8 text-c-on-bg/55">
+                      <div className="w-full flex items-center justify-center px-4 py-8 text-c-on-bg/60">
                         Loading more...
                       </div>
                     );
                   }
                   if (typeof emailOrLabel === "string") {
                     return (
-                      <div className="w-full px-4 text-c-on-bg/55 pt-8 pb-3">
+                      <div className="w-full px-4 text-c-on-bg/60 pt-8 pb-3">
                         {emailOrLabel}
                       </div>
                     );

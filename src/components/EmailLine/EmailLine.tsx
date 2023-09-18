@@ -43,61 +43,37 @@ export function EmailLine({
             ></EmailIcon>
             <p
               className={`flex-1 whitespace-nowrap overflow-hidden overflow-ellipsis text-base
-              ${
-                isRead
-                  ? "text-c-on-bg/75 font-medium"
-                  : "text-c-on-bg font-semibold"
-              }`}
+              text-c-on-bg`}
             >
               {sender}
             </p>
             <p
-              className={`md:hidden w-16 text-right text-base ${
-                isRead ? "text-c-on-bg/55" : "text-c-on-bg"
-              }`}
+              className={`md:hidden w-16 text-right text-base text-c-on-bg/60`}
             >
               {getRelativeDate(date)}
             </p>
           </div>
           {/* Desktop */}
-          <p className="hidden md:block whitespace-nowrap flex-1 overflow-hidden overflow-ellipsis text-c-on-bg/55 text-base">
-            <span
-              className={`${
-                isRead
-                  ? "text-c-on-bg/75 font-normal"
-                  : "text-c-on-bg font-medium"
-              }`}
-            >
-              {title}
-            </span>
-            <span className={`text-c-on-bg/25 px-0.3ch`}> | </span>
-            <span
-              className={`${isRead ? "text-c-on-bg/55" : "text-c-on-bg/75"}`}
-            >
-              {body}
-            </span>
+          <p className="hidden md:block whitespace-nowrap flex-1 overflow-hidden overflow-ellipsis text-c-on-bg/60 text-base">
+            <span className={`text-c-on-bg`}>{title}</span>
+            <span className={`text-c-on-bg/30 px-0.3ch`}> | </span>
+            <span className={`text-c-on-bg/60`}>{body}</span>
           </p>
           <p
-            className={`hidden md:block w-18 text-right text-base ${
-              isRead ? "text-c-on-bg/55" : "text-c-on-bg"
-            }`}
+            className={`hidden md:block w-18 text-right text-base text-c-on-bg/60`}
           >
             {getRelativeDate(date)}
           </p>
           {/* Mobile */}
           <p
             className={`md:hidden w-full whitespace-nowrap overflow-hidden overflow-ellipsis mt-1 text-base
-            text-c-on-bg ${
-              isRead
-                ? "text-c-on-bg/75 font-normal"
-                : "text-c-on-bg font-medium"
-            }`}
+            text-c-on-bg`}
           >
             {title}
           </p>
           <p
             className={`md:hidden w-full whitespace-nowrap overflow-hidden overflow-ellipsis mt-1 text-base
-            ${isRead ? "text-c-on-bg/55" : "text-c-on-bg/75"}`}
+            text-c-on-bg/60`}
           >
             {body}
           </p>
