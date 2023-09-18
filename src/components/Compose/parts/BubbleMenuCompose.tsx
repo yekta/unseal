@@ -107,15 +107,17 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
           >
             <div
               className="rounded-md px-2.5 py-1.5 flex items-center transition justify-center 
-              gap-1 group-hover:bg-c-primary/[var(--o-primary-highlight)]"
+              gap-1.5 group-hover:bg-c-primary/[var(--o-primary-highlight)]"
             >
-              <ArrowTopRightOnSquareIcon className="w-4 h-4 text-c-on-bg/75 transition group-hover:text-c-primary flex-shrink-0" />
               <p
                 className="flex-shrink min-w-0 text-center whitespace-nowrap overflow-hidden overflow-ellipsis 
                 transition group-hover:text-c-primary text-c-on-bg/75"
               >
-                {editor.getAttributes("link").href}
+                {editor.getAttributes("link").href.endsWith("/")
+                  ? editor.getAttributes("link").href.slice(0, -1)
+                  : editor.getAttributes("link").href}
               </p>
+              <ArrowTopRightOnSquareIcon className="w-4 h-4 text-c-on-bg/75 transition group-hover:text-c-primary flex-shrink-0" />
             </div>
           </a>
         )}
