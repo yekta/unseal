@@ -1,7 +1,7 @@
 "use client";
 
 import { TAccountInboxProps } from "@app/account/types";
-import InboxHotkeyProvider from "@components/InboxHotkeyProvider";
+import InboxHotkeyProvider from "@components/providers/InboxHotkeyProvider";
 import { TEmail, emails, favoritedEmails, unreadEmails } from "@ts/email";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";

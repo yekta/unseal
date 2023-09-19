@@ -1,6 +1,6 @@
 import Navbar from "@components/navigation/Navbar";
 import Sidebar from "@components/navigation/Sidebar";
-import ReactQueryProvider from "@components/providers/ReactQueryProvider";
+import RootLayoutProviders from "@components/providers/RootLayoutProviders";
 import "@css/globals.css";
 import type { Metadata } from "next";
 
@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ReactQueryProvider>
+    <RootLayoutProviders>
       <html lang="en">
         <body
           className={`w-full bg-c-bg text-c-on-bg 
@@ -30,6 +30,6 @@ export default function RootLayout({
           </div>
         </body>
       </html>
-    </ReactQueryProvider>
+    </RootLayoutProviders>
   );
 }
