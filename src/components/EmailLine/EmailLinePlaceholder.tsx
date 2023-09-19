@@ -14,8 +14,7 @@ export function EmailLinePlaceholder() {
           className={`flex flex-col flex-1 md:flex-row md:items-center md:justify-between px-4 py-3.5
           relative overflow-hidden md:rounded-xl z-0`}
         >
-          <div className="w-full md:w-60 flex items-center gap-2.5">
-            <NotificationDot isRead={true} hideWhenRead />
+          <div className="w-full md:w-60 flex items-center gap-2 md:gap-2.5">
             <div className="w-5 h-5 rounded-full bg-c-on-bg/40"></div>
             <div className="flex-1 flex justify-start">
               <p
@@ -34,7 +33,7 @@ export function EmailLinePlaceholder() {
             <span className="bg-c-on-bg/30 rounded-full text-transparent">
               {title}
             </span>
-            <span className="bg-transparent rounded-full text-transparent px-0.3ch">
+            <span className="bg-transparent rounded-full text-transparent px-0.5ch">
               {" "}
             </span>
             <span className="bg-c-on-bg/20 rounded-full text-transparent flex-1 overflow-hidden">
@@ -49,13 +48,13 @@ export function EmailLinePlaceholder() {
           {/* Mobile */}
           <p
             className="bg-c-on-bg/30 rounded-full text-transparent md:hidden w-full whitespace-nowrap 
-            overflow-hidden mt-1 text-base"
+            overflow-hidden mt-0.75 text-base"
           >
-            Loading
+            {title}
           </p>
           <p
             className="bg-c-on-bg/20 rounded-full text-transparent md:hidden w-full whitespace-nowrap 
-            overflow-hidden mt-1 text-base"
+            overflow-hidden mt-0.75 text-base"
           >
             {body}
           </p>
@@ -64,20 +63,3 @@ export function EmailLinePlaceholder() {
     </div>
   );
 }
-
-const NotificationDot = ({
-  isRead,
-  hideWhenRead = false,
-  className,
-}: {
-  isRead: boolean;
-  className?: string;
-  hideWhenRead?: boolean;
-}) => (
-  <div
-    className={`w-1.5 h-1.5 md:w-3px md:h-4.5 md:absolute md:left-0 md:top-1/2 transform md:-translate-y-1/2 
-    rounded-full flex-shrink-0 ${
-      isRead ? "bg-c-notification-blue/0 hidden" : "bg-c-notification-blue"
-    } ${className ?? ""}`}
-  />
-);

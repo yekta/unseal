@@ -36,14 +36,19 @@ export function EmailLine({
           md:rounded-xl z-0`}
         >
           <div className="w-full md:w-60 flex items-center gap-2 md:gap-2.5">
-            <NotificationDot isRead={isRead} />
+            <div
+              className={`w-2 h-2 md:absolute md:-left-4 md:top-1/2 transform md:-translate-y-1/2 
+              rounded-full flex-shrink-0 ${
+                isRead ? "bg-c-notification/0 hidden" : "bg-c-notification"
+              }`}
+            />
             <EmailIcon
               type={account.iconType}
               color={account.iconColor}
             ></EmailIcon>
             <p
               className={`flex-1 whitespace-nowrap overflow-hidden overflow-ellipsis text-base
-              text-c-on-bg`}
+              text-c-on-bg font-medium`}
             >
               {sender}
             </p>
@@ -53,47 +58,31 @@ export function EmailLine({
               {getRelativeDate(date)}
             </p>
           </div>
-          {/* Desktop */}
-          <p className="hidden md:block whitespace-nowrap flex-1 overflow-hidden overflow-ellipsis text-c-on-bg/60 text-base">
-            <span className={`text-c-on-bg`}>{title}</span>
-            <span className={`text-c-on-bg/30 px-0.3ch`}> | </span>
-            <span className={`text-c-on-bg/60`}>{body}</span>
+          <p className="mt-0.5 md:mt-0 leading-relaxed md:leading-normal md:whitespace-nowrap flex-1 overflow-hidden overflow-ellipsis text-c-on-bg/60 text-base">
+            <span
+              className={`text-c-on-bg whitespace-nowrap overflow-hidden overflow-ellipsis`}
+            >
+              {title}
+            </span>
+            <br className="md:hidden" />
+            <span
+              className={`text-c-on-bg/30 px-0.75ch hidden md:inline-block`}
+            >
+              |
+            </span>
+            <span
+              className={`text-c-on-bg/60 whitespace-nowrap overflow-hidden overflow-ellipsis`}
+            >
+              {body}
+            </span>
           </p>
           <p
             className={`hidden md:block w-18 text-right text-base text-c-on-bg/60`}
           >
             {getRelativeDate(date)}
           </p>
-          {/* Mobile */}
-          <p
-            className={`md:hidden w-full whitespace-nowrap overflow-hidden overflow-ellipsis mt-1 text-base
-            text-c-on-bg`}
-          >
-            {title}
-          </p>
-          <p
-            className={`md:hidden w-full whitespace-nowrap overflow-hidden overflow-ellipsis mt-1 text-base
-            text-c-on-bg/60`}
-          >
-            {body}
-          </p>
         </div>
       </div>
     </Link>
   );
 }
-
-const NotificationDot = ({
-  isRead,
-  className,
-}: {
-  isRead: boolean;
-  className?: string;
-}) => (
-  <div
-    className={`w-2 h-2 md:absolute md:-left-4 md:top-1/2 transform md:-translate-y-1/2 
-    rounded-full flex-shrink-0 ${
-      isRead ? "bg-c-notification/0 hidden" : "bg-c-notification"
-    } ${className ?? ""}`}
-  />
-);

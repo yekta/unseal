@@ -59,6 +59,8 @@ const config: Config = {
         "0.3ch": "0.3ch",
         "0.4ch": "0.4ch",
         "0.5ch": "0.5ch",
+        "0.75ch": "0.75ch",
+        "1ch": "1ch",
         "2px": "2px",
         "3px": "3px",
         "4px": "4px",
