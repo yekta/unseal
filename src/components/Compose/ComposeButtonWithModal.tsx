@@ -32,7 +32,7 @@ export default function ComposeButtonWithModal() {
             <div className="md:px-4 max-w-6xl w-full my-auto flex flex-col items-center">
               <Dialog.Content
                 className={`flex flex-col items-center bg-c-bg-secondary rounded-xl 
-                shadow-xl shadow-c-shadow/[var(--o-shadow-strongest)] w-full h-[calc((100vh-9rem)*0.95)] min-h-[25rem]
+                shadow-xl shadow-c-shadow/[var(--o-shadow-strong)] w-full h-[calc((100vh-9rem)*0.95)] min-h-[25rem]
                 transition transform ${
                   isOpen ? "translate-y-0" : "translate-y-8"
                 }`}

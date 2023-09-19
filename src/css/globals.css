@@ -25,9 +25,8 @@
   --c-macos-red: 255 105 97;
   --c-macos-orange: 255 179 64;
   --c-macos-green: 48 209 88;
-  --o-shadow-strong: 0.15;
-  --o-shadow-stronger: 0.25;
-  --o-shadow-strongest: 0.35;
+  --o-shadow-normal: 0.25;
+  --o-shadow-strong: 0.35;
   --o-primary-highlight: 0.125;
 }
 

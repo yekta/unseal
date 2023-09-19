@@ -25,7 +25,7 @@ export default function Sidebar() {
       <div
         className={`h-full pt-1.5 pb-24 transition ${
           isSidebarOpen
-            ? "translate-x-0 shadow-c-shadow/[var(--o-shadow-strongest)]"
+            ? "translate-x-0 shadow-c-shadow/[var(--o-shadow-strong)]"
             : "-translate-x-full shadow-c-shadow/0"
         }
         w-64 overflow-auto border-r-2 bg-c-bg border-c-bg-secondary flex flex-col absolute 
