@@ -37,9 +37,9 @@ export function EmailLine({
         >
           <div className="w-full md:w-60 flex items-center gap-2 md:gap-2.5">
             <div
-              className={`w-2 h-2 md:absolute md:-left-4 md:top-1/2 transform md:-translate-y-1/2 
-              rounded-full flex-shrink-0 ${
-                isRead ? "bg-c-notification/0 hidden" : "bg-c-notification"
+              className={`w-2 h-2 md:absolute md:-left-4.5
+              rounded-full flex-shrink-0 bg-c-notification ${
+                isRead && "hidden"
               }`}
             />
             <EmailIcon
