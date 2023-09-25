@@ -26,13 +26,9 @@ const config: Config = {
         "c-bg": "rgb(var(--c-bg)/<alpha-value>)",
         "c-bg-secondary": "rgb(var(--c-bg-secondary)/<alpha-value>)",
         "c-bg-tertiary": "rgb(var(--c-bg-tertiary)/<alpha-value>)",
-        "c-bg-quaternary": "rgb(var(--c-bg-quaternary)/<alpha-value>)",
-        "c-bg-quinary": "rgb(var(--c-bg-quinary)/<alpha-value>)",
         "c-bg-highlight": "rgb(var(--c-bg-highlight)/<alpha-value>)",
         "c-bg-highlight-secondary":
           "rgb(var(--c-bg-highlight-secondary)/<alpha-value>)",
-        "c-bg-highlight-tertiary":
-          "rgb(var(--c-bg-highlight-tertiary)/<alpha-value>)",
         "c-bg-unread": "rgb(var(--c-bg-unread)/<alpha-value>)",
         "c-on-bg": "rgb(var(--c-on-bg)/<alpha-value>)",
         "c-primary": "rgb(var(--c-primary)/<alpha-value>)",
@@ -50,6 +46,7 @@ const config: Config = {
         "c-macos-green": "rgb(var(--c-macos-green)/<alpha-value>)",
       },
       opacity: {
+        8: "0.08",
         15: "0.15",
         55: "0.55",
         85: "0.85",

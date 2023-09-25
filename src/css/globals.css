@@ -2,19 +2,16 @@
 @tailwind components;
 
 :root {
-  --c-bg: 16 16 22;
-  --c-bg-secondary: 24 24 32;
-  --c-bg-tertiary: 32 32 44;
-  --c-bg-quaternary: 40 40 52;
-  --c-bg-quinary: 58 58 74;
-  --c-bg-highlight: 26 26 36;
-  --c-bg-highlight-secondary: 30 30 42;
-  --c-bg-highlight-tertiary: 34 34 48;
+  --c-bg: 20 20 30;
+  --c-bg-secondary: 26 26 38;
+  --c-bg-tertiary: 36 36 52;
+  --c-bg-highlight: 30 30 44;
+  --c-bg-highlight-secondary: 34 34 50;
   --c-bg-unread: 16 16 30;
   --c-primary: 144 181 255;
   --c-barrier: 16 16 22;
   --c-shadow: 0 0 6;
-  --c-on-bg: 220 220 230;
+  --c-on-bg: 215 215 235;
   --c-icon-red: 255 157 157;
   --c-icon-lime: 190 219 142;
   --c-icon-blue: 161 199 255;

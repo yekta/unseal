@@ -78,8 +78,8 @@ function LinkLine({
     >
       <div
         className={`w-full flex flex-row items-center px-3 py-2.5 rounded-lg 
-          group-hover/link:bg-c-bg-highlight-tertiary gap-2 ${
-            isActive ? "bg-c-bg-highlight-secondary" : ""
+          group-hover/link:bg-c-bg-highlight-secondary gap-2 ${
+            isActive ? "bg-c-bg-highlight" : ""
           }`}
       >
         <EmailIcon

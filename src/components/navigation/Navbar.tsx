@@ -101,7 +101,7 @@ export default function Navbar() {
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           className="py-1.5 px-0.75 flex cursor-default group"
         >
-          <div className="p-1 flex items-center justify-center rounded-lg group-hover:bg-c-bg-highlight-tertiary ">
+          <div className="p-1 flex items-center justify-center rounded-lg group-hover:bg-c-bg-highlight-secondary">
             <Bars4Icon
               className={`text-c-on-bg w-8 h-8 transform transition ${
                 isSidebarOpen ? "rotate-90" : ""
@@ -154,8 +154,8 @@ export default function Navbar() {
                       }}
                       className={`absolute bottom-0 left-0 h-full -z-10 pointer-events-none ${
                         navbarItemAreaHovered
-                          ? "bg-c-bg-highlight-tertiary"
-                          : "bg-c-bg-highlight-secondary"
+                          ? "bg-c-bg-highlight-secondary"
+                          : "bg-c-bg-highlight"
                       }`}
                       initial={false}
                       layoutId="navbar-highlight"
