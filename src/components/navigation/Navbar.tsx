@@ -109,7 +109,6 @@ export default function Navbar() {
             />
           </div>
         </button>
-        <ComposeButtonWithModal />
       </div>
       <div data-tauri-drag-region className="lg:flex-1 flex justify-center">
         <div
@@ -189,8 +188,10 @@ export default function Navbar() {
       </div>
       <div
         data-tauri-drag-region
-        className="hidden lg:flex w-64 items-center justify-end"
-      ></div>
+        className="flex flex-1 lg:flex-none w-64 items-center justify-end px-0.5"
+      >
+        <ComposeButtonWithModal />
+      </div>
     </nav>
   );
 }
