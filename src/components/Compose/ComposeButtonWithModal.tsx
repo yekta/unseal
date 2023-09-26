@@ -13,8 +13,8 @@ export default function ComposeButtonWithModal() {
           font-semibold cursor-default group py-1.5 px-0.75"
         >
           <div
-            className="flex items-center justify-center px-3 py-2 group-hover:bg-c-primary/15
-            bg-c-primary/10 rounded-lg gap-2"
+            className="flex items-center justify-center px-3 py-2 group-hover:bg-c-primary/12
+            bg-c-primary/8 rounded-lg gap-2"
           >
             <PencilIcon className="w-5 h-5 -ml-0.25" />
             <p>Compose</p>

@@ -107,7 +107,7 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
           >
             <div
               className="rounded-md px-2.5 py-1.5 flex items-center transition justify-center 
-              gap-1.5 group-hover:bg-c-primary/[var(--o-primary-highlight)]"
+              gap-1.5 group-hover:bg-c-primary/10"
             >
               <p
                 className="flex-shrink min-w-0 text-center whitespace-nowrap overflow-hidden overflow-ellipsis 
