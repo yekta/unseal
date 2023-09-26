@@ -4,7 +4,7 @@
 :root {
   --c-bg: 20 20 30;
   --c-bg-secondary: 26 26 38;
-  --c-bg-tertiary: 36 36 52;
+  --c-bg-tertiary: 38 38 54;
   --c-bg-highlight: 32 32 48;
   --c-bg-highlight-secondary: 35 35 53;
   --c-bg-unread: 28 28 42;
@@ -22,8 +22,8 @@
   --c-macos-red: 255 105 97;
   --c-macos-orange: 255 179 64;
   --c-macos-green: 48 209 88;
-  --o-shadow-normal: 0.25;
-  --o-shadow-strong: 0.35;
+  --o-shadow-normal: 0.2;
+  --o-shadow-strong: 0.3;
 }
 
 body {

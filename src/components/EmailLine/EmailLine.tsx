@@ -29,7 +29,7 @@ export function EmailLine({
     >
       <div className="w-full flex flex-row items-center md:py-px">
         <div
-          className={`w-full flex flex-col md:flex-row md:items-center md:justify-between px-4 py-3.5 md:py-4
+          className={`w-full flex flex-col md:flex-row md:items-center md:justify-between px-4 py-3.5
           group-hover:bg-c-bg-highlight relative ${
             !isRead ? "bg-c-bg-unread" : ""
           }
@@ -38,11 +38,10 @@ export function EmailLine({
           <div className="w-full md:w-60 flex items-center gap-2 md:gap-2.5">
             <div
               className={`w-2 h-2 md:absolute md:-left-4.5
-                rounded-full flex-shrink-0 relative ${isRead && "hidden"}`}
-            >
-              <div className="w-full h-full rounded-full bg-c-notification/60 blur absolute left-0 top-0"></div>
-              <div className={`w-full h-full rounded-full bg-c-notification`} />
-            </div>
+                rounded-full flex-shrink-0 relative bg-c-notification ${
+                  isRead && "hidden"
+                }`}
+            />
             <EmailIcon
               type={account.iconType}
               color={account.iconColor}
