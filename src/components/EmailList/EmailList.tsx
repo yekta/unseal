@@ -4,13 +4,15 @@ import { EmailLine } from "@components/EmailList/EmailLine/EmailLine";
 import { EmailLinePlaceholder } from "@components/EmailList/EmailLine/EmailLinePlaceholder";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useVirtualizer } from "@tanstack/react-virtual";
+import { breakpoints } from "@ts/constants/breakpoints";
 import { TEmail } from "@ts/email";
 import { getGroupLabelByDate } from "@ts/helpers/getGroupLabelByDate";
 import { TEmailView, getEmails } from "@ts/queries/getEmails";
-import { virtualizerScrollPositionsAtom } from "@ts/stores/virtualizerScrollPositions";
+import { virtualizerScrollInfosAtom } from "@ts/stores/virtualizerScrollInfos";
 import { useAtom } from "jotai";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef } from "react";
+import { useWindowSize } from "usehooks-ts";
 
 const placeholderEmails: TEmailPlaceholder[] = Array.from({
   length: 10,
@@ -58,24 +60,38 @@ export default function EmailList({
     }
     rows.push(email);
   }
-  const parentRef = useRef<HTMLDivElement>(null);
 
-  const estimatedSize = 54;
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const pathnameKey = `${pathname}?${searchParams.toString()}`;
+  const [virtualizerScrollInfos, setVirtualizerScrollInfos] = useAtom(
+    virtualizerScrollInfosAtom
+  );
+
+  const parentRef = useRef<HTMLDivElement>(null);
+  const loaderRowSize = 152;
+  const labelSize = 68;
+  const emailLineSize = 106;
+  const emailLineSizeMd = 54;
   const overscan = 20;
+  const { width: windowWidth } = useWindowSize();
   const rowVirtualizer = useVirtualizer({
     count: rows.length + 1,
     getScrollElement: () => parentRef.current,
-    estimateSize: () => estimatedSize,
+    estimateSize: (i) =>
+      i > rows.length - 1
+        ? loaderRowSize
+        : typeof rows[i] === "string"
+        ? labelSize
+        : window.innerWidth > breakpoints.md
+        ? emailLineSizeMd
+        : emailLineSize,
     overscan,
   });
 
   useEffect(() => {
     const [lastItem] = [...rowVirtualizer.getVirtualItems()].reverse();
-
-    if (!lastItem) {
-      return;
-    }
-
+    if (!lastItem) return;
     if (
       lastItem.index >= rows.length - 1 &&
       hasNextPage &&
@@ -91,23 +107,48 @@ export default function EmailList({
     rowVirtualizer.getVirtualItems(),
   ]);
 
-  const pathname = usePathname();
-  const [virtualizerScrollPositions, setVirtualizerScrollPositions] = useAtom(
-    virtualizerScrollPositionsAtom
-  );
+  useEffect(() => {
+    rowVirtualizer.measure();
+    const adjustedOffset = getVirtualizerAdjustedScrollOffset();
+    const offset = rowVirtualizer.scrollOffset;
+    if (adjustedOffset === undefined) return;
+    if (adjustedOffset === offset) return;
+    rowVirtualizer.scrollToOffset(adjustedOffset);
+  }, [windowWidth]);
 
   useEffect(() => {
-    const position = virtualizerScrollPositions[pathname];
-    if (position !== undefined) {
-      rowVirtualizer.scrollToOffset(position);
-    }
-    return () => {
-      setVirtualizerScrollPositions((prev) => ({
-        ...prev,
-        [pathname]: rowVirtualizer.scrollOffset,
-      }));
+    const { index, relativeOffset } = getVirtualizerScrollInfo();
+    setVirtualizerScrollInfos((prev) => ({
+      ...prev,
+      [pathnameKey]: {
+        index: index,
+        relativeOffset,
+        offset: rowVirtualizer.scrollOffset,
+      },
+    }));
+  }, [rowVirtualizer.scrollOffset]);
+
+  function getVirtualizerScrollInfo() {
+    const offset = rowVirtualizer.scrollOffset;
+    const item = rowVirtualizer.getVirtualItemForOffset(offset);
+    const relativeOffset = offset - item.start;
+    return {
+      index: item.index,
+      relativeOffset,
+      offset,
     };
-  }, []);
+  }
+
+  function getVirtualizerAdjustedScrollOffset() {
+    const scrollInfo = virtualizerScrollInfos[pathnameKey];
+    if (scrollInfo) {
+      return (
+        rowVirtualizer.getOffsetForIndex(scrollInfo.index, "start")[0] +
+        scrollInfo.relativeOffset
+      );
+    }
+    return undefined;
+  }
 
   return (
     <div
@@ -143,7 +184,6 @@ export default function EmailList({
             const emailOrLabel = rows[virtualRow.index];
             return (
               <div
-                ref={rowVirtualizer.measureElement}
                 key={virtualRow.index}
                 data-index={virtualRow.index}
                 style={{
