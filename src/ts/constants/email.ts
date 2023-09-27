@@ -1,4 +1,4 @@
-import type { TEmailLineProps } from "@components/EmailLine/EmailLine";
+import type { TEmailLineProps } from "@components/EmailList/EmailLine/EmailLine";
 
 export const emails: TEmailLineProps[] = [
   {

@@ -1,17 +1,20 @@
 "use client";
 
-import { EmailLine } from "@components/EmailLine/EmailLine";
-import { EmailLinePlaceholder } from "@components/EmailLine/EmailLinePlaceholder";
+import { EmailLine } from "@components/EmailList/EmailLine/EmailLine";
+import { EmailLinePlaceholder } from "@components/EmailList/EmailLine/EmailLinePlaceholder";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { TEmail } from "@ts/email";
 import { getGroupLabelByDate } from "@ts/helpers/getGroupLabelByDate";
 import { TEmailView, getEmails } from "@ts/queries/getEmails";
+import { virtualizerScrollPositionsAtom } from "@ts/stores/virtualizerScrollPositions";
+import { useAtom } from "jotai";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 
 const placeholderEmails: TEmailPlaceholder[] = Array.from({
   length: 10,
-}).map((i) => ({
+}).map((_) => ({
   isPlaceholder: true,
 }));
 const placeholders: (TEmailPlaceholder | string)[] = [
@@ -43,6 +46,7 @@ export default function EmailList({
   );
 
   const allEmails = data ? data.pages.flatMap((d) => d.emails) : [];
+
   let lastDateLabel: string | undefined = undefined;
   let rows: (TEmail | string)[] = [];
   for (let i = 0; i < allEmails.length; i++) {
@@ -87,10 +91,28 @@ export default function EmailList({
     rowVirtualizer.getVirtualItems(),
   ]);
 
+  const pathname = usePathname();
+  const [virtualizerScrollPositions, setVirtualizerScrollPositions] = useAtom(
+    virtualizerScrollPositionsAtom
+  );
+
+  useEffect(() => {
+    const position = virtualizerScrollPositions[pathname];
+    if (position !== undefined) {
+      rowVirtualizer.scrollToOffset(position);
+    }
+    return () => {
+      setVirtualizerScrollPositions((prev) => ({
+        ...prev,
+        [pathname]: rowVirtualizer.scrollOffset,
+      }));
+    };
+  }, []);
+
   return (
     <div
       ref={parentRef}
-      className="w-full flex-1 flex justify-center pb-24 overflow-auto"
+      className="w-full flex-1 flex justify-center overflow-auto"
     >
       {isInitialLoading && (
         <div className="w-full max-w-6xl flex flex-col md:px-12 animate-pulse-placeholder">
@@ -140,21 +162,21 @@ export default function EmailList({
                     rowVirtualizer.getVirtualItems().length === 1
                   ) {
                     return (
-                      <div className="w-full flex items-center justify-center px-4 py-8 text-c-on-bg/60">
+                      <div className="w-full flex items-center justify-center px-4 pt-8 pb-24 text-c-on-bg/60">
                         No matching emails.
                       </div>
                     );
                   }
                   if (isLoaderRow && !hasNextPage) {
                     return (
-                      <div className="w-full flex items-center justify-center px-4 py-8 text-c-on-bg/60">
+                      <div className="w-full flex items-center justify-center px-4 pt-8 pb-24 text-c-on-bg/60">
                         You've reached the end!
                       </div>
                     );
                   }
                   if (isLoaderRow) {
                     return (
-                      <div className="w-full flex items-center justify-center px-4 py-8 text-c-on-bg/60">
+                      <div className="w-full flex items-center justify-center px-4 pt-8 pb-24 text-c-on-bg/60">
                         Loading more...
                       </div>
                     );

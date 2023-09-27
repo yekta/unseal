@@ -9,7 +9,7 @@ import ComposeButtonWithModal from "@components/Compose/ComposeButtonWithModal";
 import { getPathnameWithAccount } from "@ts/helpers/getPathnameWithAccount";
 import { getAccountIdFromPathname } from "@ts/helpers/getAccountIdFromPathname";
 import { TIconColor, TIconType } from "@ts/email";
-import EmailIcon from "@components/EmailLine/EmailIcon";
+import EmailIcon from "@components/EmailList/EmailLine/EmailIcon";
 import { useAtom } from "jotai";
 import { isSidebarOpenAtom } from "@ts/stores/navigation";
 import { Bars4Icon } from "@heroicons/react/24/outline";

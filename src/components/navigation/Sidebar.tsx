@@ -1,6 +1,6 @@
 "use client";
 
-import EmailIcon from "@components/EmailLine/EmailIcon";
+import EmailIcon from "@components/EmailList/EmailLine/EmailIcon";
 import { TIconColor, TIconType, accounts } from "@ts/email";
 import { useClickOutside } from "@ts/hooks/useClickOutside";
 import { isSidebarOpenAtom } from "@ts/stores/navigation";
