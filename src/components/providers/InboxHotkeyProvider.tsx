@@ -46,5 +46,5 @@ export default function HotkeyProvider({
       )}?from=${encodeURIComponent(from)}`
     );
   });
-  return <>{children}</>;
+  return children;
 }
