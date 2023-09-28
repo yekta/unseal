@@ -11,7 +11,7 @@ export default function CommandPaletteModal() {
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useAtom(
     isCommandPaletteOpenAtom
   );
-  useHotkeys(["meta+k"], () => setIsCommandPaletteOpen(!isCommandPaletteOpen), {
+  useHotkeys(["mod+k"], () => setIsCommandPaletteOpen(!isCommandPaletteOpen), {
     enableOnFormTags: true,
   });
   return (
