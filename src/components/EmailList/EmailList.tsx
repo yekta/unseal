@@ -3,18 +3,16 @@
 import { EmailLine } from "@components/EmailList/EmailLine/EmailLine";
 import { EmailLinePlaceholder } from "@components/EmailList/EmailLine/EmailLinePlaceholder";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { useVirtualizer } from "@tanstack/react-virtual";
 import { breakpoints } from "@ts/constants/breakpoints";
 import { TEmail } from "@ts/email";
 import { getGroupLabelByDate } from "@ts/helpers/getGroupLabelByDate";
 import {
   useSmartVirtualizer,
-  virtualizerScrollInfos,
+  virtualizerScrollInfoCache,
 } from "@ts/hooks/useSmartVirtualizer";
 import { TEmailView, getEmails } from "@ts/queries/getEmails";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef } from "react";
-import { useWindowSize } from "usehooks-ts";
 
 interface TEmailPlaceholder {
   isPlaceholder: true;
@@ -75,8 +73,8 @@ export default function EmailList({
   const overscan = 20;
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const pathKey = pathname + searchParams.toString();
-  const rowVirtualizer = useVirtualizer({
+  const virtualizerKey = ["email-list", pathname, searchParams.toString()];
+  const rowVirtualizer = useSmartVirtualizer(virtualizerKey, {
     count: rows.length + 1,
     getScrollElement: () => parentRef.current,
     estimateSize: (i) => {
@@ -88,10 +86,10 @@ export default function EmailList({
         ? emailLineSizeMd
         : emailLineSize;
     },
-    initialOffset: virtualizerScrollInfos.get(pathKey)?.offset,
+    initialOffset: virtualizerScrollInfoCache.get(virtualizerKey.toString())
+      ?.offset,
     overscan,
   });
-  useSmartVirtualizer(rowVirtualizer);
 
   useEffect(() => {
     const [lastItem] = [...rowVirtualizer.getVirtualItems()].reverse();
