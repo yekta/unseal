@@ -7,8 +7,8 @@ import {
   Cog6ToothIcon as CogIcon,
 } from "@heroicons/react/24/outline";
 import IconPenOnPaper from "@components/icons/IconPenOnPaper";
-import { useRouter } from "next/navigation";
-import { useSetAtom } from "jotai";
+import { usePathname, useRouter } from "next/navigation";
+import { useAtom, useSetAtom } from "jotai";
 import { isComposeOpenAtom } from "@components/Compose/composeSettings";
 import { isCommandPaletteOpenAtom } from "@components/CommandPalette/commandPaletteSettings";
 
@@ -17,10 +17,12 @@ interface TCommand {
   description: string;
   Icon: React.ComponentType<any>;
   onClick: () => void;
+  shouldFilterOut?: () => boolean;
 }
 export default function CommandPalette() {
   const router = useRouter();
-  const setIsComposeOpen = useSetAtom(isComposeOpenAtom);
+  const pathname = usePathname();
+  const [isComposeOpen, setIsComposeOpen] = useAtom(isComposeOpenAtom);
   const setIsCommandPaletteOpen = useSetAtom(isCommandPaletteOpenAtom);
   const [searchQuery, setSearchQuery] = React.useState("");
 
@@ -30,6 +32,7 @@ export default function CommandPalette() {
       description: "Create a new email",
       Icon: IconPenOnPaper,
       onClick: () => setIsComposeOpen(true),
+      shouldFilterOut: () => isComposeOpen,
     },
     {
       title: "Search Emails",
@@ -42,37 +45,44 @@ export default function CommandPalette() {
       description: "Go to all inboxes",
       Icon: InboxIcon,
       onClick: () => router.push("/"),
+      shouldFilterOut: () => pathname === "/",
     },
     {
       title: "Go to Unread",
       description: "Go to your unread emails",
       Icon: EnvelopeIcon,
       onClick: () => router.push("/view/unread"),
+      shouldFilterOut: () => pathname === "/view/unread",
     },
     {
       title: "Go to Favorites",
       description: "Go to your favorite emails",
       Icon: StarIcon,
       onClick: () => router.push("/view/favorites"),
+      shouldFilterOut: () => pathname === "/view/favorites",
     },
     {
       title: "Settings",
       description: "Go to your settings",
       Icon: CogIcon,
       onClick: () => router.push("/settings"),
+      shouldFilterOut: () => pathname === "/settings",
     },
   ];
 
   const filteredCommands = React.useMemo(
     () =>
-      commands.filter((command) =>
-        command.title.toLowerCase().includes(searchQuery.toLowerCase())
-      ),
+      commands
+        .filter((c) => c.shouldFilterOut === undefined || !c.shouldFilterOut())
+        .filter((c) =>
+          c.title.toLowerCase().includes(searchQuery.toLowerCase())
+        ),
     [searchQuery]
   );
 
   const executeCommand = (command: TCommand) => {
     command.onClick();
+    if (isComposeOpen) setIsComposeOpen(false);
     setIsCommandPaletteOpen(false);
   };
   return (
@@ -106,11 +116,11 @@ export default function CommandPalette() {
                   className="text-left w-full flex px-1.5 py-px group cursor-default"
                 >
                   <div
-                    className={`w-full flex items-center justify-start px-4 py-3 rounded-lg 
+                    className={`w-full flex items-center justify-start px-4 py-3 rounded-lg group-focus:text-c-on-bg group-hover:text-c-on-bg 
                   ${
                     i === 0
                       ? "bg-c-on-bg/8 text-c-on-bg group-hover:bg-c-on-bg/12 group-focus:bg-c-on-bg/12"
-                      : "text-c-on-bg/75 group-focus:text-c-on-bg group-hover:text-c-on-bg group-hover:bg-c-on-bg/6 group-focus:bg-c-on-bg/6"
+                      : "text-c-on-bg/75 group-hover:bg-c-on-bg/6 group-focus:bg-c-on-bg/6"
                   }`}
                   >
                     <command.Icon className="w-5 h-5 flex-shrink-0" />
