@@ -1,8 +1,8 @@
 import Compose from "@components/Compose/Compose";
-import React, { useState } from "react";
+import React from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import IconPenOnPaper from "@components/icons/IconPenOnPaper";
-import { isComposeOpenAtom } from "@ts/stores/compose";
+import { isComposeOpenAtom } from "@components/Compose/composeSettings";
 import { useAtom } from "jotai";
 
 export default function ComposeButtonWithModal() {

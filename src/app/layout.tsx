@@ -1,3 +1,4 @@
+import CommandPanelModal from "@components/CommandPanel/CommandPanelModal";
 import Navbar from "@components/navigation/Navbar";
 import Sidebar from "@components/navigation/Sidebar";
 import RootLayoutProviders from "@components/providers/RootLayoutProviders";
@@ -19,7 +20,7 @@ export default function RootLayout({
       <html lang="en">
         <body
           className={`w-full bg-c-bg text-c-on-bg 
-        flex flex-col justify-start h-screen overflow-hidden z-0 relative`}
+          flex flex-col justify-start h-screen overflow-hidden z-0 relative`}
         >
           <Navbar />
           <div className="w-full flex-1 flex flex-col overflow-hidden relative">
@@ -29,6 +30,7 @@ export default function RootLayout({
             </main>
           </div>
         </body>
+        <CommandPanelModal />
       </html>
     </RootLayoutProviders>
   );

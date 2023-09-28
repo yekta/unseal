@@ -26,6 +26,7 @@ const config: Config = {
         "c-bg": "rgb(var(--c-bg)/<alpha-value>)",
         "c-bg-secondary": "rgb(var(--c-bg-secondary)/<alpha-value>)",
         "c-bg-tertiary": "rgb(var(--c-bg-tertiary)/<alpha-value>)",
+        "c-bg-command-panel": "rgb(var(--c-bg-command-panel)/<alpha-value>)",
         "c-bg-highlight": "rgb(var(--c-bg-highlight)/<alpha-value>)",
         "c-bg-highlight-secondary":
           "rgb(var(--c-bg-highlight-secondary)/<alpha-value>)",
@@ -52,6 +53,9 @@ const config: Config = {
         55: "0.55",
         85: "0.85",
       },
+      boxShadow: {
+        "3xl": "0 18px 36px -12px, 0 36px 72px -18px",
+      },
       spacing: {
         "0.25ch": "0.25ch",
         "0.3ch": "0.3ch",
@@ -67,7 +71,9 @@ const config: Config = {
         1.75: "0.4375rem",
         4.25: "1.0625rem",
         4.5: "1.125rem",
+        13: "3.25rem",
         18: "4.5rem",
+        22: "5.5rem",
       },
       animation: {
         "pulse-placeholder": "pulse-placeholder 1s ease-in-out infinite",

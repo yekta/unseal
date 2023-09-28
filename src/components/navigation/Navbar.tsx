@@ -11,7 +11,7 @@ import { getAccountIdFromPathname } from "@ts/helpers/getAccountIdFromPathname";
 import { TIconColor, TIconType } from "@ts/email";
 import EmailIcon from "@components/EmailList/EmailLine/EmailIcon";
 import { useAtom } from "jotai";
-import { isSidebarOpenAtom } from "@ts/stores/navigation";
+import { isSidebarOpenAtom } from "@components/navigation/navigation";
 import { Bars4Icon } from "@heroicons/react/24/outline";
 
 export default function Navbar() {
