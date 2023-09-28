@@ -47,9 +47,11 @@ const config: Config = {
         "c-macos-green": "rgb(var(--c-macos-green)/<alpha-value>)",
       },
       opacity: {
+        6: "0.06",
         8: "0.08",
         12: "0.12",
         15: "0.15",
+        16: "0.16",
         55: "0.55",
         85: "0.85",
       },

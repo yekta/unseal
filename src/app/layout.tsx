@@ -1,4 +1,4 @@
-import CommandPanelModal from "@components/CommandPanel/CommandPanelModal";
+import CommandPaletteModal from "@components/CommandPalette/CommandPaletteModal";
 import Navbar from "@components/navigation/Navbar";
 import Sidebar from "@components/navigation/Sidebar";
 import RootLayoutProviders from "@components/providers/RootLayoutProviders";
@@ -30,7 +30,7 @@ export default function RootLayout({
             </main>
           </div>
         </body>
-        <CommandPanelModal />
+        <CommandPaletteModal />
       </html>
     </RootLayoutProviders>
   );
