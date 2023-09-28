@@ -1,5 +1,6 @@
 "use client";
 
+import GeneralHotkeyProvider from "@components/providers/GeneralHotkeyProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
@@ -10,6 +11,8 @@ export default function RootLayoutProviders({
   children: React.ReactNode;
 }) {
   return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      <GeneralHotkeyProvider>{children}</GeneralHotkeyProvider>
+    </QueryClientProvider>
   );
 }

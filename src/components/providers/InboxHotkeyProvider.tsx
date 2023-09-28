@@ -6,6 +6,7 @@ import { getPathnameWithAccount } from "@ts/helpers/getPathnameWithAccount";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import { useHotkeys } from "react-hotkeys-hook";
+import { Key } from "ts-key-enum";
 
 export default function HotkeyProvider({
   children,
@@ -21,8 +22,8 @@ export default function HotkeyProvider({
   const router = useRouter();
   const pathname = usePathname();
   const accountId = getAccountIdFromPathname(pathname);
-  useHotkeys("esc", () => router.push(from));
-  useHotkeys(["arrowLeft", "arrowUp"], () => {
+  useHotkeys(Key.Escape, () => router.push(from));
+  useHotkeys([Key.ArrowLeft, Key.ArrowUp], () => {
     if (!email) return;
     const index = emails.indexOf(email);
     if (index <= 0) return;
@@ -34,7 +35,7 @@ export default function HotkeyProvider({
       )}?from=${encodeURIComponent(from)}`
     );
   });
-  useHotkeys(["arrowRight", "arrowDown"], () => {
+  useHotkeys([Key.ArrowRight, Key.ArrowDown], () => {
     if (!email) return;
     const index = emails.indexOf(email);
     if (index >= emails.length - 1) return;
