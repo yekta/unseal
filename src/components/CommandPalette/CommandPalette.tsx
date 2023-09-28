@@ -70,15 +70,9 @@ export default function CommandPalette() {
     },
   ];
 
-  const filteredCommands = React.useMemo(
-    () =>
-      commands
-        .filter((c) => c.shouldFilterOut === undefined || !c.shouldFilterOut())
-        .filter((c) =>
-          c.title.toLowerCase().includes(searchQuery.toLowerCase())
-        ),
-    [searchQuery]
-  );
+  const filteredCommands = commands
+    .filter((c) => c.shouldFilterOut === undefined || !c.shouldFilterOut())
+    .filter((c) => c.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
   const executeCommand = (command: TCommand) => {
     command.onClick();
@@ -90,6 +84,8 @@ export default function CommandPalette() {
       <div className="w-full relative">
         <form onSubmit={() => executeCommand(filteredCommands[0])}>
           <input
+            autoComplete="off"
+            autoCorrect="off"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full font-medium px-5 text-lg py-3.5 bg-transparent text-c-on-bg 
