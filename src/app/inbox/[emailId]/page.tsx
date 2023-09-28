@@ -1,9 +1,7 @@
 "use client";
 
 import EmailPage from "@components/EmailPage/EmailPage";
-import InboxHotkeyProvider from "@components/providers/InboxHotkeyProvider";
 import { TEmail, emails, favoritedEmails, unreadEmails } from "@ts/email";
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 export default function Page({ params }: { params: { emailId: string } }) {

@@ -1,10 +1,11 @@
 import Link from "next/link";
 import EmailIcon from "./EmailIcon";
 import { getRelativeDate } from "@ts/helpers/getRelativeDate";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { TEmail } from "@ts/email";
 import { getAccountIdFromPathname } from "@ts/helpers/getAccountIdFromPathname";
 import { getPathnameWithAccount } from "@ts/helpers/getPathnameWithAccount";
+import { getSearchParamsStr } from "@ts/helpers/getSearchParamsStr";
 
 export function EmailLine({
   id,
@@ -16,11 +17,13 @@ export function EmailLine({
   account,
 }: TEmail) {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const searchParamsStr = getSearchParamsStr(searchParams);
   const accountId = getAccountIdFromPathname(pathname);
   const href = `${getPathnameWithAccount(
     `/inbox/${id}`,
     accountId
-  )}?from=${encodeURIComponent(pathname)}`;
+  )}?from=${encodeURIComponent(pathname + searchParamsStr)}`;
   return (
     <Link
       href={href}
