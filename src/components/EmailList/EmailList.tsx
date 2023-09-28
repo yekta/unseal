@@ -8,7 +8,7 @@ import { TEmail } from "@ts/email";
 import { getGroupLabelByDate } from "@ts/helpers/getGroupLabelByDate";
 import {
   useSmartVirtualizer,
-  virtualizerScrollInfoCache,
+  virtualizerStateCache,
 } from "@ts/hooks/useSmartVirtualizer";
 import { TEmailView, getEmails } from "@ts/queries/getEmails";
 import { usePathname, useSearchParams } from "next/navigation";
@@ -86,8 +86,7 @@ export default function EmailList({
         ? emailLineSizeMd
         : emailLineSize;
     },
-    initialOffset: virtualizerScrollInfoCache.get(virtualizerKey.toString())
-      ?.offset,
+    initialOffset: virtualizerStateCache.get(virtualizerKey.toString())?.offset,
     overscan,
   });
 
