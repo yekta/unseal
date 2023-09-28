@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   EnvelopeIcon,
   MagnifyingGlassIcon,
@@ -24,7 +24,7 @@ export default function CommandPalette() {
   const pathname = usePathname();
   const [isComposeOpen, setIsComposeOpen] = useAtom(isComposeOpenAtom);
   const setIsCommandPaletteOpen = useSetAtom(isCommandPaletteOpenAtom);
-  const [searchQuery, setSearchQuery] = React.useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const commands: TCommand[] = [
     {
@@ -81,25 +81,32 @@ export default function CommandPalette() {
   };
   return (
     <div className="w-full flex-1 flex flex-col items-start justify-start text-c-on-bg/50 overflow-hidden">
-      <div className="w-full relative">
-        <form onSubmit={() => executeCommand(filteredCommands[0])}>
-          <input
-            autoComplete="off"
-            autoCorrect="off"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full font-medium px-5 text-lg py-3.5 bg-transparent text-c-on-bg 
+      <form
+        className="w-full"
+        onSubmit={() => executeCommand(filteredCommands[0])}
+      >
+        <input
+          autoComplete="off"
+          autoCorrect="off"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full font-medium px-5 text-lg py-3.5 bg-transparent text-c-on-bg 
             placeholder:text-c-on-bg/50 placeholder:font-normal overflow-ellipsis"
-            placeholder="Search commands..."
-          />
-        </form>
-      </div>
-      <ul className="w-full flex flex-col overflow-auto pb-12">
+          placeholder="Search commands..."
+        />
+      </form>
+      <div className="w-full h-2px bg-c-on-bg/6" />
+      <ul className="w-full flex flex-col overflow-auto group/command-list">
         {filteredCommands.length < 1 && (
-          <li className="w-full text-left px-1.5 py-px">
+          <li className={`w-full text-left px-1.5 py-px pt-1.5`}>
             <div className="w-full flex items-center justify-start px-4 py-3">
               <MagnifyingGlassIcon className="w-5 h-5 flex-shrink-0" />
-              <p className="px-3 text-c-on-bg/50">No results found</p>
+              <p
+                className="px-3 text-c-on-bg/50 flex-shrink min-w-0 overflow-hidden 
+                overflow-ellipsis whitespace-nowrap"
+              >
+                No results
+              </p>
             </div>
           </li>
         )}
@@ -108,21 +115,30 @@ export default function CommandPalette() {
             return (
               <li key={command.title} className="w-full">
                 <button
+                  tabIndex={-1}
                   onClick={() => executeCommand(command)}
-                  className="text-left w-full flex px-1.5 py-px group cursor-default"
+                  className={`text-left w-full flex px-1.5 py-px group/button cursor-default ${
+                    i === 0 && "pt-1.5"
+                  }`}
                 >
                   <div
-                    className={`w-full flex items-center justify-start px-4 py-3 rounded-lg group-focus:text-c-on-bg group-hover:text-c-on-bg 
-                  ${
-                    i === 0
-                      ? "bg-c-on-bg/10 text-c-on-bg group-hover:bg-c-on-bg/15 group-focus:bg-c-on-bg/15"
-                      : "text-c-on-bg/75 group-hover:bg-c-on-bg/6 group-focus:bg-c-on-bg/6"
-                  }`}
+                    className={`w-full rounded-lg ${
+                      i === 0
+                        ? "bg-c-on-bg/8 text-c-on-bg group-hover/command-list:bg-transparent group-hover/command-list:text-c-on-bg/75 group-focus-within/command-list:text-c-on-bg/75"
+                        : "text-c-on-bg/75"
+                    }`}
                   >
-                    <command.Icon className="w-5 h-5 flex-shrink-0" />
-                    <p className="px-3 flex-shrink min-w-0 overflow-hidden overflow-ellipsis">
-                      {command.title}
-                    </p>
+                    <div
+                      className={`w-full flex items-center justify-start px-4 py-3 rounded-lg 
+                      group-hover/button:text-c-on-bg group-focus/button:text-c-on-bg
+                      group-hover/button:bg-c-on-bg/8 group-focus/button:bg-c-on-bg/8
+                  `}
+                    >
+                      <command.Icon className="w-5 h-5 flex-shrink-0" />
+                      <p className="px-3 flex-shrink min-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">
+                        {command.title}
+                      </p>
+                    </div>
                   </div>
                 </button>
               </li>

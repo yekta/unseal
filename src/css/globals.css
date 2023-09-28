@@ -6,7 +6,7 @@
   --c-bg-unread: 28 28 42;
   --c-bg-secondary: 26 26 38;
   --c-bg-tertiary: 38 38 54;
-  --c-bg-command-palettel: 46 46 64;
+  --c-bg-command-palette: 42 42 60;
   --c-bg-highlight: 32 32 48;
   --c-bg-highlight-secondary: 35 35 53;
   --c-primary: 144 181 255;
@@ -25,7 +25,7 @@
   --c-macos-green: 48 209 88;
   --o-shadow-normal: 0.2;
   --o-shadow-strong: 0.3;
-  --o-shadow-command-palettel: 0.5;
+  --o-shadow-command-palette: 0.5;
 }
 
 body {
