@@ -7,9 +7,18 @@ import { useVirtualizer } from "@tanstack/react-virtual";
 import { breakpoints } from "@ts/constants/breakpoints";
 import { TEmail } from "@ts/email";
 import { getGroupLabelByDate } from "@ts/helpers/getGroupLabelByDate";
-import { useSmartVirtualizer } from "@ts/hooks/useSmartVirtualizer";
+import {
+  useSmartVirtualizer,
+  virtualizerScrollInfos,
+} from "@ts/hooks/useSmartVirtualizer";
 import { TEmailView, getEmails } from "@ts/queries/getEmails";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef } from "react";
+import { useWindowSize } from "usehooks-ts";
+
+interface TEmailPlaceholder {
+  isPlaceholder: true;
+}
 
 const placeholderEmails: TEmailPlaceholder[] = Array.from({
   length: 10,
@@ -64,17 +73,22 @@ export default function EmailList({
   const emailLineSize = 106;
   const emailLineSizeMd = 54;
   const overscan = 20;
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const pathKey = pathname + searchParams.toString();
   const rowVirtualizer = useVirtualizer({
     count: rows.length + 1,
     getScrollElement: () => parentRef.current,
-    estimateSize: (i) =>
-      i > rows.length - 1
+    estimateSize: (i) => {
+      return i > rows.length - 1
         ? loaderRowSize
         : typeof rows[i] === "string"
         ? labelSize
         : window.innerWidth >= breakpoints.md
         ? emailLineSizeMd
-        : emailLineSize,
+        : emailLineSize;
+    },
+    initialOffset: virtualizerScrollInfos.get(pathKey)?.offset,
     overscan,
   });
   useSmartVirtualizer(rowVirtualizer);
@@ -143,28 +157,15 @@ export default function EmailList({
                 className="md:px-12"
               >
                 {(() => {
-                  if (
-                    isLoaderRow &&
-                    !hasNextPage &&
-                    rowVirtualizer.getVirtualItems().length === 1
-                  ) {
-                    return (
-                      <div className="w-full flex items-center justify-center px-4 pt-8 pb-24 text-c-on-bg/60">
-                        No matching emails.
-                      </div>
-                    );
-                  }
-                  if (isLoaderRow && !hasNextPage) {
-                    return (
-                      <div className="w-full flex items-center justify-center px-4 pt-8 pb-24 text-c-on-bg/60">
-                        You've reached the end!
-                      </div>
-                    );
-                  }
                   if (isLoaderRow) {
                     return (
                       <div className="w-full flex items-center justify-center px-4 pt-8 pb-24 text-c-on-bg/60">
-                        Loading more...
+                        {!hasNextPage &&
+                        rowVirtualizer.getVirtualItems().length === 1
+                          ? "No matching emails."
+                          : !hasNextPage
+                          ? "You've reached the end"
+                          : "Loading..."}
                       </div>
                     );
                   }
@@ -188,8 +189,4 @@ export default function EmailList({
       )}
     </div>
   );
-}
-
-interface TEmailPlaceholder {
-  isPlaceholder: true;
 }

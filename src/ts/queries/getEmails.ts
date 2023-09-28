@@ -1,7 +1,7 @@
 import { TEmail, emails } from "@ts/email";
 
 const limit = 20;
-const maxOffset = 3;
+const maxOffset = 8;
 
 export type TEmailView = "all" | "unread" | "favorites";
 

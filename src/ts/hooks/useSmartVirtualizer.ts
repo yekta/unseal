@@ -4,9 +4,9 @@ import { useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Virtualizer } from "@tanstack/react-virtual";
 
-const virtualizerScrollInfos = new Map<
+export const virtualizerScrollInfos = new Map<
   string,
-  { itemIndex: number; itemProgress: number }
+  { itemIndex: number; itemProgress: number; offset?: number }
 >();
 
 export function useSmartVirtualizer(
@@ -26,21 +26,25 @@ export function useSmartVirtualizer(
     const scrollInfo = virtualizerScrollInfos.get(pathnameKey);
     if (!scrollInfo) return;
 
-    const offsetForIndex = virtualizer.getOffsetForIndex(
-      scrollInfo.itemIndex,
-      "start"
-    )[0];
-    const item = virtualizer.getVirtualItemForOffset(offsetForIndex);
-    const adjustedOffset =
-      offsetForIndex + Math.round(scrollInfo.itemProgress * item.size);
-    if (
-      adjustedOffset === undefined ||
-      adjustedOffset === virtualizer.scrollOffset
-    ) {
-      return;
-    }
+    const scrollIfNeeded = () => {
+      const offsetForIndex = virtualizer.getOffsetForIndex(
+        scrollInfo.itemIndex,
+        "start"
+      )[0];
+      const item = virtualizer.getVirtualItemForOffset(offsetForIndex);
+      const adjustedOffset =
+        offsetForIndex + Math.round(scrollInfo.itemProgress * item.size);
+      if (
+        adjustedOffset === undefined ||
+        adjustedOffset === virtualizer.scrollOffset
+      ) {
+        return;
+      }
 
-    virtualizer.scrollToOffset(adjustedOffset);
+      virtualizer.scrollToOffset(adjustedOffset);
+    };
+
+    setTimeout(() => scrollIfNeeded());
   }, [windowType]);
 
   useEffect(() => {
@@ -50,6 +54,7 @@ export function useSmartVirtualizer(
     virtualizerScrollInfos.set(pathnameKey, {
       itemIndex: item.index,
       itemProgress,
+      offset: scrollOffset,
     });
   }, [virtualizer.scrollOffset]);
 }
