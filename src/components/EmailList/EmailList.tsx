@@ -156,37 +156,53 @@ export default function EmailList({
                 }}
                 className="md:px-12"
               >
-                {(() => {
-                  if (isLoaderRow) {
-                    return (
-                      <div className="w-full flex items-center justify-center px-4 pt-8 pb-24 text-c-on-bg/60">
-                        {!hasNextPage &&
-                        rowVirtualizer.getVirtualItems().length === 1
-                          ? "No matching emails."
-                          : !hasNextPage
-                          ? "You've reached the end"
-                          : "Loading..."}
-                      </div>
-                    );
-                  }
-                  if (typeof emailOrLabel === "string") {
-                    return (
-                      <div className="w-full px-4 text-c-on-bg/60 pt-8 pb-3">
-                        {emailOrLabel}
-                      </div>
-                    );
-                  }
-                  return (
-                    <div className="w-full">
-                      <EmailLine {...emailOrLabel} />
-                    </div>
-                  );
-                })()}
+                <VirtualRow
+                  isLoaderRow={isLoaderRow}
+                  emailOrLabel={emailOrLabel}
+                  hasNextPage={hasNextPage}
+                  virtualItemsLength={rowVirtualizer.getVirtualItems().length}
+                />
               </div>
             );
           })}
         </div>
       )}
+    </div>
+  );
+}
+
+function VirtualRow({
+  isLoaderRow,
+  emailOrLabel,
+  hasNextPage,
+  virtualItemsLength,
+}: {
+  isLoaderRow: boolean;
+  emailOrLabel: TEmail | string;
+  hasNextPage: boolean | undefined;
+  virtualItemsLength: number;
+}) {
+  if (isLoaderRow) {
+    return (
+      <div className="w-full flex items-center justify-center px-4 pt-8 pb-24 text-c-on-bg/60">
+        {!hasNextPage && virtualItemsLength === 1
+          ? "No matching emails."
+          : !hasNextPage
+          ? "You've reached the end."
+          : "Loading..."}
+      </div>
+    );
+  }
+  if (typeof emailOrLabel === "string") {
+    return (
+      <div className="w-full px-4 text-c-on-bg/60 pt-8 pb-3">
+        {emailOrLabel}
+      </div>
+    );
+  }
+  return (
+    <div className="w-full">
+      <EmailLine {...emailOrLabel} />
     </div>
   );
 }
