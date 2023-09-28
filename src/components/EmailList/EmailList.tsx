@@ -7,12 +7,9 @@ import { useVirtualizer } from "@tanstack/react-virtual";
 import { breakpoints } from "@ts/constants/breakpoints";
 import { TEmail } from "@ts/email";
 import { getGroupLabelByDate } from "@ts/helpers/getGroupLabelByDate";
+import { useSmartVirtualizer } from "@ts/hooks/useSmartVirtualizer";
 import { TEmailView, getEmails } from "@ts/queries/getEmails";
-import { virtualizerScrollInfosAtom } from "@ts/stores/virtualizerScrollInfos";
-import { useAtom } from "jotai";
-import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef } from "react";
-import { useWindowSize } from "usehooks-ts";
 
 const placeholderEmails: TEmailPlaceholder[] = Array.from({
   length: 10,
@@ -61,20 +58,12 @@ export default function EmailList({
     rows.push(email);
   }
 
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const pathnameKey = `${pathname}?${searchParams.toString()}`;
-  const [virtualizerScrollInfos, setVirtualizerScrollInfos] = useAtom(
-    virtualizerScrollInfosAtom
-  );
-
   const parentRef = useRef<HTMLDivElement>(null);
   const loaderRowSize = 152;
   const labelSize = 68;
   const emailLineSize = 106;
   const emailLineSizeMd = 54;
   const overscan = 20;
-  const { width: windowWidth } = useWindowSize();
   const rowVirtualizer = useVirtualizer({
     count: rows.length + 1,
     getScrollElement: () => parentRef.current,
@@ -83,11 +72,12 @@ export default function EmailList({
         ? loaderRowSize
         : typeof rows[i] === "string"
         ? labelSize
-        : window.innerWidth > breakpoints.md
+        : window.innerWidth >= breakpoints.md
         ? emailLineSizeMd
         : emailLineSize,
     overscan,
   });
+  useSmartVirtualizer(rowVirtualizer);
 
   useEffect(() => {
     const [lastItem] = [...rowVirtualizer.getVirtualItems()].reverse();
@@ -106,49 +96,6 @@ export default function EmailList({
     isFetchingNextPage,
     rowVirtualizer.getVirtualItems(),
   ]);
-
-  useEffect(() => {
-    rowVirtualizer.measure();
-    const adjustedOffset = getVirtualizerAdjustedScrollOffset();
-    const offset = rowVirtualizer.scrollOffset;
-    if (adjustedOffset === undefined) return;
-    if (adjustedOffset === offset) return;
-    rowVirtualizer.scrollToOffset(adjustedOffset);
-  }, [windowWidth]);
-
-  useEffect(() => {
-    const { index, relativeOffset } = getVirtualizerScrollInfo();
-    setVirtualizerScrollInfos((prev) => ({
-      ...prev,
-      [pathnameKey]: {
-        index: index,
-        relativeOffset,
-        offset: rowVirtualizer.scrollOffset,
-      },
-    }));
-  }, [rowVirtualizer.scrollOffset]);
-
-  function getVirtualizerScrollInfo() {
-    const offset = rowVirtualizer.scrollOffset;
-    const item = rowVirtualizer.getVirtualItemForOffset(offset);
-    const relativeOffset = offset - item.start;
-    return {
-      index: item.index,
-      relativeOffset,
-      offset,
-    };
-  }
-
-  function getVirtualizerAdjustedScrollOffset() {
-    const scrollInfo = virtualizerScrollInfos[pathnameKey];
-    if (scrollInfo) {
-      return (
-        rowVirtualizer.getOffsetForIndex(scrollInfo.index, "start")[0] +
-        scrollInfo.relativeOffset
-      );
-    }
-    return undefined;
-  }
 
   return (
     <div
