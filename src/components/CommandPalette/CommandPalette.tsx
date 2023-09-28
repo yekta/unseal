@@ -3,6 +3,7 @@ import {
   EnvelopeIcon,
   MagnifyingGlassIcon,
   StarIcon,
+  InboxIcon,
   Cog6ToothIcon as CogIcon,
 } from "@heroicons/react/24/outline";
 import IconPenOnPaper from "@components/icons/IconPenOnPaper";
@@ -37,6 +38,12 @@ export default function CommandPalette() {
       onClick: () => null,
     },
     {
+      title: "Go to All Inboxes",
+      description: "Go to all inboxes",
+      Icon: InboxIcon,
+      onClick: () => router.push("/"),
+    },
+    {
       title: "Go to Unread",
       description: "Go to your unread emails",
       Icon: EnvelopeIcon,
@@ -52,7 +59,7 @@ export default function CommandPalette() {
       title: "Settings",
       description: "Go to your settings",
       Icon: CogIcon,
-      onClick: () => null,
+      onClick: () => router.push("/settings"),
     },
   ];
 

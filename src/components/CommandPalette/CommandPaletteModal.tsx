@@ -27,8 +27,8 @@ export default function CommandPaletteModal() {
           >
             <div className="max-w-2xl my-auto w-full flex flex-col items-center">
               <Dialog.Content
-                className={`flex flex-col items-center bg-c-bg-tertiary rounded-xl 
-                  shadow-3xl overflow-hidden z-0 shadow-c-shadow/[var(--o-shadow-command-panel)] w-full h-[calc((100vh-9rem)*0.6)] min-h-[18rem]`}
+                className={`flex flex-col items-center bg-c-bg-command-palettel rounded-xl 
+                  shadow-3xl overflow-hidden z-0 shadow-c-shadow/[var(--o-shadow-command-palettel)] w-full h-[calc((100vh-9rem)*0.6)] min-h-[18rem]`}
               >
                 <CommandPalette />
               </Dialog.Content>

@@ -26,7 +26,8 @@ const config: Config = {
         "c-bg": "rgb(var(--c-bg)/<alpha-value>)",
         "c-bg-secondary": "rgb(var(--c-bg-secondary)/<alpha-value>)",
         "c-bg-tertiary": "rgb(var(--c-bg-tertiary)/<alpha-value>)",
-        "c-bg-command-panel": "rgb(var(--c-bg-command-panel)/<alpha-value>)",
+        "c-bg-command-palettel":
+          "rgb(var(--c-bg-command-palettel)/<alpha-value>)",
         "c-bg-highlight": "rgb(var(--c-bg-highlight)/<alpha-value>)",
         "c-bg-highlight-secondary":
           "rgb(var(--c-bg-highlight-secondary)/<alpha-value>)",
