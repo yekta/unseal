@@ -115,7 +115,7 @@ export default function CommandPalette() {
                     className={`w-full flex items-center justify-start px-4 py-3 rounded-lg group-focus:text-c-on-bg group-hover:text-c-on-bg 
                   ${
                     i === 0
-                      ? "bg-c-on-bg/8 text-c-on-bg group-hover:bg-c-on-bg/12 group-focus:bg-c-on-bg/12"
+                      ? "bg-c-on-bg/10 text-c-on-bg group-hover:bg-c-on-bg/15 group-focus:bg-c-on-bg/15"
                       : "text-c-on-bg/75 group-hover:bg-c-on-bg/6 group-focus:bg-c-on-bg/6"
                   }`}
                   >

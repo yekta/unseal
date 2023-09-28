@@ -25,8 +25,7 @@
   --c-macos-green: 48 209 88;
   --o-shadow-normal: 0.2;
   --o-shadow-strong: 0.3;
-  --o-shadow-stronger: 0.4;
-  --o-shadow-command-palettel: 0.75;
+  --o-shadow-command-palettel: 0.5;
 }
 
 body {
