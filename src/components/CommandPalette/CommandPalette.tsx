@@ -26,8 +26,7 @@ export default function CommandPalette() {
   const [isComposeOpen, setIsComposeOpen] = useAtom(isComposeOpenAtom);
   const setIsCommandPaletteOpen = useSetAtom(isCommandPaletteOpenAtom);
   const [searchQuery, setSearchQuery] = useState("");
-  const [manuallyFocusedOrHoveredTabIndex, setManuallyFocusedTabIndex] =
-    useState<number>(0);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
 
   const commands: TCommand[] = [
     {
@@ -79,19 +78,15 @@ export default function CommandPalette() {
 
   useHotkeys(
     ["tab", "down"],
-    () =>
-      setManuallyFocusedTabIndex(
-        (manuallyFocusedOrHoveredTabIndex + 1) % filteredCommands.length
-      ),
+    () => setActiveIndex((activeIndex + 1) % filteredCommands.length),
     { enableOnFormTags: true, enabled: filteredCommands.length > 0 }
   );
 
   useHotkeys(
     ["shift+tab", "up"],
     () =>
-      setManuallyFocusedTabIndex(
-        (manuallyFocusedOrHoveredTabIndex - 1 + filteredCommands.length) %
-          filteredCommands.length
+      setActiveIndex(
+        (activeIndex - 1 + filteredCommands.length) % filteredCommands.length
       ),
     { enableOnFormTags: true, enabled: filteredCommands.length > 0 }
   );
@@ -106,11 +101,7 @@ export default function CommandPalette() {
     <div className="w-full flex-1 flex flex-col items-start justify-start text-c-on-bg/50 overflow-hidden">
       <form
         className="w-full"
-        onSubmit={() =>
-          executeCommand(
-            filteredCommands[manuallyFocusedOrHoveredTabIndex || 0]
-          )
-        }
+        onSubmit={() => executeCommand(filteredCommands[activeIndex || 0])}
       >
         <input
           autoComplete="off"
@@ -118,9 +109,7 @@ export default function CommandPalette() {
           value={searchQuery}
           onChange={(e) => {
             setSearchQuery(e.target.value);
-            if (manuallyFocusedOrHoveredTabIndex !== 0) {
-              setManuallyFocusedTabIndex(0);
-            }
+            if (activeIndex !== 0) setActiveIndex(0);
           }}
           className="w-full font-medium px-5 text-lg py-3.5 bg-transparent text-c-on-bg 
             placeholder:text-c-on-bg/50 placeholder:font-normal overflow-ellipsis"
@@ -129,7 +118,7 @@ export default function CommandPalette() {
       </form>
       <div className="w-full h-2px bg-c-on-bg/6" />
       <ul
-        onMouseLeave={() => setManuallyFocusedTabIndex(0)}
+        onMouseLeave={() => setActiveIndex(0)}
         className="w-full flex flex-col overflow-auto group/command-list"
       >
         {filteredCommands.length < 1 && (
@@ -150,7 +139,7 @@ export default function CommandPalette() {
             return (
               <li key={command.title} className="w-full">
                 <button
-                  onMouseEnter={() => setManuallyFocusedTabIndex(i)}
+                  onMouseEnter={() => setActiveIndex(i)}
                   tabIndex={-1}
                   onClick={() => executeCommand(command)}
                   className={`text-left w-full flex px-1.5 py-px group/button cursor-default ${
@@ -159,7 +148,7 @@ export default function CommandPalette() {
                 >
                   <div
                     className={`w-full flex items-center justify-start px-4 py-3 rounded-lg ${
-                      manuallyFocusedOrHoveredTabIndex === i
+                      activeIndex === i
                         ? "text-c-on-bg bg-c-on-bg/10"
                         : "text-c-on-bg/75"
                     }`}
