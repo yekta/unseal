@@ -1,129 +1,41 @@
-import React, { useMemo, useState } from "react";
-import {
-  EnvelopeIcon,
-  MagnifyingGlassIcon,
-  StarIcon,
-  InboxIcon,
-  Cog6ToothIcon as CogIcon,
-} from "@heroicons/react/24/outline";
-import IconPenOnPaper from "@components/icons/IconPenOnPaper";
-import { usePathname, useRouter } from "next/navigation";
-import { useAtom, useSetAtom } from "jotai";
-import { isComposeOpenAtom } from "@components/Compose/composeSettings";
-import { isCommandPaletteOpenAtom } from "@components/CommandPalette/commandPaletteSettings";
+import React, { useState } from "react";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useHotkeys } from "react-hotkeys-hook";
+import { useCommands } from "@components/CommandPalette/useCommands";
 
-interface TCommand {
-  title: string;
-  description: string;
-  Icon: React.ComponentType<any>;
-  onClick: () => void;
-  shouldFilterOut?: () => boolean;
-}
 export default function CommandPalette() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const [isComposeOpen, setIsComposeOpen] = useAtom(isComposeOpenAtom);
-  const setIsCommandPaletteOpen = useSetAtom(isCommandPaletteOpenAtom);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCommandIndex, setActiveCommandIndex] = useState<number>(0);
   const [isMouseMoveOrEnterActive, setIsMouseMoveOrEnterActive] =
     useState(false);
 
-  const commands: TCommand[] = useMemo(
-    () => [
-      {
-        title: "Compose",
-        description: "Create a new email",
-        Icon: IconPenOnPaper,
-        onClick: () => setIsComposeOpen(true),
-        shouldFilterOut: () => isComposeOpen,
-      },
-      {
-        title: "Search Emails",
-        description: "Search your emails",
-        Icon: MagnifyingGlassIcon,
-        onClick: () => null,
-      },
-      {
-        title: "Go to All Inboxes",
-        description: "Go to all inboxes",
-        Icon: InboxIcon,
-        onClick: () => router.push("/"),
-        shouldFilterOut: () => pathname === "/",
-      },
-      {
-        title: "Go to Unread",
-        description: "Go to your unread emails",
-        Icon: EnvelopeIcon,
-        onClick: () => router.push("/view/unread"),
-        shouldFilterOut: () => pathname === "/view/unread",
-      },
-      {
-        title: "Go to Favorites",
-        description: "Go to your favorite emails",
-        Icon: StarIcon,
-        onClick: () => router.push("/view/favorites"),
-        shouldFilterOut: () => pathname === "/view/favorites",
-      },
-      {
-        title: "Settings",
-        description: "Go to your settings",
-        Icon: CogIcon,
-        onClick: () => router.push("/settings"),
-        shouldFilterOut: () => pathname === "/settings",
-      },
-    ],
-    [pathname, isComposeOpen]
-  );
-
-  const filteredCommands = useMemo(
-    () =>
-      commands
-        .filter((c) => c.shouldFilterOut === undefined || !c.shouldFilterOut())
-        .filter((c) =>
-          c.title.toLowerCase().includes(searchQuery.toLowerCase())
-        ),
-    [commands, searchQuery]
-  );
+  const { commands, executeCommand } = useCommands(searchQuery);
 
   useHotkeys(
     ["tab", "down"],
-    () =>
-      setActiveCommandIndex((activeCommandIndex + 1) % filteredCommands.length),
-    { enableOnFormTags: true, enabled: filteredCommands.length > 0 }
+    () => setActiveCommandIndex((activeCommandIndex + 1) % commands.length),
+    { enableOnFormTags: true, enabled: commands.length > 0 }
   );
 
   useHotkeys(
     ["shift+tab", "up"],
     () =>
       setActiveCommandIndex(
-        (activeCommandIndex - 1 + filteredCommands.length) %
-          filteredCommands.length
+        (activeCommandIndex - 1 + commands.length) % commands.length
       ),
-    { enableOnFormTags: true, enabled: filteredCommands.length > 0 }
+    { enableOnFormTags: true, enabled: commands.length > 0 }
   );
-
-  const executeCommand = (command: TCommand) => {
-    command.onClick();
-    if (isComposeOpen) setIsComposeOpen(false);
-    setIsCommandPaletteOpen(false);
-  };
 
   return (
     <div
       onMouseMove={() => {
         !isMouseMoveOrEnterActive && setIsMouseMoveOrEnterActive(true);
       }}
-      className="w-full flex-1 flex flex-col items-start justify-start text-c-on-bg/50 
-      bg-c-bg-command-palette rounded-xl relative shadow-3xl overflow-hidden 
-      z-0 shadow-c-shadow/[var(--o-shadow-command-palette)] h-[calc((100vh-9rem)*0.6)] min-h-[18rem]"
+      className="w-full flex flex-col items-start justify-start overflow-hidden"
     >
       <form
         className="w-full"
-        onSubmit={() =>
-          executeCommand(filteredCommands[activeCommandIndex || 0])
-        }
+        onSubmit={() => executeCommand(commands[activeCommandIndex || 0])}
       >
         <input
           autoComplete="off"
@@ -146,7 +58,7 @@ export default function CommandPalette() {
         }
         className="w-full flex flex-col overflow-auto group/command-list"
       >
-        {filteredCommands.length < 1 && (
+        {commands.length < 1 && (
           <li className={`w-full text-left px-1.5 py-px pt-1.5`}>
             <div className="w-full flex items-center justify-start px-4 py-3">
               <MagnifyingGlassIcon className="w-5 h-5 flex-shrink-0" />
@@ -159,8 +71,8 @@ export default function CommandPalette() {
             </div>
           </li>
         )}
-        {filteredCommands.length >= 1 &&
-          filteredCommands.map((command, i) => {
+        {commands.length >= 1 &&
+          commands.map((command, i) => {
             return (
               <li key={command.title} className="w-full">
                 <button

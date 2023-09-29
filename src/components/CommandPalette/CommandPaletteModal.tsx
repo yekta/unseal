@@ -23,13 +23,15 @@ export default function CommandPaletteModal() {
         <div className="z-[100] fixed left-0 top-0 w-full h-full flex flex-col items-center overflow-hidden">
           <Dialog.Overlay
             className={`absolute left-0 top-0 w-full h-full
-              overflow-auto flex flex-row items-start justify-center py-18 px-3 md:px-12`}
+              overflow-auto flex flex-col items-center py-18 px-3 md:px-12`}
           >
-            <div className="max-w-2xl my-auto w-full flex flex-col items-center relative">
-              <Dialog.Content className="w-full">
-                <CommandPalette />
-              </Dialog.Content>
-            </div>
+            <Dialog.Content
+              className="w-full flex flex-col max-w-2xl flex-1 justify-start my-auto
+              bg-c-bg-command-palette rounded-xl relative shadow-3xl overflow-hidden 
+              z-0 shadow-c-shadow/[var(--o-shadow-command-palette)] max-h-[28rem] min-h-[18rem]"
+            >
+              <CommandPalette />
+            </Dialog.Content>
           </Dialog.Overlay>
         </div>
       </Dialog.Portal>
