@@ -26,10 +26,7 @@ export default function CommandPaletteModal() {
               overflow-auto flex flex-row items-start justify-center py-18 px-3 md:px-12`}
           >
             <div className="max-w-2xl my-auto w-full flex flex-col items-center relative">
-              <Dialog.Content
-                className={`flex flex-col items-center bg-c-bg-command-palette rounded-xl relative
-                shadow-3xl overflow-hidden z-0 shadow-c-shadow/[var(--o-shadow-command-palette)] w-full h-[calc((100vh-9rem)*0.6)] min-h-[18rem]`}
-              >
+              <Dialog.Content className="w-full">
                 <CommandPalette />
               </Dialog.Content>
             </div>
