@@ -131,8 +131,8 @@ export default function CommandPalette() {
           value={searchQuery}
           onChange={(e) => {
             setSearchQuery(e.target.value);
-            if (activeCommandIndex !== 0) setActiveCommandIndex(0);
-            if (isMouseMoveOrEnterActive) setIsMouseMoveOrEnterActive(false);
+            activeCommandIndex !== 0 && setActiveCommandIndex(0);
+            isMouseMoveOrEnterActive && setIsMouseMoveOrEnterActive(false);
           }}
           className="w-full font-medium px-5 text-lg py-3.5 bg-transparent text-c-on-bg 
             placeholder:text-c-on-bg/50 placeholder:font-normal overflow-ellipsis"
