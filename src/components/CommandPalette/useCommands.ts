@@ -48,7 +48,7 @@ export function useCommands(searchQuery: string) {
         tags: ["inbox", "all inboxes"],
         Icon: InboxIcon,
         onClick: () => router.push("/"),
-        shouldFilterOut: () => pathname === "/",
+        shouldFilterOut: () => pathname === "/" && !isComposeOpen,
       },
       {
         title: "Go to Unread",

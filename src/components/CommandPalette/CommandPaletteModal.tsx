@@ -27,7 +27,7 @@ export default function CommandPaletteModal() {
           >
             <Dialog.Content
               className="w-full flex flex-col max-w-2xl flex-1 justify-start my-auto
-              max-h-[21.25rem] min-h-[15rem]"
+              max-h-[22.8rem] min-h-[12.7rem]"
             >
               <Dialog.Title className="sr-only">Command Palette</Dialog.Title>
               <Dialog.Description className="sr-only">

@@ -51,7 +51,7 @@ export function EmailLine({
             ></EmailIcon>
             <p
               className={`flex-1 whitespace-nowrap overflow-hidden overflow-ellipsis text-base
-              text-c-on-bg font-medium`}
+              text-c-on-bg font-medium pr-4 md:pr-8`}
             >
               {sender}
             </p>

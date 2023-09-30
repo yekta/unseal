@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useHotkeys } from "react-hotkeys-hook";
 import { useCommands } from "@components/CommandPalette/useCommands";
@@ -10,17 +10,36 @@ export default function CommandPalette() {
     useState(false);
 
   const { commands, executeCommand } = useCommands(searchQuery);
+  const commandRefs = useRef<HTMLLIElement[]>([]);
+
+  const setActiveCommandIndexAndScroll = (
+    i: number,
+    shouldScroll = true,
+    resetMouseEnter = true
+  ) => {
+    setActiveCommandIndex(i);
+    if (resetMouseEnter) setIsMouseMoveOrEnterActive(false);
+    if (shouldScroll) {
+      commandRefs.current[i]?.scrollIntoView({
+        block: "end",
+        inline: "end",
+      });
+    }
+  };
 
   useHotkeys(
     ["tab", "down"],
-    () => setActiveCommandIndex((activeCommandIndex + 1) % commands.length),
+    () =>
+      setActiveCommandIndexAndScroll(
+        (activeCommandIndex + 1) % commands.length
+      ),
     { enableOnFormTags: true, enabled: commands.length > 0 }
   );
 
   useHotkeys(
     ["shift+tab", "up"],
     () =>
-      setActiveCommandIndex(
+      setActiveCommandIndexAndScroll(
         (activeCommandIndex - 1 + commands.length) % commands.length
       ),
     { enableOnFormTags: true, enabled: commands.length > 0 }
@@ -31,7 +50,7 @@ export default function CommandPalette() {
       onMouseMove={() => {
         !isMouseMoveOrEnterActive && setIsMouseMoveOrEnterActive(true);
       }}
-      className="w-full flex flex-1 flex-col items-start justify-start overflow-hidden 
+      className="w-full flex flex-1 flex-col items-start justify-start overflow-hidden border-2 border-c-on-bg/5 
       bg-c-bg-command-palette rounded-xl relative shadow-3xl shadow-c-shadow/[var(--o-shadow-command-palette)]"
     >
       <form
@@ -44,7 +63,7 @@ export default function CommandPalette() {
           value={searchQuery}
           onChange={(e) => {
             setSearchQuery(e.target.value);
-            activeCommandIndex !== 0 && setActiveCommandIndex(0);
+            activeCommandIndex !== 0 && setActiveCommandIndexAndScroll(0);
             isMouseMoveOrEnterActive && setIsMouseMoveOrEnterActive(false);
           }}
           className="w-full font-medium px-5 text-lg py-3.5 bg-transparent text-c-on-bg 
@@ -52,18 +71,16 @@ export default function CommandPalette() {
           placeholder="Search commands..."
         />
       </form>
-      <div className="w-full h-2px bg-c-on-bg/6" />
-      <div className="w-full flex-1 flex flex-col items-start justify-start overflow-auto pb-4">
-        <ul
+      <div className="w-full h-2px bg-c-on-bg/5" />
+      <div className="w-full flex-1 flex flex-col items-start justify-start overflow-auto">
+        <ol
           onMouseLeave={() =>
-            activeCommandIndex !== 0 && setActiveCommandIndex(0)
+            activeCommandIndex !== 0 && setActiveCommandIndexAndScroll(0, false)
           }
           className="w-full flex flex-col items-start justify-start group/command-list"
         >
           {commands.length < 1 && (
-            <li
-              className={`w-full text-left px-1.5 py-px pt-1.5 text-c-on-bg/50`}
-            >
+            <li className={`w-full text-left p-1.5 text-c-on-bg/50`}>
               <div className="w-full flex items-center justify-start px-4 py-3">
                 <MagnifyingGlassIcon className="w-5 h-5 flex-shrink-0" />
                 <p
@@ -78,26 +95,26 @@ export default function CommandPalette() {
           {commands.length >= 1 &&
             commands.map((command, i) => {
               return (
-                <li key={command.title} className="w-full">
+                <li
+                  ref={(el) => (el ? (commandRefs.current[i] = el) : null)}
+                  key={command.title}
+                  className="w-full"
+                >
                   <button
                     onMouseMove={() =>
                       activeCommandIndex !== i &&
                       isMouseMoveOrEnterActive &&
-                      setActiveCommandIndex(i)
+                      setActiveCommandIndexAndScroll(i, false, false)
                     }
                     onMouseEnter={() =>
                       activeCommandIndex !== i &&
                       isMouseMoveOrEnterActive &&
-                      setActiveCommandIndex(i)
+                      setActiveCommandIndexAndScroll(i, false, false)
                     }
                     tabIndex={-1}
                     onClick={() => executeCommand(command)}
-                    className={`text-left w-full flex px-1.5 py-px group/button cursor-default ${
-                      i === 0
-                        ? "pt-1.5"
-                        : i === commands.length - 1
-                        ? "pb-1.5"
-                        : ""
+                    className={`text-left w-full flex p-1.5 group/button cursor-default ${
+                      i !== 0 && "-mt-1.5"
                     }`}
                   >
                     <div
@@ -118,7 +135,7 @@ export default function CommandPalette() {
                 </li>
               );
             })}
-        </ul>
+        </ol>
       </div>
     </div>
   );

@@ -90,7 +90,8 @@ function LinkLine({
           fadeOnPassive="light"
         />
         <p
-          className={`flex-1 font-medium min-w-0 overflow-hidden overflow-ellipsis transition
+          className={`flex-1 font-medium min-w-0 whitespace-nowrap 
+          overflow-hidden overflow-ellipsis transition
           ${isActive ? "text-c-on-bg" : "text-c-on-bg/75"}`}
         >
           {text}
