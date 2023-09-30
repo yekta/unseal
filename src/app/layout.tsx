@@ -19,7 +19,7 @@ export default function RootLayout({
     <RootLayoutProviders>
       <html lang="en">
         <body
-          className={`w-full bg-c-bg text-c-on-bg 
+          className={`w-full bg-c-bg text-c-on-bg  break-words
           flex flex-col justify-start h-screen overflow-hidden z-0 relative`}
         >
           <Navbar />

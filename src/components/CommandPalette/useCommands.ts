@@ -1,11 +1,13 @@
 import { isComposeOpenAtom } from "@components/Compose/composeSettings";
 import IconPenOnPaper from "@components/icons/IconPenOnPaper";
 import {
-  CogIcon,
+  Cog6ToothIcon,
   EnvelopeIcon,
   InboxIcon,
   MagnifyingGlassIcon,
   StarIcon,
+  MoonIcon,
+  ArchiveBoxIcon,
 } from "@heroicons/react/24/outline";
 import { useAtom, useSetAtom } from "jotai";
 import { usePathname, useRouter } from "next/navigation";
@@ -68,9 +70,24 @@ export function useCommands(searchQuery: string) {
         title: "Settings",
         description: "Go to settings",
         tags: ["settings", "preferences"],
-        Icon: CogIcon,
+        Icon: Cog6ToothIcon,
         onClick: () => router.push("/settings"),
         shouldFilterOut: () => pathname === "/settings",
+      },
+      {
+        title: "Toggle Dark Mode",
+        description: "Toggle dark mode",
+        tags: ["theme", "dark", "light"],
+        Icon: MoonIcon,
+        onClick: () => null,
+      },
+      {
+        title: "Go to Archived",
+        description: "Go to archived",
+        tags: ["archived"],
+        Icon: ArchiveBoxIcon,
+        onClick: () => null,
+        shouldFilterOut: () => pathname === "/view/archived",
       },
     ],
     [pathname, isComposeOpen]

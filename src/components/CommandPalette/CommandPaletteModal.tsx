@@ -27,9 +27,12 @@ export default function CommandPaletteModal() {
           >
             <Dialog.Content
               className="w-full flex flex-col max-w-2xl flex-1 justify-start my-auto
-              bg-c-bg-command-palette rounded-xl relative shadow-3xl overflow-hidden 
-              z-0 shadow-c-shadow/[var(--o-shadow-command-palette)] max-h-[28rem] min-h-[18rem]"
+              max-h-[21.25rem] min-h-[15rem]"
             >
+              <Dialog.Title className="sr-only">Command Palette</Dialog.Title>
+              <Dialog.Description className="sr-only">
+                Search for commands
+              </Dialog.Description>
               <CommandPalette />
             </Dialog.Content>
           </Dialog.Overlay>
