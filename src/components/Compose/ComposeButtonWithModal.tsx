@@ -24,7 +24,7 @@ export default function ComposeButtonWithModal() {
       <Dialog.Portal>
         <div className="z-[100] fixed left-0 top-0 w-full h-full flex flex-col items-center overflow-hidden">
           <Dialog.Overlay
-            className={`absolute left-0 top-0 w-full h-full bg-c-barrier/80 
+            className={`absolute left-0 top-0 w-full h-full bg-c-barrier/[var(--o-barrier)] 
             overflow-auto flex flex-row justify-center py-18`}
           >
             <div className="md:px-4 max-w-6xl w-full my-auto flex flex-col items-center">

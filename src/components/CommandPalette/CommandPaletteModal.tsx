@@ -14,6 +14,7 @@ export default function CommandPaletteModal() {
   useHotkeys(["mod+k"], () => setIsCommandPaletteOpen(!isCommandPaletteOpen), {
     enableOnFormTags: true,
   });
+
   return (
     <Dialog.Root
       onOpenChange={setIsCommandPaletteOpen}

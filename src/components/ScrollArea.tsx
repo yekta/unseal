@@ -5,8 +5,8 @@ export default function ScrollArea({
   className = "w-full flex-1 flex flex-col items-start justify-start",
   viewportClass = "",
   children,
-  barBg = "bg-c-on-bg-tertiary/0 hover:bg-c-on-bg-tertiary/40",
-  thumbBg = "bg-c-on-bg-secondary/75",
+  barBg = "bg-c-scrollbar-bg/0 hover:bg-c-scrollbar-bg/40",
+  thumbBg = "bg-c-scrollbar-thumb/75",
 }: {
   className?: string;
   viewportClass?: string;

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useHotkeys } from "react-hotkeys-hook";
 import { useCommands } from "@components/CommandPalette/useCommands";

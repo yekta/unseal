@@ -4,6 +4,7 @@ import Sidebar from "@components/navigation/Sidebar";
 import RootLayoutProviders from "@components/providers/RootLayoutProviders";
 import "@css/globals.css";
 import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,12 +17,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <RootLayoutProviders>
-      <html lang="en">
-        <body
-          className={`w-full bg-c-bg text-c-on-bg break-words color-scheme-dark
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`w-full bg-c-bg text-c-on-bg break-words
           flex flex-col justify-start h-screen overflow-hidden z-0 relative`}
-        >
+      >
+        <RootLayoutProviders>
           <Navbar />
           <div className="w-full flex-1 flex flex-col overflow-hidden relative">
             <Sidebar />
@@ -29,9 +30,9 @@ export default function RootLayout({
               {children}
             </main>
           </div>
-        </body>
-        <CommandPaletteModal />
-      </html>
-    </RootLayoutProviders>
+          <CommandPaletteModal />
+        </RootLayoutProviders>
+      </body>
+    </html>
   );
 }

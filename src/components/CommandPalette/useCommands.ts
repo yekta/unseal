@@ -1,3 +1,5 @@
+"use client";
+
 import { isComposeOpenAtom } from "@components/Compose/composeSettings";
 import IconPenOnPaper from "@components/icons/IconPenOnPaper";
 import {
@@ -7,6 +9,7 @@ import {
   MagnifyingGlassIcon,
   StarIcon,
   MoonIcon,
+  SunIcon,
   ArchiveBoxIcon,
 } from "@heroicons/react/24/outline";
 import { useAtom, useSetAtom } from "jotai";
@@ -16,6 +19,7 @@ import { isCommandPaletteOpenAtom } from "@components/CommandPalette/commandPale
 import Fuse from "fuse.js";
 import { useAccounts } from "@ts/hooks/useAccounts";
 import AccountAvatarIcon from "@components/icons/AccountAvatarIcon";
+import { useTheme } from "next-themes";
 
 const fuseOptions = {
   keys: ["title", "description", "tags"],
@@ -27,6 +31,7 @@ export function useCommands(searchQuery: string) {
   const [isComposeOpen, setIsComposeOpen] = useAtom(isComposeOpenAtom);
   const setIsCommandPaletteOpen = useSetAtom(isCommandPaletteOpenAtom);
   const { accounts } = useAccounts();
+  const { theme, setTheme, systemTheme } = useTheme();
 
   const commands: TCommand[] = useMemo(
     () => [
@@ -78,11 +83,33 @@ export function useCommands(searchQuery: string) {
         shouldFilterOut: () => pathname === "/settings",
       },
       {
-        title: "Toggle Dark Mode",
-        description: "Toggle dark mode",
-        tags: ["theme", "dark", "light"],
-        Icon: MoonIcon,
-        onClick: () => null,
+        title:
+          theme === "light" || (theme === "system" && systemTheme === "light")
+            ? "Switch to Dark Mode"
+            : "Switch to Light Mode",
+        description:
+          theme === "light" || (theme === "system" && systemTheme === "light")
+            ? "Switch to Dark Mode"
+            : "Switch to Light Mode",
+        tags: ["theme", "dark", "light", "toggle theme"],
+        Icon:
+          theme === "light" || (theme === "system" && systemTheme === "light")
+            ? MoonIcon
+            : SunIcon,
+        onClick: () =>
+          setTheme(
+            theme === "dark" || (theme === "system" && systemTheme === "dark")
+              ? "light"
+              : "dark"
+          ),
+      },
+      {
+        title: "Switch to System Theme",
+        description: "Switch to System Theme",
+        tags: ["theme", "dark", "light", "toggle theme", "system"],
+        Icon: systemTheme === "light" ? SunIcon : MoonIcon,
+        onClick: () => setTheme("system"),
+        shouldFilterOut: () => theme === "system",
       },
       {
         title: "Go to Archived",
@@ -102,7 +129,7 @@ export function useCommands(searchQuery: string) {
         shouldFilterOut: () => pathname === `/account/${a.id}`,
       })) ?? []),
     ],
-    [pathname, isComposeOpen, accounts]
+    [pathname, isComposeOpen, accounts, theme, systemTheme]
   );
 
   const commandsSimple: TCommandSimple[] = useMemo(

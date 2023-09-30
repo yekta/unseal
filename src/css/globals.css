@@ -14,8 +14,8 @@
   --c-barrier: 16 16 24;
   --c-shadow: 0 0 6;
   --c-on-bg: 215 215 235;
-  --c-on-bg-secondary: 135 135 155;
-  --c-on-bg-tertiary: 85 85 105;
+  --c-scrollbar-bg: 24 85 105;
+  --c-scrollbar-thumb: 135 135 155;
   --c-icon-red: 255 157 157;
   --c-icon-lime: 190 219 142;
   --c-icon-blue: 161 199 255;
@@ -29,6 +29,38 @@
   --o-shadow-normal: 0.2;
   --o-shadow-strong: 0.3;
   --o-shadow-command-palette: 0.6;
+  --o-barrier: 0.8;
+}
+
+html[data-theme=light]{
+    --c-bg: 255 255 255;
+    --c-bg-unread: 245 245 245;
+    --c-bg-secondary: 245 245 245;
+    --c-bg-tertiary: 235 235 235;
+    --c-bg-command-palette: 255 255 255;
+    --c-bg-highlight: 235 235 235;
+    --c-bg-highlight-secondary: 230 230 230;
+    --c-primary: 64 101 185;
+    --c-favorite: 215 110 5;
+    --c-barrier: 0 0 12;
+    --c-shadow: 0 0 6;
+    --c-on-bg: 0 0 12;
+    --c-scrollbar-bg: 170 170 182;
+    --c-scrollbar-thumb: 80 80 92;
+    --c-icon-red: 155 57 57;
+    --c-icon-lime: 90 119 42;
+    --c-icon-blue: 61 99 155;
+    --c-icon-yellow: 119 107 46;
+    --c-icon-purple: 109 61 155;
+    --c-icon-green: 36 114 48;
+    --c-notification: 64 101 185;
+    --c-macos-red: 255 59 48;
+    --c-macos-orange: 255 204 0;
+    --c-macos-green: 52 199 89;
+    --o-shadow-normal: 0.08;
+    --o-shadow-strong: 0.16;
+    --o-shadow-command-palette: 0.24;
+    --o-barrier: 0.5;
 }
 
 body {
@@ -113,14 +145,6 @@ a:focus-visible {
 }
 .scroll-area-bar {
   transition: width 0.15s cubic-bezier(0, 0.55, 0.45, 1), background 0.15s cubic-bezier(0, 0.55, 0.45, 1);
-}
-
-.color-scheme-dark {
-  color-scheme: dark;
-}
-
-.color-scheme-light {
-  color-scheme: light;
 }
 
 @tailwind utilities;
