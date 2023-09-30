@@ -40,12 +40,12 @@ export function EmailLine({
       <Link
         href={href}
         className="w-full flex flex-row justify-center items-center
-        cursor-default select-none relative"
+        cursor-default select-none relative group/link peer"
       >
         <div className="w-full flex flex-row items-center md:py-px">
           <div
             className={`w-full flex flex-col md:flex-row md:items-center md:justify-between px-4 py-3.5
-            group-hover:bg-c-bg-highlight group-focus-within:bg-c-bg-highlight relative ${
+            group-hover:bg-c-bg-highlight group-focus-visible/link:bg-c-bg-highlight relative ${
               !isRead ? "bg-c-bg-unread" : ""
             }
             md:rounded-xl z-0`}
@@ -99,36 +99,38 @@ export function EmailLine({
           </div>
         </div>
       </Link>
-      <ul
+      <div
         className="absolute right-0 top-0 h-full hidden md:group-hover:flex
-          md:group-focus-within:flex
-          z-10 pr-[calc(0.25rem-1px)] pl-10 bg-gradient-to-l 
-          from-c-bg-highlight from-[calc(100%-2rem)] to-c-bg-highlight/0
-          pointer-events-none group-hover:pointer-events-auto rounded-r-xl"
+          md:peer-focus-visible:flex
+          z-10 pr-[calc(0.25rem-1px)] pl-8 bg-gradient-to-l 
+          from-c-bg-highlight from-[calc(100%-1.75rem)] to-c-bg-highlight/0
+          pointer-events-none rounded-r-xl"
       >
-        <li className="h-full">
-          <IconButton Icon={isRead ? EnvelopeIcon : EnvelopeOpenIcon} />
-        </li>
-        <li className="h-full">
-          <IconButton
-            Icon={isFavorited ? StarIconFilled : StarIcon}
-            iconClass={
-              isFavorited
-                ? "text-c-favorite/75 group-hover/icon-button:text-c-favorite"
-                : undefined
-            }
-          />
-        </li>
-        <li className="h-full">
-          <IconButton Icon={ClockIcon} />
-        </li>
-        <li className="h-full">
-          <IconButton Icon={ArchiveBoxArrowDownIcon} />
-        </li>
-        <li className="h-full">
-          <IconButton Icon={TrashIcon} />
-        </li>
-      </ul>
+        <ul className="h-full flex flex-row pointer-events-auto">
+          <li className="h-full">
+            <IconButton
+              Icon={isFavorited ? StarIconFilled : StarIcon}
+              iconClass={
+                isFavorited
+                  ? "text-c-favorite/75 group-hover/icon-button:text-c-favorite"
+                  : undefined
+              }
+            />
+          </li>
+          <li className="h-full">
+            <IconButton Icon={ClockIcon} />
+          </li>
+          <li className="h-full">
+            <IconButton Icon={isRead ? EnvelopeIcon : EnvelopeOpenIcon} />
+          </li>
+          <li className="h-full">
+            <IconButton Icon={ArchiveBoxArrowDownIcon} />
+          </li>
+          <li className="h-full">
+            <IconButton Icon={TrashIcon} />
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }
@@ -144,6 +146,7 @@ function IconButton({
 }) {
   return (
     <button
+      tabIndex={-1}
       onClick={onClick}
       className="cursor-default h-full flex items-center justify-center py-1 px-px 
       rounded-lg group/icon-button text-c-on-bg/75 hover:text-c-on-bg"
