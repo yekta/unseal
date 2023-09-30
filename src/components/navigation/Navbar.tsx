@@ -50,19 +50,11 @@ export default function Navbar() {
     },
   ];
 
-  const [lastHoveredPath, setLastHoveredPath] = useState<string | undefined>(
-    undefined
-  );
-  const [navbarItemAreaHovered, setNavbarItemAreaHovered] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useAtom(isSidebarOpenAtom);
 
   const windowButtonClasses = "w-[13px] h-[13px] rounded-full";
   const windowButtonContainerClasses =
     "flex items-center justify-start py-3 px-3 gap-[8px]";
-
-  useEffect(() => {
-    setLastHoveredPath(pathname);
-  }, [pathname]);
 
   useEffect(() => {
     setupAppWindow();
@@ -111,75 +103,34 @@ export default function Navbar() {
         </button>
       </div>
       <div data-tauri-drag-region className="lg:flex-1 flex justify-center">
-        <div
-          onMouseOver={() => setNavbarItemAreaHovered(true)}
-          onMouseLeave={() => setNavbarItemAreaHovered(false)}
-          className="flex justify-center overflow-hidden relative z-0 rounded-xl"
-        >
-          <div className="absolute left-0 top-0 w-full h-full p-1.5 pointer-events-none">
-            {lastHoveredPath === undefined ||
-              (!navbarItems.some((i) => i.pathname === lastHoveredPath) && (
-                <motion.div
-                  style={{
-                    width: "100%",
-                    opacity: 0,
-                  }}
-                  className="h-full bg-c-bg-highlight rounded-lg -z-10"
-                  layoutId="navbar-highlight"
-                  aria-hidden="true"
-                  transition={{
-                    duration: 0.3,
-                    ease: "circOut",
-                  }}
-                />
-              ))}
-          </div>
+        <div className="flex justify-center overflow-hidden relative z-0 rounded-xl">
           {navbarItems.map((item, index) => {
             const isActive = pathname === item.pathname;
             return (
               <Link
                 key={`nav-link-${index}`}
-                onMouseOver={() => setLastHoveredPath(item.pathname)}
-                onMouseLeave={() => setLastHoveredPath(pathname)}
                 href={item.pathname}
                 className="py-1.5 px-0.75 self-stretch group cursor-default flex flex-row"
               >
-                <div className="relative flex items-center justify-center">
-                  {item.pathname === lastHoveredPath && (
-                    <motion.div
-                      style={{
-                        width: "100%",
-                        borderRadius: 8,
-                      }}
-                      className={`absolute bottom-0 left-0 h-full -z-10 pointer-events-none ${
-                        navbarItemAreaHovered
-                          ? "bg-c-bg-highlight-secondary"
-                          : "bg-c-bg-highlight"
-                      }`}
-                      initial={false}
-                      layoutId="navbar-highlight"
-                      aria-hidden="true"
-                      transition={{
-                        duration: 0.15,
-                        ease: "circOut",
-                      }}
-                    ></motion.div>
-                  )}
-                  <div className="px-4 py-2 flex items-center justify-center gap-2">
-                    <EmailIcon
-                      type={item.iconType}
-                      color={item.iconColor}
-                      isActive={isActive}
-                      fadeOnPassive="normal"
-                    />
-                    <p
-                      className={`hidden lg:block font-medium transition duration-150 ${
-                        isActive ? "text-c-on-bg" : "text-c-on-bg/60"
-                      }`}
-                    >
-                      {item.label}
-                    </p>
-                  </div>
+                <div
+                  className={`px-4 py-2 flex items-center justify-center gap-2 
+                    group-hover:bg-c-bg-highlight-secondary rounded-lg ${
+                      isActive && "bg-c-bg-highlight"
+                    }`}
+                >
+                  <EmailIcon
+                    type={item.iconType}
+                    color={item.iconColor}
+                    isActive={isActive}
+                    fadeOnPassive="normal"
+                  />
+                  <p
+                    className={`hidden lg:block font-medium transition duration-150 ${
+                      isActive ? "text-c-on-bg" : "text-c-on-bg/60"
+                    }`}
+                  >
+                    {item.label}
+                  </p>
                 </div>
               </Link>
             );

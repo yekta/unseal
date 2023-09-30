@@ -36,6 +36,7 @@ const config: Config = {
         "c-on-bg-secondary": "rgb(var(--c-on-bg-secondary)/<alpha-value>)",
         "c-on-bg-tertiary": "rgb(var(--c-on-bg-tertiary)/<alpha-value>)",
         "c-primary": "rgb(var(--c-primary)/<alpha-value>)",
+        "c-favorite": "rgb(var(--c-favorite)/<alpha-value>)",
         "c-barrier": "rgb(var(--c-barrier)/<alpha-value>)",
         "c-shadow": "rgb(var(--c-shadow)/<alpha-value>)",
         "c-icon-red": "rgb(var(--c-icon-red)/<alpha-value>)",
