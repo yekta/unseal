@@ -7,6 +7,7 @@ import { isSidebarOpenAtom } from "@components/navigation/navigation";
 import { useAtom } from "jotai";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ScrollArea from "@components/ScrollArea";
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -23,15 +24,18 @@ export default function Sidebar() {
       className="h-full flex flex-col group w-2 absolute left-0 top-0 z-10"
     >
       <div
-        className={`h-full pt-1.5 pb-24 transition ${
+        className={`h-full transition ${
           isSidebarOpen
             ? "translate-x-0 shadow-c-shadow/[var(--o-shadow-strong)]"
             : "-translate-x-full shadow-c-shadow/0"
         }
-        w-64 overflow-auto border-r-2 bg-c-bg border-c-bg-secondary flex flex-col absolute 
+        w-64 overflow-hidden border-r-2 bg-c-bg border-c-bg-secondary flex flex-col absolute 
         left-0 top-0 shadow-xl`}
       >
-        <div className="w-full flex flex-col">
+        <ScrollArea
+          className="w-full flex-1 flex flex-col items-start justify-start"
+          viewportClass="pt-1.5 pb-24"
+        >
           <LinkLine
             href={`/`}
             text="All Inboxes"
@@ -52,7 +56,7 @@ export default function Sidebar() {
               isActive={pathname === `/account/${account.id}`}
             />
           ))}
-        </div>
+        </ScrollArea>
       </div>
     </div>
   );

@@ -33,6 +33,8 @@ const config: Config = {
           "rgb(var(--c-bg-highlight-secondary)/<alpha-value>)",
         "c-bg-unread": "rgb(var(--c-bg-unread)/<alpha-value>)",
         "c-on-bg": "rgb(var(--c-on-bg)/<alpha-value>)",
+        "c-on-bg-secondary": "rgb(var(--c-on-bg-secondary)/<alpha-value>)",
+        "c-on-bg-tertiary": "rgb(var(--c-on-bg-tertiary)/<alpha-value>)",
         "c-primary": "rgb(var(--c-primary)/<alpha-value>)",
         "c-barrier": "rgb(var(--c-barrier)/<alpha-value>)",
         "c-shadow": "rgb(var(--c-shadow)/<alpha-value>)",

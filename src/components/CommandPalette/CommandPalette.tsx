@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useHotkeys } from "react-hotkeys-hook";
 import { useCommands } from "@components/CommandPalette/useCommands";
+import ScrollArea from "@components/ScrollArea";
 
 export default function CommandPalette() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -72,13 +73,8 @@ export default function CommandPalette() {
         />
       </form>
       <div className="w-full h-2px bg-c-on-bg/5" />
-      <div className="w-full flex-1 flex flex-col items-start justify-start overflow-auto">
-        <ol
-          onMouseLeave={() =>
-            activeCommandIndex !== 0 && setActiveCommandIndexAndScroll(0, false)
-          }
-          className="w-full flex flex-col items-start justify-start group/command-list"
-        >
+      <ScrollArea className="w-full flex-1 flex flex-col items-start justify-start">
+        <ol className="w-full flex flex-col items-start justify-start group/command-list">
           {commands.length < 1 && (
             <li className={`w-full text-left p-1.5 text-c-on-bg/50`}>
               <div className="w-full flex items-center justify-start pl-3.5 pr-4 py-3">
@@ -113,8 +109,12 @@ export default function CommandPalette() {
                     }
                     tabIndex={-1}
                     onClick={() => executeCommand(command)}
-                    className={`text-left w-full flex p-1.5 group/button cursor-default ${
-                      i !== 0 && "-mt-1.5"
+                    className={`text-left w-full flex px-1.5 group/button cursor-default ${
+                      i === 0
+                        ? "pt-1.5 pb-0.75"
+                        : i === commands.length - 1
+                        ? "pb-1.5 pt-0.75"
+                        : "py-0.75"
                     }`}
                   >
                     <div
@@ -136,7 +136,7 @@ export default function CommandPalette() {
               );
             })}
         </ol>
-      </div>
+      </ScrollArea>
     </div>
   );
 }
