@@ -46,7 +46,7 @@ export default function Sidebar() {
             <LinkLine
               key={account.id}
               href={`/account/${account.id}`}
-              text={account.email}
+              text={account.title}
               iconType={account.iconType}
               iconColor={account.iconColor}
               isActive={pathname === `/account/${account.id}`}

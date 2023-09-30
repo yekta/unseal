@@ -2,25 +2,29 @@ const lastTimestamp = new Date().getTime();
 export const accounts: TAccount[] = [
   {
     id: "1",
-    email: "negoryekta@gmail.com",
+    email: "yektamain@gmail.com",
+    title: "Yekta Main",
     iconColor: "green",
     iconType: "trophy",
   },
   {
     id: "2",
-    email: "ngyekta@gmail.com",
+    email: "yektasecondary@gmail.com",
+    title: "Yekta Secondary",
     iconColor: "yellow",
     iconType: "rocket",
   },
   {
     id: "3",
-    email: "hello@stablecog.com",
+    email: "hello@work.com",
+    title: "Work",
     iconColor: "purple",
     iconType: "work",
   },
   {
     id: "4",
-    email: "muhammedyektagungor@std.sehir.edu.tr",
+    email: "yekta@school.com",
+    title: "School",
     iconColor: "red",
     iconType: "school",
   },
@@ -1478,13 +1482,17 @@ export type TIconColor =
   | "on-bg"
   | "placeholder";
 
-export type TIconType =
+export type TAccountAvatarIcon =
   | "school"
   | "work"
   | "terminal"
   | "building"
   | "trophy"
   | "rocket"
+  | "command-line";
+
+export type TIconType =
+  | TAccountAvatarIcon
   | "inbox"
   | "placeholder"
   | "unread"
@@ -1493,8 +1501,9 @@ export type TIconType =
 export interface TAccount {
   id: string;
   email: string;
+  title: string;
   iconColor: TIconColor;
-  iconType: TIconType;
+  iconType: TAccountAvatarIcon;
 }
 
 export interface TEmail {

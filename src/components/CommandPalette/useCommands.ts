@@ -14,6 +14,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { useMemo } from "react";
 import { isCommandPaletteOpenAtom } from "@components/CommandPalette/commandPaletteSettings";
 import Fuse from "fuse.js";
+import { useAccounts } from "@ts/hooks/useAccounts";
+import AccountAvatarIcon from "@components/icons/AccountAvatarIcon";
 
 const fuseOptions = {
   keys: ["title", "description", "tags"],
@@ -24,6 +26,7 @@ export function useCommands(searchQuery: string) {
   const pathname = usePathname();
   const [isComposeOpen, setIsComposeOpen] = useAtom(isComposeOpenAtom);
   const setIsCommandPaletteOpen = useSetAtom(isCommandPaletteOpenAtom);
+  const { accounts } = useAccounts();
 
   const commands: TCommand[] = useMemo(
     () => [
@@ -89,8 +92,17 @@ export function useCommands(searchQuery: string) {
         onClick: () => null,
         shouldFilterOut: () => pathname === "/view/archived",
       },
+      ...(accounts?.map((a) => ({
+        title: `Go to Inbox: ${a.title}`,
+        description: `Go to Inbox: ${a.title}`,
+        tags: [a.email, a.title],
+        Icon: ({ className }: { className?: string }) =>
+          AccountAvatarIcon({ type: a.iconType, className }),
+        onClick: () => router.push(`/account/${a.id}`),
+        shouldFilterOut: () => pathname === `/account/${a.id}`,
+      })) ?? []),
     ],
-    [pathname, isComposeOpen]
+    [pathname, isComposeOpen, accounts]
   );
 
   const commandsSimple: TCommandSimple[] = useMemo(

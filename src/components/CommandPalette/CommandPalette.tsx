@@ -81,7 +81,7 @@ export default function CommandPalette() {
         >
           {commands.length < 1 && (
             <li className={`w-full text-left p-1.5 text-c-on-bg/50`}>
-              <div className="w-full flex items-center justify-start px-4 py-3">
+              <div className="w-full flex items-center justify-start pl-3.5 pr-4 py-3">
                 <MagnifyingGlassIcon className="w-5 h-5 flex-shrink-0" />
                 <p
                   className="px-3 flex-shrink min-w-0 overflow-hidden 
@@ -118,7 +118,7 @@ export default function CommandPalette() {
                     }`}
                   >
                     <div
-                      className={`w-full flex items-start justify-start px-4 py-3 rounded-lg ${
+                      className={`w-full flex items-start justify-start pl-3.5 pr-4 py-3 rounded-lg ${
                         activeCommandIndex === i
                           ? "text-c-on-bg bg-c-on-bg/10"
                           : "text-c-on-bg/75"
