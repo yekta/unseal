@@ -2,15 +2,14 @@
 
 import { EmailLine } from "@components/EmailList/EmailLine/EmailLine";
 import { EmailLinePlaceholder } from "@components/EmailList/EmailLine/EmailLinePlaceholder";
-import { useInfiniteQuery } from "@tanstack/react-query";
 import { breakpoints } from "@ts/constants/breakpoints";
 import { TEmail } from "@ts/email";
 import { getGroupLabelByDate } from "@ts/helpers/getGroupLabelByDate";
+import { TInboxFilter, useInbox } from "@ts/hooks/useInbox";
 import {
   useSmartVirtualizer,
   virtualizerStateCache,
 } from "@ts/hooks/useSmartVirtualizer";
-import { TEmailView, getEmails } from "@ts/queries/getEmails";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef } from "react";
 
@@ -32,37 +31,31 @@ const placeholders: (TEmailPlaceholder | string)[] = [
 
 export default function EmailList({
   accountId,
-  view,
+  filters,
 }: {
   accountId?: string;
-  view: TEmailView;
+  filters?: TInboxFilter[];
 }) {
   const {
-    data,
+    emails,
     isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
     isInitialLoading,
-  } = useInfiniteQuery(
-    ["emails", accountId, view],
-    (ctx) => getEmails({ offset: ctx.pageParam, accountId, view }),
-    {
-      getNextPageParam: (_lastGroup) => _lastGroup.nextOffset,
-    }
-  );
-
-  const allEmails = data ? data.pages.flatMap((d) => d.emails) : [];
+  } = useInbox({ accountId, filters });
 
   let lastDateLabel: string | undefined = undefined;
   let rows: (TEmail | string)[] = [];
-  for (let i = 0; i < allEmails.length; i++) {
-    const email = allEmails[i];
-    const dateLabel = getGroupLabelByDate(new Date(email.date));
-    if (lastDateLabel === undefined || dateLabel !== lastDateLabel) {
-      lastDateLabel = getGroupLabelByDate(new Date(email.date));
-      rows.push(lastDateLabel);
+  if (emails) {
+    for (let i = 0; i < emails.length; i++) {
+      const email = emails[i];
+      const dateLabel = getGroupLabelByDate(new Date(email.date));
+      if (lastDateLabel === undefined || dateLabel !== lastDateLabel) {
+        lastDateLabel = getGroupLabelByDate(new Date(email.date));
+        rows.push(lastDateLabel);
+      }
+      rows.push(email);
     }
-    rows.push(email);
   }
 
   const parentRef = useRef<HTMLDivElement>(null);

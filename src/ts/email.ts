@@ -39,7 +39,7 @@ export const emails: TEmail[] = [
     date: "2023-09-13T06:00:00.000Z",
     account: accounts[0],
     isRead: false,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Workplace",
@@ -48,7 +48,7 @@ export const emails: TEmail[] = [
     date: "2023-09-13T05:00:00.000Z",
     account: accounts[1],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "DevOps",
@@ -57,7 +57,7 @@ export const emails: TEmail[] = [
     date: "2023-09-13T04:00:00.000Z",
     account: accounts[0],
     isRead: false,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Real Estate",
@@ -66,7 +66,7 @@ export const emails: TEmail[] = [
     date: "2023-09-13T03:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "University",
@@ -75,7 +75,7 @@ export const emails: TEmail[] = [
     date: "2023-09-12T06:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -84,7 +84,7 @@ export const emails: TEmail[] = [
     date: "2023-09-12T05:00:00.000Z",
     account: accounts[1],
     isRead: false,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Tech Team",
@@ -93,7 +93,7 @@ export const emails: TEmail[] = [
     date: "2023-09-12T04:00:00.000Z",
     account: accounts[3],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Property Manager",
@@ -102,7 +102,7 @@ export const emails: TEmail[] = [
     date: "2023-09-12T03:00:00.000Z",
     account: accounts[2],
     isRead: false,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "University",
@@ -111,7 +111,7 @@ export const emails: TEmail[] = [
     date: "2023-09-11T05:00:00.000Z",
     account: accounts[3],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR Department",
@@ -120,7 +120,7 @@ export const emails: TEmail[] = [
     date: "2023-09-11T04:00:00.000Z",
     account: accounts[2],
     isRead: false,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Tech Team",
@@ -129,7 +129,7 @@ export const emails: TEmail[] = [
     date: "2023-09-11T03:00:00.000Z",
     account: accounts[1],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Property Manager",
@@ -138,7 +138,7 @@ export const emails: TEmail[] = [
     date: "2023-09-10T11:00:00.000Z",
     account: accounts[2],
     isRead: false,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Educational Forum",
@@ -147,7 +147,7 @@ export const emails: TEmail[] = [
     date: "2023-09-10T11:00:00.000Z",
     account: accounts[3],
     isRead: false,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Team Leads",
@@ -156,7 +156,7 @@ export const emails: TEmail[] = [
     date: "2023-09-10T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Web Admin",
@@ -165,7 +165,7 @@ export const emails: TEmail[] = [
     date: "2023-09-10T11:00:00.000Z",
     account: accounts[1],
     isRead: false,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "City Council",
@@ -174,7 +174,7 @@ export const emails: TEmail[] = [
     date: "2023-09-10T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Online Course",
@@ -183,7 +183,7 @@ export const emails: TEmail[] = [
     date: "2023-09-10T11:00:00.000Z",
     account: accounts[3],
     isRead: false,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -192,7 +192,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "SysAdmin",
@@ -201,7 +201,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[1],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Real Estate Agency",
@@ -210,7 +210,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Alumni Association",
@@ -219,7 +219,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[3],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Company Retreat",
@@ -228,7 +228,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Hosting Provider",
@@ -237,7 +237,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[1],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Construction Update",
@@ -246,7 +246,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR Department",
@@ -255,7 +255,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: false,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Tech Team",
@@ -264,7 +264,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[1],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Property Manager",
@@ -273,7 +273,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: false,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Educational Forum",
@@ -282,7 +282,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[3],
     isRead: false,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Team Leads",
@@ -291,7 +291,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Web Admin",
@@ -300,7 +300,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[1],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "City Council",
@@ -309,7 +309,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Online Course",
@@ -318,7 +318,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[3],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -327,7 +327,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "SysAdmin",
@@ -336,7 +336,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[1],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Real Estate Agency",
@@ -345,7 +345,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Alumni Association",
@@ -354,7 +354,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[3],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Company Retreat",
@@ -363,7 +363,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Hosting Provider",
@@ -372,7 +372,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[1],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Construction Update",
@@ -381,7 +381,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Construction Update",
@@ -390,7 +390,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Construction Update",
@@ -399,7 +399,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Construction Update",
@@ -408,7 +408,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Construction Update",
@@ -417,7 +417,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Construction Update",
@@ -426,7 +426,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Construction Update",
@@ -435,7 +435,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Construction Update",
@@ -444,7 +444,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Construction Update",
@@ -453,7 +453,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Construction Update",
@@ -462,7 +462,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: false,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Construction Update",
@@ -471,7 +471,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Construction Update",
@@ -480,7 +480,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "SysAdmin",
@@ -489,7 +489,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[1],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "SysAdmin",
@@ -498,7 +498,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[1],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "SysAdmin",
@@ -507,7 +507,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[1],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "SysAdmin",
@@ -516,7 +516,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[1],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "SysAdmin",
@@ -525,7 +525,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[1],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "SysAdmin",
@@ -534,7 +534,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[1],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "SysAdmin",
@@ -543,7 +543,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[1],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "SysAdmin",
@@ -552,7 +552,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[1],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "SysAdmin",
@@ -561,7 +561,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[1],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "SysAdmin",
@@ -570,7 +570,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -579,7 +579,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -588,7 +588,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -597,7 +597,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -606,7 +606,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -615,7 +615,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -624,7 +624,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -633,7 +633,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -642,7 +642,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -651,7 +651,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -660,7 +660,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Educational Forum",
@@ -669,7 +669,7 @@ export const emails: TEmail[] = [
     date: "2023-09-08T11:00:00.000Z",
     account: accounts[3],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Educational Forum",
@@ -678,7 +678,7 @@ export const emails: TEmail[] = [
     date: "2023-09-08T11:00:00.000Z",
     account: accounts[3],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Educational Forum",
@@ -687,7 +687,7 @@ export const emails: TEmail[] = [
     date: "2023-09-08T11:00:00.000Z",
     account: accounts[3],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Educational Forum",
@@ -696,16 +696,7 @@ export const emails: TEmail[] = [
     date: "2023-09-08T11:00:00.000Z",
     account: accounts[3],
     isRead: true,
-    isFavorited: false,
-  },
-  {
-    sender: "Educational Forum",
-    title: "Upcoming seminar on modern teaching methods",
-    body: "Join our seminar next week to learn about the most effective teaching methods.",
-    date: "2023-09-08T11:00:00.000Z",
-    account: accounts[1],
-    isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Educational Forum",
@@ -714,7 +705,16 @@ export const emails: TEmail[] = [
     date: "2023-09-08T11:00:00.000Z",
     account: accounts[1],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
+  },
+  {
+    sender: "Educational Forum",
+    title: "Upcoming seminar on modern teaching methods",
+    body: "Join our seminar next week to learn about the most effective teaching methods.",
+    date: "2023-09-08T11:00:00.000Z",
+    account: accounts[1],
+    isRead: true,
+    isStarred: false,
   },
   {
     sender: "Educational Forum",
@@ -723,7 +723,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[3],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Educational Forum",
@@ -732,7 +732,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[3],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "Educational Forum",
@@ -741,7 +741,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -750,7 +750,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -759,7 +759,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -768,7 +768,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -777,7 +777,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -786,7 +786,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -795,7 +795,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -804,7 +804,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -813,7 +813,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -822,7 +822,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -831,7 +831,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -840,7 +840,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -849,7 +849,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -858,7 +858,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -867,7 +867,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -876,7 +876,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -885,7 +885,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -894,7 +894,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -903,7 +903,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -912,7 +912,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -921,7 +921,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -930,7 +930,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -939,7 +939,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -948,7 +948,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -957,7 +957,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -966,7 +966,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -975,7 +975,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -984,7 +984,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -993,7 +993,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1002,7 +1002,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1011,7 +1011,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1020,7 +1020,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1029,7 +1029,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1038,7 +1038,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1047,7 +1047,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1056,7 +1056,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1065,7 +1065,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1074,7 +1074,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1083,7 +1083,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1092,7 +1092,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1101,7 +1101,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1110,7 +1110,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1119,7 +1119,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1128,7 +1128,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1137,7 +1137,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1146,7 +1146,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1155,7 +1155,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1164,7 +1164,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1173,7 +1173,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1182,7 +1182,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1191,7 +1191,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1200,7 +1200,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1209,7 +1209,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1218,7 +1218,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1227,7 +1227,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1236,7 +1236,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1245,7 +1245,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1254,7 +1254,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1263,7 +1263,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1272,7 +1272,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1281,7 +1281,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1290,7 +1290,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1299,7 +1299,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1308,7 +1308,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1317,7 +1317,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1326,7 +1326,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1335,7 +1335,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[0],
     isRead: true,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "Educational Forum",
@@ -1344,7 +1344,7 @@ export const emails: TEmail[] = [
     date: "2023-08-10T11:00:00.000Z",
     account: accounts[1],
     isRead: false,
-    isFavorited: true,
+    isStarred: true,
   },
   {
     sender: "HR",
@@ -1353,7 +1353,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -1362,7 +1362,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -1371,7 +1371,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -1380,7 +1380,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -1389,7 +1389,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -1398,7 +1398,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -1407,7 +1407,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -1416,7 +1416,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -1425,7 +1425,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -1434,7 +1434,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -1443,7 +1443,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
   {
     sender: "HR",
@@ -1452,7 +1452,7 @@ export const emails: TEmail[] = [
     date: "2023-09-09T11:00:00.000Z",
     account: accounts[2],
     isRead: true,
-    isFavorited: false,
+    isStarred: false,
   },
 ]
   .map((e) => ({ ...e, date: new Date(lastTimestamp) }))
@@ -1468,9 +1468,6 @@ export const emails: TEmail[] = [
           (i > 90 ? 96 : i > 75 ? 48 : i > 70 ? 24 : i > 40 ? 12 : 2)
     ).toUTCString(),
   }));
-
-export const unreadEmails = emails.filter((email) => !email.isRead);
-export const favoritedEmails = emails.filter((email) => email.isFavorited);
 
 export type TIconColor =
   | "red"
@@ -1496,7 +1493,7 @@ export type TIconType =
   | "inbox"
   | "placeholder"
   | "unread"
-  | "favorites";
+  | "starred";
 
 export interface TAccount {
   id: string;
@@ -1512,7 +1509,7 @@ export interface TEmail {
   title: string;
   body: string;
   isRead: boolean;
-  isFavorited: boolean;
+  isStarred: boolean;
   date: string;
   account: TAccount;
 }

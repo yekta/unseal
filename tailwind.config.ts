@@ -38,7 +38,7 @@ const config: Config = {
         "c-scrollbar-bg": "rgb(var(--c-scrollbar-bg)/<alpha-value>)",
         "c-scrollbar-thumb": "rgb(var(--c-scrollbar-thumb)/<alpha-value>)",
         "c-primary": "rgb(var(--c-primary)/<alpha-value>)",
-        "c-favorite": "rgb(var(--c-favorite)/<alpha-value>)",
+        "c-star": "rgb(var(--c-star)/<alpha-value>)",
         "c-barrier": "rgb(var(--c-barrier)/<alpha-value>)",
         "c-shadow": "rgb(var(--c-shadow)/<alpha-value>)",
         "c-icon-red": "rgb(var(--c-icon-red)/<alpha-value>)",

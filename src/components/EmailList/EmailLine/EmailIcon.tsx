@@ -171,7 +171,7 @@ export default function EmailIcon({
           fadedColorClasses={fadedColorClasses}
           fadedLightColorClasses={fadedLightColorClasses}
         />
-      ) : type === "favorites" ? (
+      ) : type === "starred" ? (
         <IconSet
           PassiveIcon={StarIcon}
           ActiveIcon={StarIconSolid}

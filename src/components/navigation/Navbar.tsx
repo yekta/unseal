@@ -42,9 +42,9 @@ export default function Navbar() {
       iconColor: "on-bg",
     },
     {
-      label: "Favorites",
-      pathname: getPathnameWithAccount("/view/favorites", accountId),
-      iconType: "favorites",
+      label: "Starred",
+      pathname: getPathnameWithAccount("/view/starred", accountId),
+      iconType: "starred",
       iconColor: "on-bg",
     },
   ];

@@ -26,7 +26,7 @@ export function EmailLine({
   date,
   isRead,
   account,
-  isFavorited,
+  isStarred,
 }: TEmail) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -111,13 +111,13 @@ export function EmailLine({
           <ul className="h-full flex flex-row pointer-events-auto">
             <li className="h-full">
               <IconButton
-                Icon={isFavorited ? StarIconFilled : StarIcon}
+                Icon={isStarred ? StarIconFilled : StarIcon}
                 iconClass={
-                  isFavorited
-                    ? "text-c-favorite/75 group-hover/icon-button:text-c-favorite"
+                  isStarred
+                    ? "text-c-star/75 group-hover/icon-button:text-c-star"
                     : undefined
                 }
-                label={isFavorited ? "Unfavorite" : "Favorite"}
+                label={isStarred ? "Unfavorite" : "Favorite"}
               />
             </li>
             <li className="h-full">

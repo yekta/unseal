@@ -67,12 +67,12 @@ export function useCommands(searchQuery: string) {
         shouldFilterOut: () => pathname === "/view/unread",
       },
       {
-        title: "Go to Favorites",
-        description: "Go to your favorite emails",
-        tags: ["starred", "favorite"],
+        title: "Go to Starred",
+        description: "Go to your starred emails",
+        tags: ["starred", "favorited"],
         Icon: StarIcon,
-        onClick: () => router.push("/view/favorites"),
-        shouldFilterOut: () => pathname === "/view/favorites",
+        onClick: () => router.push("/view/starred"),
+        shouldFilterOut: () => pathname === "/view/starred",
       },
       {
         title: "Settings",

@@ -3,5 +3,5 @@ import EmailList from "@components/EmailList/EmailList";
 
 export default function Page({ params }: TAccountPageProps) {
   const { accountId } = params;
-  return <EmailList accountId={accountId} view={"unread"} />;
+  return <EmailList accountId={accountId} filters={["unread"]} />;
 }

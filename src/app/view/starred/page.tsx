@@ -1,5 +1,5 @@
 import EmailList from "@components/EmailList/EmailList";
 
 export default function Page() {
-  return <EmailList view={"favorites"} />;
+  return <EmailList filters={["starred"]} />;
 }

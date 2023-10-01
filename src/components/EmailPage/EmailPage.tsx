@@ -5,15 +5,15 @@ import InboxHotkeyProvider from "@components/providers/InboxHotkeyProvider";
 
 export default function EmailPage({
   email,
-  selectedEmails,
+  emails,
   from,
 }: {
   email: TEmail;
-  selectedEmails: TEmail[];
+  emails: TEmail[];
   from: string;
 }) {
   return (
-    <InboxHotkeyProvider emails={selectedEmails} email={email} from={from}>
+    <InboxHotkeyProvider emails={emails} email={email} from={from}>
       <div className="w-full flex-1 flex flex-row items-start justify-center">
         <Link
           href={from}
