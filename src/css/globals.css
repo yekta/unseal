@@ -9,6 +9,8 @@
   --c-bg-command-palette: 42 42 60;
   --c-bg-highlight: 32 32 48;
   --c-bg-highlight-secondary: 35 35 53;
+  --c-bg-tooltip: 60 60 80;
+  --c-on-tooltip: 215 215 235;
   --c-primary: 144 181 255;
   --c-favorite: 255 180 105;
   --c-barrier: 16 16 24;
@@ -41,6 +43,8 @@ html[data-theme=light]{
     --c-bg-command-palette: 255 255 255;
     --c-bg-highlight: 235 235 235;
     --c-bg-highlight-secondary: 227 227 227;
+    --c-bg-tooltip: 110 110 120;
+    --c-on-tooltip: 255 255 255;
     --c-primary: 64 101 185;
     --c-favorite: 215 110 5;
     --c-barrier: 0 0 12;

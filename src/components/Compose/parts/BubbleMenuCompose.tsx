@@ -52,7 +52,7 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
         animation: "tooltip-animation",
         arrow: `<svg class='text-c-bg-tertiary' width="20" height="8" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.87.66 20 8H0L8.13.66a3 3 0 0 1 3.74 0Z" fill="currentColor"/></svg>`,
       }}
-      className="bg-c-bg-tertiary shadow-lg shadow-c-shadow/[var(--o-shadow-normal)] 
+      className="bg-c-bg-tertiary shadow-lg shadow-c-shadow/[var(--o-shadow-strong)] 
       flex flex-col rounded-lg overflow-hidden"
     >
       <div

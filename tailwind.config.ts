@@ -31,6 +31,8 @@ const config: Config = {
         "c-bg-highlight": "rgb(var(--c-bg-highlight)/<alpha-value>)",
         "c-bg-highlight-secondary":
           "rgb(var(--c-bg-highlight-secondary)/<alpha-value>)",
+        "c-bg-tooltip": "rgb(var(--c-bg-tooltip)/<alpha-value>)",
+        "c-on-tooltip": "rgb(var(--c-on-tooltip)/<alpha-value>)",
         "c-bg-unread": "rgb(var(--c-bg-unread)/<alpha-value>)",
         "c-on-bg": "rgb(var(--c-on-bg)/<alpha-value>)",
         "c-scrollbar-bg": "rgb(var(--c-scrollbar-bg)/<alpha-value>)",
