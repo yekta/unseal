@@ -25,9 +25,7 @@ export default function WithTooltip({
           sideOffset={offset}
         >
           {label}
-          {hasArrow && (
-            <Tooltip.Arrow className="fill-c-bg-highlight-secondary" />
-          )}
+          {hasArrow && <Tooltip.Arrow className="fill-c-bg-highlight" />}
         </Tooltip.Content>
       </Tooltip.Portal>
     </Tooltip.Root>
