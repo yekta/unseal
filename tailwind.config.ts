@@ -25,14 +25,14 @@ const config: Config = {
       colors: {
         "c-bg": "rgb(var(--c-bg)/<alpha-value>)",
         "c-bg-secondary": "rgb(var(--c-bg-secondary)/<alpha-value>)",
-        "c-bg-tertiary": "rgb(var(--c-bg-tertiary)/<alpha-value>)",
         "c-bg-command-palette":
           "rgb(var(--c-bg-command-palette)/<alpha-value>)",
         "c-bg-highlight": "rgb(var(--c-bg-highlight)/<alpha-value>)",
         "c-bg-highlight-secondary":
           "rgb(var(--c-bg-highlight-secondary)/<alpha-value>)",
-        "c-bg-tooltip": "rgb(var(--c-bg-tooltip)/<alpha-value>)",
-        "c-on-tooltip": "rgb(var(--c-on-tooltip)/<alpha-value>)",
+        "c-tooltip-bg": "rgb(var(--c-tooltip-bg)/<alpha-value>)",
+        "c-tooltip-on-bg": "rgb(var(--c-tooltip-on-bg)/<alpha-value>)",
+        "c-tooltip-primary": "rgb(var(--c-tooltip-primary)/<alpha-value>)",
         "c-bg-unread": "rgb(var(--c-bg-unread)/<alpha-value>)",
         "c-on-bg": "rgb(var(--c-on-bg)/<alpha-value>)",
         "c-scrollbar-bg": "rgb(var(--c-scrollbar-bg)/<alpha-value>)",

@@ -50,9 +50,9 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
         offset: [0, 6],
         duration: [100, 0],
         animation: "tooltip-animation",
-        arrow: `<svg class='text-c-bg-tertiary' width="20" height="8" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.87.66 20 8H0L8.13.66a3 3 0 0 1 3.74 0Z" fill="currentColor"/></svg>`,
+        arrow: `<svg class='text-c-tooltip-bg' width="20" height="8" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.87.66 20 8H0L8.13.66a3 3 0 0 1 3.74 0Z" fill="currentColor"/></svg>`,
       }}
-      className="bg-c-bg-tertiary shadow-lg shadow-c-shadow/[var(--o-shadow-strong)] 
+      className="bg-c-tooltip-bg shadow-lg shadow-c-shadow/[var(--o-shadow-strong)] 
       flex flex-col rounded-lg overflow-hidden"
     >
       <div
@@ -107,24 +107,24 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
           >
             <div
               className="rounded-md px-2.5 py-1.5 flex items-center transition justify-center 
-              gap-1.5 group-hover:bg-c-primary/10"
+              gap-1.5 group-hover:bg-c-primary/15"
             >
               <p
                 className="flex-shrink min-w-0 text-center whitespace-nowrap overflow-hidden overflow-ellipsis 
-                transition group-hover:text-c-primary text-c-on-bg/75"
+                transition group-hover:text-c-primary text-c-tooltip-on-bg/75"
               >
                 {editor.getAttributes("link").href.endsWith("/")
                   ? editor.getAttributes("link").href.slice(0, -1)
                   : editor.getAttributes("link").href}
               </p>
-              <ArrowTopRightOnSquareIcon className="w-4 h-4 text-c-on-bg/75 transition group-hover:text-c-primary flex-shrink-0" />
+              <ArrowTopRightOnSquareIcon className="w-4 h-4 text-c-tooltip-on-bg/75 transition group-hover:text-c-primary flex-shrink-0" />
             </div>
           </a>
         )}
         {bubbleMenuType === "link" && (
           <>
             <form
-              className="absolute left-0 top-0 w-full h-full bg-c-bg-tertiary rounded-lg"
+              className="absolute left-0 top-0 w-full h-full bg-c-tooltip-bg rounded-lg"
               onSubmit={() => {
                 if (linkInputValue === "") {
                   editor.chain().focus().unsetLink().run();
@@ -144,10 +144,10 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
                 onChange={(e) => {
                   setLinkInputValue(e.target.value);
                 }}
-                className="pl-3 pr-11 w-full h-full placeholder:text-c-on-bg/40 bg-transparent overflow-ellipsis"
+                className="pl-3 pr-11 w-full h-full placeholder:text-c-tooltip-on-bg/40 text-c-tooltip-on-bg bg-transparent overflow-ellipsis"
               />
               <button
-                className="w-10 h-full transition hover:bg-c-primary/10 group absolute right-0 top-0 p-2
+                className="w-10 h-full transition hover:bg-c-primary/15 group absolute right-0 top-0 p-2
                 rounded-r-lg"
                 type="button"
                 onClick={() => {
@@ -161,7 +161,7 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
                   setBubbleMenuType("main");
                 }}
               >
-                <XMarkIcon className="w-full h-full text-c-on-bg/60 group-hover:text-c-primary" />
+                <XMarkIcon className="w-full h-full text-c-tooltip-on-bg/60 group-hover:text-c-primary" />
               </button>
             </form>
           </>
@@ -189,10 +189,10 @@ function BubbleMenuButton({
       className={`w-11 h-11 rounded-lg flex items-center justify-center 
       cursor-default p-0.75 group`}
     >
-      <div className={`p-2 group-hover:bg-c-on-bg/8 rounded-md`}>
+      <div className={`p-2 group-hover:bg-c-tooltip-on-bg/10 rounded-md`}>
         <Icon
           className={`w-full h-full ${
-            isActive ? "text-c-primary" : "text-c-on-bg"
+            isActive ? "text-c-primary" : "text-c-tooltip-on-bg"
           }`}
         />
       </div>

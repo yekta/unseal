@@ -1,13 +1,21 @@
-import { TAccount, accounts as accountsConstant } from "@ts/email";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { accounts as accountsConstant } from "@ts/email";
 
 export function useAccounts() {
-  const [accounts, setAccounts] = useState<TAccount[] | undefined>(undefined);
-  useEffect(() => {
-    (async () => {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      setAccounts(accountsConstant);
-    })();
-  });
-  return { accounts };
+  const { data, isError, error, isLoading } = useQuery(
+    ["accounts"],
+    getAccounts
+  );
+
+  return {
+    accounts: data,
+    isAccountsError: isError,
+    accountsError: error,
+    isAccountsLoading: isLoading,
+  };
+}
+
+async function getAccounts() {
+  await new Promise((resolve) => setTimeout(resolve, 500));
+  return accountsConstant;
 }

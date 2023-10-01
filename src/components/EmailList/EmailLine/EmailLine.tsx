@@ -16,7 +16,6 @@ import {
 } from "@heroicons/react/24/outline";
 
 import { StarIcon as StarIconFilled } from "@heroicons/react/24/solid";
-import WithTooltip from "@components/utils/WithTooltip";
 import * as Tooltip from "@radix-ui/react-tooltip";
 
 export function EmailLine({
@@ -111,36 +110,30 @@ export function EmailLine({
         <Tooltip.Provider delayDuration={250} skipDelayDuration={500}>
           <ul className="h-full flex flex-row pointer-events-auto">
             <li className="h-full">
-              <WithTooltip label={isFavorited ? "Unfavorite" : "Favorite"}>
-                <IconButton
-                  Icon={isFavorited ? StarIconFilled : StarIcon}
-                  iconClass={
-                    isFavorited
-                      ? "text-c-favorite/75 group-hover/icon-button:text-c-favorite"
-                      : undefined
-                  }
-                />
-              </WithTooltip>
+              <IconButton
+                Icon={isFavorited ? StarIconFilled : StarIcon}
+                iconClass={
+                  isFavorited
+                    ? "text-c-favorite/75 group-hover/icon-button:text-c-favorite"
+                    : undefined
+                }
+                label={isFavorited ? "Unfavorite" : "Favorite"}
+              />
             </li>
             <li className="h-full">
-              <WithTooltip label={"Remind later"}>
-                <IconButton Icon={ClockIcon} />
-              </WithTooltip>
+              <IconButton Icon={ClockIcon} label={"Remind later"} />
             </li>
             <li className="h-full">
-              <WithTooltip label={isRead ? "Mark as unread" : "Mark as read"}>
-                <IconButton Icon={isRead ? EnvelopeIcon : EnvelopeOpenIcon} />
-              </WithTooltip>
+              <IconButton
+                Icon={isRead ? EnvelopeIcon : EnvelopeOpenIcon}
+                label={isRead ? "Mark as unread" : "Mark as read"}
+              />
             </li>
             <li className="h-full">
-              <WithTooltip label={"Archive"}>
-                <IconButton Icon={ArchiveBoxArrowDownIcon} />
-              </WithTooltip>
+              <IconButton Icon={ArchiveBoxArrowDownIcon} label="Archive" />
             </li>
             <li className="h-full">
-              <WithTooltip label={"Delete"}>
-                <IconButton Icon={TrashIcon} />
-              </WithTooltip>
+              <IconButton Icon={TrashIcon} label="Delete" />
             </li>
           </ul>
         </Tooltip.Provider>
@@ -153,24 +146,40 @@ function IconButton({
   onClick,
   Icon,
   iconClass = "",
+  label,
 }: {
   onClick?: () => void;
   Icon: React.ComponentType<any>;
   iconClass?: string;
+  label: string;
 }) {
   return (
-    <button
-      tabIndex={-1}
-      onClick={onClick}
-      className="cursor-default h-full flex items-center justify-center py-1 px-px 
-      rounded-lg group/icon-button text-c-on-bg/75 hover:text-c-on-bg"
-    >
-      <div
-        className="h-full p-2.5 flex items-center justify-center 
-        rounded-lg group-hover/icon-button:bg-c-on-bg/8"
-      >
-        <Icon className={`w-6 h-6 ${iconClass}`} />
-      </div>
-    </button>
+    <Tooltip.Root>
+      <Tooltip.Trigger asChild>
+        <button
+          tabIndex={-1}
+          onClick={onClick}
+          className="cursor-default h-full flex items-center justify-center py-1 px-px 
+          rounded-lg group/icon-button text-c-on-bg/75 hover:text-c-on-bg"
+        >
+          <div
+            className="h-full p-2.5 flex items-center justify-center 
+            rounded-lg group-hover/icon-button:bg-c-on-bg/10"
+          >
+            <Icon className={`w-6 h-6 ${iconClass}`} />
+          </div>
+        </button>
+      </Tooltip.Trigger>
+      <Tooltip.Portal>
+        <Tooltip.Content
+          side={"bottom"}
+          className="rounded-md text-sm bg-c-tooltip-bg text-c-tooltip-on-bg font-medium px-2 py-0.75
+          shadow-md shadow-c-shadow/[var(--o-shadow-strong)] data-[state=closed]:opacity-0"
+          sideOffset={0}
+        >
+          {label}
+        </Tooltip.Content>
+      </Tooltip.Portal>
+    </Tooltip.Root>
   );
 }
