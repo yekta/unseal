@@ -51,7 +51,7 @@ export default function CommandPalette() {
       onMouseMove={() => {
         !isMouseMoveOrEnterActive && setIsMouseMoveOrEnterActive(true);
       }}
-      className="w-full flex flex-1 flex-col items-start justify-start overflow-hidden border-2 border-c-on-bg/5 
+      className="w-full flex flex-1 flex-col items-start justify-start overflow-hidden border-2 border-c-on-bg/5
       bg-c-bg-command-palette rounded-xl relative shadow-3xl shadow-c-shadow/[var(--o-shadow-command-palette)]"
     >
       <form

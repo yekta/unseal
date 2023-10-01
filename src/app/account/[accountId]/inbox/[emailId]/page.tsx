@@ -2,6 +2,7 @@
 
 import { TAccountInboxProps } from "@app/account/types";
 import EmailPage from "@components/EmailPage/EmailPage";
+import { getPathnameWithAccount } from "@ts/helpers/getPathnameWithAccount";
 import { TInboxFilter, useInbox } from "@ts/hooks/useInbox";
 import { useSearchParams } from "next/navigation";
 
@@ -17,7 +18,22 @@ export default function Page({ params }: TAccountInboxProps) {
   }
   const { emails } = useInbox({ accountId, filters });
   const email = emails?.find((email) => email.id === emailId);
+  const prevId = email ? emails?.[emails.indexOf(email) - 1]?.id : undefined;
+  const nextId = email ? emails?.[emails.indexOf(email) + 1]?.id : undefined;
+  const prevEmailPathname = prevId
+    ? getPathnameWithAccount(`/inbox/${prevId}`, accountId)
+    : undefined;
+  const nextEmailPathname = nextId
+    ? getPathnameWithAccount(`/inbox/${nextId}`, accountId)
+    : undefined;
   if (!email) return <div></div>;
   if (!emails) return <div></div>;
-  return <EmailPage email={email} emails={emails} from={from} />;
+  return (
+    <EmailPage
+      email={email}
+      prevEmailPathname={prevEmailPathname}
+      nextEmailPathname={nextEmailPathname}
+      from={from}
+    />
+  );
 }

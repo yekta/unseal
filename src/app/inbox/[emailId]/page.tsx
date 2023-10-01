@@ -2,6 +2,7 @@
 
 import EmailPage from "@components/EmailPage/EmailPage";
 import { TInboxFilter, useInbox } from "@ts/hooks/useInbox";
+import next from "next";
 import { useSearchParams } from "next/navigation";
 
 export default function Page({ params }: { params: { emailId: string } }) {
@@ -16,7 +17,18 @@ export default function Page({ params }: { params: { emailId: string } }) {
   }
   const { emails } = useInbox({ filters });
   const email = emails?.find((email) => email.id === emailId);
-  if (!email) return <div></div>;
-  if (!emails) return <div></div>;
-  return <EmailPage email={email} emails={emails} from={from} />;
+  const prevId = email ? emails?.[emails.indexOf(email) - 1]?.id : undefined;
+  const nextId = email ? emails?.[emails.indexOf(email) + 1]?.id : undefined;
+  const prevEmailPathname = prevId ? `/inbox/${prevId}` : undefined;
+  const nextEmailPathname = nextId ? `/inbox/${nextId}` : undefined;
+  if (!email) return <></>;
+  if (!emails) return <></>;
+  return (
+    <EmailPage
+      email={email}
+      prevEmailPathname={prevEmailPathname}
+      nextEmailPathname={nextEmailPathname}
+      from={from}
+    />
+  );
 }

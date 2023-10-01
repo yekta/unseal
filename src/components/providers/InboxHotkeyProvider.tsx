@@ -10,42 +10,35 @@ import { Key } from "ts-key-enum";
 
 export default function HotkeyProvider({
   children,
-  emails,
   email,
+  prevEmailPathname,
+  nextEmailPathname,
   from,
 }: {
   children: React.ReactNode;
-  emails: TEmail[];
   email: TEmail;
+  prevEmailPathname?: string;
+  nextEmailPathname?: string;
   from: string;
 }) {
   const router = useRouter();
   const pathname = usePathname();
   const accountId = getAccountIdFromPathname(pathname);
   useHotkeys(Key.Escape, () => router.push(from));
-  useHotkeys([Key.ArrowLeft, Key.ArrowUp], () => {
-    if (!email) return;
-    const index = emails.indexOf(email);
-    if (index <= 0) return;
-    const nextId = emails[index - 1].id;
-    router.push(
-      `${getPathnameWithAccount(
-        `/inbox/${nextId}`,
-        accountId
-      )}?from=${encodeURIComponent(from)}`
-    );
-  });
-  useHotkeys([Key.ArrowRight, Key.ArrowDown], () => {
-    if (!email) return;
-    const index = emails.indexOf(email);
-    if (index >= emails.length - 1) return;
-    const nextId = emails[index + 1].id;
-    router.push(
-      `${getPathnameWithAccount(
-        `/inbox/${nextId}`,
-        accountId
-      )}?from=${encodeURIComponent(from)}`
-    );
-  });
+  useHotkeys(
+    [Key.ArrowLeft, Key.ArrowUp],
+    () => {
+      router.push(`${prevEmailPathname}?from=${encodeURIComponent(from)}`);
+    },
+    { enabled: prevEmailPathname !== undefined }
+  );
+  useHotkeys(
+    [Key.ArrowRight, Key.ArrowDown],
+    () => {
+      if (!email) return;
+      router.push(`${nextEmailPathname}?from=${encodeURIComponent(from)}`);
+    },
+    { enabled: nextEmailPathname !== undefined }
+  );
   return children;
 }
