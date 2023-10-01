@@ -14,8 +14,8 @@
   --c-barrier: 16 16 24;
   --c-shadow: 0 0 6;
   --c-on-bg: 215 215 235;
-  --c-scrollbar-bg: 24 85 105;
-  --c-scrollbar-thumb: 135 135 155;
+  --c-scrollbar-bg: 94 95 115;
+  --c-scrollbar-thumb: 165 165 185;
   --c-icon-red: 255 157 157;
   --c-icon-lime: 190 219 142;
   --c-icon-blue: 161 199 255;
@@ -39,14 +39,14 @@ html[data-theme=light]{
     --c-bg-tertiary: 235 235 235;
     --c-bg-command-palette: 255 255 255;
     --c-bg-highlight: 235 235 235;
-    --c-bg-highlight-secondary: 230 230 230;
+    --c-bg-highlight-secondary: 227 227 227;
     --c-primary: 64 101 185;
     --c-favorite: 215 110 5;
     --c-barrier: 0 0 12;
     --c-shadow: 0 0 6;
     --c-on-bg: 0 0 12;
-    --c-scrollbar-bg: 170 170 182;
-    --c-scrollbar-thumb: 80 80 92;
+    --c-scrollbar-bg: 185 185 195;
+    --c-scrollbar-thumb: 90 90 102;
     --c-icon-red: 155 57 57;
     --c-icon-lime: 90 119 42;
     --c-icon-blue: 61 99 155;
