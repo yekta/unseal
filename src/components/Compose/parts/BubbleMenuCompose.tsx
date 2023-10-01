@@ -52,7 +52,7 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
         animation: "tooltip-animation",
         arrow: `<svg class='text-c-tooltip-bg' width="20" height="8" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.87.66 20 8H0L8.13.66a3 3 0 0 1 3.74 0Z" fill="currentColor"/></svg>`,
       }}
-      className="bg-c-tooltip-bg shadow-lg shadow-c-shadow/[var(--o-shadow-strong)] 
+      className="bg-c-tooltip-bg shadow-lg shadow-c-shadow/[var(--o-shadow-normal)] 
       flex flex-col rounded-lg overflow-hidden"
     >
       <div
@@ -144,7 +144,7 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
                 onChange={(e) => {
                   setLinkInputValue(e.target.value);
                 }}
-                className="pl-3 pr-11 w-full h-full placeholder:text-c-tooltip-on-bg/40 text-c-tooltip-on-bg bg-transparent overflow-ellipsis"
+                className="pl-3 pr-11 w-full h-full placeholder:text-c-tooltip-on-bg/50 text-c-tooltip-on-bg bg-transparent overflow-ellipsis"
               />
               <button
                 className="w-10 h-full transition hover:bg-c-primary/15 group absolute right-0 top-0 p-2
@@ -203,7 +203,7 @@ function BubbleMenuButton({
 export function Divider() {
   return (
     <div className="px-1.5">
-      <div className="h-5 w-2px rounded-full bg-c-on-bg/10" />
+      <div className="h-5 w-2px rounded-full bg-c-tooltip-on-bg/15" />
     </div>
   );
 }

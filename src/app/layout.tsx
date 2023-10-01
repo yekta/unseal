@@ -2,9 +2,8 @@ import CommandPaletteModal from "@components/CommandPalette/CommandPaletteModal"
 import Navbar from "@components/navigation/Navbar";
 import Sidebar from "@components/navigation/Sidebar";
 import RootLayoutProviders from "@components/providers/RootLayoutProviders";
-import "@css/globals.css";
+import "@css/app.css";
 import type { Metadata } from "next";
-import { ThemeProvider } from "next-themes";
 
 export const metadata: Metadata = {
   title: "Create Next App",

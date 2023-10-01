@@ -41,7 +41,7 @@ html[data-theme="light"] {
   --c-bg-command-palette: 250 250 255;
   --c-bg-highlight: 230 230 242;
   --c-bg-highlight-hover: 238 238 250;
-  --c-tooltip-bg: 240 240 250;
+  --c-tooltip-bg: 250 250 255;
   --c-tooltip-on-bg: 0 0 12;
   --c-primary: 64 101 185;
   --c-star: 225 120 5;
