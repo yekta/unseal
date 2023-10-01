@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { WebviewWindow } from "@tauri-apps/api/window";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
 import ComposeButtonWithModal from "@components/Compose/ComposeButtonWithModal";
 import { getPathnameWithAccount } from "@ts/helpers/getPathnameWithAccount";
 import { getAccountIdFromPathname } from "@ts/helpers/getAccountIdFromPathname";
