@@ -28,8 +28,8 @@ const config: Config = {
         "c-bg-command-palette":
           "rgb(var(--c-bg-command-palette)/<alpha-value>)",
         "c-bg-highlight": "rgb(var(--c-bg-highlight)/<alpha-value>)",
-        "c-bg-highlight-secondary":
-          "rgb(var(--c-bg-highlight-secondary)/<alpha-value>)",
+        "c-bg-highlight-hover":
+          "rgb(var(--c-bg-highlight-hover)/<alpha-value>)",
         "c-tooltip-bg": "rgb(var(--c-tooltip-bg)/<alpha-value>)",
         "c-tooltip-on-bg": "rgb(var(--c-tooltip-on-bg)/<alpha-value>)",
         "c-tooltip-primary": "rgb(var(--c-tooltip-primary)/<alpha-value>)",

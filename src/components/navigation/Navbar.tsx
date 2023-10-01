@@ -92,7 +92,7 @@ export default function Navbar() {
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           className="py-1.5 px-0.75 flex cursor-default group"
         >
-          <div className="p-1 flex items-center justify-center rounded-lg group-hover:bg-c-bg-highlight-secondary">
+          <div className="p-1 flex items-center justify-center rounded-lg group-hover:bg-c-bg-highlight-hover">
             <Bars4Icon
               className={`text-c-on-bg w-8 h-8 transform transition ${
                 isSidebarOpen ? "rotate-90" : ""
@@ -112,10 +112,11 @@ export default function Navbar() {
                 className="py-1.5 px-0.75 self-stretch group cursor-default flex flex-row"
               >
                 <div
-                  className={`px-4 py-2 flex items-center justify-center gap-2 
-                    group-hover:bg-c-bg-highlight-secondary rounded-lg ${
-                      isActive && "bg-c-bg-highlight"
-                    }`}
+                  className={`px-4 py-2 flex items-center justify-center gap-2 rounded-lg ${
+                    isActive
+                      ? "bg-c-bg-highlight"
+                      : "group-hover:bg-c-bg-highlight-hover"
+                  }`}
                 >
                   <EmailIcon
                     type={item.iconType}
