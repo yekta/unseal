@@ -16,6 +16,8 @@ import {
 } from "@heroicons/react/24/outline";
 
 import { StarIcon as StarIconFilled } from "@heroicons/react/24/solid";
+import WithTooltip from "@components/utils/WithTooltip";
+import * as Tooltip from "@radix-ui/react-tooltip";
 
 export function EmailLine({
   id,
@@ -106,30 +108,42 @@ export function EmailLine({
           from-c-bg-highlight from-[calc(100%-1.75rem)] to-c-bg-highlight/0
           pointer-events-none rounded-r-xl"
       >
-        <ul className="h-full flex flex-row pointer-events-auto">
-          <li className="h-full">
-            <IconButton
-              Icon={isFavorited ? StarIconFilled : StarIcon}
-              iconClass={
-                isFavorited
-                  ? "text-c-favorite/75 group-hover/icon-button:text-c-favorite"
-                  : undefined
-              }
-            />
-          </li>
-          <li className="h-full">
-            <IconButton Icon={ClockIcon} />
-          </li>
-          <li className="h-full">
-            <IconButton Icon={isRead ? EnvelopeIcon : EnvelopeOpenIcon} />
-          </li>
-          <li className="h-full">
-            <IconButton Icon={ArchiveBoxArrowDownIcon} />
-          </li>
-          <li className="h-full">
-            <IconButton Icon={TrashIcon} />
-          </li>
-        </ul>
+        <Tooltip.Provider delayDuration={250} skipDelayDuration={500}>
+          <ul className="h-full flex flex-row pointer-events-auto">
+            <li className="h-full">
+              <WithTooltip label={isFavorited ? "Unfavorite" : "Favorite"}>
+                <IconButton
+                  Icon={isFavorited ? StarIconFilled : StarIcon}
+                  iconClass={
+                    isFavorited
+                      ? "text-c-favorite/75 group-hover/icon-button:text-c-favorite"
+                      : undefined
+                  }
+                />
+              </WithTooltip>
+            </li>
+            <li className="h-full">
+              <WithTooltip label={"Remind later"}>
+                <IconButton Icon={ClockIcon} />
+              </WithTooltip>
+            </li>
+            <li className="h-full">
+              <WithTooltip label={isRead ? "Mark as unread" : "Mark as read"}>
+                <IconButton Icon={isRead ? EnvelopeIcon : EnvelopeOpenIcon} />
+              </WithTooltip>
+            </li>
+            <li className="h-full">
+              <WithTooltip label={"Archive"}>
+                <IconButton Icon={ArchiveBoxArrowDownIcon} />
+              </WithTooltip>
+            </li>
+            <li className="h-full">
+              <WithTooltip label={"Delete"}>
+                <IconButton Icon={TrashIcon} />
+              </WithTooltip>
+            </li>
+          </ul>
+        </Tooltip.Provider>
       </div>
     </div>
   );

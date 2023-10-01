@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useHotkeys } from "react-hotkeys-hook";
 import { useCommands } from "@components/CommandPalette/useCommands";
-import ScrollArea from "@components/ScrollArea";
+import ScrollArea from "@components/utils/ScrollArea";
 
 export default function CommandPalette() {
   const [searchQuery, setSearchQuery] = useState("");

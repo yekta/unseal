@@ -7,7 +7,7 @@ import { isSidebarOpenAtom } from "@components/navigation/navigation";
 import { useAtom } from "jotai";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import ScrollArea from "@components/ScrollArea";
+import ScrollArea from "@components/utils/ScrollArea";
 
 export default function Sidebar() {
   const pathname = usePathname();

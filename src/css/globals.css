@@ -28,14 +28,15 @@
   --c-macos-green: 48 209 88;
   --o-shadow-normal: 0.2;
   --o-shadow-strong: 0.3;
+  --o-shadow-stronger: 0.4;
   --o-shadow-command-palette: 0.6;
   --o-barrier: 0.8;
 }
 
 html[data-theme=light]{
     --c-bg: 255 255 255;
-    --c-bg-unread: 245 245 245;
-    --c-bg-secondary: 245 245 245;
+    --c-bg-unread: 243 243 243;
+    --c-bg-secondary: 243 243 243;
     --c-bg-tertiary: 235 235 235;
     --c-bg-command-palette: 255 255 255;
     --c-bg-highlight: 235 235 235;
@@ -59,6 +60,7 @@ html[data-theme=light]{
     --c-macos-green: 52 199 89;
     --o-shadow-normal: 0.08;
     --o-shadow-strong: 0.16;
+    --o-shadow-stronger: 0.24;
     --o-shadow-command-palette: 0.24;
     --o-barrier: 0.5;
 }
