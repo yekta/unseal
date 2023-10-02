@@ -117,7 +117,7 @@ export function EmailLine({
                     ? "text-c-star/75 group-hover/icon-button:text-c-star"
                     : undefined
                 }
-                label={isStarred ? "Unstar" : "Star"}
+                label={isStarred ? "Starred" : "Not starred"}
               />
             </li>
             <li className="h-full">
