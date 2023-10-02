@@ -189,7 +189,10 @@ function BubbleMenuButton({
       className={`w-11 h-11 rounded-lg flex items-center justify-center 
       cursor-default p-0.75 group`}
     >
-      <div className={`p-2 group-hover:bg-c-tooltip-on-bg/10 rounded-md`}>
+      <div
+        className={`p-2 group-hover:bg-c-tooltip-on-bg/10 rounded-md 
+        group-focus-visible:ring-2 ring-c-primary/[var(--o-primary-focus-visible)]`}
+      >
         <Icon
           className={`w-full h-full ${
             isActive ? "text-c-primary" : "text-c-tooltip-on-bg"

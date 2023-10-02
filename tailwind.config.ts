@@ -27,7 +27,8 @@ const config: Config = {
         "c-bg-secondary": "rgb(var(--c-bg-secondary)/<alpha-value>)",
         "c-bg-command-palette":
           "rgb(var(--c-bg-command-palette)/<alpha-value>)",
-        "c-bg-highlight": "rgb(var(--c-bg-highlight)/<alpha-value>)",
+        "c-bg-highlight-active":
+          "rgb(var(--c-bg-highlight-active)/<alpha-value>)",
         "c-bg-highlight-hover":
           "rgb(var(--c-bg-highlight-hover)/<alpha-value>)",
         "c-tooltip-bg": "rgb(var(--c-tooltip-bg)/<alpha-value>)",

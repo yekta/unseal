@@ -77,15 +77,15 @@ function LinkLine({
 }) {
   return (
     <Link
-      className="w-full group/link px-1.5 py-px overflow-hidden flex flex-row cursor-default"
+      className="w-full group/link px-1.5 py-px flex flex-row cursor-default"
       href={href}
     >
       <div
         className={`w-full flex flex-row items-center px-3 py-2.5 rounded-lg gap-2 ${
           isActive
-            ? "bg-c-bg-highlight"
+            ? "bg-c-bg-highlight-active"
             : "group-hover/link:bg-c-bg-highlight-hover"
-        }`}
+        } group-focus-visible/link:ring-2 ring-c-primary/[var(--o-primary-focus-visible)]`}
       >
         <EmailIcon
           isActive={isActive}

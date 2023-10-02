@@ -75,14 +75,17 @@ export default function Navbar() {
       >
         <div className={windowButtonContainerClasses}>
           <button
+            tabIndex={-1}
             className={`${windowButtonClasses} bg-c-macos-red`}
             onClick={() => appWindow?.close()}
           ></button>
           <button
+            tabIndex={-1}
             className={`${windowButtonClasses} bg-c-macos-orange`}
             onClick={() => appWindow?.minimize()}
           ></button>
           <button
+            tabIndex={-1}
             className={`${windowButtonClasses} bg-c-macos-green`}
             onClick={() => appWindow?.maximize()}
           ></button>
@@ -92,7 +95,10 @@ export default function Navbar() {
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           className="py-1.5 px-0.75 flex cursor-default group"
         >
-          <div className="p-1 flex items-center justify-center rounded-lg group-hover:bg-c-bg-highlight-hover">
+          <div
+            className="p-1 flex items-center justify-center rounded-lg group-hover:bg-c-bg-highlight-hover
+            group-focus-visible:ring-2 ring-c-primary/[var(--o-primary-focus-visible)]"
+          >
             <Bars4Icon
               className={`text-c-on-bg w-8 h-8 transform transition ${
                 isSidebarOpen ? "rotate-90" : ""
@@ -112,9 +118,10 @@ export default function Navbar() {
                 className="py-1.5 px-0.75 self-stretch group cursor-default flex flex-row"
               >
                 <div
-                  className={`px-4 py-2 flex items-center justify-center gap-2 rounded-lg ${
+                  className={`px-4 py-2 flex items-center justify-center gap-2 rounded-lg 
+                  ring-0 group-focus-visible:ring-2 ring-c-primary/[var(--o-primary-focus-visible)] ${
                     isActive
-                      ? "bg-c-bg-highlight"
+                      ? "bg-c-bg-highlight-active"
                       : "group-hover:bg-c-bg-highlight-hover"
                   }`}
                 >
