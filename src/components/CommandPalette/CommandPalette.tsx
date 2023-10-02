@@ -109,12 +109,8 @@ export default function CommandPalette() {
                     }
                     tabIndex={-1}
                     onClick={() => executeCommand(command)}
-                    className={`text-left w-full flex px-1.5 group/button cursor-default ${
-                      i === 0
-                        ? "pt-1.5 pb-0.75"
-                        : i === commands.length - 1
-                        ? "pb-1.5 pt-0.75"
-                        : "py-0.75"
+                    className={`text-left w-full flex px-1.5 group/button cursor-default pb-1.5 ${
+                      i === 0 && "pt-1.5"
                     }`}
                   >
                     <div
