@@ -117,17 +117,17 @@ export function EmailLine({
                     ? "text-c-star/75 group-hover/icon-button:text-c-star"
                     : undefined
                 }
-                label={isStarred ? "Unfavorite" : "Favorite"}
+                label={isStarred ? "Unstar" : "Star"}
               />
-            </li>
-            <li className="h-full">
-              <IconButton Icon={ClockIcon} label={"Remind later"} />
             </li>
             <li className="h-full">
               <IconButton
                 Icon={isRead ? EnvelopeIcon : EnvelopeOpenIcon}
                 label={isRead ? "Mark as unread" : "Mark as read"}
               />
+            </li>
+            <li className="h-full">
+              <IconButton Icon={ClockIcon} label={"Remind later"} />
             </li>
             <li className="h-full">
               <IconButton Icon={ArchiveBoxArrowDownIcon} label="Archive" />
