@@ -5,15 +5,21 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { isCommandPaletteOpenAtom } from "@components/CommandPalette/commandPaletteSettings";
 import { useAtom } from "jotai";
 import CommandPalette from "@components/CommandPalette/CommandPalette";
-import { useHotkeys } from "react-hotkeys-hook";
+import { useHotkeys } from "@ts/hooks/useHotkeys";
 
 export default function CommandPaletteModal() {
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useAtom(
     isCommandPaletteOpenAtom
   );
-  useHotkeys(["mod+k"], () => setIsCommandPaletteOpen(!isCommandPaletteOpen), {
-    enableOnFormTags: true,
-  });
+  useHotkeys([
+    {
+      hotkey: ["mod+k"],
+      callback: () => setIsCommandPaletteOpen(!isCommandPaletteOpen),
+      options: {
+        enableOnInput: true,
+      },
+    },
+  ]);
 
   return (
     <Dialog.Root

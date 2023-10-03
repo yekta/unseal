@@ -1,18 +1,19 @@
-import { isCommandPaletteOpenAtom } from "@components/CommandPalette/commandPaletteSettings";
-import { isComposeOpenAtom } from "@components/Compose/composeSettings";
-import { useAtom, useAtomValue } from "jotai";
+import { useCommands } from "@components/CommandPalette/useCommands";
+import { useHotkeys } from "@ts/hooks/useHotkeys";
 import React from "react";
-import { useHotkeys } from "react-hotkeys-hook";
 
 export default function GeneralHotkeyProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [isComposeOpen, setIsComposeOpen] = useAtom(isComposeOpenAtom);
-  const isCommandPaletteOpen = useAtomValue(isCommandPaletteOpenAtom);
-  useHotkeys(["c"], () => setIsComposeOpen(true), {
-    enabled: !isComposeOpen && !isCommandPaletteOpen,
-  });
+  const { commandsForHotkeyBinding } = useCommands("");
+  useHotkeys(
+    commandsForHotkeyBinding.map((c) => ({
+      hotkey: c.hotkey!,
+      callback: c.onClick,
+      options: { enableOnInput: c.isHotkeyEnabledInInput === true },
+    }))
+  );
   return children;
 }

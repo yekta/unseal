@@ -1,8 +1,8 @@
-import { useRef, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { useHotkeys } from "react-hotkeys-hook";
 import { useCommands } from "@components/CommandPalette/useCommands";
 import ScrollArea from "@components/utils/ScrollArea";
+import { useHotkeys } from "@ts/hooks/useHotkeys";
 
 export default function CommandPalette() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -28,23 +28,24 @@ export default function CommandPalette() {
     }
   };
 
-  useHotkeys(
-    ["tab", "down"],
-    () =>
-      setActiveCommandIndexAndScroll(
-        (activeCommandIndex + 1) % commands.length
-      ),
-    { enableOnFormTags: true, enabled: commands.length > 0 }
-  );
-
-  useHotkeys(
-    ["shift+tab", "up"],
-    () =>
-      setActiveCommandIndexAndScroll(
-        (activeCommandIndex - 1 + commands.length) % commands.length
-      ),
-    { enableOnFormTags: true, enabled: commands.length > 0 }
-  );
+  useHotkeys([
+    {
+      hotkey: ["tab", "down"],
+      callback: () =>
+        setActiveCommandIndexAndScroll(
+          (activeCommandIndex + 1) % commands.length
+        ),
+      options: { enabled: commands.length > 0, enableOnInput: true },
+    },
+    {
+      hotkey: ["shift+tab", "up"],
+      callback: () =>
+        setActiveCommandIndexAndScroll(
+          (activeCommandIndex - 1 + commands.length) % commands.length
+        ),
+      options: { enabled: commands.length > 0, enableOnInput: true },
+    },
+  ]);
 
   return (
     <div
@@ -145,8 +146,8 @@ export default function CommandPalette() {
 }
 
 function HotkeyLabel({ hotkey }: { hotkey: string }) {
-  const keys = hotkey.split("+");
-  const keyStrings = keys
+  let keys = hotkey.split("+");
+  const keySequences = keys
     .map((key) => {
       if (key === "ctrl") return "⌃";
       if (key === "shift") return "⇧";
@@ -154,19 +155,31 @@ function HotkeyLabel({ hotkey }: { hotkey: string }) {
       if (key === "cmd") return "⌘";
       return key;
     })
-    .map((key) => key.toUpperCase());
+    .map((key) => (key !== "then" ? key.toUpperCase() : key));
   return (
     <div className="flex flex-wrap items-center justify-end gap-1.5 relative">
-      {keyStrings.map((key, i) => (
-        <kbd
-          key={key}
-          className={`w-6 h-6 text-sm bg-c-command-palette-bg flex items-center 
-          justify-center rounded shadow-md shadow-c-shadow/[var(--o-shadow-normal)] 
-          ring-1 ring-c-on-bg/10 text-c-on-bg/75`}
-        >
-          {key}
-        </kbd>
-      ))}
+      {keySequences.map((keySequence, i) =>
+        keySequence.split(" ").map((key, j) => (
+          <Fragment key={key + i + j}>
+            <kbd
+              key={key + i + j + "kbd"}
+              className={`w-6 h-6 text-sm bg-c-command-palette-bg flex items-center 
+              justify-center rounded shadow-md shadow-c-shadow/[var(--o-shadow-normal)] 
+              ring-1 ring-c-on-bg/10 text-c-on-bg/75`}
+            >
+              {key}
+            </kbd>
+            {keySequence.length > 1 && j < keySequences.length && (
+              <p
+                key={key + i + j + "-paragraph"}
+                className="text-c-on-bg/75 text-sm px-0.5"
+              >
+                then
+              </p>
+            )}
+          </Fragment>
+        ))
+      )}
     </div>
   );
 }

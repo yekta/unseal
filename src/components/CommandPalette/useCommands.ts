@@ -33,7 +33,7 @@ export function useCommands(searchQuery: string) {
   const { accounts } = useAccounts();
   const { theme, setTheme, systemTheme } = useTheme();
 
-  const commands: TCommand[] = useMemo(
+  const commands: TCommand[] = useMemo<TCommand[]>(
     () => [
       {
         title: "Compose",
@@ -43,6 +43,8 @@ export function useCommands(searchQuery: string) {
         onClick: () => setIsComposeOpen(true),
         shouldFilterOut: () => isComposeOpen,
         hotkey: "c",
+        isHotkeyGlobal: true,
+        isHotkeyEnabled: () => !isComposeOpen,
       },
       {
         title: "Search Emails",
@@ -58,6 +60,8 @@ export function useCommands(searchQuery: string) {
         Icon: InboxIcon,
         onClick: () => router.push("/"),
         shouldFilterOut: () => pathname === "/" && !isComposeOpen,
+        hotkey: "g i",
+        isHotkeyGlobal: true,
       },
       {
         title: "Go to Unread",
@@ -66,6 +70,8 @@ export function useCommands(searchQuery: string) {
         Icon: EnvelopeIcon,
         onClick: () => router.push("/view/unread"),
         shouldFilterOut: () => pathname === "/view/unread",
+        hotkey: "g u",
+        isHotkeyGlobal: true,
       },
       {
         title: "Go to Starred",
@@ -74,6 +80,8 @@ export function useCommands(searchQuery: string) {
         Icon: StarIcon,
         onClick: () => router.push("/view/starred"),
         shouldFilterOut: () => pathname === "/view/starred",
+        hotkey: "g s",
+        isHotkeyGlobal: true,
       },
       {
         title: "Settings",
@@ -120,7 +128,7 @@ export function useCommands(searchQuery: string) {
         onClick: () => null,
         shouldFilterOut: () => pathname === "/view/archived",
       },
-      ...(accounts?.map((a) => ({
+      ...(accounts?.map((a, i) => ({
         title: `Go to Inbox: ${a.title}`,
         description: `Go to Inbox: ${a.title}`,
         tags: [a.email, a.title],
@@ -128,6 +136,9 @@ export function useCommands(searchQuery: string) {
           AccountAvatarIcon({ type: a.iconType, className }),
         onClick: () => router.push(`/account/${a.id}`),
         shouldFilterOut: () => pathname === `/account/${a.id}`,
+        hotkey: i < 9 ? `ctrl+${i + 1}` : undefined,
+        isHotkeyGlobal: i < 9 ? true : false,
+        isHotkeyEnabledInInput: true,
       })) ?? []),
     ],
     [pathname, isComposeOpen, accounts, theme, systemTheme]
@@ -168,8 +179,16 @@ export function useCommands(searchQuery: string) {
     setIsCommandPaletteOpen(false);
   };
 
+  const commandsForHotkeyBinding = commands.filter(
+    (c) =>
+      c.hotkey !== undefined &&
+      c.isHotkeyGlobal &&
+      (c.isHotkeyEnabled === undefined || c.isHotkeyEnabled())
+  );
+
   return {
     commands: finalCommands,
+    commandsForHotkeyBinding,
     executeCommand,
   };
 }
@@ -185,4 +204,7 @@ interface TCommand extends TCommandSimple {
   onClick: () => void;
   shouldFilterOut?: () => boolean;
   hotkey?: string;
+  isHotkeyGlobal?: boolean;
+  isHotkeyEnabled?: () => boolean;
+  isHotkeyEnabledInInput?: boolean;
 }

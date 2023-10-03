@@ -1,16 +1,12 @@
 "use client";
 
 import { TEmail } from "@ts/email";
-import { getAccountIdFromPathname } from "@ts/helpers/getAccountIdFromPathname";
-import { getPathnameWithAccount } from "@ts/helpers/getPathnameWithAccount";
-import { usePathname, useRouter } from "next/navigation";
+import { useHotkeys } from "@ts/hooks/useHotkeys";
+import { useRouter } from "next/navigation";
 import React from "react";
-import { useHotkeys } from "react-hotkeys-hook";
-import { Key } from "ts-key-enum";
 
 export default function HotkeyProvider({
   children,
-  email,
   prevEmailPathname,
   nextEmailPathname,
   from,
@@ -22,23 +18,25 @@ export default function HotkeyProvider({
   from: string;
 }) {
   const router = useRouter();
-  const pathname = usePathname();
-  const accountId = getAccountIdFromPathname(pathname);
-  useHotkeys(Key.Escape, () => router.push(from));
-  useHotkeys(
-    [Key.ArrowLeft, Key.ArrowUp],
-    () => {
-      router.push(`${prevEmailPathname}?from=${encodeURIComponent(from)}`);
+  useHotkeys([
+    {
+      hotkey: "esc",
+      callback: () => router.push(from),
     },
-    { enabled: prevEmailPathname !== undefined }
-  );
-  useHotkeys(
-    [Key.ArrowRight, Key.ArrowDown],
-    () => {
-      if (!email) return;
-      router.push(`${nextEmailPathname}?from=${encodeURIComponent(from)}`);
+    {
+      hotkey: ["left", "up"],
+      callback: () => {
+        router.push(`${prevEmailPathname}?from=${encodeURIComponent(from)}`);
+      },
+      options: { enabled: prevEmailPathname !== undefined },
     },
-    { enabled: nextEmailPathname !== undefined }
-  );
+    {
+      hotkey: ["right", "down"],
+      callback: () => {
+        router.push(`${nextEmailPathname}?from=${encodeURIComponent(from)}`);
+      },
+      options: { enabled: nextEmailPathname !== undefined },
+    },
+  ]);
   return children;
 }

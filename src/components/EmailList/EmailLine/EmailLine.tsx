@@ -48,13 +48,15 @@ export function EmailLine({
             className={`w-full flex flex-col md:flex-row md:items-center md:justify-between px-4 py-3.5
             ring-0 group-focus-visible/link:ring-2 ring-c-primary/[var(--o-primary-focus-visible)] 
             relative ${
-              !isRead ? "bg-c-bg-unread" : "group-hover:bg-c-bg-highlight-hover"
+              !isRead
+                ? "bg-c-bg-unread md:bg-transparent md:group-hover:bg-c-bg-highlight-hover"
+                : "group-hover:bg-c-bg-highlight-hover"
             }
             md:rounded-xl z-0`}
           >
             <div className="w-full md:w-60 flex items-center gap-2 md:gap-2.5">
               <div
-                className={`w-2 h-2 md:absolute md:-left-4.5
+                className={`w-2 h-2 md:absolute md:-left-3.5
                 rounded-full flex-shrink-0 relative bg-c-notification ${
                   isRead && "hidden"
                 }`}
@@ -65,7 +67,7 @@ export function EmailLine({
               ></EmailIcon>
               <p
                 className={`flex-1 whitespace-nowrap overflow-hidden overflow-ellipsis text-base
-              text-c-on-bg font-medium pr-4 md:pr-8`}
+                text-c-on-bg font-medium pr-4 md:pr-8`}
               >
                 {sender}
               </p>
@@ -106,11 +108,8 @@ export function EmailLine({
         md:peer-focus-visible:flex
         z-10 pr-[calc(0.25rem-1px)] pl-8 bg-gradient-to-l 
         from-[calc(100%-1.75rem)]
-        ${
-          !isRead
-            ? "from-c-bg-unread to-c-bg-unread/0 peer-hover:from-c-bg-unread peer-hover:to-c-bg-unread/0 hover:from-c-bg-unread hover:to-c-bg-unread/0"
-            : "from-c-bg to-c-bg/0 peer-hover:from-c-bg-highlight-hover peer-hover:to-c-bg-highlight-hover/0 hover:from-c-bg-highlight-hover hover:to-c-bg-highlight-hover/0"
-        }
+        from-c-bg to-c-bg/0 peer-hover:from-c-bg-highlight-hover peer-hover:to-c-bg-highlight-hover/0 
+        hover:from-c-bg-highlight-hover hover:to-c-bg-highlight-hover/0
         pointer-events-none rounded-r-xl`}
       >
         <Tooltip.Provider delayDuration={250} skipDelayDuration={500}>
