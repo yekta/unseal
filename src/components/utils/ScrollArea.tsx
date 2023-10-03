@@ -20,7 +20,9 @@ export default function ScrollArea({
       scrollHideDelay={600}
       className={`${className} overflow-hidden`}
     >
-      <ScrollAreaRadix.Viewport className={`w-full flex-1 ${viewportClass}`}>
+      <ScrollAreaRadix.Viewport
+        className={`w-full flex-1 [&>div]:!block ${viewportClass}`}
+      >
         {children}
       </ScrollAreaRadix.Viewport>
       <ScrollAreaRadix.Scrollbar

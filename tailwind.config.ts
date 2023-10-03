@@ -25,8 +25,8 @@ const config: Config = {
       colors: {
         "c-bg": "rgb(var(--c-bg)/<alpha-value>)",
         "c-bg-secondary": "rgb(var(--c-bg-secondary)/<alpha-value>)",
-        "c-bg-command-palette":
-          "rgb(var(--c-bg-command-palette)/<alpha-value>)",
+        "c-command-palette-bg":
+          "rgb(var(--c-command-palette-bg)/<alpha-value>)",
         "c-bg-highlight-active":
           "rgb(var(--c-bg-highlight-active)/<alpha-value>)",
         "c-bg-highlight-hover":
@@ -64,6 +64,7 @@ const config: Config = {
       },
       boxShadow: {
         "3xl": "0 18px 36px -12px, 0 36px 72px -18px",
+        key: "0 2px 0 0",
       },
       spacing: {
         "0.25ch": "0.25ch",
@@ -84,6 +85,9 @@ const config: Config = {
         13: "3.25rem",
         18: "4.5rem",
         22: "5.5rem",
+      },
+      ringWidth: {
+        1.5: "1.5px",
       },
       animation: {
         "pulse-placeholder": "pulse-placeholder 1s ease-in-out infinite",

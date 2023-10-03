@@ -51,8 +51,8 @@ export default function CommandPalette() {
       onMouseMove={() => {
         !isMouseMoveOrEnterActive && setIsMouseMoveOrEnterActive(true);
       }}
-      className="w-full flex flex-1 flex-col items-start justify-start overflow-hidden border-2 border-c-on-bg/5
-      bg-c-bg-command-palette rounded-xl relative shadow-3xl shadow-c-shadow/[var(--o-shadow-command-palette)]"
+      className="w-full flex flex-1 flex-col items-start justify-start overflow-hidden border-2 border-c-on-bg/6
+      bg-c-command-palette-bg rounded-xl relative shadow-3xl shadow-c-shadow/[var(--o-shadow-command-palette)]"
     >
       <form
         className="w-full"
@@ -72,7 +72,7 @@ export default function CommandPalette() {
           placeholder="Search commands..."
         />
       </form>
-      <div className="w-full h-2px bg-c-on-bg/5" />
+      <div className="w-full h-2px bg-c-on-bg/6" />
       <ScrollArea className="w-full flex-1 flex flex-col items-start justify-start">
         <ol className="w-full flex flex-col items-start justify-start group/command-list">
           {commands.length < 1 && (
@@ -114,18 +114,25 @@ export default function CommandPalette() {
                     }`}
                   >
                     <div
-                      className={`w-full flex items-start justify-start pl-3.5 pr-4 py-3 rounded-lg ${
+                      className={`w-full flex items-center justify-start pl-3.5 pr-4 py-3 rounded-lg ${
                         activeCommandIndex === i
-                          ? "text-c-on-bg bg-c-on-bg/10"
+                          ? "text-c-on-bg bg-c-on-bg/6"
                           : "text-c-on-bg/75"
                       }`}
                     >
-                      <div className="py-0.5">
-                        <command.Icon className="w-5 h-5 flex-shrink-0" />
+                      <div className="flex-1 min-w-0 flex items-start justify-start overflow-hidden">
+                        <div className="py-0.5 flex-shrink-0">
+                          <command.Icon className="w-5 h-5" />
+                        </div>
+                        <p className="flex-1 min-w-0 overflow-hidden pl-3">
+                          {command.title}
+                        </p>
                       </div>
-                      <p className="pl-3 flex-shrink min-w-0">
-                        {command.title}
-                      </p>
+                      <div className="flex justify-end w-36 max-w-full pl-4 -mr-1">
+                        {command.hotkey && (
+                          <HotkeyLabel hotkey={command.hotkey} />
+                        )}
+                      </div>
                     </div>
                   </button>
                 </li>
@@ -133,6 +140,33 @@ export default function CommandPalette() {
             })}
         </ol>
       </ScrollArea>
+    </div>
+  );
+}
+
+function HotkeyLabel({ hotkey }: { hotkey: string }) {
+  const keys = hotkey.split("+");
+  const keyStrings = keys
+    .map((key) => {
+      if (key === "ctrl") return "⌃";
+      if (key === "shift") return "⇧";
+      if (key === "alt") return "⌥";
+      if (key === "cmd") return "⌘";
+      return key;
+    })
+    .map((key) => key.toUpperCase());
+  return (
+    <div className="flex flex-wrap items-center justify-end gap-1.5 relative">
+      {keyStrings.map((key, i) => (
+        <kbd
+          key={key}
+          className={`w-6 h-6 text-sm bg-c-command-palette-bg flex items-center 
+          justify-center rounded shadow-md shadow-c-shadow/[var(--o-shadow-normal)] 
+          ring-1 ring-c-on-bg/10 text-c-on-bg/75`}
+        >
+          {key}
+        </kbd>
+      ))}
     </div>
   );
 }

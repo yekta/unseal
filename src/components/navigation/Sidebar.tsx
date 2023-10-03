@@ -96,7 +96,7 @@ function LinkLine({
         />
         <p
           className={`flex-1 font-medium min-w-0 whitespace-nowrap 
-          overflow-hidden overflow-ellipsis transition
+          overflow-hidden overflow-ellipsis transition break-all
           ${isActive ? "text-c-on-bg" : "text-c-on-bg/75"}`}
         >
           {text}

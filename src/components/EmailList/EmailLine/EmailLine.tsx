@@ -46,8 +46,10 @@ export function EmailLine({
         <div className="w-full flex flex-row items-center md:py-px">
           <div
             className={`w-full flex flex-col md:flex-row md:items-center md:justify-between px-4 py-3.5
-            group-hover:bg-c-bg-highlight-hover ring-0 group-focus-visible/link:ring-2 ring-c-primary/[var(--o-primary-focus-visible)] 
-            relative ${!isRead ? "bg-c-bg-unread" : ""}
+            ring-0 group-focus-visible/link:ring-2 ring-c-primary/[var(--o-primary-focus-visible)] 
+            relative ${
+              !isRead ? "bg-c-bg-unread" : "group-hover:bg-c-bg-highlight-hover"
+            }
             md:rounded-xl z-0`}
           >
             <div className="w-full md:w-60 flex items-center gap-2 md:gap-2.5">
@@ -103,12 +105,11 @@ export function EmailLine({
         className={`absolute right-px top-px h-[calc(100%-2px)] hidden md:group-hover:flex
         md:peer-focus-visible:flex
         z-10 pr-[calc(0.25rem-1px)] pl-8 bg-gradient-to-l 
-        from-[calc(100%-1.75rem)] peer-hover:from-c-bg-highlight-hover peer-hover:to-c-bg-highlight-hover/0
-        hover:from-c-bg-highlight-hover hover:to-c-bg-highlight-hover/0
+        from-[calc(100%-1.75rem)]
         ${
-          isRead
-            ? "from-c-bg to-c-bg/0"
-            : "from-c-bg-highlight-hover to-c-bg-highlight-hover/0"
+          !isRead
+            ? "from-c-bg-unread to-c-bg-unread/0 peer-hover:from-c-bg-unread peer-hover:to-c-bg-unread/0 hover:from-c-bg-unread hover:to-c-bg-unread/0"
+            : "from-c-bg to-c-bg/0 peer-hover:from-c-bg-highlight-hover peer-hover:to-c-bg-highlight-hover/0 hover:from-c-bg-highlight-hover hover:to-c-bg-highlight-hover/0"
         }
         pointer-events-none rounded-r-xl`}
       >

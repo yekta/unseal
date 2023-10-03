@@ -42,6 +42,7 @@ export function useCommands(searchQuery: string) {
         Icon: IconPenOnPaper,
         onClick: () => setIsComposeOpen(true),
         shouldFilterOut: () => isComposeOpen,
+        hotkey: "c",
       },
       {
         title: "Search Emails",
@@ -183,4 +184,5 @@ interface TCommand extends TCommandSimple {
   Icon: React.ComponentType<any>;
   onClick: () => void;
   shouldFilterOut?: () => boolean;
+  hotkey?: string;
 }
