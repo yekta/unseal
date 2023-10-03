@@ -163,7 +163,7 @@ function HotkeyLabel({ hotkey }: { hotkey: string }) {
           <Fragment key={key + i + j}>
             <kbd
               key={key + i + j + "kbd"}
-              className={`w-6 h-6 text-sm bg-c-command-palette-bg flex items-center 
+              className={`w-6 h-6 text-sm font-medium bg-c-command-palette-bg flex items-center 
               justify-center rounded shadow-md shadow-c-shadow/[var(--o-shadow-normal)] 
               ring-1 ring-c-on-bg/10 text-c-on-bg/75`}
             >

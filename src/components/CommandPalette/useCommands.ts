@@ -20,6 +20,8 @@ import Fuse from "fuse.js";
 import { useAccounts } from "@ts/hooks/useAccounts";
 import AccountAvatarIcon from "@components/icons/AccountAvatarIcon";
 import { useTheme } from "next-themes";
+import IconSystemLight from "@components/icons/IconSystemLight";
+import IconSystemDark from "@components/icons/IconSystemDark";
 
 const fuseOptions = {
   keys: ["title", "description", "tags"],
@@ -116,7 +118,7 @@ export function useCommands(searchQuery: string) {
         title: "Switch to System Theme",
         description: "Switch to System Theme",
         tags: ["theme", "dark", "light", "toggle theme", "system"],
-        Icon: systemTheme === "light" ? SunIcon : MoonIcon,
+        Icon: systemTheme === "light" ? IconSystemLight : IconSystemDark,
         onClick: () => setTheme("system"),
         shouldFilterOut: () => theme === "system",
       },
