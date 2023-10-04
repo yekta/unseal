@@ -164,7 +164,7 @@ function HotkeyLabel({ hotkey }: { hotkey: string }) {
             <kbd
               key={key + i + j + "kbd"}
               className={`w-6 h-6 text-sm font-medium bg-c-command-palette-bg flex items-center 
-              justify-center rounded shadow-md shadow-c-shadow/[var(--o-shadow-normal)] 
+              justify-center rounded shadow-md shadow-c-shadow/[var(--o-shadow-strong)] 
               ring-1 ring-c-on-bg/10 text-c-on-bg/75`}
             >
               {key}
@@ -172,7 +172,7 @@ function HotkeyLabel({ hotkey }: { hotkey: string }) {
             {keySequence.length > 1 && j < keySequences.length && (
               <p
                 key={key + i + j + "-paragraph"}
-                className="text-c-on-bg/75 text-sm px-0.5"
+                className="text-c-on-bg/75 text-xs px-0.25"
               >
                 then
               </p>
