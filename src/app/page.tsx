@@ -1,5 +1,5 @@
 import EmailList from "@components/EmailList/EmailList";
 
-export default function Page() {
+export default function HomePage() {
   return <EmailList />;
 }

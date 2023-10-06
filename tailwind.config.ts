@@ -2,6 +2,7 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
+    "./index.html",
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -86,6 +87,7 @@ const config: Config = {
         5.5: "1.375rem",
         13: "3.25rem",
         18: "4.5rem",
+        19: "4.75rem",
         22: "5.5rem",
       },
       ringWidth: {

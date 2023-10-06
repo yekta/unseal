@@ -1,9 +1,3 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
-import { WebviewWindow } from "@tauri-apps/api/window";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import ComposeButtonWithModal from "@components/Compose/ComposeButtonWithModal";
 import { getPathnameWithAccount } from "@ts/helpers/getPathnameWithAccount";
 import { getAccountIdFromPathname } from "@ts/helpers/getAccountIdFromPathname";
@@ -12,20 +6,10 @@ import EmailIcon from "@components/EmailList/EmailLine/EmailIcon";
 import { useAtom } from "jotai";
 import { isSidebarOpenAtom } from "@components/navigation/navigation";
 import { Bars4Icon } from "@heroicons/react/24/outline";
+import { Link, useRouter } from "@tanstack/react-router";
 
 export default function Navbar() {
-  const [appWindow, setAppWindow] = useState<WebviewWindow | undefined>(
-    undefined
-  );
-
-  interface TNavbarItem {
-    label: string;
-    pathname: string;
-    iconType: TIconType;
-    iconColor: TIconColor;
-  }
-
-  const pathname = usePathname();
+  const { basepath: pathname } = useRouter();
 
   const accountId = getAccountIdFromPathname(pathname);
   const navbarItems: TNavbarItem[] = [
@@ -52,48 +36,17 @@ export default function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useAtom(isSidebarOpenAtom);
 
   const windowButtonClasses = "w-[13px] h-[13px] rounded-full";
-  const windowButtonContainerClasses =
-    "flex items-center justify-start py-3 px-3 gap-[8px]";
-
-  useEffect(() => {
-    setupAppWindow();
-  }, []);
-
-  async function setupAppWindow() {
-    const appWindow = (await import("@tauri-apps/api/window")).appWindow;
-    setAppWindow(appWindow);
-  }
 
   return (
     <nav
-      data-tauri-drag-region
-      className="w-full flex items-stretch justify-start lg:justify-between bg-c-bg z-[100] border-b-2 border-c-bg-border overflow-hidden relative"
+      className="w-full flex items-stretch justify-start lg:justify-between 
+      bg-c-bg z-[100] border-b-2 border-c-bg-border overflow-hidden relative electron-drag-zone"
     >
-      <div
-        data-tauri-drag-region
-        className="flex items-stretch justify-start lg:w-64"
-      >
-        <div className={windowButtonContainerClasses}>
-          <button
-            tabIndex={-1}
-            className={`${windowButtonClasses} bg-c-macos-red`}
-            onClick={() => appWindow?.close()}
-          ></button>
-          <button
-            tabIndex={-1}
-            className={`${windowButtonClasses} bg-c-macos-orange`}
-            onClick={() => appWindow?.minimize()}
-          ></button>
-          <button
-            tabIndex={-1}
-            className={`${windowButtonClasses} bg-c-macos-green`}
-            onClick={() => appWindow?.maximize()}
-          ></button>
-        </div>
+      <div className="flex items-stretch justify-start lg:w-64 pl-19">
         <button
           id="sidebar-toggle-button"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="py-1.5 px-0.75 flex cursor-default group"
+          className="py-1.5 px-0.75 flex cursor-default group electron-no-drag-zone"
         >
           <div
             className="p-1 flex items-center justify-center rounded-lg group-hover:bg-c-bg-highlight-hover
@@ -107,8 +60,8 @@ export default function Navbar() {
           </div>
         </button>
       </div>
-      <div data-tauri-drag-region className="lg:flex-1 flex justify-center">
-        <div className="flex justify-center overflow-hidden relative z-0 rounded-xl">
+      <div className="lg:flex-1 flex justify-center">
+        <div className="flex justify-center overflow-hidden relative z-0 rounded-xl electron-no-drag-zone">
           {navbarItems.map((item, index) => {
             const isActive = pathname === item.pathname;
             return (
@@ -144,12 +97,18 @@ export default function Navbar() {
           })}
         </div>
       </div>
-      <div
-        data-tauri-drag-region
-        className="flex flex-1 lg:flex-none w-64 items-center justify-end px-0.5"
-      >
-        <ComposeButtonWithModal />
+      <div className="flex flex-1 lg:flex-none w-64 items-center justify-end px-0.5">
+        <div className="electron-no-drag-zone">
+          <ComposeButtonWithModal />
+        </div>
       </div>
     </nav>
   );
+}
+
+interface TNavbarItem {
+  label: string;
+  pathname: string;
+  iconType: TIconType;
+  iconColor: TIconColor;
 }

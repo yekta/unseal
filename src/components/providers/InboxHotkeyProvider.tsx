@@ -1,8 +1,8 @@
 "use client";
 
+import { useRouter } from "@tanstack/react-router";
 import { TEmail } from "@ts/email";
 import { useHotkeys } from "@ts/hooks/useHotkeys";
-import { useRouter } from "next/navigation";
 import React from "react";
 
 export default function HotkeyProvider({
@@ -21,19 +21,23 @@ export default function HotkeyProvider({
   useHotkeys([
     {
       hotkey: "esc",
-      callback: () => router.push(from),
+      callback: () => router.navigate({ to: from }),
     },
     {
       hotkey: ["left", "up"],
       callback: () => {
-        router.push(`${prevEmailPathname}?from=${encodeURIComponent(from)}`);
+        router.navigate({
+          to: `${prevEmailPathname}?from=${encodeURIComponent(from)}`,
+        });
       },
       options: { enabled: prevEmailPathname !== undefined },
     },
     {
       hotkey: ["right", "down"],
       callback: () => {
-        router.push(`${nextEmailPathname}?from=${encodeURIComponent(from)}`);
+        router.navigate({
+          to: `${nextEmailPathname}?from=${encodeURIComponent(from)}`,
+        });
       },
       options: { enabled: nextEmailPathname !== undefined },
     },

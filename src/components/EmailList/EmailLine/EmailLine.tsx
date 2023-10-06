@@ -1,11 +1,8 @@
-import Link from "next/link";
 import EmailIcon from "./EmailIcon";
 import { getRelativeDate } from "@ts/helpers/getRelativeDate";
-import { usePathname, useSearchParams } from "next/navigation";
 import { TEmail } from "@ts/email";
 import { getAccountIdFromPathname } from "@ts/helpers/getAccountIdFromPathname";
 import { getPathnameWithAccount } from "@ts/helpers/getPathnameWithAccount";
-import { getSearchParamsStr } from "@ts/helpers/getSearchParamsStr";
 import {
   ArchiveBoxArrowDownIcon,
   ClockIcon,
@@ -17,6 +14,7 @@ import {
 
 import { StarIcon as StarIconFilled } from "@heroicons/react/24/solid";
 import * as Tooltip from "@radix-ui/react-tooltip";
+import { Link, useRouter, useSearch } from "@tanstack/react-router";
 
 export function EmailLine({
   id,
@@ -28,18 +26,10 @@ export function EmailLine({
   account,
   isStarred,
 }: TEmail) {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const searchParamsStr = getSearchParamsStr(searchParams);
-  const accountId = getAccountIdFromPathname(pathname);
-  const href = `${getPathnameWithAccount(
-    `/inbox/${id}`,
-    accountId
-  )}?from=${encodeURIComponent(pathname + searchParamsStr)}`;
   return (
     <div className="w-full relative group">
       <Link
-        href={href}
+        href={"/"}
         className="w-full flex flex-row justify-center items-center
         cursor-default select-none relative group/link peer"
       >

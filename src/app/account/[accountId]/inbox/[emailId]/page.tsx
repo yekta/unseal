@@ -2,15 +2,15 @@
 
 import { TAccountInboxProps } from "@app/account/types";
 import EmailPage from "@components/EmailPage/EmailPage";
+import { useSearch } from "@tanstack/react-router";
 import { getPathnameWithAccount } from "@ts/helpers/getPathnameWithAccount";
 import { TInboxFilter, useInbox } from "@ts/hooks/useInbox";
-import { useSearchParams } from "next/navigation";
 
 export default function Page({ params }: TAccountInboxProps) {
   const { emailId, accountId } = params;
   let filters: TInboxFilter[] = [];
-  const searchParams = useSearchParams();
-  const from = searchParams.get("from") || "/";
+  const searchParams = useSearch({ from: "__root__" });
+  const from = searchParams.from || "/";
   if (from.endsWith("/unread")) {
     filters.push("unread");
   } else if (from.endsWith("/starred")) {

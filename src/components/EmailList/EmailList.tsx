@@ -2,6 +2,7 @@
 
 import { EmailLine } from "@components/EmailList/EmailLine/EmailLine";
 import { EmailLinePlaceholder } from "@components/EmailList/EmailLine/EmailLinePlaceholder";
+import { useRouter, useSearch } from "@tanstack/react-router";
 import { breakpoints } from "@ts/constants/breakpoints";
 import { TEmail } from "@ts/email";
 import { getGroupLabelByDate } from "@ts/helpers/getGroupLabelByDate";
@@ -10,7 +11,6 @@ import {
   useSmartVirtualizer,
   virtualizerStateCache,
 } from "@ts/hooks/useSmartVirtualizer";
-import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef } from "react";
 
 interface TEmailPlaceholder {
@@ -64,9 +64,8 @@ export default function EmailList({
   const emailLineSize = 106;
   const emailLineSizeMd = 54;
   const overscan = 20;
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const virtualizerKey = ["email-list", pathname, searchParams.toString()];
+  const { basepath: pathname } = useRouter();
+  const virtualizerKey = ["email-list", pathname, ""];
   const rowVirtualizer = useSmartVirtualizer(virtualizerKey, {
     count: rows.length + 1,
     getScrollElement: () => parentRef.current,

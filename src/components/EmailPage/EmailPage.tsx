@@ -1,7 +1,6 @@
 import { TEmail } from "@ts/email";
-import Link from "next/link";
-import React from "react";
 import InboxHotkeyProvider from "@components/providers/InboxHotkeyProvider";
+import { Link } from "@tanstack/react-router";
 
 export default function EmailPage({
   email,

@@ -5,12 +5,11 @@ import { TIconColor, TIconType, accounts } from "@ts/email";
 import { useClickOutside } from "@ts/hooks/useClickOutside";
 import { isSidebarOpenAtom } from "@components/navigation/navigation";
 import { useAtom } from "jotai";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import ScrollArea from "@components/utils/ScrollArea";
+import { Link, useRouter } from "@tanstack/react-router";
 
 export default function Sidebar() {
-  const pathname = usePathname();
+  const { basepath: pathname } = useRouter();
   const [isSidebarOpen, setIsSidebarOpen] = useAtom(isSidebarOpenAtom);
   const ref = useClickOutside<HTMLDivElement>({
     handler: () => setIsSidebarOpen(false),

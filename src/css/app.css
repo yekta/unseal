@@ -162,4 +162,12 @@ a:focus-visible {
   color: rgb(var(--c-on-bg));
 }
 
+.electron-drag-zone {
+  -webkit-app-region: drag;
+}
+
+.electron-no-drag-zone {
+  -webkit-app-region: no-drag;
+}
+
 @tailwind utilities;

@@ -13,15 +13,14 @@ import {
   ArchiveBoxIcon,
 } from "@heroicons/react/24/outline";
 import { useAtom, useSetAtom } from "jotai";
-import { usePathname, useRouter } from "next/navigation";
 import { useMemo } from "react";
 import { isCommandPaletteOpenAtom } from "@components/CommandPalette/commandPaletteSettings";
 import Fuse from "fuse.js";
 import { useAccounts } from "@ts/hooks/useAccounts";
 import AccountAvatarIcon from "@components/icons/AccountAvatarIcon";
-import { useTheme } from "next-themes";
 import IconSystemLight from "@components/icons/IconSystemLight";
 import IconSystemDark from "@components/icons/IconSystemDark";
+import { useRouter } from "@tanstack/react-router";
 
 const fuseOptions = {
   keys: ["title", "description", "tags"],
@@ -29,11 +28,15 @@ const fuseOptions = {
 
 export function useCommands(searchQuery: string) {
   const router = useRouter();
-  const pathname = usePathname();
+  const { basepath: pathname } = router;
   const [isComposeOpen, setIsComposeOpen] = useAtom(isComposeOpenAtom);
   const setIsCommandPaletteOpen = useSetAtom(isCommandPaletteOpenAtom);
   const { accounts } = useAccounts();
-  const { theme, setTheme, systemTheme } = useTheme();
+  const { theme, setTheme, systemTheme } = {
+    theme: "light",
+    setTheme: (theme: string) => {},
+    systemTheme: "light",
+  };
 
   const commands: TCommand[] = useMemo<TCommand[]>(
     () => [
@@ -60,7 +63,7 @@ export function useCommands(searchQuery: string) {
         description: "Go to all inboxes",
         tags: ["inbox", "all inboxes"],
         Icon: InboxIcon,
-        onClick: () => router.push("/"),
+        onClick: () => router.navigate({ to: "/" }),
         shouldFilterOut: () => pathname === "/" && !isComposeOpen,
         hotkey: "g i",
         isHotkeyGlobal: true,
@@ -70,7 +73,7 @@ export function useCommands(searchQuery: string) {
         description: "Go to your unread emails",
         tags: ["unread", "unopened"],
         Icon: EnvelopeIcon,
-        onClick: () => router.push("/view/unread"),
+        onClick: () => router.navigate({ to: "/view/unread" }),
         shouldFilterOut: () => pathname === "/view/unread",
         hotkey: "g u",
         isHotkeyGlobal: true,
@@ -80,7 +83,7 @@ export function useCommands(searchQuery: string) {
         description: "Go to your starred emails",
         tags: ["starred", "favorited"],
         Icon: StarIcon,
-        onClick: () => router.push("/view/starred"),
+        onClick: () => router.navigate({ to: "/view/starred" }),
         shouldFilterOut: () => pathname === "/view/starred",
         hotkey: "g s",
         isHotkeyGlobal: true,
@@ -90,7 +93,7 @@ export function useCommands(searchQuery: string) {
         description: "Go to settings",
         tags: ["settings", "preferences"],
         Icon: Cog6ToothIcon,
-        onClick: () => router.push("/settings"),
+        onClick: () => router.navigate({ to: "/settings" }),
         shouldFilterOut: () => pathname === "/settings",
       },
       {
@@ -136,7 +139,7 @@ export function useCommands(searchQuery: string) {
         tags: [a.email, a.title],
         Icon: ({ className }: { className?: string }) =>
           AccountAvatarIcon({ type: a.iconType, className }),
-        onClick: () => router.push(`/account/${a.id}`),
+        onClick: () => router.navigate({ to: `/account/${a.id}` }),
         shouldFilterOut: () => pathname === `/account/${a.id}`,
         hotkey: i < 9 ? `ctrl+${i + 1}` : undefined,
         isHotkeyGlobal: i < 9 ? true : false,
