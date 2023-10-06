@@ -29,7 +29,7 @@ export default function Sidebar() {
             ? "translate-x-0 shadow-c-shadow/[var(--o-shadow-strong)]"
             : "-translate-x-full shadow-c-shadow/0"
         }
-        w-64 overflow-hidden border-r-2 bg-c-bg border-c-bg-secondary flex flex-col absolute 
+        w-64 overflow-hidden border-r-2 bg-c-bg border-c-bg-border flex flex-col absolute 
         left-0 top-0 shadow-xl`}
       >
         <ScrollArea
@@ -44,7 +44,7 @@ export default function Sidebar() {
             isActive={pathname === "/"}
           />
           <div className="w-full px-3 py-1.5">
-            <div className="w-full h-2px rounded-full bg-c-bg-secondary"></div>
+            <div className="w-full h-2px rounded-full bg-c-bg-border"></div>
           </div>
           {accounts.map((account) => (
             <LinkLine

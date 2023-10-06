@@ -67,7 +67,7 @@ export default function Navbar() {
   return (
     <nav
       data-tauri-drag-region
-      className="w-full flex items-stretch justify-start lg:justify-between bg-c-bg z-[100] border-b-2 border-c-bg-secondary overflow-hidden relative"
+      className="w-full flex items-stretch justify-start lg:justify-between bg-c-bg z-[100] border-b-2 border-c-bg-border overflow-hidden relative"
     >
       <div
         data-tauri-drag-region
