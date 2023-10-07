@@ -1,8 +1,6 @@
 import EmailIcon from "./EmailIcon";
 import { getRelativeDate } from "@ts/helpers/getRelativeDate";
 import { TEmail } from "@ts/email";
-import { getAccountIdFromPathname } from "@ts/helpers/getAccountIdFromPathname";
-import { getPathnameWithAccount } from "@ts/helpers/getPathnameWithAccount";
 import {
   ArchiveBoxArrowDownIcon,
   ClockIcon,
@@ -14,7 +12,7 @@ import {
 
 import { StarIcon as StarIconFilled } from "@heroicons/react/24/solid";
 import * as Tooltip from "@radix-ui/react-tooltip";
-import { Link, useRouter, useSearch } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 
 export function EmailLine({
   id,

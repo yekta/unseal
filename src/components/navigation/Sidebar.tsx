@@ -6,10 +6,9 @@ import { useClickOutside } from "@ts/hooks/useClickOutside";
 import { isSidebarOpenAtom } from "@components/navigation/navigation";
 import { useAtom } from "jotai";
 import ScrollArea from "@components/utils/ScrollArea";
-import { Link, useRouter } from "@tanstack/react-router";
+import { Link, LinkPropsOptions } from "@tanstack/react-router";
 
 export default function Sidebar() {
-  const { basepath: pathname } = useRouter();
   const [isSidebarOpen, setIsSidebarOpen] = useAtom(isSidebarOpenAtom);
   const ref = useClickOutside<HTMLDivElement>({
     handler: () => setIsSidebarOpen(false),
@@ -36,11 +35,10 @@ export default function Sidebar() {
           viewportClass="pt-1.5 pb-24"
         >
           <LinkLine
-            href={`/`}
+            to={`/`}
             text="All Inboxes"
             iconType="inbox"
             iconColor="on-bg"
-            isActive={pathname === "/"}
           />
           <div className="w-full px-3 py-1.5">
             <div className="w-full h-2px rounded-full bg-c-bg-border"></div>
@@ -48,11 +46,11 @@ export default function Sidebar() {
           {accounts.map((account) => (
             <LinkLine
               key={account.id}
-              href={`/account/${account.id}`}
+              to={`/account/$accountId`}
+              params={{ accountId: account.id }}
               text={account.title}
               iconType={account.iconType}
               iconColor={account.iconColor}
-              isActive={pathname === `/account/${account.id}`}
             />
           ))}
         </ScrollArea>
@@ -65,42 +63,45 @@ function LinkLine({
   text,
   iconType,
   iconColor,
-  href,
-  isActive,
+  to,
+  params,
 }: {
   text: string;
   iconType: TIconType;
   iconColor: TIconColor;
-  href: string;
-  isActive: boolean;
+  to: LinkPropsOptions["to"];
+  params?: LinkPropsOptions["params"];
 }) {
   return (
     <Link
       className="w-full group/link px-1.5 py-px flex flex-row cursor-default"
-      href={href}
+      to={to}
+      params={params}
     >
-      <div
-        className={`w-full flex flex-row items-center px-3 py-2.5 rounded-lg gap-2 ${
-          isActive
-            ? "bg-c-bg-highlight-active"
-            : "group-hover/link:bg-c-bg-highlight-hover"
-        } group-focus-visible/link:ring-2 ring-c-primary/[var(--o-primary-focus-visible)]`}
-      >
-        <EmailIcon
-          isActive={isActive}
-          sizeClasses="w-5 h-5"
-          type={iconType}
-          color={iconColor}
-          fadeOnPassive="light"
-        />
-        <p
-          className={`flex-1 font-medium min-w-0 whitespace-nowrap 
-          overflow-hidden overflow-ellipsis transition break-all
-          ${isActive ? "text-c-on-bg" : "text-c-on-bg/75"}`}
+      {(route) => (
+        <div
+          className={`w-full flex flex-row items-center px-3 py-2.5 rounded-lg gap-2 ${
+            route.isActive
+              ? "bg-c-bg-highlight-active"
+              : "group-hover/link:bg-c-bg-highlight-hover"
+          } group-focus-visible/link:ring-2 ring-c-primary/[var(--o-primary-focus-visible)]`}
         >
-          {text}
-        </p>
-      </div>
+          <EmailIcon
+            isActive={route.isActive}
+            sizeClasses="w-5 h-5"
+            type={iconType}
+            color={iconColor}
+            fadeOnPassive="light"
+          />
+          <p
+            className={`flex-1 font-medium min-w-0 whitespace-nowrap 
+            overflow-hidden overflow-ellipsis transition break-all
+            ${route.isActive ? "text-c-on-bg" : "text-c-on-bg/75"}`}
+          >
+            {text}
+          </p>
+        </div>
+      )}
     </Link>
   );
 }

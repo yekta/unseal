@@ -88,6 +88,8 @@ const config: Config = {
         13: "3.25rem",
         18: "4.5rem",
         19: "4.75rem",
+        20.5: "5.125rem",
+        21: "5.25rem",
         22: "5.5rem",
       },
       ringWidth: {

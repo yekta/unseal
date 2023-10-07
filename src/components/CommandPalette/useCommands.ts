@@ -139,7 +139,11 @@ export function useCommands(searchQuery: string) {
         tags: [a.email, a.title],
         Icon: ({ className }: { className?: string }) =>
           AccountAvatarIcon({ type: a.iconType, className }),
-        onClick: () => router.navigate({ to: `/account/${a.id}` }),
+        onClick: () =>
+          router.navigate({
+            to: `/account/$accountId`,
+            params: { accountId: a.id },
+          }),
         shouldFilterOut: () => pathname === `/account/${a.id}`,
         hotkey: i < 9 ? `ctrl+${i + 1}` : undefined,
         isHotkeyGlobal: i < 9 ? true : false,

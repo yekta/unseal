@@ -1,8 +1,6 @@
-"use client";
-
 import { EmailLine } from "@components/EmailList/EmailLine/EmailLine";
 import { EmailLinePlaceholder } from "@components/EmailList/EmailLine/EmailLinePlaceholder";
-import { useRouter, useSearch } from "@tanstack/react-router";
+import { useRouter } from "@tanstack/react-router";
 import { breakpoints } from "@ts/constants/breakpoints";
 import { TEmail } from "@ts/email";
 import { getGroupLabelByDate } from "@ts/helpers/getGroupLabelByDate";
@@ -18,7 +16,7 @@ interface TEmailPlaceholder {
 }
 
 const placeholderEmails: TEmailPlaceholder[] = Array.from({
-  length: 10,
+  length: 20,
 }).map((_) => ({
   isPlaceholder: true,
 }));

@@ -6,6 +6,8 @@ if (require("electron-squirrel-startup")) {
   app.quit();
 }
 
+const trafficLightPosition = { x: 18, y: 18 };
+
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -17,7 +19,7 @@ const createWindow = () => {
       preload: path.join(__dirname, "preload.js"),
     },
     titleBarStyle: "hiddenInset",
-    trafficLightPosition: { x: 12, y: 18 },
+    trafficLightPosition,
   });
 
   // and load the index.html of the app.

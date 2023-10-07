@@ -6,28 +6,28 @@ import EmailIcon from "@components/EmailList/EmailLine/EmailIcon";
 import { useAtom } from "jotai";
 import { isSidebarOpenAtom } from "@components/navigation/navigation";
 import { Bars4Icon } from "@heroicons/react/24/outline";
-import { Link, useRouter } from "@tanstack/react-router";
+import { Link, useRouter, LinkPropsOptions } from "@tanstack/react-router";
 
 export default function Navbar() {
-  const { basepath: pathname } = useRouter();
+  const { basepath } = useRouter();
 
-  const accountId = getAccountIdFromPathname(pathname);
+  const accountId = getAccountIdFromPathname(basepath);
   const navbarItems: TNavbarItem[] = [
     {
       label: accountId ? "Inbox" : "All Inboxes",
-      pathname: getPathnameWithAccount("/", accountId),
+      route: getPathnameWithAccount("/", accountId),
       iconType: "inbox",
       iconColor: "on-bg",
     },
     {
       label: "Unread",
-      pathname: getPathnameWithAccount("/view/unread", accountId),
+      route: getPathnameWithAccount("/view/unread", accountId),
       iconType: "unread",
       iconColor: "on-bg",
     },
     {
       label: "Starred",
-      pathname: getPathnameWithAccount("/view/starred", accountId),
+      route: getPathnameWithAccount("/view/starred", accountId),
       iconType: "starred",
       iconColor: "on-bg",
     },
@@ -35,14 +35,12 @@ export default function Navbar() {
 
   const [isSidebarOpen, setIsSidebarOpen] = useAtom(isSidebarOpenAtom);
 
-  const windowButtonClasses = "w-[13px] h-[13px] rounded-full";
-
   return (
     <nav
       className="w-full flex items-stretch justify-start lg:justify-between 
       bg-c-bg z-[100] border-b-2 border-c-bg-border overflow-hidden relative electron-drag-zone"
     >
-      <div className="flex items-stretch justify-start lg:w-64 pl-19">
+      <div className="flex items-stretch justify-start lg:w-64 pl-20.5">
         <button
           id="sidebar-toggle-button"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -63,35 +61,37 @@ export default function Navbar() {
       <div className="lg:flex-1 flex justify-center">
         <div className="flex justify-center overflow-hidden relative z-0 rounded-xl electron-no-drag-zone">
           {navbarItems.map((item, index) => {
-            const isActive = pathname === item.pathname;
             return (
               <Link
+                activeProps={{ className: "group/active-link" }}
                 key={`nav-link-${index}`}
-                href={item.pathname}
+                to={item.route.to}
                 className="py-1.5 px-0.75 self-stretch group cursor-default flex flex-row"
               >
-                <div
-                  className={`px-4 py-2 flex items-center justify-center gap-2 rounded-lg 
-                  ring-0 group-focus-visible:ring-2 ring-c-primary/[var(--o-primary-focus-visible)] ${
-                    isActive
-                      ? "bg-c-bg-highlight-active"
-                      : "group-hover:bg-c-bg-highlight-hover"
-                  }`}
-                >
-                  <EmailIcon
-                    type={item.iconType}
-                    color={item.iconColor}
-                    isActive={isActive}
-                    fadeOnPassive="normal"
-                  />
-                  <p
-                    className={`hidden lg:block font-medium transition duration-150 ${
-                      isActive ? "text-c-on-bg" : "text-c-on-bg/60"
+                {(route) => (
+                  <div
+                    className={`px-4 py-2 flex items-center justify-center gap-2 rounded-lg 
+                    ring-0 group-focus-visible:ring-2 ring-c-primary/[var(--o-primary-focus-visible)] ${
+                      route.isActive
+                        ? "bg-c-bg-highlight-active"
+                        : "group-hover:bg-c-bg-highlight-hover"
                     }`}
                   >
-                    {item.label}
-                  </p>
-                </div>
+                    <EmailIcon
+                      type={item.iconType}
+                      color={item.iconColor}
+                      isActive={route.isActive}
+                      fadeOnPassive="normal"
+                    />
+                    <p
+                      className={`hidden lg:block font-medium transition duration-150 ${
+                        route.isActive ? "text-c-on-bg" : "text-c-on-bg/60"
+                      }`}
+                    >
+                      {item.label}
+                    </p>
+                  </div>
+                )}
               </Link>
             );
           })}
@@ -108,7 +108,10 @@ export default function Navbar() {
 
 interface TNavbarItem {
   label: string;
-  pathname: string;
+  route: {
+    to: LinkPropsOptions["to"];
+    params: LinkPropsOptions["params"];
+  };
   iconType: TIconType;
   iconColor: TIconColor;
 }
