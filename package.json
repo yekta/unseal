@@ -54,6 +54,7 @@
     "@tiptap/react": "^2.1.11",
     "@tiptap/starter-kit": "^2.1.11",
     "electron-squirrel-startup": "^1.0.0",
+    "electron-store": "^8.1.0",
     "fuse.js": "^6.6.2",
     "jotai": "^2.4.3",
     "mousetrap": "^1.6.5",

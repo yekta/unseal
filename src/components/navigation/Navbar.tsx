@@ -101,7 +101,7 @@ export default function Navbar() {
         </div>
       </div>
       <div className="flex flex-1 lg:flex-none w-64 items-center justify-end px-0.5">
-        <p className="text-xs text-right">{href}</p>
+        <p className="text-xs text-right px-2">{href}</p>
         <div className="electron-no-drag-zone">
           <ComposeButtonWithModal />
         </div>

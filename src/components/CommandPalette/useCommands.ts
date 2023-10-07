@@ -19,6 +19,7 @@ import AccountAvatarIcon from "@components/icons/AccountAvatarIcon";
 import IconSystemLight from "@components/icons/IconSystemLight";
 import IconSystemDark from "@components/icons/IconSystemDark";
 import { useRouter, useRouterState } from "@tanstack/react-router";
+import { useTheme } from "@components/providers/ThemeProvider";
 
 const fuseOptions = {
   keys: ["title", "description", "tags"],
@@ -32,11 +33,7 @@ export function useCommands(searchQuery: string) {
   const [isComposeOpen, setIsComposeOpen] = useAtom(isComposeOpenAtom);
   const setIsCommandPaletteOpen = useSetAtom(isCommandPaletteOpenAtom);
   const { accounts } = useAccounts();
-  const { theme, setTheme, systemTheme } = {
-    theme: "light",
-    setTheme: (theme: string) => {},
-    systemTheme: "light",
-  };
+  const { theme, setTheme, systemTheme } = useTheme();
 
   const commands: TCommand[] = useMemo<TCommand[]>(
     () => [
