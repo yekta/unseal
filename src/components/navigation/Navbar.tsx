@@ -8,7 +8,7 @@ import { Bars4Icon } from "@heroicons/react/24/outline";
 import { Link, LinkPropsOptions, useParams } from "@tanstack/react-router";
 
 export default function Navbar() {
-  const { accountId } = useParams();
+  const { accountId } = useParams({ from: "__root__" });
   const navbarItems: TNavbarItem[] = [
     {
       label: accountId ? "Inbox" : "All Inboxes",

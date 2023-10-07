@@ -34,7 +34,7 @@ export function EmailLine({
         to={
           accountId ? `/account/$accountId/inbox/$emailId` : "/inbox/$emailId"
         }
-        params={{ emailId: id }}
+        params={{ emailId: id, accountId }}
         search={{ from: pathname }}
         className="w-full flex flex-row justify-center items-center
         cursor-default select-none relative group/link peer"

@@ -1,45 +1,48 @@
-"use client";
-
-import { useRouter } from "@tanstack/react-router";
+import { LinkPropsOptions, useRouter } from "@tanstack/react-router";
 import { TEmail } from "@ts/email";
 import { useHotkeys } from "@ts/hooks/useHotkeys";
 import React from "react";
 
 export default function HotkeyProvider({
   children,
-  prevEmailPathname,
-  nextEmailPathname,
-  from,
+  prevLink,
+  nextLink,
+  fromLink,
 }: {
   children: React.ReactNode;
   email: TEmail;
-  prevEmailPathname?: string;
-  nextEmailPathname?: string;
-  from: string;
+  prevLink?: LinkPropsOptions;
+  nextLink?: LinkPropsOptions;
+  fromLink: LinkPropsOptions;
 }) {
   const router = useRouter();
   useHotkeys([
     {
       hotkey: "esc",
-      callback: () => router.navigate({ to: from }),
+      callback: () =>
+        router.navigate({ to: fromLink.to, params: fromLink.params }),
     },
     {
       hotkey: ["left", "up"],
       callback: () => {
         router.navigate({
-          to: `${prevEmailPathname}?from=${encodeURIComponent(from)}`,
+          to: prevLink.to,
+          params: prevLink.params,
+          search: prevLink.search,
         });
       },
-      options: { enabled: prevEmailPathname !== undefined },
+      options: { enabled: prevLink !== undefined },
     },
     {
       hotkey: ["right", "down"],
       callback: () => {
         router.navigate({
-          to: `${nextEmailPathname}?from=${encodeURIComponent(from)}`,
+          to: nextLink.to,
+          params: nextLink.params,
+          search: nextLink.search,
         });
       },
-      options: { enabled: nextEmailPathname !== undefined },
+      options: { enabled: nextLink !== undefined },
     },
   ]);
   return children;

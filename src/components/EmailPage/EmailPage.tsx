@@ -1,28 +1,30 @@
 import { TEmail } from "@ts/email";
 import InboxHotkeyProvider from "@components/providers/InboxHotkeyProvider";
-import { Link } from "@tanstack/react-router";
+import { Link, LinkPropsOptions } from "@tanstack/react-router";
 
 export default function EmailPage({
   email,
-  prevEmailPathname,
-  nextEmailPathname,
-  from,
+  prevLink,
+  nextLink,
+  fromLink,
 }: {
   email: TEmail;
-  prevEmailPathname?: string;
-  nextEmailPathname?: string;
-  from: string;
+  prevLink?: LinkPropsOptions;
+  nextLink?: LinkPropsOptions;
+  fromLink: LinkPropsOptions;
 }) {
   return (
     <InboxHotkeyProvider
       email={email}
-      prevEmailPathname={prevEmailPathname}
-      nextEmailPathname={nextEmailPathname}
-      from={from}
+      prevLink={prevLink}
+      nextLink={nextLink}
+      fromLink={fromLink}
     >
       <div className="w-full flex-1 flex flex-row items-start justify-center">
         <Link
-          href={from}
+          to={fromLink.to}
+          params={fromLink.params}
+          search={fromLink.search}
           className="flex-1 min-w-[4rem] min-h-full cursor-default md:-mr-12 z-10"
         />
         <div className="w-full max-w-6xl flex md:px-12 flex-col relative pt-8 pb-24 z-0">
@@ -32,7 +34,9 @@ export default function EmailPage({
           </div>
         </div>
         <Link
-          href={from}
+          to={fromLink.to}
+          params={fromLink.params}
+          search={fromLink.search}
           className="flex-1 min-w-[4rem] min-h-full cursor-default md:-ml-12 z-10"
         />
       </div>

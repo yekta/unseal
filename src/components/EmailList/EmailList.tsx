@@ -1,6 +1,6 @@
 import { EmailLine } from "@components/EmailList/EmailLine/EmailLine";
 import { EmailLinePlaceholder } from "@components/EmailList/EmailLine/EmailLinePlaceholder";
-import { useRouter } from "@tanstack/react-router";
+import { useRouterState } from "@tanstack/react-router";
 import { breakpoints } from "@ts/constants/breakpoints";
 import { TEmail } from "@ts/email";
 import { getGroupLabelByDate } from "@ts/helpers/getGroupLabelByDate";
@@ -34,7 +34,6 @@ export default function EmailList({
   accountId?: string;
   filters?: TInboxFilter[];
 }) {
-  console.log("filters", filters);
   const {
     emails,
     isFetchingNextPage,
@@ -63,8 +62,10 @@ export default function EmailList({
   const emailLineSize = 106;
   const emailLineSizeMd = 54;
   const overscan = 20;
-  const { basepath: pathname } = useRouter();
-  const virtualizerKey = ["email-list", pathname, ""];
+  const {
+    location: { href },
+  } = useRouterState();
+  const virtualizerKey = ["email-list", href, ""];
   const rowVirtualizer = useSmartVirtualizer(virtualizerKey, {
     count: rows.length + 1,
     getScrollElement: () => parentRef.current,
