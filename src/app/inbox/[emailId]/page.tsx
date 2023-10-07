@@ -22,16 +22,19 @@ export default function InboxPage() {
     ? {
         to: `/inbox/$emailId`,
         params: { emailId: prevId },
+        search: { from },
       }
     : undefined;
   const nextLink: LinkPropsOptions = nextId
     ? {
         to: `/inbox/$emailId`,
         params: { emailId: nextId },
+        search: { from },
       }
     : undefined;
   const fromLink: LinkPropsOptions = {
     to: fromLinkTo,
+    params: { emailId },
   };
   if (!email) return <></>;
   if (!emails) return <></>;

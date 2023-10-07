@@ -1,5 +1,3 @@
-"use client";
-
 import { isComposeOpenAtom } from "@components/Compose/composeSettings";
 import IconPenOnPaper from "@components/icons/IconPenOnPaper";
 import {
@@ -20,11 +18,7 @@ import { useAccounts } from "@ts/hooks/useAccounts";
 import AccountAvatarIcon from "@components/icons/AccountAvatarIcon";
 import IconSystemLight from "@components/icons/IconSystemLight";
 import IconSystemDark from "@components/icons/IconSystemDark";
-import {
-  useRouter,
-  useRouterState,
-  useRouterContext,
-} from "@tanstack/react-router";
+import { useRouter, useRouterState } from "@tanstack/react-router";
 
 const fuseOptions = {
   keys: ["title", "description", "tags"],

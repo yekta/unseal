@@ -19,28 +19,19 @@ export default function HotkeyProvider({
   useHotkeys([
     {
       hotkey: "esc",
-      callback: () =>
-        router.navigate({ to: fromLink.to, params: fromLink.params }),
+      callback: () => router.navigate({ ...fromLink }),
     },
     {
       hotkey: ["left", "up"],
       callback: () => {
-        router.navigate({
-          to: prevLink.to,
-          params: prevLink.params,
-          search: prevLink.search,
-        });
+        router.navigate({ ...prevLink });
       },
       options: { enabled: prevLink !== undefined },
     },
     {
       hotkey: ["right", "down"],
       callback: () => {
-        router.navigate({
-          to: nextLink.to,
-          params: nextLink.params,
-          search: nextLink.search,
-        });
+        router.navigate({ ...nextLink });
       },
       options: { enabled: nextLink !== undefined },
     },

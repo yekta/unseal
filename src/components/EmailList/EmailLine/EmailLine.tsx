@@ -25,7 +25,7 @@ export function EmailLine({
   isStarred,
 }: TEmail) {
   const {
-    location: { pathname },
+    location: { pathname, searchStr },
   } = useRouterState();
   const { accountId } = useParams({ from: "__root__" });
   return (
@@ -35,7 +35,7 @@ export function EmailLine({
           accountId ? `/account/$accountId/inbox/$emailId` : "/inbox/$emailId"
         }
         params={{ emailId: id, accountId }}
-        search={{ from: pathname }}
+        search={{ from: pathname + searchStr }}
         className="w-full flex flex-row justify-center items-center
         cursor-default select-none relative group/link peer"
       >

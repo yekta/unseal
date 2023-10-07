@@ -19,10 +19,18 @@ export default function AccountInboxPage() {
   const prevId = email ? emails?.[emails.indexOf(email) - 1]?.id : undefined;
   const nextId = email ? emails?.[emails.indexOf(email) + 1]?.id : undefined;
   const prevLink: LinkPropsOptions = prevId
-    ? { to: `/inbox/$emailId`, params: { emailId: prevId } }
+    ? {
+        to: `/account/$accountId/inbox/$emailId`,
+        params: { emailId: prevId, accountId },
+        search: { from },
+      }
     : undefined;
   const nextLink: LinkPropsOptions = nextId
-    ? { to: `/inbox/$emailId`, params: { emailId: nextId } }
+    ? {
+        to: `/account/$accountId/inbox/$emailId`,
+        params: { emailId: nextId, accountId },
+        search: { from },
+      }
     : undefined;
   const fromLink: LinkPropsOptions = {
     to: fromLinkTo,
