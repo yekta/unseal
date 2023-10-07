@@ -1,17 +1,14 @@
 import ComposeButtonWithModal from "@components/Compose/ComposeButtonWithModal";
 import { getPathnameWithAccount } from "@ts/helpers/getPathnameWithAccount";
-import { getAccountIdFromPathname } from "@ts/helpers/getAccountIdFromPathname";
 import { TIconColor, TIconType } from "@ts/email";
 import EmailIcon from "@components/EmailList/EmailLine/EmailIcon";
 import { useAtom } from "jotai";
 import { isSidebarOpenAtom } from "@components/navigation/navigation";
 import { Bars4Icon } from "@heroicons/react/24/outline";
-import { Link, useRouter, LinkPropsOptions } from "@tanstack/react-router";
+import { Link, LinkPropsOptions, useParams } from "@tanstack/react-router";
 
 export default function Navbar() {
-  const { basepath } = useRouter();
-
-  const accountId = getAccountIdFromPathname(basepath);
+  const { accountId } = useParams();
   const navbarItems: TNavbarItem[] = [
     {
       label: accountId ? "Inbox" : "All Inboxes",
@@ -64,15 +61,17 @@ export default function Navbar() {
             return (
               <Link
                 activeProps={{ className: "group/active-link" }}
+                activeOptions={{ exact: true }}
                 key={`nav-link-${index}`}
                 to={item.route.to}
+                params={item.route.params}
                 className="py-1.5 px-0.75 self-stretch group cursor-default flex flex-row"
               >
-                {(route) => (
+                {({ isActive }) => (
                   <div
                     className={`px-4 py-2 flex items-center justify-center gap-2 rounded-lg 
                     ring-0 group-focus-visible:ring-2 ring-c-primary/[var(--o-primary-focus-visible)] ${
-                      route.isActive
+                      isActive
                         ? "bg-c-bg-highlight-active"
                         : "group-hover:bg-c-bg-highlight-hover"
                     }`}
@@ -80,12 +79,12 @@ export default function Navbar() {
                     <EmailIcon
                       type={item.iconType}
                       color={item.iconColor}
-                      isActive={route.isActive}
+                      isActive={isActive}
                       fadeOnPassive="normal"
                     />
                     <p
                       className={`hidden lg:block font-medium transition duration-150 ${
-                        route.isActive ? "text-c-on-bg" : "text-c-on-bg/60"
+                        isActive ? "text-c-on-bg" : "text-c-on-bg/60"
                       }`}
                     >
                       {item.label}

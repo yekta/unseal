@@ -12,7 +12,7 @@ import {
 
 import { StarIcon as StarIconFilled } from "@heroicons/react/24/solid";
 import * as Tooltip from "@radix-ui/react-tooltip";
-import { Link } from "@tanstack/react-router";
+import { Link, useParams, useRouterState } from "@tanstack/react-router";
 
 export function EmailLine({
   id,
@@ -24,10 +24,18 @@ export function EmailLine({
   account,
   isStarred,
 }: TEmail) {
+  const {
+    location: { pathname },
+  } = useRouterState();
+  const { accountId } = useParams({ from: "__root__" });
   return (
     <div className="w-full relative group">
       <Link
-        href={"/"}
+        to={
+          accountId ? `/account/$accountId/inbox/$emailId` : "/inbox/$emailId"
+        }
+        params={{ emailId: id }}
+        search={{ from: pathname }}
         className="w-full flex flex-row justify-center items-center
         cursor-default select-none relative group/link peer"
       >

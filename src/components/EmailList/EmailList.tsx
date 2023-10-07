@@ -34,6 +34,7 @@ export default function EmailList({
   accountId?: string;
   filters?: TInboxFilter[];
 }) {
+  console.log("filters", filters);
   const {
     emails,
     isFetchingNextPage,

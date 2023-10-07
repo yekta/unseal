@@ -20,7 +20,11 @@ import { useAccounts } from "@ts/hooks/useAccounts";
 import AccountAvatarIcon from "@components/icons/AccountAvatarIcon";
 import IconSystemLight from "@components/icons/IconSystemLight";
 import IconSystemDark from "@components/icons/IconSystemDark";
-import { useRouter } from "@tanstack/react-router";
+import {
+  useRouter,
+  useRouterState,
+  useRouterContext,
+} from "@tanstack/react-router";
 
 const fuseOptions = {
   keys: ["title", "description", "tags"],
@@ -28,7 +32,9 @@ const fuseOptions = {
 
 export function useCommands(searchQuery: string) {
   const router = useRouter();
-  const { basepath: pathname } = router;
+  const {
+    location: { pathname },
+  } = useRouterState();
   const [isComposeOpen, setIsComposeOpen] = useAtom(isComposeOpenAtom);
   const setIsCommandPaletteOpen = useSetAtom(isCommandPaletteOpenAtom);
   const { accounts } = useAccounts();

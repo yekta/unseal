@@ -10,13 +10,13 @@ export const getPathnameWithAccount = (
       params: {},
     };
   const params = { accountId };
-  if (baseRoute === "/account/$accountId/view/unread") {
+  if (baseRoute === `/view/unread`) {
     return {
       to: "/account/$accountId/view/unread",
       params,
     };
   }
-  if (baseRoute === "/account/$accountId/view/starred") {
+  if (baseRoute === `/view/starred`) {
     return {
       to: "/account/$accountId/view/starred",
       params,

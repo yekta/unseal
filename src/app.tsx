@@ -15,6 +15,8 @@ import StarredPage from "@app/view/starred/page";
 import AccountPage from "@app/account/[accountId]/page";
 import AccountUnreadPage from "@app/account/[accountId]/view/unread/page";
 import AccountStarredPage from "@app/account/[accountId]/view/starred/page";
+import InboxPage from "@app/inbox/[emailId]/page";
+import AccountInboxPage from "@app/account/[accountId]/inbox/[emailId]/page";
 
 const rootSearchSchema = z.object({
   from: z.string().optional(),
@@ -39,6 +41,11 @@ const starredRoute = new Route({
   path: "/view/starred",
   component: StarredPage,
 });
+const inboxRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: "/inbox/$emailId",
+  component: InboxPage,
+});
 const settingsRoute = new Route({
   getParentRoute: () => rootRoute,
   path: "/settings",
@@ -48,26 +55,37 @@ const settingsRoute = new Route({
 const accountRoute = new Route({
   getParentRoute: () => rootRoute,
   path: "/account/$accountId",
-  component: (r) => AccountPage({ accountId: r.useParams().accountId }),
+  component: AccountPage,
 });
 
 const accountUnreadRoute = new Route({
-  getParentRoute: () => accountRoute,
-  path: "/view/unread",
-  component: (r) => AccountUnreadPage({ accountId: r.useParams().accountId }),
+  getParentRoute: () => rootRoute,
+  path: "/account/$accountId/view/unread",
+  component: AccountUnreadPage,
 });
 
 const accountStarredRoute = new Route({
-  getParentRoute: () => accountRoute,
-  path: "/view/starred",
-  component: (r) => AccountStarredPage({ accountId: r.useParams().accountId }),
+  getParentRoute: () => rootRoute,
+  path: "/account/$accountId/view/starred",
+  component: AccountStarredPage,
+});
+
+const accountInboxRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: "/account/$accountId/inbox/$emailId",
+  component: AccountInboxPage,
 });
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
   unreadRoute,
   starredRoute,
-  accountRoute.addChildren([accountUnreadRoute, accountStarredRoute]),
+  inboxRoute,
+  accountRoute.addChildren([
+    accountUnreadRoute,
+    accountStarredRoute,
+    accountInboxRoute,
+  ]),
   settingsRoute,
 ]);
 const router = new Router({ routeTree });

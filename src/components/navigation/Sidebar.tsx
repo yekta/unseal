@@ -78,16 +78,16 @@ function LinkLine({
       to={to}
       params={params}
     >
-      {(route) => (
+      {({ isActive }) => (
         <div
           className={`w-full flex flex-row items-center px-3 py-2.5 rounded-lg gap-2 ${
-            route.isActive
+            isActive
               ? "bg-c-bg-highlight-active"
               : "group-hover/link:bg-c-bg-highlight-hover"
           } group-focus-visible/link:ring-2 ring-c-primary/[var(--o-primary-focus-visible)]`}
         >
           <EmailIcon
-            isActive={route.isActive}
+            isActive={isActive}
             sizeClasses="w-5 h-5"
             type={iconType}
             color={iconColor}
@@ -96,7 +96,7 @@ function LinkLine({
           <p
             className={`flex-1 font-medium min-w-0 whitespace-nowrap 
             overflow-hidden overflow-ellipsis transition break-all
-            ${route.isActive ? "text-c-on-bg" : "text-c-on-bg/75"}`}
+            ${isActive ? "text-c-on-bg" : "text-c-on-bg/75"}`}
           >
             {text}
           </p>

@@ -1,15 +1,19 @@
 import EmailPage from "@components/EmailPage/EmailPage";
-import { useSearch } from "@tanstack/react-router";
+import {
+  useParams,
+  useSearch,
+  useRouterState,
+  useRouter,
+} from "@tanstack/react-router";
 import { TInboxFilter, useInbox } from "@ts/hooks/useInbox";
 
-export default function Page({ params }: { params: { emailId: string } }) {
-  const { emailId } = params;
+export default function InboxPage() {
+  const { emailId } = useParams({ from: "__root__" });
   let filters: TInboxFilter[] = [];
-  const searchParams = useSearch({ from: "__root__" });
-  const from = searchParams.from || "/";
-  if (from.endsWith("/unread")) {
+  const { from } = useSearch({ from: "/inbox/$emailId" });
+  if (from?.endsWith("/unread")) {
     filters.push("unread");
-  } else if (from.endsWith("/starred")) {
+  } else if (from?.endsWith("/starred")) {
     filters.push("starred");
   }
   const { emails } = useInbox({ filters });
