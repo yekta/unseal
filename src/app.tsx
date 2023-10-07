@@ -53,13 +53,13 @@ const accountRoute = new Route({
 
 const accountUnreadRoute = new Route({
   getParentRoute: () => accountRoute,
-  path: "/account/$accountId/view/unread",
+  path: "/view/unread",
   component: (r) => AccountUnreadPage({ accountId: r.useParams().accountId }),
 });
 
 const accountStarredRoute = new Route({
   getParentRoute: () => accountRoute,
-  path: "/account/$accountId/view/starred",
+  path: "/view/starred",
   component: (r) => AccountStarredPage({ accountId: r.useParams().accountId }),
 });
 
