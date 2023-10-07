@@ -21,7 +21,6 @@ import AccountInboxPage from "@app/account/[accountId]/inbox/[emailId]/page";
 const rootSearchSchema = z.object({
   from: z.string().optional(),
 });
-type RootSearch = z.infer<typeof rootSearchSchema>;
 const rootRoute = new RootRoute({
   component: RootLayout,
   validateSearch: rootSearchSchema,

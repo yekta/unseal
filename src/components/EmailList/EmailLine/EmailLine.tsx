@@ -13,6 +13,7 @@ import {
 import { StarIcon as StarIconFilled } from "@heroicons/react/24/solid";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import { Link, useParams, useRouterState } from "@tanstack/react-router";
+import { useRef } from "react";
 
 export function EmailLine({
   id,
@@ -100,16 +101,16 @@ export function EmailLine({
         </div>
       </Link>
       <div
-        className={`absolute right-px top-px h-[calc(100%-2px)] hidden md:group-hover:flex
-        md:peer-focus-visible:flex
+        className={`absolute right-px top-px h-[calc(100%-2px)] flex opacity-0 md:group-hover:opacity-100
+        md:peer-focus-visible:opacity-100
         z-10 pr-[calc(0.25rem-1px)] pl-8 bg-gradient-to-l 
         from-[calc(100%-1.75rem)]
         from-c-bg to-c-bg/0 peer-hover:from-c-bg-highlight-hover peer-hover:to-c-bg-highlight-hover/0 
         hover:from-c-bg-highlight-hover hover:to-c-bg-highlight-hover/0
-        pointer-events-none rounded-r-xl`}
+        pointer-events-none md:group-hover:pointer-events-auto md:peer-focus-visible:pointer-events-auto rounded-r-xl`}
       >
         <Tooltip.Provider delayDuration={250} skipDelayDuration={500}>
-          <ul className="h-full flex flex-row pointer-events-auto">
+          <ul className="h-full flex flex-row">
             <li className="h-full">
               <IconButton
                 Icon={isStarred ? StarIconFilled : StarIcon}
