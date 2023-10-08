@@ -35,6 +35,10 @@ export default function ComposeButtonWithModal() {
                 className={`flex flex-col items-center bg-c-bg-secondary rounded-xl 
                 shadow-xl shadow-c-shadow/[var(--o-shadow-strong)] w-full h-[calc((100vh-9rem)*0.95)] min-h-[25rem]`}
               >
+                <Dialog.Title className="sr-only">Compose</Dialog.Title>
+                <Dialog.Description className="sr-only">
+                  Compose a new email
+                </Dialog.Description>
                 <Compose />
               </Dialog.Content>
             </div>
