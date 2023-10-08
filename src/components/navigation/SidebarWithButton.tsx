@@ -6,6 +6,8 @@ import ScrollArea from "@components/utils/ScrollArea";
 import { Link, LinkPropsOptions } from "@tanstack/react-router";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Bars4Icon } from "@heroicons/react/24/outline";
+import { Transition } from "@headlessui/react";
+import { Fragment } from "react";
 
 export default function SidebarButtonWithModal({
   sidebarContainerRef,
@@ -33,54 +35,64 @@ export default function SidebarButtonWithModal({
           </div>
         </button>
       </Dialog.Trigger>
-      <Dialog.Portal container={sidebarContainerRef.current}>
-        <Dialog.Overlay
-          className={`absolute left-0 top-0 w-full h-full z-50 data-[state=closed]:pointer-events-none
-          overflow-hidden flex flex-col justify-start items-start`}
-        >
-          <Dialog.Content
-            onMouseLeave={() => setIsSidebarOpen(false)}
-            className="h-full transition bg-c-bg shadow-c-shadow/[var(--o-shadow-strong)]
-            w-64 overflow-hidden border-r-2 border-c-bg-border flex flex-col 
-            shadow-xl"
+      <Dialog.Portal container={sidebarContainerRef.current} forceMount>
+        <Transition.Root show={isSidebarOpen}>
+          <Dialog.Overlay
+            className={`absolute left-0 top-0 w-full h-full z-50 data-[state=closed]:pointer-events-none
+              overflow-hidden flex flex-col justify-start items-start`}
           >
-            <Dialog.Title className="sr-only">Sidebar</Dialog.Title>
-            <Dialog.Description className="sr-only">
-              Navigate to different inboxes
-            </Dialog.Description>
-            <ScrollArea
-              className="w-full flex-1 flex flex-col items-start justify-start"
-              viewportClass="pt-1.5 pb-24"
+            <Transition.Child
+              as={Fragment}
+              enterFrom="-translate-x-full"
+              enterTo="translate-x-0"
+              leaveFrom="translate-x-0"
+              leaveTo="-translate-x-full"
             >
-              <ul className="w-full flex flex-col">
-                <li className="w-full">
-                  <LinkLine
-                    to={`/`}
-                    text="All Inboxes"
-                    iconType="inbox"
-                    iconColor="on-bg"
-                  />
-                </li>
-              </ul>
-              <div className="w-full px-3 py-1.5">
-                <div className="w-full h-2px rounded-full bg-c-bg-border"></div>
-              </div>
-              <ul className="w-full flex flex-col">
-                {accounts.map((account) => (
-                  <li key={account.id} className="w-full">
-                    <LinkLine
-                      to={`/account/$accountId`}
-                      params={{ accountId: account.id }}
-                      text={account.title}
-                      iconType={account.iconType}
-                      iconColor={account.iconColor}
-                    />
-                  </li>
-                ))}
-              </ul>
-            </ScrollArea>
-          </Dialog.Content>
-        </Dialog.Overlay>
+              <Dialog.Content
+                onMouseLeave={() => setIsSidebarOpen(false)}
+                className="h-full transition transform bg-c-bg shadow-c-shadow/[var(--o-shadow-strong)]
+                w-64 overflow-hidden border-r-2 border-c-bg-border flex flex-col 
+                shadow-xl"
+              >
+                <Dialog.Title className="sr-only">Sidebar</Dialog.Title>
+                <Dialog.Description className="sr-only">
+                  Navigate to different inboxes
+                </Dialog.Description>
+                <ScrollArea
+                  className="w-full flex-1 flex flex-col items-start justify-start"
+                  viewportClass="pt-1.5 pb-24"
+                >
+                  <ul className="w-full flex flex-col">
+                    <li className="w-full">
+                      <LinkLine
+                        to={`/`}
+                        text="All Inboxes"
+                        iconType="inbox"
+                        iconColor="on-bg"
+                      />
+                    </li>
+                  </ul>
+                  <div className="w-full px-3 py-1.5">
+                    <div className="w-full h-2px rounded-full bg-c-bg-border"></div>
+                  </div>
+                  <ul className="w-full flex flex-col">
+                    {accounts.map((account) => (
+                      <li key={account.id} className="w-full">
+                        <LinkLine
+                          to={`/account/$accountId`}
+                          params={{ accountId: account.id }}
+                          text={account.title}
+                          iconType={account.iconType}
+                          iconColor={account.iconColor}
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </ScrollArea>
+              </Dialog.Content>
+            </Transition.Child>
+          </Dialog.Overlay>
+        </Transition.Root>
       </Dialog.Portal>
     </Dialog.Root>
   );
