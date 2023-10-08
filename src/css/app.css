@@ -2,6 +2,7 @@
 @tailwind components;
 
 :root {
+  color-scheme: dark;
   --c-bg: 22 22 33;
   --c-bg-unread: 29 29 46;
   --c-bg-secondary: 28 28 42;
@@ -37,6 +38,7 @@
 }
 
 html[data-theme="light"] {
+  color-scheme: light;
   --c-bg: 250 250 255;
   --c-bg-unread: 238 240 254;
   --c-bg-secondary: 238 238 245;

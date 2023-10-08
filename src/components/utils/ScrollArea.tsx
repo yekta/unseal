@@ -28,7 +28,7 @@ export default function ScrollArea({
       <ScrollAreaRadix.Scrollbar
         forceMount
         className={`flex select-none touch-none p-2px w-[11px] hover:w-[15px] data-[state=hidden]:opacity-0 
-        data-[state=hidden]:hover:opacity-100 scroll-area-bar ${barBg}`}
+        scroll-area-bar ${barBg}`}
         orientation="vertical"
       >
         <ScrollAreaRadix.Thumb

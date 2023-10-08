@@ -2,12 +2,14 @@ import ComposeButtonWithModal from "@components/Compose/ComposeButtonWithModal";
 import { getPathnameWithAccount } from "@ts/helpers/getPathnameWithAccount";
 import { TIconColor, TIconType } from "@ts/email";
 import EmailIcon from "@components/EmailList/EmailLine/EmailIcon";
-import { useAtom } from "jotai";
-import { isSidebarOpenAtom } from "@components/navigation/navigation";
-import { Bars4Icon } from "@heroicons/react/24/outline";
 import { Link, LinkPropsOptions, useParams } from "@tanstack/react-router";
+import SidebarButtonWithModal from "@components/navigation/SidebarWithButton";
 
-export default function Navbar() {
+export default function Navbar({
+  sidebarContainerRef,
+}: {
+  sidebarContainerRef: React.MutableRefObject<HTMLDivElement>;
+}) {
   const { accountId } = useParams({ from: "__root__" });
   const navbarItems: TNavbarItem[] = [
     {
@@ -30,30 +32,13 @@ export default function Navbar() {
     },
   ];
 
-  const [isSidebarOpen, setIsSidebarOpen] = useAtom(isSidebarOpenAtom);
-
   return (
     <nav
       className="w-full flex items-stretch justify-start lg:justify-between 
       bg-c-bg z-[100] border-b-2 border-c-bg-border overflow-hidden relative electron-drag-zone"
     >
       <div className="flex items-stretch justify-start lg:w-64 pl-20.5">
-        <button
-          id="sidebar-toggle-button"
-          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="py-1.5 px-0.75 flex cursor-default group electron-no-drag-zone"
-        >
-          <div
-            className="p-1 flex items-center justify-center rounded-lg group-hover:bg-c-bg-highlight-hover
-            group-focus-visible:ring-2 ring-c-primary/[var(--o-primary-focus-visible)]"
-          >
-            <Bars4Icon
-              className={`text-c-on-bg w-8 h-8 transform transition ${
-                isSidebarOpen ? "rotate-90" : ""
-              }`}
-            />
-          </div>
-        </button>
+        <SidebarButtonWithModal sidebarContainerRef={sidebarContainerRef} />
       </div>
       <div className="lg:flex-1 flex justify-center">
         <div className="flex justify-center overflow-hidden relative z-0 rounded-xl electron-no-drag-zone">
@@ -65,7 +50,7 @@ export default function Navbar() {
                 key={`nav-link-${index}`}
                 to={item.route.to}
                 params={item.route.params}
-                className="py-1.5 px-0.75 self-stretch group cursor-default flex flex-row"
+                className="py-1.5 px-0.75 self-stretch group cursor-default flex flex-row select-none"
               >
                 {({ isActive }) => (
                   <div
