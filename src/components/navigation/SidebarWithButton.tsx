@@ -52,25 +52,32 @@ export default function SidebarButtonWithModal({
               className="w-full flex-1 flex flex-col items-start justify-start"
               viewportClass="pt-1.5 pb-24"
             >
-              <LinkLine
-                to={`/`}
-                text="All Inboxes"
-                iconType="inbox"
-                iconColor="on-bg"
-              />
+              <ul className="w-full flex flex-col">
+                <li className="w-full">
+                  <LinkLine
+                    to={`/`}
+                    text="All Inboxes"
+                    iconType="inbox"
+                    iconColor="on-bg"
+                  />
+                </li>
+              </ul>
               <div className="w-full px-3 py-1.5">
                 <div className="w-full h-2px rounded-full bg-c-bg-border"></div>
               </div>
-              {accounts.map((account) => (
-                <LinkLine
-                  key={account.id}
-                  to={`/account/$accountId`}
-                  params={{ accountId: account.id }}
-                  text={account.title}
-                  iconType={account.iconType}
-                  iconColor={account.iconColor}
-                />
-              ))}
+              <ul className="w-full flex flex-col">
+                {accounts.map((account) => (
+                  <li key={account.id} className="w-full">
+                    <LinkLine
+                      to={`/account/$accountId`}
+                      params={{ accountId: account.id }}
+                      text={account.title}
+                      iconType={account.iconType}
+                      iconColor={account.iconColor}
+                    />
+                  </li>
+                ))}
+              </ul>
             </ScrollArea>
           </Dialog.Content>
         </Dialog.Overlay>

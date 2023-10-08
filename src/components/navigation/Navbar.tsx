@@ -41,45 +41,46 @@ export default function Navbar({
         <SidebarButtonWithModal sidebarContainerRef={sidebarContainerRef} />
       </div>
       <div className="lg:flex-1 flex justify-center">
-        <div className="flex justify-center overflow-hidden relative z-0 rounded-xl electron-no-drag-zone">
+        <ul className="flex justify-center overflow-hidden relative z-0 rounded-xl electron-no-drag-zone">
           {navbarItems.map((item, index) => {
             return (
-              <Link
-                activeProps={{ className: "group/active-link" }}
-                activeOptions={{ exact: true }}
-                key={`nav-link-${index}`}
-                to={item.route.to}
-                params={item.route.params}
-                className="py-1.5 px-0.75 self-stretch group cursor-default flex flex-row select-none"
-              >
-                {({ isActive }) => (
-                  <div
-                    className={`px-4 py-2 flex items-center justify-center gap-2 rounded-lg 
+              <li key={`nav-link-${index}`}>
+                <Link
+                  activeProps={{ className: "group/active-link" }}
+                  activeOptions={{ exact: true }}
+                  to={item.route.to}
+                  params={item.route.params}
+                  className="py-1.5 px-0.75 self-stretch group cursor-default flex flex-row select-none"
+                >
+                  {({ isActive }) => (
+                    <div
+                      className={`px-4 py-2 flex items-center justify-center gap-2 rounded-lg 
                     ring-0 group-focus-visible:ring-2 ring-c-primary/[var(--o-primary-focus-visible)] ${
                       isActive
                         ? "bg-c-bg-highlight-active"
                         : "group-hover:bg-c-bg-highlight-hover"
                     }`}
-                  >
-                    <EmailIcon
-                      type={item.iconType}
-                      color={item.iconColor}
-                      isActive={isActive}
-                      fadeOnPassive="normal"
-                    />
-                    <p
-                      className={`hidden lg:block font-medium transition duration-150 ${
-                        isActive ? "text-c-on-bg" : "text-c-on-bg/60"
-                      }`}
                     >
-                      {item.label}
-                    </p>
-                  </div>
-                )}
-              </Link>
+                      <EmailIcon
+                        type={item.iconType}
+                        color={item.iconColor}
+                        isActive={isActive}
+                        fadeOnPassive="normal"
+                      />
+                      <p
+                        className={`hidden lg:block font-medium transition duration-150 ${
+                          isActive ? "text-c-on-bg" : "text-c-on-bg/60"
+                        }`}
+                      >
+                        {item.label}
+                      </p>
+                    </div>
+                  )}
+                </Link>
+              </li>
             );
           })}
-        </div>
+        </ul>
       </div>
       <div className="flex flex-1 lg:flex-none w-64 items-center justify-end px-0.5">
         <div className="electron-no-drag-zone">
