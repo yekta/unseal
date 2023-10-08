@@ -67,6 +67,7 @@ export default function AddAccountModalWithButton() {
                     const Icon = provider.Icon;
                     return (
                       <button
+                        key={provider.title}
                         onClick={() => null}
                         className="flex flex-col items-center justify-center w-40 pt-5 p-4 hover:bg-c-on-bg/6 rounded-lg
                         focus-visible:ring-2 ring-c-primary/[var(--o-primary-focus-visible)] cursor-default"

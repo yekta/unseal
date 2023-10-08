@@ -13,7 +13,6 @@ import {
 import { StarIcon as StarIconFilled } from "@heroicons/react/24/solid";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import { Link, useParams, useRouterState } from "@tanstack/react-router";
-import { useRef } from "react";
 
 export function EmailLine({
   id,
