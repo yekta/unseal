@@ -44,7 +44,10 @@ export default function Navbar({
         <ul className="flex justify-center overflow-hidden relative z-0 rounded-xl electron-no-drag-zone">
           {navbarItems.map((item, index) => {
             return (
-              <li key={`nav-link-${index}`}>
+              <li
+                key={`nav-link-${index}`}
+                className="self-stretch flex flex-row"
+              >
                 <Link
                   activeProps={{ className: "group/active-link" }}
                   activeOptions={{ exact: true }}

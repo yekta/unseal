@@ -134,7 +134,7 @@ button:focus-visible,
 div:focus,
 div:focus-visible,
 a:focus,
-a:focus-visible {
+a:focus-visible, nav:focus-visible {
   outline: none;
 }
 
