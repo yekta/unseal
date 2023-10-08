@@ -44,8 +44,6 @@ export default function SidebarButtonWithModal({
             <Transition.Child
               as={Fragment}
               enterFrom="-translate-x-full"
-              enterTo="translate-x-0"
-              leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
               <Dialog.Content
