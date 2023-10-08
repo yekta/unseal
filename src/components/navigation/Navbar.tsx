@@ -6,13 +6,9 @@ import { useAtom } from "jotai";
 import { isSidebarOpenAtom } from "@components/navigation/navigation";
 import { Bars4Icon } from "@heroicons/react/24/outline";
 import { Link, LinkPropsOptions, useParams } from "@tanstack/react-router";
-import { useRouterState } from "@tanstack/react-router";
 
 export default function Navbar() {
   const { accountId } = useParams({ from: "__root__" });
-  const {
-    location: { href },
-  } = useRouterState();
   const navbarItems: TNavbarItem[] = [
     {
       label: accountId ? "Inbox" : "All Inboxes",
@@ -101,7 +97,6 @@ export default function Navbar() {
         </div>
       </div>
       <div className="flex flex-1 lg:flex-none w-64 items-center justify-end px-0.5">
-        <p className="text-xs text-right px-2">{href}</p>
         <div className="electron-no-drag-zone">
           <ComposeButtonWithModal />
         </div>
