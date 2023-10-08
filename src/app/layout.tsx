@@ -20,7 +20,7 @@ export default function RootLayout() {
         >
           <div
             onMouseEnter={() => setIsSidebarOpen(true)}
-            className="w-2 h-full absolute left-0 top-0 z-50"
+            className="w-4 h-full absolute left-0 top-0 z-50"
           />
           <Outlet />
         </main>
