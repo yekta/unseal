@@ -9,6 +9,7 @@ import {
   MoonIcon,
   SunIcon,
   ArchiveBoxIcon,
+  UserPlusIcon,
 } from "@heroicons/react/24/outline";
 import { useAtom, useSetAtom } from "jotai";
 import { useMemo } from "react";
@@ -20,6 +21,7 @@ import IconSystemLight from "@components/icons/IconSystemLight";
 import IconSystemDark from "@components/icons/IconSystemDark";
 import { useRouter, useRouterState } from "@tanstack/react-router";
 import { useTheme } from "@components/providers/ThemeProvider";
+import { isAddAccountModalOpenAtom } from "@components/AddAccount/AddAccountModalWithButton";
 
 const fuseOptions = {
   keys: ["title", "description", "tags"],
@@ -31,6 +33,9 @@ export function useCommands(searchQuery: string) {
     location: { pathname },
   } = useRouterState();
   const [isComposeOpen, setIsComposeOpen] = useAtom(isComposeOpenAtom);
+  const [isAddAccountOpen, setIsAddAccountOpen] = useAtom(
+    isAddAccountModalOpenAtom
+  );
   const setIsCommandPaletteOpen = useSetAtom(isCommandPaletteOpenAtom);
   const { accounts } = useAccounts();
   const { theme, setTheme, systemTheme } = useTheme();
@@ -86,6 +91,37 @@ export function useCommands(searchQuery: string) {
         isHotkeyGlobal: true,
       },
       {
+        title: "Go to Archived",
+        description: "Go to archived",
+        tags: ["archived"],
+        Icon: ArchiveBoxIcon,
+        onClick: () => null,
+        shouldFilterOut: () => pathname === "/view/archived",
+      },
+      ...(accounts?.map((a, i) => ({
+        title: `Go to Inbox: ${a.title}`,
+        description: `Go to Inbox: ${a.title}`,
+        tags: [a.email, a.title],
+        Icon: ({ className }: { className?: string }) =>
+          AccountAvatarIcon({ type: a.iconType, className }),
+        onClick: () =>
+          router.navigate({
+            to: `/account/$accountId`,
+            params: { accountId: a.id },
+          }),
+        shouldFilterOut: () => pathname === `/account/${a.id}`,
+        hotkey: i < 9 ? `ctrl+${i + 1}` : undefined,
+        isHotkeyGlobal: i < 9 ? true : false,
+        isHotkeyEnabledInInput: true,
+      })) ?? []),
+      {
+        title: "Add Account",
+        description: "Add a new account",
+        tags: ["add", "new", "account"],
+        Icon: UserPlusIcon,
+        onClick: () => setIsAddAccountOpen(true),
+      },
+      {
         title: "Settings",
         description: "Go to settings",
         tags: ["settings", "preferences"],
@@ -122,30 +158,6 @@ export function useCommands(searchQuery: string) {
         onClick: () => setTheme("system"),
         shouldFilterOut: () => theme === "system",
       },
-      {
-        title: "Go to Archived",
-        description: "Go to archived",
-        tags: ["archived"],
-        Icon: ArchiveBoxIcon,
-        onClick: () => null,
-        shouldFilterOut: () => pathname === "/view/archived",
-      },
-      ...(accounts?.map((a, i) => ({
-        title: `Go to Inbox: ${a.title}`,
-        description: `Go to Inbox: ${a.title}`,
-        tags: [a.email, a.title],
-        Icon: ({ className }: { className?: string }) =>
-          AccountAvatarIcon({ type: a.iconType, className }),
-        onClick: () =>
-          router.navigate({
-            to: `/account/$accountId`,
-            params: { accountId: a.id },
-          }),
-        shouldFilterOut: () => pathname === `/account/${a.id}`,
-        hotkey: i < 9 ? `ctrl+${i + 1}` : undefined,
-        isHotkeyGlobal: i < 9 ? true : false,
-        isHotkeyEnabledInInput: true,
-      })) ?? []),
     ],
     [pathname, isComposeOpen, accounts, theme, systemTheme]
   );

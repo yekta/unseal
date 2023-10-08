@@ -1,6 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { atom, useAtom } from "jotai";
-import { PlusIcon } from "@heroicons/react/24/outline";
+import { UserPlusIcon } from "@heroicons/react/24/outline";
 import IconEmailProvider from "@components/icons/IconEmailProvider";
 
 interface TEmailProvider {
@@ -8,7 +8,7 @@ interface TEmailProvider {
   Icon: React.ComponentType<any>;
 }
 
-const isAddAccountModalOpenAtom = atom(false);
+export const isAddAccountModalOpenAtom = atom(false);
 
 const emailProviders: TEmailProvider[] = [
   {
@@ -38,7 +38,9 @@ export default function AddAccountModalWithButton() {
             className="p-1.5 flex items-center justify-center rounded-lg group-hover:bg-c-bg-highlight-hover
             group-focus-visible:ring-2 ring-c-primary/[var(--o-primary-focus-visible)]"
           >
-            <PlusIcon className={`text-c-on-bg w-7 h-7 transform transition`} />
+            <UserPlusIcon
+              className={`text-c-on-bg w-7 h-7 transform transition`}
+            />
           </div>
         </button>
       </Dialog.Trigger>
@@ -50,6 +52,7 @@ export default function AddAccountModalWithButton() {
           >
             <div className="md:px-4 max-w-3xl my-auto flex flex-col items-center">
               <Dialog.Content
+                onOpenAutoFocus={(e) => e.preventDefault()}
                 className={`flex flex-col items-center bg-c-bg-secondary rounded-xl 
                 shadow-xl shadow-c-shadow/[var(--o-shadow-strong)] w-full p-4`}
               >
@@ -68,10 +71,10 @@ export default function AddAccountModalWithButton() {
                         className="flex flex-col items-center justify-center w-40 pt-5 p-4 hover:bg-c-on-bg/6 rounded-lg
                         focus-visible:ring-2 ring-c-primary/[var(--o-primary-focus-visible)] cursor-default"
                       >
-                        <div className="w-16 h-16 p-1 bg-white rounded-lg shadow-lg shadow-c-shadow/[var(--o-shadow-normal)]">
+                        <div className="w-16 h-16 rounded-lg -mt-2.5">
                           <Icon className="w-full h-full" />
                         </div>
-                        <h3 className="mt-2 font-medium w-full whitespace-nowrap text-center overflow-hidden overflow-ellipsis">
+                        <h3 className="font-medium w-full whitespace-nowrap text-center overflow-hidden overflow-ellipsis">
                           {provider.title}
                         </h3>
                       </button>
