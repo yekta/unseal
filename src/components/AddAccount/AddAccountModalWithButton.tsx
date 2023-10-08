@@ -65,13 +65,13 @@ export default function AddAccountModalWithButton() {
                     return (
                       <button
                         onClick={() => null}
-                        className="flex flex-col items-center justify-center w-40 p-4 hover:bg-c-on-bg/6 rounded-lg
+                        className="flex flex-col items-center justify-center w-40 pt-5 p-4 hover:bg-c-on-bg/6 rounded-lg
                         focus-visible:ring-2 ring-c-primary/[var(--o-primary-focus-visible)] cursor-default"
                       >
                         <div className="w-16 h-16 p-1 bg-white rounded-lg shadow-lg shadow-c-shadow/[var(--o-shadow-normal)]">
                           <Icon className="w-full h-full" />
                         </div>
-                        <h3 className="mt-2 -mb-1 font-medium w-full whitespace-nowrap text-center overflow-hidden overflow-ellipsis">
+                        <h3 className="mt-2 font-medium w-full whitespace-nowrap text-center overflow-hidden overflow-ellipsis">
                           {provider.title}
                         </h3>
                       </button>
