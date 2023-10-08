@@ -1,5 +1,4 @@
 import Compose from "@components/Compose/Compose";
-import React from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import IconPenOnPaper from "@components/icons/IconPenOnPaper";
 import { isComposeOpenAtom } from "@components/Compose/composeSettings";

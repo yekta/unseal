@@ -4,6 +4,9 @@ import { TIconColor, TIconType } from "@ts/email";
 import EmailIcon from "@components/EmailList/EmailLine/EmailIcon";
 import { Link, LinkPropsOptions, useParams } from "@tanstack/react-router";
 import SidebarButtonWithModal from "@components/navigation/SidebarWithButton";
+import { KeyIcon } from "@heroicons/react/24/outline";
+import { ipcRenderer } from "electron";
+import AddAccountModalWithButton from "@components/AddAccount/AddAccountModalWithButton";
 
 export default function Navbar({
   sidebarContainerRef,
@@ -86,7 +89,8 @@ export default function Navbar({
         </ul>
       </div>
       <div className="flex flex-1 lg:flex-none w-64 items-center justify-end px-0.5">
-        <div className="electron-no-drag-zone">
+        <div className="electron-no-drag-zone flex items-center justify-end">
+          <AddAccountModalWithButton />
           <ComposeButtonWithModal />
         </div>
       </div>
