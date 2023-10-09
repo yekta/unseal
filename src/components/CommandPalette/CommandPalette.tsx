@@ -1,8 +1,9 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useCommands } from "@components/CommandPalette/useCommands";
 import ScrollArea from "@components/utils/ScrollArea";
 import { useHotkeys } from "@ts/hooks/useHotkeys";
+import { usePlatform } from "@ts/hooks/usePlatform";
 
 export default function CommandPalette() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -146,16 +147,17 @@ export default function CommandPalette() {
 }
 
 function HotkeyLabel({ hotkey }: { hotkey: string }) {
+  const platform = usePlatform();
   let keys = hotkey.split("+");
-  const keySequences = keys
-    .map((key) => {
-      if (key === "ctrl") return "⌃";
-      if (key === "shift") return "⇧";
-      if (key === "alt") return "⌥";
-      if (key === "cmd") return "⌘";
-      return key;
-    })
-    .map((key) => (key !== "then" ? key.toUpperCase() : key));
+  const keySequences = keys.map((key) => {
+    if (key === "ctrl" && platform === "macos") return "⌃";
+    if (key === "alt" && platform === "macos") return "⌥";
+    if (key === "shift") return "⇧";
+    if (key === "cmd") return "⌘";
+    if (key === "mod" && platform === "macos") return "⌘";
+    if (key === "mod") return "ctrl";
+    return key;
+  });
   return (
     <div className="flex flex-wrap items-center justify-end gap-1.5 relative">
       {keySequences.map((keySequence, i) =>
@@ -163,11 +165,13 @@ function HotkeyLabel({ hotkey }: { hotkey: string }) {
           <Fragment key={key + i + j}>
             <kbd
               key={key + i + j + "kbd"}
-              className={`w-6 h-6 text-sm font-medium bg-c-command-palette-bg flex items-center 
+              className={`${
+                key.length === 1 ? "w-6" : "w-auto"
+              } px-1.5 h-6 text-sm font-medium bg-c-command-palette-bg flex items-center 
               justify-center rounded shadow-md shadow-c-shadow/[var(--o-shadow-strong)] 
-              ring-1 ring-c-on-bg/10 text-c-on-bg/75`}
+              ring-1 ring-c-on-bg/10 text-c-on-bg/75 overflow-hidden`}
             >
-              {key}
+              {key.length === 1 ? key.toUpperCase() : key}
             </kbd>
             {keySequence.length > 1 && j < keySequences.length && (
               <p

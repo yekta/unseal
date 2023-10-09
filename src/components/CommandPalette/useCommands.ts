@@ -33,9 +33,7 @@ export function useCommands(searchQuery: string) {
     location: { pathname },
   } = useRouterState();
   const [isComposeOpen, setIsComposeOpen] = useAtom(isComposeOpenAtom);
-  const [isAddAccountOpen, setIsAddAccountOpen] = useAtom(
-    isAddAccountModalOpenAtom
-  );
+  const [_, setIsAddAccountOpen] = useAtom(isAddAccountModalOpenAtom);
   const setIsCommandPaletteOpen = useSetAtom(isCommandPaletteOpenAtom);
   const { accounts } = useAccounts();
   const { theme, setTheme, systemTheme } = useTheme();
@@ -110,7 +108,7 @@ export function useCommands(searchQuery: string) {
             params: { accountId: a.id },
           }),
         shouldFilterOut: () => pathname === `/account/${a.id}`,
-        hotkey: i < 9 ? `ctrl+${i + 1}` : undefined,
+        hotkey: i < 9 ? `mod+${i + 1}` : undefined,
         isHotkeyGlobal: i < 9 ? true : false,
         isHotkeyEnabledInInput: true,
       })) ?? []),
