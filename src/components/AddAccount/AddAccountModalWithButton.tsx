@@ -12,9 +12,9 @@ export const isAddAccountModalOpenAtom = atom(false);
 
 const emailProviders: TEmailProvider[] = [
   {
-    title: "Gmail",
+    title: "Google",
     Icon: ({ className }: { className: string }) =>
-      IconEmailProvider({ type: "gmail", className }),
+      IconEmailProvider({ type: "google", className }),
   },
   {
     title: "Outlook",
