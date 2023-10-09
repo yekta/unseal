@@ -60,6 +60,7 @@ const config: Config = {
         4: "0.04",
         6: "0.06",
         8: "0.08",
+        9: "0.09",
         12: "0.12",
         15: "0.15",
         16: "0.16",
@@ -96,9 +97,15 @@ const config: Config = {
       },
       ringWidth: {
         1.5: "1.5px",
+        3: "3px",
+      },
+      ringOffsetWidth: {
+        1.5: "1.5px",
+        3: "3px",
       },
       animation: {
         "pulse-placeholder": "pulse-placeholder 1s ease-in-out infinite",
+        spinner: "spinner 0.75s cubic-bezier(.5,.25,.5,.75) infinite",
       },
       keyframes: {
         "pulse-placeholder": {
@@ -107,6 +114,14 @@ const config: Config = {
           },
           "50%": {
             opacity: "0.7",
+          },
+        },
+        spinner: {
+          "0%": {
+            transform: "rotate(0deg)",
+          },
+          "100%": {
+            transform: "rotate(360deg)",
           },
         },
       },
