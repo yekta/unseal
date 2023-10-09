@@ -5,7 +5,9 @@ import { TInboxFilter, useInbox } from "@ts/hooks/useInbox";
 export default function InboxPage() {
   const { emailId } = useParams({ from: "__root__" });
   let filters: TInboxFilter[] = [];
-  const { from } = useSearch({ from: "/inbox/$emailId" });
+  const { from } = useSearch({
+    from: "/app-layout/inbox/$emailId",
+  });
   let fromLinkTo: LinkPropsOptions["to"] = "/";
   if (from?.endsWith("/unread")) {
     filters.push("unread");

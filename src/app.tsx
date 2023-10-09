@@ -1,6 +1,5 @@
 import ReactDOM from "react-dom/client";
 
-import RootLayout from "@app/layout.tsx";
 import {
   Router,
   Route,
@@ -17,75 +16,97 @@ import AccountUnreadPage from "@app/account/[accountId]/view/unread/page";
 import AccountStarredPage from "@app/account/[accountId]/view/starred/page";
 import InboxPage from "@app/inbox/[emailId]/page";
 import AccountInboxPage from "@app/account/[accountId]/inbox/[emailId]/page";
+import SignInPage from "@app/sign-in/page";
+import RootLayout from "@app/layout";
+import AppLayout from "@app/layout-app";
 
 const rootSearchSchema = z.object({
   from: z.string().optional(),
 });
+
 const rootRoute = new RootRoute({
   component: RootLayout,
   validateSearch: rootSearchSchema,
 });
-const indexRoute = new Route({
+
+const appLayoutRoute = new Route({
   getParentRoute: () => rootRoute,
+  component: AppLayout,
+  id: "app-layout",
+});
+
+const indexRoute = new Route({
+  getParentRoute: () => appLayoutRoute,
   path: "/",
   component: HomePage,
 });
+
 const unreadRoute = new Route({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => appLayoutRoute,
   path: "/view/unread",
   component: UnreadPage,
 });
+
 const starredRoute = new Route({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => appLayoutRoute,
   path: "/view/starred",
   component: StarredPage,
 });
+
 const inboxRoute = new Route({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => appLayoutRoute,
   path: "/inbox/$emailId",
   component: InboxPage,
 });
+
 const settingsRoute = new Route({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => appLayoutRoute,
   path: "/settings",
   component: SettingsPage,
 });
 
 const accountRoute = new Route({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => appLayoutRoute,
   path: "/account/$accountId",
   component: AccountPage,
 });
 
 const accountUnreadRoute = new Route({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => appLayoutRoute,
   path: "/account/$accountId/view/unread",
   component: AccountUnreadPage,
 });
 
 const accountStarredRoute = new Route({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => appLayoutRoute,
   path: "/account/$accountId/view/starred",
   component: AccountStarredPage,
 });
 
 const accountInboxRoute = new Route({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => appLayoutRoute,
   path: "/account/$accountId/inbox/$emailId",
   component: AccountInboxPage,
 });
 
+const signInRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: "/sign-in",
+  component: SignInPage,
+});
+
 const routeTree = rootRoute.addChildren([
+  appLayoutRoute,
   indexRoute,
   unreadRoute,
   starredRoute,
   inboxRoute,
-  accountRoute.addChildren([
-    accountUnreadRoute,
-    accountStarredRoute,
-    accountInboxRoute,
-  ]),
+  accountRoute,
+  accountUnreadRoute,
+  accountStarredRoute,
+  accountInboxRoute,
   settingsRoute,
+  signInRoute,
 ]);
 const router = new Router({ routeTree });
 

@@ -4,8 +4,7 @@ import { TIconColor, TIconType } from "@ts/email";
 import EmailIcon from "@components/EmailList/EmailLine/EmailIcon";
 import { Link, LinkPropsOptions, useParams } from "@tanstack/react-router";
 import SidebarButtonWithModal from "@components/navigation/SidebarWithButton";
-import { KeyIcon } from "@heroicons/react/24/outline";
-import { ipcRenderer } from "electron";
+import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline";
 import AddAccountModalWithButton from "@components/AddAccount/AddAccountModalWithButton";
 
 export default function Navbar({
@@ -90,6 +89,19 @@ export default function Navbar({
       </div>
       <div className="flex flex-1 lg:flex-none w-64 items-center justify-end px-0.5">
         <div className="electron-no-drag-zone flex items-center justify-end">
+          <Link
+            to="/sign-in"
+            className="py-1.5 px-0.75 flex cursor-default group"
+          >
+            <div
+              className="p-1.5 flex items-center justify-center rounded-lg group-hover:bg-c-bg-highlight-hover
+              group-focus-visible:ring-2 ring-c-primary/[var(--o-primary-focus-visible)]"
+            >
+              <ArrowLeftOnRectangleIcon
+                className={`text-c-on-bg w-7 h-7 transform transition`}
+              />
+            </div>
+          </Link>
           <AddAccountModalWithButton />
           <ComposeButtonWithModal />
         </div>

@@ -1,4 +1,3 @@
-import GeneralHotkeyProvider from "@components/providers/GeneralHotkeyProvider";
 import { ThemeProvider } from "@components/providers/ThemeProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -10,10 +9,8 @@ export default function RootLayoutProviders({
   children: React.ReactNode;
 }) {
   return (
-    <ThemeProvider>
-      <QueryClientProvider client={queryClient}>
-        <GeneralHotkeyProvider>{children}</GeneralHotkeyProvider>
-      </QueryClientProvider>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider>{children}</ThemeProvider>
+    </QueryClientProvider>
   );
 }
