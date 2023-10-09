@@ -41,6 +41,7 @@ const config: Config = {
         "c-scrollbar-thumb": "rgb(var(--c-scrollbar-thumb)/<alpha-value>)",
         "c-primary": "rgb(var(--c-primary)/<alpha-value>)",
         "c-primary-hover": "rgb(var(--c-primary-hover)/<alpha-value>)",
+        "c-danger": "rgb(var(--c-danger)/<alpha-value>)",
         "c-star": "rgb(var(--c-star)/<alpha-value>)",
         "c-barrier": "rgb(var(--c-barrier)/<alpha-value>)",
         "c-shadow": "rgb(var(--c-shadow)/<alpha-value>)",
