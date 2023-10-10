@@ -17,9 +17,9 @@ const emailProviders: TEmailProvider[] = [
       IconEmailProvider({ type: "google", className }),
   },
   {
-    title: "Outlook",
+    title: "Microsoft",
     Icon: ({ className }: { className: string }) =>
-      IconEmailProvider({ type: "outlook", className }),
+      IconEmailProvider({ type: "microsoft", className }),
   },
 ];
 
@@ -72,10 +72,10 @@ export default function AddAccountModalWithButton() {
                         className="flex flex-col items-center justify-center w-40 pt-5 p-4 hover:bg-c-on-bg/6 rounded-lg
                         focus-visible:ring-2 ring-c-primary/[var(--o-primary-focus-visible)] cursor-default"
                       >
-                        <div className="w-16 h-16 rounded-lg -mt-2.5">
+                        <div className="w-14 h-14 rounded-lg -mt-2">
                           <Icon className="w-full h-full" />
                         </div>
-                        <h3 className="font-medium w-full whitespace-nowrap text-center overflow-hidden overflow-ellipsis">
+                        <h3 className="mt-2 font-medium w-full whitespace-nowrap text-center overflow-hidden overflow-ellipsis">
                           {provider.title}
                         </h3>
                       </button>

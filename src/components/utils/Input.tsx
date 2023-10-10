@@ -17,7 +17,7 @@ export default function Input(props: TInputProps) {
       {...registerResult}
       className={`w-full bg-c-on-bg/6 focus:ring-1.5 ring-c-primary/30 
       enabled:hover:bg-c-on-bg/9 focus:bg-c-on-bg/9 placeholder:text-c-on-bg/50
-      rounded-lg px-4 py-3 ${className}`}
+      rounded-lg px-4 py-3.5 ${className}`}
     />
   );
 }

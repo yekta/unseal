@@ -19,6 +19,7 @@ import AccountInboxPage from "@app/account/[accountId]/inbox/[emailId]/page";
 import SignInPage from "@app/sign-in/page";
 import RootLayout from "@app/layout";
 import AppLayout from "@app/layout-app";
+import LayoutEmpty from "@app/layout-empty";
 
 const rootSearchSchema = z.object({
   from: z.string().optional(),
@@ -33,6 +34,12 @@ const appLayoutRoute = new Route({
   getParentRoute: () => rootRoute,
   component: AppLayout,
   id: "app-layout",
+});
+
+const emptyLayoutRoute = new Route({
+  getParentRoute: () => rootRoute,
+  component: LayoutEmpty,
+  id: "empty-layout",
 });
 
 const indexRoute = new Route({
@@ -90,13 +97,14 @@ const accountInboxRoute = new Route({
 });
 
 const signInRoute = new Route({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => emptyLayoutRoute,
   path: "/sign-in",
   component: SignInPage,
 });
 
 const routeTree = rootRoute.addChildren([
   appLayoutRoute,
+  emptyLayoutRoute,
   indexRoute,
   unreadRoute,
   starredRoute,
