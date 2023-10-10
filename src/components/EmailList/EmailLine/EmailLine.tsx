@@ -113,11 +113,6 @@ export function EmailLine({
             <li className="h-full">
               <IconButton
                 Icon={isStarred ? StarIconFilled : StarIcon}
-                iconClass={
-                  isStarred
-                    ? "text-c-star/75 group-hover/icon-button:text-c-star"
-                    : undefined
-                }
                 label={isStarred ? "Starred" : "Not starred"}
               />
             </li>
@@ -146,7 +141,7 @@ export function EmailLine({
 function IconButton({
   onClick,
   Icon,
-  iconClass = "",
+  iconClass,
   label,
 }: {
   onClick?: () => void;
@@ -167,7 +162,7 @@ function IconButton({
             className="h-full p-2.5 flex items-center justify-center 
             rounded-lg group-hover/icon-button:bg-c-on-bg/10"
           >
-            <Icon className={`w-6 h-6 ${iconClass}`} />
+            <Icon className={`w-6 h-6 ${iconClass ?? ""}`} />
           </div>
         </button>
       </Tooltip.Trigger>

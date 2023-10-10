@@ -1,5 +1,4 @@
 import { iconDefaultClassName } from "@components/icons/constants";
-import React from "react";
 
 export default function IconSystemLight({
   className = iconDefaultClassName,

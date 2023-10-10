@@ -1,20 +1,18 @@
-import React from "react";
-import Document from "@tiptap/extension-document";
-import Paragraph from "@tiptap/extension-paragraph";
-import Text from "@tiptap/extension-text";
-import Heading from "@tiptap/extension-heading";
 import Bold from "@tiptap/extension-bold";
-import Italic from "@tiptap/extension-italic";
-import History from "@tiptap/extension-history";
-import { useEditor, EditorContent } from "@tiptap/react";
-import TextareaAutosize from "react-textarea-autosize";
-import Placeholder from "@tiptap/extension-placeholder";
 import BubbleMenu from "@tiptap/extension-bubble-menu";
+import Document from "@tiptap/extension-document";
+import Heading from "@tiptap/extension-heading";
+import History from "@tiptap/extension-history";
+import Italic from "@tiptap/extension-italic";
 import Link from "@tiptap/extension-link";
+import Paragraph from "@tiptap/extension-paragraph";
+import Placeholder from "@tiptap/extension-placeholder";
+import Text from "@tiptap/extension-text";
+import { EditorContent, useEditor } from "@tiptap/react";
+import TextareaAutosize from "react-textarea-autosize";
 
 import BubbleMenuCompose from "@components/Compose/parts/BubbleMenuCompose";
 
-// define your extension array
 const extensions = [
   Document,
   Paragraph,
