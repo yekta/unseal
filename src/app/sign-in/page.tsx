@@ -10,7 +10,7 @@ export default function SignInPage() {
           to={"/"}
           className="w-full text-center bg-c-on-bg/0 hover:bg-c-on-bg/6 hover:text-c-on-bg text-c-on-bg/50 
           focus-visible:bg-c-on-bg/6 focus-visible:text-c-on-bg px-5 py-3.5 mt-6 cursor-default 
-          rounded-lg font-bold overflow-hidden relative"
+          rounded-lg font-semibold overflow-hidden relative"
         >
           Go Home
         </Link>
