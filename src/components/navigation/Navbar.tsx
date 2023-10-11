@@ -1,11 +1,10 @@
-import ComposeButtonWithModal from "@components/Compose/ComposeButtonWithModal";
-import { getPathnameWithAccount } from "@ts/helpers/getPathnameWithAccount";
-import { TIconColor, TIconType } from "@ts/email";
+import ComposeButton from "@components/Compose/ComposeButton";
 import EmailIcon from "@components/EmailList/EmailLine/EmailIcon";
-import { Link, LinkPropsOptions, useParams } from "@tanstack/react-router";
 import SidebarButtonWithModal from "@components/navigation/SidebarWithButton";
 import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline";
-import AddAccountModalWithButton from "@components/AddAccount/AddAccountModalWithButton";
+import { Link, LinkPropsOptions, useParams } from "@tanstack/react-router";
+import { TIconColor, TIconType } from "@ts/email";
+import { getPathnameWithAccount } from "@ts/helpers/getPathnameWithAccount";
 
 export default function Navbar({
   sidebarContainerRef,
@@ -102,8 +101,7 @@ export default function Navbar({
               />
             </div>
           </Link>
-          <AddAccountModalWithButton />
-          <ComposeButtonWithModal />
+          <ComposeButton />
         </div>
       </div>
     </nav>

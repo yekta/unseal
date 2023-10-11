@@ -114,6 +114,11 @@ export function EmailLine({
               <IconButton
                 Icon={isStarred ? StarIconFilled : StarIcon}
                 label={isStarred ? "Starred" : "Not starred"}
+                iconClass={
+                  isStarred
+                    ? "text-c-star/80 group-hover/icon-button:text-c-star"
+                    : ""
+                }
               />
             </li>
             <li className="h-full">

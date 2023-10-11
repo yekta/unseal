@@ -1,6 +1,5 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { atom, useAtom } from "jotai";
-import { UserPlusIcon } from "@heroicons/react/24/outline";
 import IconEmailProvider from "@components/icons/IconEmailProvider";
 
 interface TEmailProvider {
@@ -23,27 +22,12 @@ const emailProviders: TEmailProvider[] = [
   },
 ];
 
-export default function AddAccountModalWithButton() {
+export default function AddAccountModal() {
   const [isAccountModalOpen, setIsAccountModalOpen] = useAtom(
     isAddAccountModalOpenAtom
   );
   return (
     <Dialog.Root onOpenChange={setIsAccountModalOpen} open={isAccountModalOpen}>
-      <Dialog.Trigger asChild>
-        <button
-          onClick={() => setIsAccountModalOpen(true)}
-          className="py-1.5 px-0.75 flex cursor-default group"
-        >
-          <div
-            className="p-1.5 flex items-center justify-center rounded-lg group-hover:bg-c-bg-highlight-hover
-            group-focus-visible:ring-2 ring-c-primary/[var(--o-primary-focus-visible)]"
-          >
-            <UserPlusIcon
-              className={`text-c-on-bg w-7 h-7 transform transition`}
-            />
-          </div>
-        </button>
-      </Dialog.Trigger>
       <Dialog.Portal>
         <div className="z-[100] fixed left-0 top-0 w-full h-full flex flex-col items-center overflow-hidden">
           <Dialog.Overlay
@@ -72,10 +56,10 @@ export default function AddAccountModalWithButton() {
                         className="flex flex-col items-center justify-center w-40 pt-5 p-4 hover:bg-c-on-bg/6 rounded-lg
                         focus-visible:ring-2 ring-c-primary/[var(--o-primary-focus-visible)] cursor-default"
                       >
-                        <div className="w-14 h-14 rounded-lg -mt-2">
+                        <div className="w-14 h-14 rounded-lg -mt-1">
                           <Icon className="w-full h-full" />
                         </div>
-                        <h3 className="mt-2 font-medium w-full whitespace-nowrap text-center overflow-hidden overflow-ellipsis">
+                        <h3 className="mt-1 font-medium w-full whitespace-nowrap text-center overflow-hidden overflow-ellipsis">
                           {provider.title}
                         </h3>
                       </button>

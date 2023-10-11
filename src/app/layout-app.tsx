@@ -1,4 +1,6 @@
+import AddAccountModal from "@components/AddAccount/AddAccountModal";
 import CommandPaletteModal from "@components/CommandPalette/CommandPaletteModal";
+import ComposeModal from "@components/Compose/ComposeModal";
 import Navbar from "@components/navigation/Navbar";
 import { isSidebarOpenAtom } from "@components/navigation/navigation";
 import AppLayoutProviders from "@components/providers/AppLayoutProviders";
@@ -27,6 +29,8 @@ export default function AppLayout() {
         </main>
       </div>
       <CommandPaletteModal />
+      <ComposeModal />
+      <AddAccountModal />
     </AppLayoutProviders>
   );
 }

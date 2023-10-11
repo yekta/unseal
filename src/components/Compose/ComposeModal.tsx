@@ -1,28 +1,12 @@
 import Compose from "@components/Compose/Compose";
 import * as Dialog from "@radix-ui/react-dialog";
-import IconPenOnPaper from "@components/icons/IconPenOnPaper";
 import { isComposeOpenAtom } from "@components/Compose/composeSettings";
 import { useAtom } from "jotai";
 
-export default function ComposeButtonWithModal() {
+export default function ComposeModal() {
   const [isComposeOpen, setIsComposeOpen] = useAtom(isComposeOpenAtom);
   return (
     <Dialog.Root onOpenChange={setIsComposeOpen} open={isComposeOpen}>
-      <Dialog.Trigger asChild>
-        <button
-          onClick={() => setIsComposeOpen(true)}
-          className="py-1.5 px-0.75 flex cursor-default group"
-        >
-          <div
-            className="p-1.5 flex items-center justify-center rounded-lg group-hover:bg-c-bg-highlight-hover
-            group-focus-visible:ring-2 ring-c-primary/[var(--o-primary-focus-visible)]"
-          >
-            <IconPenOnPaper
-              className={`text-c-on-bg w-7 h-7 transform transition`}
-            />
-          </div>
-        </button>
-      </Dialog.Trigger>
       <Dialog.Portal>
         <div className="z-[100] fixed left-0 top-0 w-full h-full flex flex-col items-center overflow-hidden">
           <Dialog.Overlay

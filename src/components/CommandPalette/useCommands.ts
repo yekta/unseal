@@ -21,7 +21,7 @@ import IconSystemLight from "@components/icons/IconSystemLight";
 import IconSystemDark from "@components/icons/IconSystemDark";
 import { useRouter, useRouterState } from "@tanstack/react-router";
 import { useTheme } from "@components/providers/ThemeProvider";
-import { isAddAccountModalOpenAtom } from "@components/AddAccount/AddAccountModalWithButton";
+import { isAddAccountModalOpenAtom } from "@components/AddAccount/AddAccountModal";
 
 const fuseOptions = {
   keys: ["title", "description", "tags"],
