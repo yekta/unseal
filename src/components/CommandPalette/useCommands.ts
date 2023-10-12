@@ -36,7 +36,7 @@ export function useCommands(searchQuery: string) {
   const [_, setIsAddAccountOpen] = useAtom(isAddAccountModalOpenAtom);
   const setIsCommandPaletteOpen = useSetAtom(isCommandPaletteOpenAtom);
   const { accounts } = useAccounts();
-  const { theme, setTheme, systemTheme } = useTheme();
+  const { theme, setTheme, systemTheme, themeString } = useTheme();
 
   const commands: TCommand[] = useMemo<TCommand[]>(
     () => [
@@ -128,30 +128,48 @@ export function useCommands(searchQuery: string) {
         shouldFilterOut: () => pathname === "/settings",
       },
       {
-        title:
-          theme === "light" || (theme === "system" && systemTheme === "light")
-            ? "Switch to Dark Mode"
-            : "Switch to Light Mode",
-        description:
-          theme === "light" || (theme === "system" && systemTheme === "light")
-            ? "Switch to Dark Mode"
-            : "Switch to Light Mode",
-        tags: ["theme", "dark", "light", "toggle theme"],
-        Icon:
-          theme === "light" || (theme === "system" && systemTheme === "light")
-            ? MoonIcon
-            : SunIcon,
-        onClick: () =>
-          setTheme(
-            theme === "dark" || (theme === "system" && systemTheme === "dark")
-              ? "light"
-              : "dark"
-          ),
+        title: "Switch to Dark Theme",
+        badge: `Current: ${themeString}`,
+        description: "Switch to dark theme",
+        tags: [
+          "dark mode",
+          "dark theme",
+          "toggle theme",
+          "light mode",
+          "light theme",
+        ],
+        Icon: MoonIcon,
+        onClick: () => setTheme("dark"),
+        shouldFilterOut: () => theme === "dark",
+      },
+      {
+        title: "Switch to Light Theme",
+        badge: `Current: ${themeString}`,
+        description: "Switch to light theme",
+        tags: [
+          "light mode",
+          "light theme",
+          "toggle theme",
+          "dark mode",
+          "dark theme",
+        ],
+        Icon: SunIcon,
+        onClick: () => setTheme("light"),
+        shouldFilterOut: () => theme === "light",
       },
       {
         title: "Switch to System Theme",
+        badge: `Current: ${themeString}`,
         description: "Switch to System Theme",
-        tags: ["theme", "dark", "light", "toggle theme", "system"],
+        tags: [
+          "system mode",
+          "toggle theme",
+          "system mode",
+          "dark theme",
+          "light theme",
+          "dark mode",
+          "light mode",
+        ],
         Icon: systemTheme === "light" ? IconSystemLight : IconSystemDark,
         onClick: () => setTheme("system"),
         shouldFilterOut: () => theme === "system",
@@ -220,6 +238,7 @@ interface TCommandSimple {
 }
 
 interface TCommand extends TCommandSimple {
+  badge?: string;
   Icon: React.ComponentType<any>;
   onClick: () => void;
   shouldFilterOut?: () => boolean;

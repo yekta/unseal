@@ -1,42 +1,18 @@
-import { atom, useAtom, useAtomValue } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 import { useEffect } from "react";
+import { useDarkMode } from "usehooks-ts";
 
 type TSystemTheme = "dark" | "light";
-type TTheme = TSystemTheme | "system";
+export type TTheme = TSystemTheme | "system";
 
 export const defaultTheme: TTheme = "system";
 export const themeAtom = atomWithStorage<TTheme>("theme", defaultTheme);
-export const systemThemeAtom = atom<TSystemTheme>("light");
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [systemTheme, setSystemTheme] = useAtom(systemThemeAtom);
+  const { isDarkMode } = useDarkMode();
+  const systemTheme = isDarkMode ? "dark" : "light";
   const theme = useAtomValue(themeAtom);
-
-  useEffect(() => {
-    if (
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    ) {
-      setSystemTheme("dark");
-    } else {
-      setSystemTheme("light");
-    }
-
-    const darkMatcher = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleChange = (e: MediaQueryListEvent) => {
-      if (e.matches) {
-        setSystemTheme("dark");
-      } else {
-        setSystemTheme("light");
-      }
-    };
-
-    darkMatcher.addEventListener("change", handleChange);
-    return () => {
-      darkMatcher.removeEventListener("change", handleChange);
-    };
-  }, []);
 
   useEffect(() => {
     if (theme === "light" || (theme === "system" && systemTheme === "light")) {
@@ -55,10 +31,17 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
 export function useTheme() {
   const [theme, setTheme] = useAtom(themeAtom);
-  const systemTheme = useAtomValue(systemThemeAtom);
-
+  const { isDarkMode } = useDarkMode();
+  const systemTheme = isDarkMode ? "dark" : "light";
+  const themeString =
+    theme === "system"
+      ? "System Theme"
+      : theme === "light"
+      ? "Light Theme"
+      : "Dark Theme";
   return {
     theme,
+    themeString,
     systemTheme,
     setTheme,
   };

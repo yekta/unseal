@@ -126,8 +126,19 @@ export default function CommandPalette() {
                         <div className="py-0.5 flex-shrink-0">
                           <command.Icon className="w-5 h-5" />
                         </div>
-                        <p className="flex-1 min-w-0 overflow-hidden pl-3">
-                          {command.title}
+                        <p className="flex-1 min-w-0 overflow-hidden gap-1 pl-3 flex flex-wrap items-center">
+                          <span
+                            className={`${
+                              command.badge !== undefined && "mr-2"
+                            }`}
+                          >
+                            {command.title}
+                          </span>
+                          {command.badge !== undefined && (
+                            <span className="bg-c-on-bg/6 -ml-0.5 px-1.5 py-0.5 rounded-md text-sm">
+                              {command.badge}
+                            </span>
+                          )}
                         </p>
                       </div>
                       <div className="flex justify-end w-36 max-w-full pl-4 -mr-1">
