@@ -18,8 +18,7 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
   const [bubbleMenuType, setBubbleMenuType] = useState<"main" | "link">("main");
   const [linkInputValue, setLinkInputValue] = useState("");
   const linkInputRef = useRefWithCallback<HTMLInputElement>(null, (el) => {
-    if (!el) return;
-    el.focus();
+    el?.focus();
   });
   const bubbleMenuContainerRef = useRef<HTMLDivElement>(null);
 
