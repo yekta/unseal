@@ -8,9 +8,7 @@ export default function useRefWithCallback<T>(
 
   return new Proxy(ref, {
     set: (target, property, value) => {
-      if (property === "current") {
-        callback(value as T);
-      }
+      if (property === "current") callback(value as T);
       target[property as keyof typeof target] = value;
       return true;
     },
