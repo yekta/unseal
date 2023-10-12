@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import Mousetrap from "mousetrap";
 
-interface UseHotkeyOptions {
+interface TUseHotkeyOptions {
   enabled?: boolean;
   enableOnInput?: boolean;
 }
 
-interface HotkeyConfig {
+export interface THotkeyConfig {
   hotkey: string | string[];
   callback: () => void;
-  options?: UseHotkeyOptions;
+  options?: TUseHotkeyOptions;
 }
 
 function shouldExecuteCallback(
@@ -33,7 +33,7 @@ function shouldExecuteCallback(
   );
 }
 
-export function useHotkeys(configs: HotkeyConfig[]): void {
+export function useHotkeys(configs: THotkeyConfig[]): void {
   useEffect(() => {
     Mousetrap.prototype.stopCallback = () => false;
     configs.forEach((config) => {

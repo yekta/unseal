@@ -160,6 +160,17 @@ export function useCommands(searchQuery: string) {
     [pathname, isComposeOpen, accounts, theme, systemTheme]
   );
 
+  const commandsForHotkeyBinding = useMemo(
+    () =>
+      commands.filter(
+        (c) =>
+          c.hotkey !== undefined &&
+          c.isHotkeyGlobal &&
+          (c.isHotkeyEnabled === undefined || c.isHotkeyEnabled())
+      ),
+    [commands]
+  );
+
   const commandsSimple: TCommandSimple[] = useMemo(
     () =>
       commands.map((c) => ({
@@ -194,13 +205,6 @@ export function useCommands(searchQuery: string) {
     if (isComposeOpen) setIsComposeOpen(false);
     setIsCommandPaletteOpen(false);
   };
-
-  const commandsForHotkeyBinding = commands.filter(
-    (c) =>
-      c.hotkey !== undefined &&
-      c.isHotkeyGlobal &&
-      (c.isHotkeyEnabled === undefined || c.isHotkeyEnabled())
-  );
 
   return {
     commands: finalCommands,
