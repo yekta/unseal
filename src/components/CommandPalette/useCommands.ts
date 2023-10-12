@@ -36,7 +36,13 @@ export function useCommands(searchQuery: string) {
   const [_, setIsAddAccountOpen] = useAtom(isAddAccountModalOpenAtom);
   const setIsCommandPaletteOpen = useSetAtom(isCommandPaletteOpenAtom);
   const { accounts } = useAccounts();
-  const { theme, setTheme, systemTheme, themeString } = useTheme();
+  const { theme, setTheme, systemTheme } = useTheme();
+  const themeString =
+    theme === "system"
+      ? "System Theme"
+      : theme === "light"
+      ? "Light Theme"
+      : "Dark Theme";
 
   const commands: TCommand[] = useMemo<TCommand[]>(
     () => [

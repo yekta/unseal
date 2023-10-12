@@ -33,15 +33,8 @@ export function useTheme() {
   const [theme, setTheme] = useAtom(themeAtom);
   const { isDarkMode } = useDarkMode();
   const systemTheme = isDarkMode ? "dark" : "light";
-  const themeString =
-    theme === "system"
-      ? "System Theme"
-      : theme === "light"
-      ? "Light Theme"
-      : "Dark Theme";
   return {
     theme,
-    themeString,
     systemTheme,
     setTheme,
   };
