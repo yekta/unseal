@@ -10,10 +10,8 @@ export default function useRefWithCallback<T>(
     set: (target, property, value) => {
       if (property === "current") {
         callback(value as T);
-        target[property] = value;
-      } else {
-        target[property as keyof typeof target] = value;
       }
+      target[property as keyof typeof target] = value;
       return true;
     },
   });
