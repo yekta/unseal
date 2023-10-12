@@ -129,7 +129,7 @@ export default function CommandPalette() {
                         <p className="flex-1 min-w-0 overflow-hidden gap-1 pl-3 flex flex-wrap items-center">
                           <span
                             className={`${
-                              command.badge !== undefined && "mr-2"
+                              command.badge !== undefined && "mr-1.5"
                             }`}
                           >
                             {command.title}

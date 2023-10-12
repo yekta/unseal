@@ -43,6 +43,7 @@ export function useCommands(searchQuery: string) {
       : theme === "light"
       ? "Light Theme"
       : "Dark Theme";
+  const switchThemeBadge = `Current: ${themeString}`;
 
   const commands: TCommand[] = useMemo<TCommand[]>(
     () => [
@@ -135,7 +136,7 @@ export function useCommands(searchQuery: string) {
       },
       {
         title: "Switch to Dark Theme",
-        badge: `Current: ${themeString}`,
+        badge: switchThemeBadge,
         description: "Switch to dark theme",
         tags: [
           "dark mode",
@@ -150,7 +151,7 @@ export function useCommands(searchQuery: string) {
       },
       {
         title: "Switch to Light Theme",
-        badge: `Current: ${themeString}`,
+        badge: switchThemeBadge,
         description: "Switch to light theme",
         tags: [
           "light mode",
@@ -165,7 +166,7 @@ export function useCommands(searchQuery: string) {
       },
       {
         title: "Switch to System Theme",
-        badge: `Current: ${themeString}`,
+        badge: switchThemeBadge,
         description: "Switch to System Theme",
         tags: [
           "system mode",
