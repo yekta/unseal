@@ -2,21 +2,25 @@ import IconBold from "@components/icons/IconBold";
 import IconH1 from "@components/icons/IconH1";
 import IconH2 from "@components/icons/IconH2";
 import IconItalic from "@components/icons/IconItalic";
+import "@css/tippy.css";
 import {
+  ArrowTopRightOnSquareIcon,
   LinkIcon,
   XMarkIcon,
-  ArrowTopRightOnSquareIcon,
 } from "@heroicons/react/24/outline";
 import { BubbleMenu, Editor } from "@tiptap/react";
-import React, { useEffect, useRef, useState } from "react";
-import "@css/tippy.css";
-import { useOnClickOutside } from "usehooks-ts";
 import { addProtocolToUrl } from "@ts/helpers/addProtocolToUrl";
+import useRefWithCallback from "@ts/hooks/useRefWithCallback";
+import React, { useRef, useState } from "react";
+import { useOnClickOutside } from "usehooks-ts";
 
 export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
   const [bubbleMenuType, setBubbleMenuType] = useState<"main" | "link">("main");
   const [linkInputValue, setLinkInputValue] = useState("");
-  const linkInputRef = useRef<HTMLInputElement>(null);
+  const linkInputRef = useRefWithCallback<HTMLInputElement>(null, (el) => {
+    if (!el) return;
+    el.focus();
+  });
   const bubbleMenuContainerRef = useRef<HTMLDivElement>(null);
 
   const activateLinkAndClose = () => {
@@ -34,13 +38,8 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
       setBubbleMenuType("main");
     }
   };
-  useOnClickOutside(bubbleMenuContainerRef, bubbleMenuClickOutside);
 
-  useEffect(() => {
-    if (bubbleMenuType === "link") {
-      linkInputRef.current?.focus();
-    }
-  }, [bubbleMenuType]);
+  useOnClickOutside(bubbleMenuContainerRef, bubbleMenuClickOutside);
 
   return (
     <BubbleMenu
@@ -124,7 +123,9 @@ export default function BubbleMenuCompose({ editor }: { editor: Editor }) {
         {bubbleMenuType === "link" && (
           <>
             <form
-              className="absolute left-0 top-0 w-full h-full bg-c-tooltip-bg rounded-lg"
+              className={`absolute left-0 top-0 w-full h-full bg-c-tooltip-bg rounded-lg ${
+                bubbleMenuType !== "link" && "hidden"
+              }`}
               onSubmit={() => {
                 if (linkInputValue === "") {
                   editor.chain().focus().unsetLink().run();

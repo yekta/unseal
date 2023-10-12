@@ -1,9 +1,9 @@
-import { Fragment, useEffect, useRef, useState } from "react";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useCommands } from "@components/CommandPalette/useCommands";
 import ScrollArea from "@components/utils/ScrollArea";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useHotkeys } from "@ts/hooks/useHotkeys";
 import { usePlatform } from "@ts/hooks/usePlatform";
+import { Fragment, useRef, useState } from "react";
 
 export default function CommandPalette() {
   const [searchQuery, setSearchQuery] = useState("");
