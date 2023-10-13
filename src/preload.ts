@@ -2,6 +2,8 @@
 // https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
 import { contextBridge } from "electron";
 
-contextBridge.exposeInMainWorld("electronAPI", {
+export const electronAPI = {
   platform: process.platform,
-});
+};
+
+contextBridge.exposeInMainWorld("electronAPI", electronAPI);
