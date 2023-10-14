@@ -1,6 +1,7 @@
 import Button from "@components/utils/Buttons/Button";
 import { ErrorLine } from "@components/utils/ErrorLine";
 import Input from "@components/utils/Input";
+import { EnvelopeIcon, KeyIcon } from "@heroicons/react/24/outline";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
@@ -65,6 +66,7 @@ export function SignUpForm({
       >
         <Input
           id="email"
+          Icon={EnvelopeIcon}
           register={register}
           type="text"
           placeholder="Email"
@@ -72,6 +74,7 @@ export function SignUpForm({
         />
         <Input
           id="password"
+          Icon={KeyIcon}
           register={register}
           type="password"
           placeholder="Password"
@@ -83,7 +86,7 @@ export function SignUpForm({
         ) : errors.password ? (
           <ErrorLine className="mt-1.5">{errors.password.message}</ErrorLine>
         ) : null}
-        <Button type="submit" className="mt-3" disabled={isSignUpLoading}>
+        <Button type="submit" className="mt-3" isLoading={isSignUpLoading}>
           Create Account
         </Button>
       </form>

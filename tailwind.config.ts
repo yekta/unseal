@@ -1,4 +1,11 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
+
+const notPlugin = plugin(({ addVariant }) => {
+  addVariant("peer-placeholder-not-shown", [
+    ".peer:not(:placeholder-shown) ~ &",
+  ]);
+});
 
 const config: Config = {
   content: [
@@ -71,6 +78,9 @@ const config: Config = {
         "3xl": "0 18px 36px -12px, 0 36px 72px -18px",
         key: "0 2px 0 0",
       },
+      scale: {
+        80: "0.8",
+      },
       spacing: {
         "0.25ch": "0.25ch",
         "0.3ch": "0.3ch",
@@ -85,9 +95,13 @@ const config: Config = {
         0.75: "0.1875rem",
         1.25: "0.3125rem",
         1.75: "0.4375rem",
+        3.75: "0.9375rem",
         4.25: "1.0625rem",
         4.5: "1.125rem",
+        5.25: "1.3125rem",
         5.5: "1.375rem",
+        10.25: "2.5625rem",
+        10.5: "2.625rem",
         13: "3.25rem",
         18: "4.5rem",
         19: "4.75rem",
@@ -106,6 +120,9 @@ const config: Config = {
       animation: {
         "pulse-placeholder": "pulse-placeholder 1s ease-in-out infinite",
         spinner: "spinner 0.75s cubic-bezier(.5,.25,.5,.75) infinite",
+      },
+      borderRadius: {
+        lg2: "0.625rem",
       },
       keyframes: {
         "pulse-placeholder": {
@@ -127,6 +144,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [notPlugin],
 };
 export default config;
