@@ -40,6 +40,8 @@ const config: Config = {
           "rgb(var(--c-bg-highlight-active)/<alpha-value>)",
         "c-bg-highlight-hover":
           "rgb(var(--c-bg-highlight-hover)/<alpha-value>)",
+        "c-bg-input": "rgb(var(--c-bg-input)/<alpha-value>)",
+        "c-bg-input-hover": "rgb(var(--c-bg-input-hover)/<alpha-value>)",
         "c-tooltip-bg": "rgb(var(--c-tooltip-bg)/<alpha-value>)",
         "c-tooltip-on-bg": "rgb(var(--c-tooltip-on-bg)/<alpha-value>)",
         "c-bg-unread": "rgb(var(--c-bg-unread)/<alpha-value>)",

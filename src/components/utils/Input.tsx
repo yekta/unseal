@@ -18,8 +18,8 @@ export default function Input(props: TInputProps) {
         {...rest}
         {...registerResult}
         placeholder={" "}
-        className={`w-full bg-c-on-bg/6 focus:ring-1.5 ring-c-primary/30 
-        enabled:hover:bg-c-on-bg/9 focus:bg-c-on-bg/9 placeholder:text-c-on-bg/50
+        className={`w-full bg-c-bg-input focus:ring-1.5 ring-c-primary/30 
+        enabled:hover:bg-c-bg-input-hover focus:bg-c-bg-input-hover placeholder:text-c-on-bg/50
         rounded-lg2 ${Icon ? "pl-11 pr-4" : "px-4"} pt-5.5 pb-2 relative peer`}
       />
       {Icon && (

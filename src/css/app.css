@@ -7,6 +7,8 @@
   --c-bg-unread: 29 29 46;
   --c-bg-secondary: 28 28 42;
   --c-bg-border: 32 32 46;
+  --c-bg-input: 34 34 48;
+  --c-bg-input-hover: 38 38 52;
   --c-command-palette-bg:  34 34 50;
   --c-bg-highlight-active: 34 34 50;
   --c-bg-highlight-hover: 30 30 46;
@@ -45,6 +47,8 @@ html[data-theme="light"] {
   --c-bg-unread: 238 240 254;
   --c-bg-secondary: 238 238 245;
   --c-bg-border: 234 234 241;
+  --c-bg-input: 236 236 248;
+  --c-bg-input-hover: 230 230 244;
   --c-command-palette-bg: 250 250 255;
   --c-bg-highlight-active: 230 230 242;
   --c-bg-highlight-hover: 238 238 250;
