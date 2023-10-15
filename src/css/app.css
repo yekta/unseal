@@ -9,6 +9,7 @@
   --c-bg-border: 32 32 46;
   --c-bg-input: 34 34 48;
   --c-bg-input-hover: 38 38 52;
+  --c-bg-autofill: 54 62 86;
   --c-command-palette-bg:  34 34 50;
   --c-bg-highlight-active: 34 34 50;
   --c-bg-highlight-hover: 30 30 46;
@@ -49,6 +50,7 @@ html[data-theme="light"] {
   --c-bg-border: 234 234 241;
   --c-bg-input: 236 236 248;
   --c-bg-input-hover: 230 230 244;
+  --c-bg-autofill: 209 219 242;
   --c-command-palette-bg: 250 250 255;
   --c-bg-highlight-active: 230 230 242;
   --c-bg-highlight-hover: 238 238 250;
@@ -178,6 +180,15 @@ a:focus-visible, nav:focus-visible {
 
 .electron-no-drag-zone {
   -webkit-app-region: no-drag;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 100px rgb(var(--c-bg-autofill)) inset;
+    -webkit-text-fill-color: rgb(var(--c-on-bg));
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 @tailwind utilities;

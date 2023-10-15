@@ -7,7 +7,7 @@ export const usePlatform = () => {
   const [platform, setPlatform] = useState<TPlatform>("other");
 
   useOnMount(() => {
-    const rawPlatform = window.electronAPI.platform;
+    const rawPlatform = window.electronAPI?.platform;
     setPlatform(
       rawPlatform === "darwin"
         ? "macos"
