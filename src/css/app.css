@@ -13,7 +13,7 @@
   --c-bg-highlight-active: 34 34 50;
   --c-bg-highlight-hover: 30 30 46;
   --c-dropdown-bg: 34 34 50;
-  --c-dropdown-bg-secondary: 44 44 64;
+  --c-dropdown-bg-secondary: 46 46 66;
   --c-tooltip-bg: 60 60 80;
   --c-tooltip-on-bg: 215 215 235;
   --c-primary: 144 181 255;
@@ -54,7 +54,7 @@ html[data-theme="light"] {
   --c-bg-highlight-active: 230 230 242;
   --c-bg-highlight-hover: 238 238 250;
   --c-dropdown-bg: 250 250 255;
-  --c-dropdown-bg-secondary: 234 234 242;
+  --c-dropdown-bg-secondary: 232 232 244;
   --c-tooltip-bg: 250 250 255;
   --c-tooltip-on-bg: 0 0 12;
   --c-primary: 64 101 185;
