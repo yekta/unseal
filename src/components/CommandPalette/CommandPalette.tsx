@@ -53,7 +53,7 @@ export default function CommandPalette() {
       onMouseMove={() => {
         !isMouseMoveOrEnterActive && setIsMouseMoveOrEnterActive(true);
       }}
-      className="w-full flex flex-1 flex-col items-start justify-start overflow-hidden border-2 border-c-dropdown-border
+      className="w-full flex flex-1 flex-col items-start justify-start overflow-hidden border-2 border-c-dropdown-bg-secondary
       bg-c-dropdown-bg rounded-xl relative shadow-3xl shadow-c-shadow/[var(--o-shadow-stronger)]"
     >
       <form
@@ -118,7 +118,7 @@ export default function CommandPalette() {
                   >
                     <div
                       className="w-full flex items-center justify-start pl-3.5 pr-4 py-3 rounded-lg text-c-on-bg/75 
-                      group-data-[highlighted]/button:text-c-on-bg group-data-[highlighted]/button:bg-c-primary/10"
+                      group-data-[highlighted]/button:text-c-on-bg group-data-[highlighted]/button:bg-c-dropdown-bg-secondary"
                     >
                       <div className="flex-1 min-w-0 flex items-start justify-start overflow-hidden">
                         <div className="py-0.5 flex-shrink-0">

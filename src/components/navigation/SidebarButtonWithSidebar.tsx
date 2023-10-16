@@ -25,7 +25,7 @@ export default function SidebarButtonWithModal({
           className="touch-manipulation py-1.5 px-0.75 flex cursor-default group electron-no-drag-zone"
         >
           <div
-            className="p-1 flex items-center justify-center rounded-lg group-hover:bg-c-bg-highlight-hover
+            className="p-1 flex items-center justify-center rounded-lg group-hover:bg-c-bg-highlight-active
             group-focus-visible:ring-2 ring-c-primary/[var(--o-primary-focus-visible)]"
           >
             <Bars4Icon

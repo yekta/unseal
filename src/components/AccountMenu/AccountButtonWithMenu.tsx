@@ -19,7 +19,7 @@ export default function AccountButtonWithMenu() {
           className="py-1.5 px-0.75 flex cursor-default group"
         >
           <div
-            className="p-1.5 flex items-center justify-center rounded-lg group-hover:bg-c-bg-highlight-hover
+            className="p-1.5 flex items-center justify-center rounded-lg group-hover:bg-c-bg-highlight-active
               group-focus-visible:ring-2 ring-c-primary/[var(--o-primary-focus-visible)]"
           >
             <UserIcon className={`text-c-on-bg w-7 h-7 transform transition`} />
@@ -28,7 +28,7 @@ export default function AccountButtonWithMenu() {
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content
-          className="rounded-xl max-w-[150rem] bg-c-dropdown-bg overflow-hidden ring-2 ring-c-dropdown-border
+          className="rounded-xl max-w-[150rem] bg-c-dropdown-bg overflow-hidden ring-2 ring-c-dropdown-bg-secondary
           shadow-xl shadow-c-shadow/[var(--o-shadow-normal)] flex flex-col"
           sideOffset={-1}
           collisionPadding={8}
@@ -93,7 +93,7 @@ function DropdownItem({
         }`}
       >
         <div
-          className="w-full px-4 py-2.5 group-data-[highlighted]:bg-c-primary/10 flex 
+          className="w-full px-4 py-2.5 group-data-[highlighted]:bg-c-dropdown-bg-secondary flex 
             items-start justify-start gap-2 rounded-lg"
         >
           <div className="py-0.5">

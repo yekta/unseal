@@ -11,7 +11,7 @@ export default function ComposeButton() {
       className="py-1.5 px-0.75 flex cursor-default group"
     >
       <div
-        className="p-1.5 flex items-center justify-center rounded-lg group-hover:bg-c-bg-highlight-hover
+        className="p-1.5 flex items-center justify-center rounded-lg group-hover:bg-c-bg-highlight-active
             group-focus-visible:ring-2 ring-c-primary/[var(--o-primary-focus-visible)]"
       >
         <IconPenOnPaper

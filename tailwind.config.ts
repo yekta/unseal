@@ -44,7 +44,8 @@ const config: Config = {
         "c-bg-input-hover": "rgb(var(--c-bg-input-hover)/<alpha-value>)",
         "c-bg-autofill": "rgb(var(--c-bg-autofill)/<alpha-value>)",
         "c-dropdown-bg": "rgb(var(--c-dropdown-bg)/<alpha-value>)",
-        "c-dropdown-border": "rgb(var(--c-dropdown-border)/<alpha-value>)",
+        "c-dropdown-bg-secondary":
+          "rgb(var(--c-dropdown-bg-secondary)/<alpha-value>)",
         "c-tooltip-bg": "rgb(var(--c-tooltip-bg)/<alpha-value>)",
         "c-tooltip-on-bg": "rgb(var(--c-tooltip-on-bg)/<alpha-value>)",
         "c-bg-unread": "rgb(var(--c-bg-unread)/<alpha-value>)",
