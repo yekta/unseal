@@ -11,7 +11,7 @@ import {
   ArchiveBoxIcon,
   UserPlusIcon,
 } from "@heroicons/react/24/outline";
-import { useAtom, useSetAtom } from "jotai";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { useMemo } from "react";
 import { isCommandPaletteOpenAtom } from "@components/CommandPalette/commandPaletteSettings";
 import Fuse from "fuse.js";
@@ -22,6 +22,7 @@ import IconSystemDark from "@components/icons/IconSystemDark";
 import { useRouter, useRouterState } from "@tanstack/react-router";
 import { useTheme } from "@components/providers/ThemeProvider";
 import { isAddAccountModalOpenAtom } from "@components/AddAccount/AddAccountModal";
+import { isAccountMenuOpenAtom } from "@components/AccountMenu/AccountButtonWithMenu";
 
 const fuseOptions = {
   keys: ["title", "description", "tags"],
@@ -33,10 +34,11 @@ export function useCommands(searchQuery: string) {
     location: { pathname },
   } = useRouterState();
   const [isComposeOpen, setIsComposeOpen] = useAtom(isComposeOpenAtom);
-  const [_, setIsAddAccountOpen] = useAtom(isAddAccountModalOpenAtom);
+  const setIsAddAccountOpen = useSetAtom(isAddAccountModalOpenAtom);
   const setIsCommandPaletteOpen = useSetAtom(isCommandPaletteOpenAtom);
   const { accounts } = useAccounts();
   const { theme, setTheme, systemTheme } = useTheme();
+  const isAccountMenuOpen = useAtomValue(isAccountMenuOpenAtom);
   const themeString =
     theme === "system"
       ? "System Theme"
@@ -56,7 +58,7 @@ export function useCommands(searchQuery: string) {
         shouldFilterOut: () => isComposeOpen,
         hotkey: "c",
         isHotkeyGlobal: true,
-        isHotkeyEnabled: () => !isComposeOpen,
+        isHotkeyEnabled: () => !isComposeOpen && !isAccountMenuOpen,
       },
       {
         title: "Search Emails",
@@ -71,7 +73,8 @@ export function useCommands(searchQuery: string) {
         tags: ["inbox", "all inboxes"],
         Icon: InboxIcon,
         onClick: () => router.navigate({ to: "/" }),
-        shouldFilterOut: () => pathname === "/" && !isComposeOpen,
+        shouldFilterOut: () => pathname === "/",
+        isHotkeyEnabled: () => !isComposeOpen && !isAccountMenuOpen,
         hotkey: "g i",
         isHotkeyGlobal: true,
       },
@@ -82,6 +85,7 @@ export function useCommands(searchQuery: string) {
         Icon: EnvelopeIcon,
         onClick: () => router.navigate({ to: "/view/unread" }),
         shouldFilterOut: () => pathname === "/view/unread",
+        isHotkeyEnabled: () => !isComposeOpen && !isAccountMenuOpen,
         hotkey: "g u",
         isHotkeyGlobal: true,
       },
@@ -91,7 +95,8 @@ export function useCommands(searchQuery: string) {
         tags: ["starred", "favorited"],
         Icon: StarIcon,
         onClick: () => router.navigate({ to: "/view/starred" }),
-        shouldFilterOut: () => pathname === "/view/starred",
+        shouldFilterOut: () =>
+          pathname === "/view/starred" && !isComposeOpen && !isAccountMenuOpen,
         hotkey: "g s",
         isHotkeyGlobal: true,
       },
@@ -184,7 +189,7 @@ export function useCommands(searchQuery: string) {
         shouldFilterOut: () => theme === "system",
       },
     ],
-    [pathname, isComposeOpen, accounts, theme, systemTheme]
+    [pathname, isComposeOpen, isAccountMenuOpen, accounts, theme, systemTheme]
   );
 
   const commandsForHotkeyBinding = useMemo(

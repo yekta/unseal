@@ -160,6 +160,7 @@ function IconButton({
         <button
           tabIndex={-1}
           onClick={onClick}
+          aria-label={label}
           className="cursor-default h-full flex items-center justify-center py-1 px-px 
           rounded-lg group/icon-button text-c-on-bg/75 hover:text-c-on-bg"
         >

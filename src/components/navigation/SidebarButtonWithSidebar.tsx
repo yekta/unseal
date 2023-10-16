@@ -20,6 +20,7 @@ export default function SidebarButtonWithModal({
       <Dialog.Trigger asChild>
         <button
           type="button"
+          aria-label="Sidebar"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           className="touch-manipulation py-1.5 px-0.75 flex cursor-default group electron-no-drag-zone"
         >

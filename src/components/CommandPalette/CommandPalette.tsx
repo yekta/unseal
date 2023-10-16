@@ -53,8 +53,8 @@ export default function CommandPalette() {
       onMouseMove={() => {
         !isMouseMoveOrEnterActive && setIsMouseMoveOrEnterActive(true);
       }}
-      className="w-full flex flex-1 flex-col items-start justify-start overflow-hidden border-2 border-c-on-bg/6
-      bg-c-command-palette-bg rounded-xl relative shadow-3xl shadow-c-shadow/[var(--o-shadow-command-palette)]"
+      className="w-full flex flex-1 flex-col items-start justify-start overflow-hidden border-2 border-c-dropdown-border
+      bg-c-dropdown-bg rounded-xl relative shadow-3xl shadow-c-shadow/[var(--o-shadow-stronger)]"
     >
       <form
         className="w-full"
@@ -110,17 +110,15 @@ export default function CommandPalette() {
                       setActiveCommandIndexAndScroll(i, false, false)
                     }
                     tabIndex={-1}
+                    data-highlighted={activeCommandIndex === i ? "" : undefined}
                     onClick={() => executeCommand(command)}
                     className={`text-left w-full flex px-1.5 group/button cursor-default pb-1.5 ${
                       i === 0 && "pt-1.5"
                     }`}
                   >
                     <div
-                      className={`w-full flex items-center justify-start pl-3.5 pr-4 py-3 rounded-lg ${
-                        activeCommandIndex === i
-                          ? "text-c-on-bg bg-c-on-bg/6"
-                          : "text-c-on-bg/75"
-                      }`}
+                      className="w-full flex items-center justify-start pl-3.5 pr-4 py-3 rounded-lg text-c-on-bg/75 
+                      group-data-[highlighted]/button:text-c-on-bg group-data-[highlighted]/button:bg-c-primary/10"
                     >
                       <div className="flex-1 min-w-0 flex items-start justify-start overflow-hidden">
                         <div className="py-0.5 flex-shrink-0">
@@ -135,7 +133,7 @@ export default function CommandPalette() {
                             {command.title}
                           </span>
                           {command.badge !== undefined && (
-                            <span className="bg-c-on-bg/6 -ml-0.5 px-1.5 py-0.5 rounded-md text-sm">
+                            <span className="bg-c-primary/10 -ml-0.5 px-1.5 py-0.5 rounded-md text-sm">
                               {command.badge}
                             </span>
                           )}
@@ -178,7 +176,7 @@ function HotkeyLabel({ hotkey }: { hotkey: string }) {
               key={key + i + j + "kbd"}
               className={`${
                 key.length === 1 ? "w-6" : "w-auto"
-              } px-1.5 h-6 text-sm font-medium bg-c-command-palette-bg flex items-center 
+              } px-1.5 h-6 text-sm font-medium bg-c-dropdown-bg flex items-center 
               justify-center rounded shadow-md shadow-c-shadow/[var(--o-shadow-strong)] 
               ring-1 ring-c-on-bg/10 text-c-on-bg/75 overflow-hidden`}
             >

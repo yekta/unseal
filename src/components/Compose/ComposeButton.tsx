@@ -6,6 +6,7 @@ export default function ComposeButton() {
   const setIsComposeOpen = useSetAtom(isComposeOpenAtom);
   return (
     <button
+      aria-label="Compose"
       onClick={() => setIsComposeOpen(true)}
       className="py-1.5 px-0.75 flex cursor-default group"
     >

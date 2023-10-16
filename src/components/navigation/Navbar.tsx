@@ -1,6 +1,7 @@
+import AccountButtonWithMenu from "@components/AccountMenu/AccountButtonWithMenu";
 import ComposeButton from "@components/Compose/ComposeButton";
 import EmailIcon from "@components/EmailList/EmailLine/EmailIcon";
-import SidebarButtonWithModal from "@components/navigation/SidebarWithButton";
+import SidebarButtonWithModal from "@components/navigation/SidebarButtonWithSidebar";
 import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline";
 import { Link, LinkPropsOptions, useParams } from "@tanstack/react-router";
 import { TIconColor, TIconType } from "@ts/email";
@@ -102,6 +103,7 @@ export default function Navbar({
             </div>
           </Link>
           <ComposeButton />
+          <AccountButtonWithMenu />
         </div>
       </div>
     </nav>
