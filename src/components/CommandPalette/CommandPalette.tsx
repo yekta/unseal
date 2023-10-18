@@ -133,7 +133,10 @@ export default function CommandPalette() {
                             {command.title}
                           </span>
                           {command.badge !== undefined && (
-                            <span className="bg-c-primary/10 -ml-0.5 px-1.5 py-0.5 rounded-md text-sm">
+                            <span
+                              className="bg-c-primary/10 text-c-primary/85 group-data-[highlighted]/button:text-c-primary 
+                              -ml-0.5 px-1.5 py-0.5 rounded-md text-sm"
+                            >
                               {command.badge}
                             </span>
                           )}
